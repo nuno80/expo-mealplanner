@@ -47,7 +47,7 @@ Prima di lavorare su qualsiasi task, consulta i documenti pertinenti:
 - [x] Setup Expo Router
 - [x] Configurazione TypeScript + Biome
 - [x] Setup Supabase Auth
-- [ ] Setup Turso + Drizzle ORM
+- [x] Setup Turso + Drizzle ORM
 - [x] Struttura cartelle progetto
 
 ---
