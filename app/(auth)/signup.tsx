@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Link } from "expo-router";
+import { Link, useRouter } from "expo-router";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { Alert, Pressable, Text, TextInput, View } from "react-native";
@@ -24,6 +24,7 @@ type SignupFormData = z.infer<typeof signupSchema>;
 
 export default function SignupScreen() {
 	const insets = useSafeAreaInsets();
+	const router = useRouter();
 	const [loading, setLoading] = useState(false);
 
 	const {
@@ -36,7 +37,7 @@ export default function SignupScreen() {
 
 	const onSubmit = async (data: SignupFormData) => {
 		setLoading(true);
-		const { error } = await supabase.auth.signUp({
+		const { error, data: authData } = await supabase.auth.signUp({
 			email: data.email,
 			password: data.password,
 		});
@@ -44,11 +45,16 @@ export default function SignupScreen() {
 
 		if (error) {
 			Alert.alert("Errore", error.message);
+		} else if (authData.session) {
+			// User signed up and is logged in, go to onboarding
+			router.replace("/(onboarding)/goal");
 		} else {
+			// Email confirmation required
 			Alert.alert(
-				"Registrazione avvenuta",
-				"Controlla la tua email per confermare l'account (se richiesto).",
+				"Controlla la tua email",
+				"Abbiamo inviato un link di conferma. Clicca il link e poi effettua il login.",
 			);
+			router.replace("/(auth)/login");
 		}
 	};
 

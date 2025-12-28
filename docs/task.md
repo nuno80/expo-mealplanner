@@ -56,13 +56,13 @@ Prima di lavorare su qualsiasi task, consulta i documenti pertinenti:
 
 > 📖 **Docs:** `screen-flow.md` (sezioni 1-2), `data-models.md` (User, FamilyMember)
 
-- [ ] WelcomeScreen
-- [ ] LoginScreen + SignupScreen
-- [ ] Integrazione Supabase Auth
-- [ ] OnboardingGoalScreen
-- [ ] OnboardingProfileScreen
-- [ ] OnboardingTDEEScreen (formula in `GEMINI.md`)
-- [ ] OnboardingFamilyScreen
+- [x] WelcomeScreen
+- [x] LoginScreen + SignupScreen
+- [x] Integrazione Supabase Auth
+- [x] OnboardingGoalScreen
+- [x] OnboardingProfileScreen
+- [x] OnboardingTDEEScreen (formula in `GEMINI.md`)
+- [x] OnboardingFamilyScreen
 
 ---
 
