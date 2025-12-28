@@ -1,7 +1,14 @@
 import { Redirect } from "expo-router";
+import { useAuthStore } from "@/stores/authStore";
 
 export default function Index() {
-	// TODO: Check auth state and redirect accordingly
-	// For now, redirect to welcome screen
+	const { session, isLoading } = useAuthStore();
+
+	if (isLoading) return null;
+
+	if (session) {
+		return <Redirect href="/(tabs)" />;
+	}
+
 	return <Redirect href="/(auth)/welcome" />;
 }

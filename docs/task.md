@@ -46,7 +46,7 @@ Prima di lavorare su qualsiasi task, consulta i documenti pertinenti:
 - [x] Setup NativeWind 4.x
 - [x] Setup Expo Router
 - [x] Configurazione TypeScript + Biome
-- [ ] Setup Supabase Auth
+- [x] Setup Supabase Auth
 - [ ] Setup Turso + Drizzle ORM
 - [x] Struttura cartelle progetto
 
