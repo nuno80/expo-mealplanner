@@ -83,11 +83,11 @@ Prima di lavorare su qualsiasi task, consulta i documenti pertinenti:
 
 > 📖 **Docs:** `screen-flow.md` (sezioni 3.4-3.5, 4.5-4.6), `data-models.md` (WeightLog, SavedRecipe)
 
-- [ ] ProgressScreen (peso/misure)
-- [ ] AddWeightModal
-- [ ] ProfileScreen
-- [ ] AddFamilyMemberModal
-- [ ] Gestione membri famiglia
+- [x] ProgressScreen (peso/misure)
+- [x] AddWeightModal
+- [x] ProfileScreen
+- [x] AddFamilyMemberModal
+- [x] Gestione membri famiglia
 
 ---
 
