@@ -160,14 +160,20 @@ $ uv run python -m recipe_manager add
 
 ## 7. Schema DB (riferimento)
 
-Vedi `docs/data-models.md` per dettagli completi:
+Il Recipe Manager **scrive direttamente su Turso Cloud (Remote)**. Non usa un DB locale disconnesso.
 
-| Tabella | Campi principali |
-|---------|-----------------|
-| `Recipe` | name_it, name_en, category, kcal_per_100g, ... |
-| `Ingredient` | usda_fdc_id, name_it, name_en, kcal_per_100g, ... |
-| `RecipeIngredient` | recipe_id, ingredient_id, quantity, unit |
-| `RecipeStep` | recipe_id, step_number, instruction_it, instruction_en |
+⚠️ **IMPORTANTE:** Lo schema delle tabelle deve rispecchiare ESATTAMENTE quanto definito in [`docs/data-models.md`](data-models.md).
+
+Le tabelle principali da popolare sono:
+
+| Tabella | Note Schema |
+|---------|-------------|
+| `Recipe` | Usa UUID generati da Python |
+| `Ingredient` | Copia valori da USDA (non link dinamici) |
+| `RecipeIngredient` | Collega Recipe e Ingredient |
+| `RecipeStep` | Step testuali (no immagini per MVP) |
+
+Non serve Drizzle in Python, usa SQL standard rispettando i tipi definiti.
 
 ---
 

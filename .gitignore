@@ -39,3 +39,18 @@ yarn-error.*
 # generated native folders
 /ios
 /android
+
+# --- Python / Recipe Manager ---
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+.pytest_cache/
+.coverage
+htmlcov/
+*.spec
+.env
+.env.*
+!.env.example
+recipe-manager/.env
+!recipe-manager/.env.example
