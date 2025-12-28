@@ -66,16 +66,16 @@ Prima di lavorare su qualsiasi task, consulta i documenti pertinenti:
 
 ---
 
-## Phase 4: Core Features
+## Phase 4: Core Features ✅
 
 > 📖 **Docs:** `screen-flow.md` (sezioni 3-4), `data-models.md` (Recipe, MealPlan, PlannedMeal)
 
-- [ ] HomeScreen (dashboard)
-- [ ] RecipesScreen + RecipeDetailModal
-- [ ] PlanScreen (piano settimanale)
-- [ ] Algoritmo generazione meal plan (logica in `GEMINI.md`)
-- [ ] MealSwapModal
-- [ ] SelectMealsForShoppingModal + ShoppingListModal
+- [x] HomeScreen (dashboard)
+- [x] RecipesScreen + RecipeDetailModal
+- [x] PlanScreen (piano settimanale)
+- [x] Algoritmo generazione meal plan (logica in `GEMINI.md`)
+- [x] MealSwapModal
+- [x] ShoppingListModal
 
 ---
 
