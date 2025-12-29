@@ -1,14 +1,40 @@
-import { Redirect } from "expo-router";
+import { useMigrationHelper } from "@/db/migrate";
 import { useAuthStore } from "@/stores/authStore";
+import { Redirect } from "expo-router";
+import { Text, View } from "react-native";
 
+/**
+ * Root index - handles initial routing after migrations complete.
+ */
 export default function Index() {
-	const { session, isLoading } = useAuthStore();
+  const { success: migrationsReady } = useMigrationHelper();
+  const { session, isLoading, hasCompletedOnboarding } = useAuthStore();
 
-	if (isLoading) return null;
+  // Wait for migrations
+  if (!migrationsReady) {
+    return (
+      <View className="flex-1 bg-white items-center justify-center">
+        <Text className="text-gray-500">Inizializzazione...</Text>
+      </View>
+    );
+  }
 
-	if (session) {
-		return <Redirect href="/(tabs)" />;
-	}
+  // Wait for auth check
+  if (isLoading) {
+    return (
+      <View className="flex-1 bg-white items-center justify-center">
+        <Text className="text-gray-500">Caricamento...</Text>
+      </View>
+    );
+  }
 
-	return <Redirect href="/(auth)/welcome" />;
+  // Route based on auth status
+  if (session) {
+    if (hasCompletedOnboarding) {
+      return <Redirect href="/(tabs)" />;
+    }
+    return <Redirect href="/(onboarding)/goal" />;
+  }
+
+  return <Redirect href="/(auth)/welcome" />;
 }

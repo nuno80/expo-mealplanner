@@ -1,22 +1,29 @@
 import "./global.css";
 
+import { useMigrationHelper } from "@/db/migrate";
 import { getPrimaryMember } from "@/services/user.service";
 import { useAuthStore } from "@/stores/authStore";
-import { Stack, useRouter, useSegments } from "expo-router";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
-export default function RootLayout() {
-  const {
-    session,
-    isLoading,
-    hasCompletedOnboarding,
-    initialize,
-    completeOnboarding,
-  } = useAuthStore();
-  const segments = useSegments();
-  const router = useRouter();
+// Create a client outside the component to avoid re-creation on re-renders
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60 * 5, // 5 minutes
+      retry: 1,
+    },
+  },
+});
+
+function RootLayoutContent() {
+  // Run database migrations on startup
+  const { success: migrationsReady } = useMigrationHelper();
+
+  const { session, hasCompletedOnboarding, initialize, completeOnboarding } = useAuthStore();
 
   // Initialize auth listener on mount
   useEffect(() => {
@@ -27,49 +34,38 @@ export default function RootLayout() {
   // Check onboarding status when user logs in
   useEffect(() => {
     const checkOnboarding = async () => {
-      if (session?.user && !hasCompletedOnboarding) {
-        const primaryMember = await getPrimaryMember(session.user.id);
-        if (primaryMember) {
-          // User already completed onboarding in a previous session
-          completeOnboarding();
+      if (session?.user && !hasCompletedOnboarding && migrationsReady) {
+        try {
+          const primaryMember = await getPrimaryMember(session.user.id);
+          if (primaryMember) {
+            completeOnboarding();
+          }
+        } catch (error) {
+          console.error("Error checking onboarding:", error);
         }
       }
     };
     checkOnboarding();
-  }, [session, hasCompletedOnboarding, completeOnboarding]);
-
-  // Handle navigation based on auth and onboarding status
-  useEffect(() => {
-    if (isLoading) return;
-
-    const inAuthGroup = segments[0] === "(auth)";
-    const inOnboardingGroup = segments[0] === "(onboarding)";
-
-    if (!session && !inAuthGroup) {
-      // Not logged in -> go to welcome
-      router.replace("/(auth)/welcome");
-    } else if (session && inAuthGroup) {
-      // Logged in but in auth screens
-      if (hasCompletedOnboarding) {
-        router.replace("/(tabs)");
-      } else {
-        router.replace("/(onboarding)/goal");
-      }
-    } else if (session && !inOnboardingGroup && !hasCompletedOnboarding) {
-      // Logged in but onboarding not complete -> force onboarding
-      // (skip this check if already in onboarding)
-      router.replace("/(onboarding)/goal");
-    }
-  }, [session, isLoading, segments, router, hasCompletedOnboarding]);
+  }, [session, hasCompletedOnboarding, completeOnboarding, migrationsReady]);
 
   return (
-    <SafeAreaProvider>
-      <StatusBar style="auto" />
-      <Stack screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="(auth)" />
-        <Stack.Screen name="(onboarding)" />
-        <Stack.Screen name="(tabs)" />
-      </Stack>
-    </SafeAreaProvider>
+    <Stack screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="index" />
+      <Stack.Screen name="(auth)" />
+      <Stack.Screen name="(onboarding)" />
+      <Stack.Screen name="(tabs)" />
+      <Stack.Screen name="(modals)" options={{ presentation: "modal" }} />
+    </Stack>
+  );
+}
+
+export default function RootLayout() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <SafeAreaProvider>
+        <StatusBar style="auto" />
+        <RootLayoutContent />
+      </SafeAreaProvider>
+    </QueryClientProvider>
   );
 }
