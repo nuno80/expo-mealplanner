@@ -25,25 +25,25 @@
 
 ## Phase 2: Core Services (Backend Logic) 🧠
 
-- [ ] Implementazione `services/turso.py` (Client & Query wrapper)
-- [ ] Implementazione `services/usda.py` (Search & Detail fetch)
-- [ ] Implementazione `services/cloudinary.py` (Image upload)
-- [ ] Modelli Pydantic (`models.py`) allineati a `data-models.md`
+- [x] Implementazione `services/turso.py` (Client & Query wrapper)
+- [x] Implementazione `services/usda.py` (Search & Detail fetch)
+- [x] Implementazione `services/cloudinary.py` (Image upload)
+- [x] Modelli Pydantic (`models.py`) allineati a `data-models.md`
 
 ## Phase 3: CLI Commands (MVP) 💻
 
-- [ ] Setup Typer app skeleton (`cli.py`)
-- [ ] Comando `ingredient search` (USDA integration)
-- [ ] Comando `ingredient add` (Save to DB)
-- [ ] Comando `recipe add` (Wizard interattivo)
-- [ ] Comando `recipe list` (Visualizzazione tabellare Rich)
+- [x] Setup Typer app skeleton (`cli.py`)
+- [x] Comando `ingredient search` (USDA integration)
+- [x] Comando `ingredient add` (Save to DB)
+- [x] Comando `recipe add` (Wizard interattivo)
+- [x] Comando `recipe list` (Visualizzazione tabellare Rich)
 
 ## Phase 4: Data Management & Polish ✨
 
 - [ ] Comando `recipe export` (CSV)
 - [ ] Comando `recipe import` (Bulk CSV)
 - [ ] Supporto upload immagini nel Wizard
-- [ ] Refactoring e Error Handling robusto
+- [x] Refactoring e Error Handling robusto
 
 ---
 

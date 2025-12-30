@@ -24,7 +24,7 @@ Utilizza questo workflow per pianificare e implementare feature nel tool Python.
 |-----------|-----------|
 | `docs/task-recipe-manager.md` | **Tracker** - Aggiorna sempre qui |
 | `docs/PRD-recipe-manager.md` | **Master Guide** - Comandi e specifiche |
-| `docs/data-models.md` | **Schema DB** - Fonte di verità (NON deviare) |
+| `docs/data-models.md` | **Schema DB** - Fonte di verità (NON deviare) | src/db/schema/index.ts per le tabelle dell'app android. i tuoi output devono sempre essere compatibili per loro.
 
 ---
 
