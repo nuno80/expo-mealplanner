@@ -450,6 +450,50 @@ def recipe_list(
         run_async(turso.close())
 
 
+@app.command("delete")
+def recipe_delete(
+    recipe_id: str = typer.Argument(..., help="Recipe ID (UUID) to delete"),
+):
+    """Delete a recipe and all its related data."""
+    from uuid import UUID as UUIDType
+
+    console.print(f"\n[cyan]🗑️  Deleting recipe...[/cyan]\n")
+
+    turso = TursoClient()
+    try:
+        # Validate UUID
+        try:
+            uuid_obj = UUIDType(recipe_id)
+        except ValueError:
+            console.print(f"[red]❌ Invalid UUID: {recipe_id}[/red]")
+            raise typer.Exit(1)
+
+        # Find recipe first
+        recipe = run_async(turso.get_recipe_by_id(uuid_obj))
+        if not recipe:
+            console.print(f"[yellow]Recipe not found: {recipe_id}[/yellow]")
+            raise typer.Exit(1)
+
+        console.print(f"[bold]Recipe:[/bold] {recipe.get('name_it', '?')}")
+        console.print(f"[dim]Category: {recipe.get('category', '?')} | kcal/100g: {recipe.get('kcal_per_100g', 0)}[/dim]\n")
+
+        if not Confirm.ask("Delete this recipe?", default=False):
+            console.print("[yellow]Cancelled.[/yellow]")
+            raise typer.Exit(0)
+
+        # Delete recipe and related data
+        run_async(turso.delete_recipe(uuid_obj))
+        console.print(f"\n[green]✅ Recipe deleted![/green]")
+
+    except typer.Exit:
+        raise
+    except Exception as e:
+        console.print(f"[red]❌ Error: {e}[/red]")
+        raise typer.Exit(1)
+    finally:
+        run_async(turso.close())
+
+
 # ============ Import Commands ============
 
 
@@ -483,20 +527,16 @@ def import_text():
     from recipe_manager.services.parser import parse_full_recipe_text
 
     console.print("\n[bold cyan]📋 Paste Recipe Text[/bold cyan]")
-    console.print("[dim]Paste the full recipe text, then press Enter twice to finish.[/dim]\n")
+    console.print("[dim]Paste the recipe text, then type 'END' on a new line and press Enter.[/dim]\n")
 
     lines = []
-    empty_count = 0
 
     while True:
         try:
             line = input()
-            if line == "":
-                empty_count += 1
-                if empty_count >= 2:
-                    break
-            else:
-                empty_count = 0
+            # Check for END terminator (case insensitive)
+            if line.strip().upper() == "END":
+                break
             lines.append(line)
         except EOFError:
             break
@@ -505,13 +545,75 @@ def import_text():
         console.print("[yellow]No text provided.[/yellow]")
         raise typer.Exit(0)
 
-    text = "\n".join(lines)
+    # Filter out empty lines at start/end but keep internal ones
+    text = "\n".join(lines).strip()
+
+    if len(text) < 50:
+        console.print(f"[yellow]⚠️  Text seems too short ({len(text)} chars). Did you paste everything?[/yellow]")
+        if not Confirm.ask("Continue anyway?", default=False):
+            raise typer.Exit(0)
+
     console.print(f"\n[cyan]🔍 Parsing {len(lines)} lines...[/cyan]\n")
 
     recipe = parse_full_recipe_text(text)
 
     if not recipe.name_it:
         console.print("[red]❌ Could not parse recipe from text[/red]")
+        raise typer.Exit(1)
+
+    # Validate parsed data
+    if recipe.nutrition.kcal == 0 and len(recipe.ingredients) == 0:
+        console.print("[yellow]⚠️  No nutrition data or ingredients found![/yellow]")
+        console.print("[dim]Make sure the text includes 'Ingredienti' section and nutritional values.[/dim]")
+        if not Confirm.ask("Save anyway?", default=False):
+            raise typer.Exit(0)
+
+    _show_parsed_recipe_preview(recipe)
+    _save_parsed_recipe(recipe)
+
+
+@app.command("import-llm")
+def import_llm():
+    """Import recipe using Gemini LLM for perfect parsing and translation."""
+    from recipe_manager.services.llm_parser import parse_recipe_with_llm
+
+    console.print("\n[bold cyan]🤖 LLM Recipe Import (Gemini)[/bold cyan]")
+    console.print("[dim]Paste the recipe text, then type 'END' on a new line.[/dim]\n")
+
+    lines = []
+
+    while True:
+        try:
+            line = input()
+            if line.strip().upper() == "END":
+                break
+            lines.append(line)
+        except EOFError:
+            break
+
+    if not lines:
+        console.print("[yellow]No text provided.[/yellow]")
+        raise typer.Exit(0)
+
+    text = "\n".join(lines).strip()
+
+    if len(text) < 50:
+        console.print(f"[yellow]⚠️  Text too short ({len(text)} chars).[/yellow]")
+        raise typer.Exit(1)
+
+    console.print(f"\n[cyan]🤖 Sending to Gemini... ({len(text)} chars)[/cyan]\n")
+
+    try:
+        data = parse_recipe_with_llm(text)
+        # Convert dict to ParsedRecipe model
+        from recipe_manager.services.llm_parser import llm_result_to_parsed_recipe
+        recipe = llm_result_to_parsed_recipe(data)
+    except ValueError as e:
+        console.print(f"[red]❌ LLM Error: {e}[/red]")
+        raise typer.Exit(1)
+    except Exception as e:
+        console.print(f"[red]❌ API Error: {e}[/red]")
+        console.print("[dim]Make sure GEMINI_API_KEY is set in .env[/dim]")
         raise typer.Exit(1)
 
     _show_parsed_recipe_preview(recipe)
@@ -567,20 +669,44 @@ def _show_parsed_recipe_preview(recipe):
     console.print()
 
 
-def _save_parsed_recipe(recipe):
-    """Save parsed recipe to database."""
-    if not Confirm.ask("Save this recipe?", default=True):
-        console.print("[yellow]Cancelled.[/yellow]")
-        raise typer.Exit(0)
+def _save_parsed_recipe(recipe, confirm: bool = True):
+    """
+    Save parsed recipe to database.
+    If confirm=False, skips confirmation prompt and uses default values.
+    """
+    if confirm:
+        if not Confirm.ask("Save this recipe?", default=True):
+            console.print("[yellow]Cancelled.[/yellow]")
+            raise typer.Exit(0)
 
-    # Determine category from name or default
-    category_str = Prompt.ask(
-        "Category",
-        choices=["breakfast", "lunch", "dinner", "snack"],
-        default="lunch"
-    )
+        # Determine category from name or default
+        category_str = Prompt.ask(
+            "Category",
+            choices=["breakfast", "main_course", "snack"],
+            default=recipe.category or "main_course"
+        )
+    else:
+        # Auto-mode
+        category_str = recipe.category or "main_course"
 
     turso = TursoClient()
+
+    # Check for duplicates by slug
+    slug = recipe.slug
+    existing = run_async(turso.get_recipe_by_slug(slug))
+
+    if existing:
+        console.print(f"\n[yellow]⚠️  Recipe '{recipe.name_it}' (slug: {slug}) already exists![/yellow]")
+        if not Confirm.ask("Overwrite existing recipe?", default=False):
+            console.print("[yellow]Skipped.[/yellow]")
+            return
+
+        # If overwrite confirmed, delete old recipe first
+        from uuid import UUID
+        old_id = UUID(existing["id"])
+        console.print(f"[dim]Deleting old version ({old_id})...[/dim]")
+        run_async(turso.delete_recipe(old_id))
+
     recipe_id = uuid4()
 
     try:
@@ -685,6 +811,80 @@ def _save_parsed_recipe(recipe):
         raise typer.Exit(1)
     finally:
         run_async(turso.close())
+
+
+@app.command("import-json")
+def import_json(
+    path: str = typer.Argument(..., help="Path to JSON file or directory containing JSON files"),
+):
+    """Import recipes from JSON file(s)."""
+    import json
+    from pathlib import Path
+    from recipe_manager.services.llm_parser import llm_result_to_parsed_recipe
+
+    target_path = Path(path)
+    files = []
+
+    if target_path.is_file():
+        files = [target_path]
+    elif target_path.is_dir():
+        # Look for .json files
+        files = list(target_path.glob("*.json"))
+    else:
+        console.print(f"[red]❌ Path not found: {path}[/red]")
+        raise typer.Exit(1)
+
+    if not files:
+        console.print("[yellow]⚠️  No JSON files found.[/yellow]")
+        raise typer.Exit(0)
+
+    console.print(f"\n[cyan]📂 Found {len(files)} JSON files. processing...[/cyan]\n")
+
+    success_count = 0
+    error_count = 0
+
+    for json_file in files:
+        try:
+            console.print(f"[dim]Processing {json_file.name}...[/dim]")
+
+            with open(json_file, "r", encoding="utf-8") as f:
+                data = json.load(f)
+
+            # Handle list of recipes or single recipe
+            data_list = data if isinstance(data, list) else [data]
+
+            for item in data_list:
+                # Convert to ParsedRecipe
+                try:
+                    recipe = llm_result_to_parsed_recipe(item)
+                except Exception as e:
+                    console.print(f"[red]❌ Parsing error in {json_file.name}: {e}[/red]")
+                    error_count += 1
+                    continue
+
+                # Check validation
+                if not recipe.name_it:
+                    console.print(f"[yellow]Skipping {json_file.name}: invalid data[/yellow]")
+                    error_count += 1
+                    continue
+
+                # Save silently (no prompt)
+                try:
+                    _save_parsed_recipe(recipe, confirm=False)
+                    success_count += 1
+                    console.print(f"[green]✓ Imported: {recipe.name_it}[/green]")
+                except Exception as e:
+                    console.print(f"[red]❌ Save error: {e}[/red]")
+                    error_count += 1
+
+        except Exception as e:
+            console.print(f"[red]❌ Error reading {json_file.name}: {e}[/red]")
+            error_count += 1
+
+    console.print(f"\n[bold]Summary:[/bold]")
+    console.print(f"[green]✅ Imported: {success_count}[/green]")
+    if error_count > 0:
+        console.print(f"[red]❌ Failures: {error_count}[/red]")
 
 
 # ============ Main ============

@@ -169,6 +169,30 @@ class TursoClient:
         result = await self.execute(sql, [str(id)])
         rows = self._rows_to_dicts(result)
         return rows[0] if rows else None
+    async def get_recipe_by_slug(self, slug: str) -> Optional[dict]:
+        """Fetch a single recipe by slug."""
+        sql = "SELECT * FROM recipes WHERE slug = ?"
+        result = await self.execute(sql, [slug])
+        rows = self._rows_to_dicts(result)
+        return rows[0] if rows else None
+    async def delete_recipe(self, id: UUID) -> bool:
+        """Delete a recipe and all related data (ingredients, steps)."""
+        # Delete related recipe_ingredients first
+        await self.execute(
+            "DELETE FROM recipe_ingredients WHERE recipe_id = ?",
+            [str(id)]
+        )
+        # Delete related recipe_steps
+        await self.execute(
+            "DELETE FROM recipe_steps WHERE recipe_id = ?",
+            [str(id)]
+        )
+        # Delete the recipe itself
+        result = await self.execute(
+            "DELETE FROM recipes WHERE id = ?",
+            [str(id)]
+        )
+        return True
 
     # ============ RecipeIngredient ============
 

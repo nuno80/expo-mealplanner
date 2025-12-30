@@ -15,8 +15,7 @@ from pydantic import BaseModel, Field
 
 class Category(str, Enum):
     BREAKFAST = "breakfast"
-    LUNCH = "lunch"
-    DINNER = "dinner"
+    MAIN_COURSE = "main_course"
     SNACK = "snack"
 
 

@@ -106,6 +106,27 @@ uv run python -m recipe_manager import-url "https://www.soscuisine.com/recipe/..
 
 ⚠️ Alcuni siti richiedono login - usa `import-text` se fallisce.
 
+### 🤖 Import via LLM (Gemini) - Recommended
+
+```bash
+uv run python -m recipe_manager import-llm
+```
+
+Incolla qualsiasi testo di ricetta, l'AI lo convertirà in dati strutturati perfetti (con traduzione IT/EN).
+Richiede `GEMINI_API_KEY` in `.env`.
+
+### 📂 Import via JSON
+
+```bash
+# Singolo file
+uv run python -m recipe_manager import-json path/to/recipe.json
+
+# Intera cartella
+uv run python -m recipe_manager import-json ./recipes_data/
+```
+
+Carica file JSON generati dall'LLM. Utile per backup o generazione bulk.
+
 ### Manual Wizard
 
 ```bash
@@ -116,7 +137,7 @@ uv run python -m recipe_manager add
 
 ```bash
 uv run python -m recipe_manager list
-uv run python -m recipe_manager list --category lunch
+uv run python -m recipe_manager list --category main_course
 ```
 
 ### Ingredient Search

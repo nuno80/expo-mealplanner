@@ -34,8 +34,9 @@ class ParsedRecipe(BaseModel):
     """Complete parsed recipe."""
     name_it: str
     name_en: Optional[str] = None
+    slug: Optional[str] = None
     source_url: Optional[str] = None
-    category: str = "lunch"  # breakfast/lunch/dinner/snack
+    category: str = "main_course"  # breakfast/main_course/snack
     servings: int = 4
     prep_time_min: int = 0
     cook_time_min: int = 0
