@@ -184,16 +184,19 @@ def parse_nutrition_text(text: str) -> ParsedNutrition:
     """
     nutrition = ParsedNutrition()
 
-    # Calories - multiple patterns
+    # Calories - multiple patterns (SOSCuisine + GialloZafferano)
     kcal_patterns = [
-        r"Calorie\s+(\d+)",  # "Calorie  610"
+        r"Energia\s*[:,]?\s*(\d+(?:[.,]\d+)?)\s*[Kk]cal",  # GialloZafferano: "Energia: 558,7 Kcal"
+        r"Calorie\s+(\d+)",  # SOSCuisine: "Calorie  610"
         r"(\d+)\s*calorie[/\s]porzione",  # "610 calorie/porzione"
         r"(\d+)\s*(?:kcal|cal)\b",  # "610 kcal"
     ]
     for pattern in kcal_patterns:
         match = re.search(pattern, text, re.IGNORECASE)
         if match:
-            nutrition.kcal = int(match.group(1))
+            # Handle decimal comma (e.g., "558,7" -> 558)
+            kcal_str = match.group(1).replace(",", ".")
+            nutrition.kcal = int(float(kcal_str))
             break
 
     # Protein - SOSCuisine format: "Proteine  37 g"
@@ -229,9 +232,9 @@ def parse_nutrition_text(text: str) -> ParsedNutrition:
             nutrition.fat = float(match.group(1).replace(",", "."))
             break
 
-    # Fiber - SOSCuisine: "Fibre 7 g"
+    # Fiber - SOSCuisine + GialloZafferano: "Fibre 7 g" or "Fibre: 2,7 g"
     fiber_patterns = [
-        r"Fibre?\s+(\d+(?:[.,]\d+)?)\s*g",
+        r"Fibre?\s*[:,]?\s*(\d+(?:[.,]\d+)?)\s*g",
         r"fiber\s*[:,]?\s*(\d+(?:[.,]\d+)?)\s*g",
     ]
     for pattern in fiber_patterns:
@@ -267,9 +270,10 @@ def parse_time_text(text: str) -> tuple[int, int]:
     prep_min = 0
     cook_min = 0
 
-    # Prep time
+    # Prep time (SOSCuisine + GialloZafferano)
     prep_patterns = [
-        r"Preparazione\s*:?\s*(\d+)\s*(min|h|ore?)",
+        r"Tempo\s+di\s+preparazione\s*:?\s*(\d+)\s*(min|minut|h|ore?)",  # GialloZafferano
+        r"Preparazione\s*:?\s*(\d+)\s*(min|h|ore?)",  # SOSCuisine
         r"Prep\s*:?\s*(\d+)\s*(min|h|ore?)",
     ]
     for pattern in prep_patterns:
@@ -282,9 +286,10 @@ def parse_time_text(text: str) -> tuple[int, int]:
             prep_min = value
             break
 
-    # Cook time
+    # Cook time (SOSCuisine + GialloZafferano)
     cook_patterns = [
-        r"Cottura\s*:?\s*(\d+)\s*(min|h|ore?)",
+        r"Tempo\s+di\s+cottura\s*:?\s*(\d+)\s*(min|minut|h|ore?)",  # GialloZafferano
+        r"Cottura\s*:?\s*(\d+)\s*(min|h|ore?)",  # SOSCuisine
         r"Cook\s*:?\s*(\d+)\s*(min|h|ore?)",
     ]
     for pattern in cook_patterns:
@@ -303,8 +308,9 @@ def parse_time_text(text: str) -> tuple[int, int]:
 def parse_servings(text: str) -> int:
     """Extract servings count."""
     patterns = [
-        r"(\d+)\s*(?:porzioni?|servings?)",
-        r"Quantità\s*:?\s*(\d+)",
+        r"Dosi\s+per\s*:?\s*(\d+)\s*person",  # GialloZafferano: "Dosi per: 4 persone"
+        r"(\d+)\s*(?:porzioni?|servings?|person[ae])",
+        r"Quantità\s*:?\s*(\d+)",  # SOSCuisine
     ]
     for pattern in patterns:
         match = re.search(pattern, text, re.IGNORECASE)

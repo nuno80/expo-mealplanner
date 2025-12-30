@@ -127,6 +127,28 @@ uv run python -m recipe_manager ingredient search "pollo"
 
 ---
 
+## Supported Formats
+
+### SOSCuisine
+```
+Quantità : 4 porzioni
+Preparazione : 30 min Cottura : 4 h
+610 calorie/porzione
+Tabella nutrizionale per porzione (460g)
+Calorie  610 | Proteine  37 g | Carboidrati  69 g | Grassi  21 g
+```
+
+### GialloZafferano
+```
+Dosi per: 4 persone
+Tempo di preparazione: 15 minuti
+Tempo di cottura: 10 minuti
+Energia: 558,7 Kcal
+Proteine: 22,8 g | Carboidrati: 61,2 g | Grassi: 23,9 g | Fibre: 2,7 g
+```
+
+---
+
 ## Nutrient Calculation
 
 Per ricette importate:
