@@ -1,4 +1,4 @@
-import { Ionicons } from "@expo/vector-icons";
+import Ionicons from "@expo/vector-icons/Ionicons";
 import type { InferSelectModel } from "drizzle-orm";
 import { useMemo, useState } from "react";
 import { Modal, Pressable, ScrollView, Text, View } from "react-native";
@@ -139,8 +139,8 @@ export function CookingModeModal({
                   key={member.id}
                   onPress={() => toggleMember(member.id)}
                   className={`mr-3 px-4 py-3 rounded-xl border ${isSelected
-                      ? "bg-primary-500 border-primary-600"
-                      : "bg-white border-gray-200"
+                    ? "bg-primary-500 border-primary-600"
+                    : "bg-white border-gray-200"
                     }`}
                 >
                   <Text
