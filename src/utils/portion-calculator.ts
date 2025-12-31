@@ -143,61 +143,55 @@ export function calculateDetailedCookedPortions(
   ingredients: RecipeIngredientWithDetails[],
   members: { member: FamilyMember; mealType: string }[],
 ): PersonDetailedPortion[] {
-  // 1. Calculate total recipe energy from ingredients
-  let totalRecipeKcal = 0;
-  const ingredientEnergies: { ing: RecipeIngredientWithDetails; kcal: number }[] = [];
+  // Filter to gram-based "main" ingredients (quantity > 50g)
+  // This excludes condiments like oil, spices, etc.
+  const MAIN_WEIGHT_THRESHOLD = 50; // grams
 
-  for (const ing of ingredients) {
-    // Energy = (quantity_in_grams / 100) * kcal_per_100g
-    // Only for gram-based ingredients
-    if (ing.unit === "g" && ing.ingredient.kcalPer100g) {
-      const kcal = (ing.quantity / 100) * ing.ingredient.kcalPer100g;
-      totalRecipeKcal += kcal;
-      ingredientEnergies.push({ ing, kcal });
-    }
-  }
+  const mainGramIngredients = ingredients.filter(
+    (ing) => ing.unit === "g" && ing.quantity >= MAIN_WEIGHT_THRESHOLD
+  );
 
-  // Fallback if no calculable ingredients
-  if (totalRecipeKcal === 0) {
-    totalRecipeKcal = recipe.kcalPerServing
-      ? recipe.kcalPerServing * recipe.servings
-      : 500 * recipe.servings;
-  }
+  // Calculate total raw weight of main ingredients
+  const totalMainRawWeight = mainGramIngredients.reduce(
+    (sum, ing) => sum + ing.quantity,
+    0
+  );
 
-  // 2. Mark main ingredients (>10% of total energy)
-  const ingredientContributions = ingredientEnergies.map(({ ing, kcal }) => ({
-    ing,
-    kcal,
-    pct: kcal / totalRecipeKcal,
-    isMain: (kcal / totalRecipeKcal) >= MAIN_INGREDIENT_THRESHOLD,
-  }));
+  // Calculate recipe total kcal for scaling
+  const recipeTotalKcal = recipe.kcalPerServing
+    ? recipe.kcalPerServing * recipe.servings
+    : 500 * recipe.servings;
 
-  // 3. For each person, calculate their portion of each main ingredient
+  // For each person, calculate their portion of each main ingredient
   return members.map((m) => {
     const targetKcal = calculateMealTarget(m.member, m.mealType);
     const totalCookedG = calculateCookedPortion(recipe, targetKcal);
 
     // Person's scaling factor based on their target vs recipe total
-    const personScalingFactor = targetKcal / totalRecipeKcal;
+    const personScalingFactor = targetKcal / recipeTotalKcal;
 
-    const mainIngredients: PortionedIngredient[] = ingredientContributions
-      .filter((ic) => ic.isMain)
-      .map((ic) => {
+    const mainIngredients: PortionedIngredient[] = mainGramIngredients
+      .map((ing) => {
         // Raw quantity for this person
-        const rawQtyForPerson = ic.ing.quantity * personScalingFactor;
+        const rawQtyForPerson = ing.quantity * personScalingFactor;
         // Cooked weight = raw * cookedWeightFactor (default 1)
-        const cookedFactor = ic.ing.ingredient.cookedWeightFactor ?? 1;
+        const cookedFactor = ing.ingredient.cookedWeightFactor ?? 1;
         const cookedQtyForPerson = rawQtyForPerson * cookedFactor;
 
+        // Weight contribution as percentage
+        const weightPct = totalMainRawWeight > 0
+          ? (ing.quantity / totalMainRawWeight) * 100
+          : 0;
+
         return {
-          name: ic.ing.ingredient.nameIt || ic.ing.ingredient.nameEn,
+          name: ing.ingredient.nameIt || ing.ingredient.nameEn,
           cookedWeightG: Math.round(cookedQtyForPerson),
           unit: "g",
           isMain: true,
-          kcalContribution: Math.round(ic.pct * 100),
+          kcalContribution: Math.round(weightPct), // Repurposing as weight %
         };
       })
-      .sort((a, b) => b.kcalContribution - a.kcalContribution); // Sort by contribution
+      .sort((a, b) => b.cookedWeightG - a.cookedWeightG); // Sort by weight
 
     return {
       member: m.member,
