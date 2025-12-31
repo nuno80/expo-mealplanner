@@ -1,6 +1,6 @@
 import { FAMILY_KEYS, useFamilyMembers } from "@/hooks/useFamilyMembers";
 import { deleteFamilyMember } from "@/services/familyMember.service";
-import { seedAllDemoData } from "@/services/seed.service";
+import { syncRecipes } from "@/services/sync.service";
 import { useAuthStore } from "@/stores/authStore";
 import { useFamilyStore } from "@/stores/familyStore";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -165,7 +165,7 @@ export default function ProfileScreen() {
           </View>
         </View>
 
-        {/* Dev Tools - Demo Data */}
+        {/* Dev Tools - Admin */}
         {__DEV__ && (
           <View className="mt-8 px-6">
             <Text className="text-xl font-bold text-gray-900 mb-4">
@@ -175,21 +175,13 @@ export default function ProfileScreen() {
               <Pressable
                 className="p-4 flex-row justify-between items-center"
                 onPress={async () => {
-                  if (!user?.id || !selectedMemberId) {
-                    Alert.alert("Errore", "Nessun membro selezionato");
-                    return;
-                  }
                   setSeeding(true);
                   try {
-                    const result = await seedAllDemoData(
-                      user.id,
-                      selectedMemberId,
-                    );
+                    await syncRecipes();
                     queryClient.invalidateQueries();
                     Alert.alert(
-                      "Demo Data",
-                      `Ricette: ${result.recipes.skipped ? "già presenti" : result.recipes.inserted + " inserite"}\n` +
-                      `Peso: ${result.weightLogs.skipped ? "già presenti" : result.weightLogs.inserted + " voci inserite"}`,
+                      "Sincronizzazione",
+                      "Ricette sincronizzate con successo dal server!",
                     );
                   } catch (e: any) {
                     Alert.alert("Errore", e.message);
@@ -199,13 +191,13 @@ export default function ProfileScreen() {
                 }}
                 disabled={seeding}
               >
-                <Text className="font-medium text-purple-600">
-                  Genera Demo Data 🎲
+                <Text className="font-medium text-blue-600">
+                  Forza Sincronizzazione 🔄
                 </Text>
                 {seeding ? (
-                  <ActivityIndicator size="small" color="#9333ea" />
+                  <ActivityIndicator size="small" color="#2563eb" />
                 ) : (
-                  <Text className="text-gray-400">29 ricette + 30gg peso</Text>
+                  <Text className="text-gray-400">Scarica dati aggiornati</Text>
                 )}
               </Pressable>
             </View>

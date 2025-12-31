@@ -1,6 +1,14 @@
 # NutriPlanIT - Task Tracker
 
-> **Last Updated:** 2025-12-28
+> **Last Updated:** 2025-12-31
+
+...
+
+- [x] Integrate Supabase Auth
+- [x] Sync command (local JSON -> Turso)
+...
+- [x] Debug: Meal Gen Logic (main_course category)
+- [x] Debug: Recipe Images (verified URL)
 > ⚠️ **LEGGI QUESTO FILE ALL'INIZIO DI OGNI SESSIONE**
 
 ---
@@ -105,13 +113,16 @@ Prima di lavorare su qualsiasi task, consulta i documenti pertinenti:
 
 ## Phase 7: Polish & Launch
 
-- [ ] Testing E2E
+- [/] Smart Portion Scaler (Cooking Mode)
+    - [ ] Logic: Portion Calculator (Raw/Cooked)
+    - [ ] UI: CookingModeModal (Selector + Views)
+    - [ ] Integration: RecipeScreen & PlanScreen
+- [ ] Password Reset & Auth Improvements
+    - [ ] Feature: Mostra/Nascondi password (Login/Signup)
+    - [ ] Feature: Password Reset Flow (Forgot/Update screens)
+    - [ ] Configurazione Deep Linking
+- [ ] E2E Testing (Maestro/Puppeteer)
 - [ ] Ottimizzazione performance
-- [ ] EAS Build (iOS + Android)
-- [ ] Testing E2E
-- [ ] Ottimizzazione performance
-- [ ] Feature: Mostra/Nascondi password (Login/Signup)
-- [ ] Feature: Password Reset Flow (Forgot Password)
 - [ ] EAS Build (iOS + Android)
 - [ ] App Store submission
 

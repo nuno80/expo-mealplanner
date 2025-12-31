@@ -5,12 +5,14 @@ import {
   useGenerateMealPlan,
   useMealPlan,
 } from "@/hooks/useMealPlan";
-import type { MealType, PlannedMealWithRecipe } from "@/schemas/mealPlan";
+import type { PlannedMealWithRecipe } from "@/schemas/mealPlan";
 import { useFamilyStore } from "@/stores/familyStore";
-import { router } from "expo-router";
+import { useRouter } from "expo-router";
 import { useState } from "react";
 import { Pressable, ScrollView, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+
+// ... constants ...
 
 const DAY_NAMES = ["LUN", "MAR", "MER", "GIO", "VEN", "SAB", "DOM"];
 const MEAL_ORDER: MealType[] = [
@@ -37,6 +39,7 @@ function formatWeekRange(weekStart: Date): string {
 }
 
 export default function PlanScreen() {
+  const router = useRouter();
   const insets = useSafeAreaInsets();
   const [weekOffset, setWeekOffset] = useState(0);
   const weekStart = getWeekStart(weekOffset);

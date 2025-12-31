@@ -28,7 +28,11 @@ export default function RecipesScreen() {
   >("all");
   const [searchQuery, setSearchQuery] = useState("");
   const categoryFilter =
-    selectedCategory === "all" ? undefined : selectedCategory;
+    selectedCategory === "all"
+      ? undefined
+      : selectedCategory === "lunch" || selectedCategory === "dinner"
+        ? "main_course"
+        : selectedCategory;
   const { data: recipes, isLoading } = useRecipes(categoryFilter);
   useSearchRecipes(); // Keep hook logic
 

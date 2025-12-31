@@ -1,3 +1,4 @@
+import "@/lib/nativewind"; // Register expo-image
 import "./global.css";
 
 import { useMigrationHelper } from "@/db/migrate";
