@@ -2,12 +2,22 @@
  * API configuration for recipe sync
  */
 
+import { Platform } from "react-native";
+
 // Development: use local wrangler dev server
 // Production: use deployed Cloudflare Worker URL
 const DEV_API_URL = "http://localhost:8787";
-const PROD_API_URL = "https://nutriplanit-api.your-subdomain.workers.dev"; // TODO: Update after deploy
+const PROD_API_URL = "https://nutriplanit-api.nutriplanit.workers.dev";
 
-export const API_BASE_URL = __DEV__ ? DEV_API_URL : PROD_API_URL;
+// Use PROD_API_URL in development to verify deployment
+const USE_PROD_IN_DEV = true;
+
+export const API_BASE_URL =
+  __DEV__ && !USE_PROD_IN_DEV
+    ? Platform.OS === "android"
+      ? "http://10.0.2.2:8787"
+      : DEV_API_URL
+    : PROD_API_URL;
 
 /**
  * Recipe API response types

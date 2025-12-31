@@ -95,11 +95,11 @@ Prima di lavorare su qualsiasi task, consulta i documenti pertinenti:
 
 > 📖 **Docs:** `data-models.md` (Recipe, Ingredient, RecipeIngredient)
 
-- [ ] Setup FastAPI + Streamlit
-- [ ] Integrazione USDA API
-- [ ] CRUD Ricette
-- [ ] CRUD Ingredienti
-- [ ] Upload immagini Cloudinary
+- [x] Setup FastAPI + Streamlit (replaced by CLI/Typer)
+- [x] Integrazione USDA API
+- [x] CRUD Ricette & Ingredienti (via CLI)
+- [x] Upload immagini Cloudinary
+- [x] Sync command (local JSON -> Turso)
 
 ---
 

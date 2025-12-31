@@ -12,6 +12,8 @@ import typer
 from rich.console import Console
 from rich.prompt import Confirm, IntPrompt, Prompt
 from rich.table import Table
+from pathlib import Path
+import json
 
 from recipe_manager.models import (
     Category,
@@ -396,10 +398,170 @@ def recipe_add():
         console.print(f"\n[green]✅ Recipe saved![/green] ID: [cyan]{recipe_id}[/cyan]")
 
     except Exception as e:
-        console.print(f"\n[red]❌ Error: {e}[/red]")
+        console.print(f"\n[red]❌ Error saving recipe: {e}[/red]")
         raise typer.Exit(1)
     finally:
         run_async(turso.close())
+
+
+@app.command("sync")
+def sync_data(
+    directory: str = typer.Option("recipes_data", "--dir", "-d", help="Directory containing JSON recipes"),
+    force: bool = typer.Option(False, "--force", "-f", help="Force overwrite without confirmation"),
+):
+    """Sync all JSON recipes from a directory to Turso DB."""
+
+    dir_path = Path(directory)
+    if not dir_path.exists():
+        console.print(f"[red]❌ Directory not found: {directory}[/red]")
+        raise typer.Exit(1)
+
+    json_files = list(dir_path.glob("*.json"))
+    if not json_files:
+        console.print(f"[yellow]No JSON files found in {directory}[/yellow]")
+        raise typer.Exit(0)
+
+    console.print(f"\n[cyan]🔄 Syncing {len(json_files)} recipes from '{directory}'...[/cyan]\n")
+
+    turso = TursoClient()
+    success_count = 0
+
+    try:
+        for file_path in json_files:
+            try:
+                with open(file_path, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+
+                slug = data.get("slug")
+                if not slug:
+                    console.print(f"[yellow]⚠️  Skipping {file_path.name}: No slug found[/yellow]")
+                    continue
+
+                # Check if exists
+                existing = run_async(turso.get_recipe_by_slug(slug))
+                if existing:
+                    if not force:
+                        # Optional: could add logic to only update if changed, but full overwrite is safer for now
+                        pass
+
+                    # Delete existing
+                    from uuid import UUID
+                    old_id = UUID(existing["id"])
+                    run_async(turso.delete_recipe(old_id))
+                    console.print(f"  [dim]Updated: {data.get('name_it')} (replaced)[/dim]")
+                else:
+                    console.print(f"  [green]New: {data.get('name_it')}[/green]")
+
+                # Insert
+                recipe_id = uuid4()
+
+                # Helper to safely float conversion
+                def to_float(val, default=0.0):
+                    return float(val) if val is not None else default
+
+                # Check for dietary flags
+                # Note: Turso schema might not have dietary flags columns yet or handled via tags?
+                # Based on previous context, user was adding fields to Pydantic models.
+                # Assuming simple mapping for now.
+
+                run_async(
+                    turso.insert_recipe(
+                        id=recipe_id,
+                        name_it=data["name_it"],
+                        name_en=data.get("name_en"),
+                        slug=slug,
+                        description_it=data.get("description_it"),
+                        description_en=data.get("description_en"),
+                        category=data.get("category", "main_course"),
+                        image_url=data.get("image_url"),
+                        prep_time_min=data.get("prep_time_min", 0),
+                        cook_time_min=data.get("cook_time_min", 0),
+                        total_time_min=data.get("prep_time_min", 0) + data.get("cook_time_min", 0),
+                        servings=data.get("servings", 2),
+                        difficulty=data.get("difficulty", "medium"),
+                        kcal_per_100g=data.get("kcal_per_100g", 0),
+                        kcal_per_serving=data.get("kcal_per_serving", 0),
+                        protein_per_100g=to_float(data.get("protein_per_100g")),
+                        carbs_per_100g=to_float(data.get("carbs_per_100g")),
+                        fat_per_100g=to_float(data.get("fat_per_100g")),
+                        fiber_per_100g=to_float(data.get("fiber_per_100g", 0)),
+                        serving_weight_g=data.get("serving_weight_g", 0),
+                        is_published=True, # Published by default from sync
+                    )
+                )
+
+                # Ingredients
+                for i, ing in enumerate(data.get("ingredients", [])):
+                    ing_id = uuid4()
+
+                    # Try to reuse existing ingredient if possible?
+                    # For now, creating fresh to ensure data consistency with recipe.
+                    # Or maybe creating 'recipe-specific' ingredients logic.
+
+                    run_async(
+                        turso.insert_ingredient(
+                            id=ing_id,
+                            usda_fdc_id=None, # Lost in JSON unless stored
+                            name_it=ing.get("name_it", ing.get("name")),
+                            name_en=ing.get("name_en"),
+                            category=None,
+                            kcal_per_100g=0,
+                            protein_per_100g=0,
+                            carbs_per_100g=0,
+                            fat_per_100g=0,
+                            fiber_per_100g=None,
+                            cooked_weight_factor=to_float(ing.get("cooking_factor", 1.0)),
+                            default_unit=ing.get("unit", "g"),
+                        )
+                    )
+
+                    run_async(
+                        turso.insert_recipe_ingredient(
+                            id=uuid4(),
+                            recipe_id=recipe_id,
+                            ingredient_id=ing_id,
+                            quantity=to_float(ing.get("quantity")),
+                            unit=ing.get("unit", "g"),
+                            is_optional=ing.get("is_optional", False),
+                            notes_it=ing.get("notes_it"),
+                            notes_en=ing.get("notes_en"),
+                            order=i,
+                        )
+                    )
+
+                # Steps
+                for i, step in enumerate(data.get("steps", []), 1):
+                    # Handle both string steps and object steps
+                    if isinstance(step, dict):
+                        instr_it = step.get("instruction_it")
+                        instr_en = step.get("instruction_en")
+                    else:
+                        instr_it = str(step)
+                        instr_en = None
+
+                    run_async(
+                        turso.insert_recipe_step(
+                            id=uuid4(),
+                            recipe_id=recipe_id,
+                            step_number=i,
+                            instruction_it=instr_it,
+                            instruction_en=instr_en,
+                            image_url=None,
+                        )
+                    )
+
+                success_count += 1
+
+            except Exception as e:
+                console.print(f"[red]❌ Failed to sync {file_path.name}: {e}[/red]")
+
+    except Exception as general_e:
+        console.print(f"[red]❌ General error: {general_e}[/red]")
+        raise typer.Exit(1)
+    finally:
+        run_async(turso.close())
+
+    console.print(f"\n[bold green]✅ Synced {success_count}/{len(json_files)} recipes.[/bold green]")
 
 
 @app.command("list")
@@ -570,6 +732,37 @@ def import_text():
 
     _show_parsed_recipe_preview(recipe)
     _save_parsed_recipe(recipe)
+
+
+@app.command("reset")
+def reset_db():
+    """Delete ALL data from the database (Recipes, Ingredients, Steps)."""
+    console.print("\n[bold red]⚠️  DANGER ZONE: DELETE ALL DATA[/bold red]\n")
+    if not Confirm.ask("Are you sure you want to delete ALL recipes and ingredients?", default=False):
+        console.print("[yellow]Cancelled.[/yellow]")
+        raise typer.Exit(0)
+
+    turso = TursoClient()
+    try:
+        console.print("[dim]Deleting recipe_ingredients...[/dim]")
+        run_async(turso.execute("DELETE FROM recipe_ingredients"))
+
+        console.print("[dim]Deleting recipe_steps...[/dim]")
+        run_async(turso.execute("DELETE FROM recipe_steps"))
+
+        console.print("[dim]Deleting recipes...[/dim]")
+        run_async(turso.execute("DELETE FROM recipes"))
+
+        console.print("[dim]Deleting ingredients...[/dim]")
+        run_async(turso.execute("DELETE FROM ingredients"))
+
+        console.print("\n[green]✅ Database cleared![/green]")
+
+    except Exception as e:
+        console.print(f"[red]❌ Error: {e}[/red]")
+        raise typer.Exit(1)
+    finally:
+        run_async(turso.close())
 
 
 @app.command("import-llm")
