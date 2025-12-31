@@ -4,13 +4,14 @@ import { createTursoClient, type Env, type Recipe, type RecipeIngredient, type R
 const recipes = new Hono<{ Bindings: Env }>();
 
 /**
- * GET /recipes - List all published recipes
+ * GET /recipes - List all published recipes WITH ingredients and steps
  */
 recipes.get("/", async (c) => {
   const db = createTursoClient(c.env);
 
   try {
-    const result = await db.execute(`
+    // 1. Fetch all published recipes
+    const recipesResult = await db.execute(`
       SELECT
         id, name_it, name_en, slug, description_it, description_en,
         category, image_url, prep_time_min, cook_time_min, total_time_min,
@@ -22,12 +23,70 @@ recipes.get("/", async (c) => {
       ORDER BY name_it
     `);
 
-    const recipes = result.rows as unknown as Recipe[];
+    const recipesList = recipesResult.rows as unknown as Recipe[];
+
+    if (recipesList.length === 0) {
+      return c.json({ success: true, count: 0, data: [] });
+    }
+
+    // 2. Fetch ALL ingredients (joined) for all recipes in one query
+    const recipeIds = recipesList.map((r) => r.id);
+    const placeholders = recipeIds.map(() => "?").join(",");
+
+    const ingredientsResult = await db.execute({
+      sql: `
+        SELECT
+          ri.id, ri.recipe_id, ri.ingredient_id, ri.quantity, ri.unit,
+          ri.is_optional, ri.notes_it, ri.notes_en, ri."order" as display_order,
+          i.name_it as ingredient_name_it, i.name_en as ingredient_name_en,
+          i.kcal_per_100g, i.cooked_weight_factor
+        FROM recipe_ingredients ri
+        LEFT JOIN ingredients i ON ri.ingredient_id = i.id
+        WHERE ri.recipe_id IN (${placeholders})
+        ORDER BY ri."order"
+      `,
+      args: recipeIds,
+    });
+
+    // 3. Fetch ALL steps for all recipes in one query
+    const stepsResult = await db.execute({
+      sql: `
+        SELECT id, recipe_id, step_number, instruction_it, instruction_en, image_url
+        FROM recipe_steps
+        WHERE recipe_id IN (${placeholders})
+        ORDER BY step_number
+      `,
+      args: recipeIds,
+    });
+
+    // 4. Group ingredients and steps by recipe_id
+    const ingredientsByRecipe = new Map<string, RecipeIngredient[]>();
+    for (const row of ingredientsResult.rows) {
+      const ing = row as unknown as RecipeIngredient;
+      const list = ingredientsByRecipe.get(ing.recipe_id) || [];
+      list.push(ing);
+      ingredientsByRecipe.set(ing.recipe_id, list);
+    }
+
+    const stepsByRecipe = new Map<string, RecipeStep[]>();
+    for (const row of stepsResult.rows) {
+      const step = row as unknown as RecipeStep;
+      const list = stepsByRecipe.get(step.recipe_id) || [];
+      list.push(step);
+      stepsByRecipe.set(step.recipe_id, list);
+    }
+
+    // 5. Combine into full recipe objects
+    const fullRecipes = recipesList.map((recipe) => ({
+      ...recipe,
+      ingredients: ingredientsByRecipe.get(recipe.id) || [],
+      steps: stepsByRecipe.get(recipe.id) || [],
+    }));
 
     return c.json({
       success: true,
-      count: recipes.length,
-      data: recipes,
+      count: fullRecipes.length,
+      data: fullRecipes,
     });
   } catch (error) {
     console.error("Error fetching recipes:", error);

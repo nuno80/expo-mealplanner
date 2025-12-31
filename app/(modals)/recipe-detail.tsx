@@ -3,6 +3,8 @@ import { router, useLocalSearchParams } from "expo-router";
 import { useState } from "react";
 import { Pressable, ScrollView, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { CookingModeModal } from "@/components/cooking/CookingModeModal";
+import { useFamilyMembers } from "@/hooks/useFamilyMembers";
 import { useRecipe } from "@/hooks/useRecipes";
 
 type Tab = "ingredients" | "steps";
@@ -15,7 +17,9 @@ export default function RecipeDetailModal() {
 	const insets = useSafeAreaInsets();
 	const { id } = useLocalSearchParams<{ id: string }>();
 	const { data: recipe, isLoading } = useRecipe(id);
+	const { data: familyMembers } = useFamilyMembers();
 	const [activeTab, setActiveTab] = useState<Tab>("ingredients");
+	const [isCookingMode, setIsCookingMode] = useState(false);
 	const locale = "it"; // TODO: get from user settings
 
 	if (isLoading) {
@@ -256,15 +260,35 @@ export default function RecipeDetailModal() {
 
 			{/* Fixed bottom button */}
 			<View
-				className="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-100 px-5"
+				className="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-100 px-5 flex-row gap-3"
 				style={{ paddingBottom: insets.bottom + 10, paddingTop: 10 }}
 			>
-				<Pressable className="bg-orange-500 py-4 rounded-xl items-center">
+				<Pressable
+					onPress={() => setIsCookingMode(true)}
+					className="flex-1 bg-orange-100 py-4 rounded-xl items-center border border-orange-200"
+				>
+					<Text className="text-orange-700 font-semibold text-base">
+						👨‍🍳 Cucina
+					</Text>
+				</Pressable>
+
+				<Pressable className="flex-[2] bg-orange-500 py-4 rounded-xl items-center">
 					<Text className="text-white font-semibold text-base">
 						+ Aggiungi al piano
 					</Text>
 				</Pressable>
 			</View>
+
+			{/* Cooking Mode Modal */}
+			{recipe && familyMembers && (
+				<CookingModeModal
+					visible={isCookingMode}
+					onClose={() => setIsCookingMode(false)}
+					recipe={recipe}
+					ingredients={recipe.ingredients}
+					members={familyMembers}
+				/>
+			)}
 		</View>
 	);
 }

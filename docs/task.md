@@ -113,10 +113,10 @@ Prima di lavorare su qualsiasi task, consulta i documenti pertinenti:
 
 ## Phase 7: Polish & Launch
 
-- [/] Smart Portion Scaler (Cooking Mode)
-    - [ ] Logic: Portion Calculator (Raw/Cooked)
-    - [ ] UI: CookingModeModal (Selector + Views)
-    - [ ] Integration: RecipeScreen & PlanScreen
+- [x] Smart Portion Scaler (Cooking Mode)
+    - [x] Logic: Portion Calculator (Raw/Cooked)
+    - [x] UI: CookingModeModal (Selector + Views)
+    - [x] Integration: RecipeScreen & PlanScreen
 - [ ] Password Reset & Auth Improvements
     - [ ] Feature: Mostra/Nascondi password (Login/Signup)
     - [ ] Feature: Password Reset Flow (Forgot/Update screens)
