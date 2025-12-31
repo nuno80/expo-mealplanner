@@ -108,6 +108,11 @@ Prima di lavorare su qualsiasi task, consulta i documenti pertinenti:
 - [ ] Testing E2E
 - [ ] Ottimizzazione performance
 - [ ] EAS Build (iOS + Android)
+- [ ] Testing E2E
+- [ ] Ottimizzazione performance
+- [ ] Feature: Mostra/Nascondi password (Login/Signup)
+- [ ] Feature: Password Reset Flow (Forgot Password)
+- [ ] EAS Build (iOS + Android)
 - [ ] App Store submission
 
 ---
