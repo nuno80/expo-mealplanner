@@ -1,0 +1,185 @@
+{
+  "name_it": "Insalata di pollo e zucchine",
+  "name_en": "Chicken and Zucchini Salad",
+  "slug": "insalata-di-pollo-e-zucchine",
+  "description_it": "Insalata estiva con petto di pollo marinato al miele e limone, zucchine e melanzane grigliate, condita con misticanza e pomodorini.",
+  "description_en": "Summer salad with honey-lemon marinated chicken breast, grilled zucchini and eggplant, dressed with mixed greens and cherry tomatoes.",
+  "category": "main_course",
+  "preferred_meal": "both",
+  "servings": 4,
+  "prep_time_min": 75,
+  "cook_time_min": 15,
+  "difficulty": "medium",
+  "kcal_per_100g": 95,
+  "protein_per_100g": 10.5,
+  "carbs_per_100g": 5.8,
+  "fat_per_100g": 3.8,
+  "fiber_per_100g": 2.2,
+  "kcal_per_serving": 215,
+  "serving_weight_g": 225,
+  "total_raw_weight_g": 780,
+  "total_cooked_weight_g": 900,
+  "cooking_factor": 1.15,
+  "allergens": [],
+  "dietary_flags": {
+    "vegetarian": false,
+    "vegan": false,
+    "gluten_free": true,
+    "dairy_free": true,
+    "nut_free": true
+  },
+  "ingredients": [
+    {
+      "name_it": "petto di pollo",
+      "name_en": "chicken breast",
+      "quantity": 400,
+      "unit": "g",
+      "cooking_factor": 0.80,
+      "is_optional": false,
+      "notes_it": "a fette da 1 cm",
+      "notes_en": "sliced 1 cm thick"
+    },
+    {
+      "name_it": "zucchine",
+      "name_en": "zucchini",
+      "quantity": 150,
+      "unit": "g",
+      "cooking_factor": 0.85,
+      "is_optional": false,
+      "notes_it": "tagliate per il lungo",
+      "notes_en": "sliced lengthwise"
+    },
+    {
+      "name_it": "melanzane",
+      "name_en": "eggplant",
+      "quantity": 150,
+      "unit": "g",
+      "cooking_factor": 0.85,
+      "is_optional": false,
+      "notes_it": "tagliate per il lungo",
+      "notes_en": "sliced lengthwise"
+    },
+    {
+      "name_it": "pomodorini datterini",
+      "name_en": "datterini tomatoes",
+      "quantity": 100,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "tagliati in quarti",
+      "notes_en": "quartered"
+    },
+    {
+      "name_it": "insalata misticanza",
+      "name_en": "mixed salad greens",
+      "quantity": 80,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "lavata e asciugata",
+      "notes_en": "washed and dried"
+    },
+    {
+      "name_it": "olio extravergine d'oliva",
+      "name_en": "extra virgin olive oil",
+      "quantity": 40,
+      "unit": "ml",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "per marinatura",
+      "notes_en": "for marinade"
+    },
+    {
+      "name_it": "miele millefiori",
+      "name_en": "wildflower honey",
+      "quantity": 20,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "succo di limone",
+      "name_en": "lemon juice",
+      "quantity": 25,
+      "unit": "ml",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "timo",
+      "name_en": "thyme",
+      "quantity": 5,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "fresco",
+      "notes_en": "fresh"
+    },
+    {
+      "name_it": "sale fino",
+      "name_en": "fine salt",
+      "quantity": 4,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "q.b.",
+      "notes_en": "to taste"
+    },
+    {
+      "name_it": "pepe nero",
+      "name_en": "black pepper",
+      "quantity": 1,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "q.b.",
+      "notes_en": "to taste"
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "instruction_it": "Marinare il pollo: disporre le fette in una pirofila, condire con olio, sale, pepe, miele, succo di limone e timo. Coprire e far riposare 1 ora.",
+      "instruction_en": "Marinate chicken: place slices in a baking dish, season with oil, salt, pepper, honey, lemon juice and thyme. Cover and rest 1 hour."
+    },
+    {
+      "step_number": 2,
+      "instruction_it": "Tagliare zucchine e melanzane a fette spesse 1 cm per il lungo. Tagliare i pomodorini in quarti.",
+      "instruction_en": "Cut zucchini and eggplant into 1 cm thick lengthwise slices. Quarter the cherry tomatoes."
+    },
+    {
+      "step_number": 3,
+      "instruction_it": "Scaldare una griglia, ungere con olio e grigliare zucchine e melanzane su entrambi i lati, salando a piacere.",
+      "instruction_en": "Heat a grill, oil it and grill zucchini and eggplant on both sides, seasoning with salt."
+    },
+    {
+      "step_number": 4,
+      "instruction_it": "Grigliare il pollo marinato per 4-5 minuti per lato, senza punzecchiare la carne. Salare subito dopo la cottura.",
+      "instruction_en": "Grill marinated chicken 4-5 minutes per side without piercing the meat. Salt immediately after cooking."
+    },
+    {
+      "step_number": 5,
+      "instruction_it": "Tagliare le verdure grigliate e il pollo a striscioline di circa 2 cm.",
+      "instruction_en": "Cut grilled vegetables and chicken into strips about 2 cm long."
+    },
+    {
+      "step_number": 6,
+      "instruction_it": "Far intiepidire le verdure, poi unirle in una ciotola con i pomodorini, il pollo e la misticanza. Mescolare e servire.",
+      "instruction_en": "Let vegetables cool slightly, then combine in a bowl with tomatoes, chicken and mixed greens. Toss and serve."
+    }
+  ],
+  "tags": [
+    "salad",
+    "chicken",
+    "grilled",
+    "zucchini",
+    "eggplant",
+    "summer",
+    "protein",
+    "healthy"
+  ]
+}

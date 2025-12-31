@@ -1,0 +1,172 @@
+{
+  "name_it": "Insalata di fagioli alla romana",
+  "name_en": "Roman-Style Bean Salad",
+  "slug": "insalata-di-fagioli-alla-romana",
+  "description_it": "Insalata tradizionale romana con fagioli borlotti e cannellini, cipolla di Tropea e dressing alle acciughe.",
+  "description_en": "Traditional Roman salad with borlotti and cannellini beans, Tropea onion and anchovy dressing.",
+  "category": "main_course",
+  "preferred_meal": "lunch",
+  "servings": 4,
+  "prep_time_min": 45,
+  "cook_time_min": 0,
+  "difficulty": "easy",
+  "kcal_per_100g": 118,
+  "protein_per_100g": 7.2,
+  "carbs_per_100g": 14.5,
+  "fat_per_100g": 4.1,
+  "fiber_per_100g": 5.8,
+  "kcal_per_serving": 235,
+  "serving_weight_g": 200,
+  "total_raw_weight_g": 800,
+  "total_cooked_weight_g": 800,
+  "cooking_factor": 1.0,
+  "allergens": [
+    "fish"
+  ],
+  "dietary_flags": {
+    "vegetarian": false,
+    "vegan": false,
+    "gluten_free": true,
+    "dairy_free": true,
+    "nut_free": true
+  },
+  "ingredients": [
+    {
+      "name_it": "fagioli borlotti precotti",
+      "name_en": "canned borlotti beans",
+      "quantity": 250,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "sciacquati e sgocciolati",
+      "notes_en": "rinsed and drained"
+    },
+    {
+      "name_it": "fagioli cannellini precotti",
+      "name_en": "canned cannellini beans",
+      "quantity": 250,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "sciacquati e sgocciolati",
+      "notes_en": "rinsed and drained"
+    },
+    {
+      "name_it": "acciughe sott'olio",
+      "name_en": "anchovy fillets in oil",
+      "quantity": 30,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "circa 6 filetti, sminuzzate",
+      "notes_en": "about 6 fillets, minced"
+    },
+    {
+      "name_it": "timo",
+      "name_en": "thyme",
+      "quantity": 5,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "foglioline fresche",
+      "notes_en": "fresh leaves"
+    },
+    {
+      "name_it": "aglio",
+      "name_en": "garlic",
+      "quantity": 5,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "tritato finemente",
+      "notes_en": "finely minced"
+    },
+    {
+      "name_it": "cipolle rosse di Tropea",
+      "name_en": "Tropea red onions",
+      "quantity": 80,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "affettate sottili, in ammollo",
+      "notes_en": "thinly sliced, soaked"
+    },
+    {
+      "name_it": "aceto di vino rosso",
+      "name_en": "red wine vinegar",
+      "quantity": 30,
+      "unit": "ml",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "olio extravergine d'oliva",
+      "name_en": "extra virgin olive oil",
+      "quantity": 50,
+      "unit": "ml",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "sale fino",
+      "name_en": "fine salt",
+      "quantity": 3,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "q.b.",
+      "notes_en": "to taste"
+    },
+    {
+      "name_it": "pepe nero",
+      "name_en": "black pepper",
+      "quantity": 1,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "q.b.",
+      "notes_en": "to taste"
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "instruction_it": "Sciacquare i fagioli sotto acqua corrente e farli scolare bene. Affettare sottilmente la cipolla e metterla in ammollo in acqua e aceto per mezz'ora.",
+      "instruction_en": "Rinse the beans under running water and drain well. Thinly slice the onion and soak in water and vinegar for half an hour."
+    },
+    {
+      "step_number": 2,
+      "instruction_it": "Sbucciare e tritare finemente l'aglio. Sminuzzare le acciughe e metterle in una ciotolina con l'olio.",
+      "instruction_en": "Peel and finely mince the garlic. Mince the anchovies and place in a small bowl with oil."
+    },
+    {
+      "step_number": 3,
+      "instruction_it": "Aggiungere l'aglio tritato, 1 cucchiaio di aceto, sale, pepe e le foglioline di timo. Emulsionare con una forchetta.",
+      "instruction_en": "Add minced garlic, 1 tablespoon of vinegar, salt, pepper and thyme leaves. Emulsify with a fork."
+    },
+    {
+      "step_number": 4,
+      "instruction_it": "Versare i fagioli in una ciotola, aggiungere la cipolla scolata e la salsa alle acciughe.",
+      "instruction_en": "Pour beans into a bowl, add drained onion and anchovy sauce."
+    },
+    {
+      "step_number": 5,
+      "instruction_it": "Mescolare il tutto e servire spolverizzando con pepe e foglioline di timo.",
+      "instruction_en": "Toss everything together and serve sprinkled with pepper and thyme leaves."
+    }
+  ],
+  "tags": [
+    "salad",
+    "beans",
+    "roman",
+    "italian",
+    "legumes",
+    "protein",
+    "fiber",
+    "traditional"
+  ]
+}

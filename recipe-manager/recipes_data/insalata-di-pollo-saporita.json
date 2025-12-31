@@ -1,0 +1,208 @@
+{
+  "name_it": "Insalata di pollo saporita",
+  "name_en": "Savory Chicken Salad",
+  "slug": "insalata-di-pollo-saporita",
+  "description_it": "Ricca insalata con pollo grigliato, verdure croccanti, formaggio e una cremosa salsa alla senape e maionese.",
+  "description_en": "Rich salad with grilled chicken, crunchy vegetables, cheese and a creamy mustard-mayo sauce.",
+  "category": "main_course",
+  "preferred_meal": "lunch",
+  "servings": 4,
+  "prep_time_min": 30,
+  "cook_time_min": 10,
+  "difficulty": "easy",
+  "kcal_per_100g": 145,
+  "protein_per_100g": 12.8,
+  "carbs_per_100g": 5.5,
+  "fat_per_100g": 8.5,
+  "fiber_per_100g": 1.8,
+  "kcal_per_serving": 320,
+  "serving_weight_g": 220,
+  "total_raw_weight_g": 750,
+  "total_cooked_weight_g": 880,
+  "cooking_factor": 1.17,
+  "allergens": [
+    "dairy",
+    "eggs",
+    "mustard"
+  ],
+  "dietary_flags": {
+    "vegetarian": false,
+    "vegan": false,
+    "gluten_free": true,
+    "dairy_free": false,
+    "nut_free": true
+  },
+  "ingredients": [
+    {
+      "name_it": "petto di pollo",
+      "name_en": "chicken breast",
+      "quantity": 400,
+      "unit": "g",
+      "cooking_factor": 0.80,
+      "is_optional": false,
+      "notes_it": "battuto e grigliato",
+      "notes_en": "pounded and grilled"
+    },
+    {
+      "name_it": "olive verdi",
+      "name_en": "green olives",
+      "quantity": 40,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "denocciolate e affettate",
+      "notes_en": "pitted and sliced"
+    },
+    {
+      "name_it": "cetriolini sottaceto",
+      "name_en": "pickled gherkins",
+      "quantity": 40,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "a rondelle",
+      "notes_en": "sliced"
+    },
+    {
+      "name_it": "peperoni rossi",
+      "name_en": "red bell peppers",
+      "quantity": 80,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "a julienne",
+      "notes_en": "julienned"
+    },
+    {
+      "name_it": "sedano bianco",
+      "name_en": "celery",
+      "quantity": 60,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "a rondelle",
+      "notes_en": "sliced"
+    },
+    {
+      "name_it": "carote",
+      "name_en": "carrots",
+      "quantity": 60,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "a listarelle",
+      "notes_en": "julienned"
+    },
+    {
+      "name_it": "groviera",
+      "name_en": "gruyère cheese",
+      "quantity": 60,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "a bastoncini",
+      "notes_en": "cut into sticks"
+    },
+    {
+      "name_it": "maionese",
+      "name_en": "mayonnaise",
+      "quantity": 60,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "senape",
+      "name_en": "mustard",
+      "quantity": 15,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "aceto di vino bianco",
+      "name_en": "white wine vinegar",
+      "quantity": 15,
+      "unit": "ml",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "olio extravergine d'oliva",
+      "name_en": "extra virgin olive oil",
+      "quantity": 30,
+      "unit": "ml",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "sale fino",
+      "name_en": "fine salt",
+      "quantity": 4,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "q.b.",
+      "notes_en": "to taste"
+    },
+    {
+      "name_it": "pepe nero",
+      "name_en": "black pepper",
+      "quantity": 1,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "q.b.",
+      "notes_en": "to taste"
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "instruction_it": "Battere le fette di pollo tra due fogli di carta forno. Cuocere su griglia rovente 2 minuti per lato, poi salare. Lasciar raffreddare.",
+      "instruction_en": "Pound chicken slices between parchment paper. Cook on hot grill 2 minutes per side, then salt. Let cool."
+    },
+    {
+      "step_number": 2,
+      "instruction_it": "Pulire le verdure: tagliare peperoni a julienne, carote a listarelle, sedano a rondelle, cetrioli e olive a rondelle.",
+      "instruction_en": "Prepare vegetables: julienne peppers, stick-cut carrots, slice celery, gherkins and olives into rounds."
+    },
+    {
+      "step_number": 3,
+      "instruction_it": "Tagliare il formaggio a bastoncini.",
+      "instruction_en": "Cut cheese into sticks."
+    },
+    {
+      "step_number": 4,
+      "instruction_it": "Preparare la salsa: unire maionese, senape, aceto, olio, sale e pepe. Mescolare per emulsionare.",
+      "instruction_en": "Prepare sauce: combine mayonnaise, mustard, vinegar, oil, salt and pepper. Whisk to emulsify."
+    },
+    {
+      "step_number": 5,
+      "instruction_it": "Tagliare il pollo a striscioline. Unire tutte le verdure e il formaggio in una ciotola capiente.",
+      "instruction_en": "Cut chicken into strips. Combine all vegetables and cheese in a large bowl."
+    },
+    {
+      "step_number": 6,
+      "instruction_it": "Condire con la salsa, mescolare, coprire con pellicola e far riposare in frigo almeno 1 ora prima di servire.",
+      "instruction_en": "Dress with sauce, toss, cover with plastic wrap and refrigerate at least 1 hour before serving."
+    }
+  ],
+  "tags": [
+    "salad",
+    "chicken",
+    "gruyere",
+    "cheese",
+    "protein",
+    "meal-prep",
+    "savory"
+  ]
+}

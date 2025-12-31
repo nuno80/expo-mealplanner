@@ -1,0 +1,163 @@
+{
+  "name_it": "Insalata Waldorf",
+  "name_en": "Waldorf Salad",
+  "slug": "insalata-waldorf",
+  "description_it": "Classica insalata americana con sedano rapa, mele, noci e una cremosa salsa allo yogurt e maionese.",
+  "description_en": "Classic American salad with celeriac, apples, walnuts, and a creamy yogurt-mayo dressing.",
+  "category": "main_course",
+  "preferred_meal": "lunch",
+  "servings": 4,
+  "prep_time_min": 20,
+  "cook_time_min": 5,
+  "difficulty": "easy",
+  "kcal_per_100g": 98,
+  "protein_per_100g": 2.1,
+  "carbs_per_100g": 8.5,
+  "fat_per_100g": 6.4,
+  "fiber_per_100g": 1.8,
+  "kcal_per_serving": 185,
+  "serving_weight_g": 190,
+  "total_raw_weight_g": 530,
+  "total_cooked_weight_g": 760,
+  "cooking_factor": 1.43,
+  "allergens": [
+    "dairy",
+    "nuts"
+  ],
+  "dietary_flags": {
+    "vegetarian": true,
+    "vegan": false,
+    "gluten_free": true,
+    "dairy_free": false,
+    "nut_free": false
+  },
+  "ingredients": [
+    {
+      "name_it": "sedano rapa",
+      "name_en": "celeriac",
+      "quantity": 200,
+      "unit": "g",
+      "cooking_factor": 0.90,
+      "is_optional": false,
+      "notes_it": "tagliato a julienne",
+      "notes_en": "cut into julienne"
+    },
+    {
+      "name_it": "mele Granny Smith",
+      "name_en": "Granny Smith apples",
+      "quantity": 150,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "sbucciate e tagliate a julienne",
+      "notes_en": "peeled and julienned"
+    },
+    {
+      "name_it": "yogurt greco",
+      "name_en": "Greek yogurt",
+      "quantity": 80,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "succo di limone",
+      "name_en": "lemon juice",
+      "quantity": 20,
+      "unit": "ml",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "per il condimento e anti-ossidante",
+      "notes_en": "for dressing and anti-browning"
+    },
+    {
+      "name_it": "gherigli di noci",
+      "name_en": "walnut halves",
+      "quantity": 40,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "tritati grossolanamente",
+      "notes_en": "roughly chopped"
+    },
+    {
+      "name_it": "miele di acacia",
+      "name_en": "acacia honey",
+      "quantity": 15,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "maionese",
+      "name_en": "mayonnaise",
+      "quantity": 20,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "pepe bianco",
+      "name_en": "white pepper",
+      "quantity": 1,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "q.b.",
+      "notes_en": "to taste"
+    },
+    {
+      "name_it": "sale fino",
+      "name_en": "fine salt",
+      "quantity": 4,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "q.b.",
+      "notes_en": "to taste"
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "instruction_it": "Sbucciare il sedano rapa, lavarlo e tagliarlo a julienne. Scottarlo in acqua bollente salata per 2-3 minuti, scolarlo e tamponarlo.",
+      "instruction_en": "Peel the celeriac, wash and cut into julienne. Blanch in boiling salted water for 2-3 minutes, drain and pat dry."
+    },
+    {
+      "step_number": 2,
+      "instruction_it": "Preparare il condimento: unire yogurt greco, maionese, miele, succo di limone, sale e pepe bianco. Mescolare con una frusta.",
+      "instruction_en": "Prepare the dressing: combine Greek yogurt, mayonnaise, honey, lemon juice, salt and white pepper. Whisk together."
+    },
+    {
+      "step_number": 3,
+      "instruction_it": "Sbucciare le mele, togliere il torsolo e tagliarle a julienne. Metterle in acqua e limone per evitare che anneriscano.",
+      "instruction_en": "Peel the apples, core and cut into julienne. Place in lemon water to prevent browning."
+    },
+    {
+      "step_number": 4,
+      "instruction_it": "Tritare grossolanamente le noci. Unire sedano rapa, mele e condimento in una ciotola capiente.",
+      "instruction_en": "Roughly chop the walnuts. Combine celeriac, apples and dressing in a large bowl."
+    },
+    {
+      "step_number": 5,
+      "instruction_it": "Mescolare bene, aggiustare di sale e pepe, aggiungere le noci e servire.",
+      "instruction_en": "Mix well, adjust salt and pepper, add walnuts and serve."
+    }
+  ],
+  "tags": [
+    "salad",
+    "waldorf",
+    "apples",
+    "walnuts",
+    "celeriac",
+    "vegetarian",
+    "healthy",
+    "classic"
+  ]
+}

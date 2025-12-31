@@ -1,0 +1,176 @@
+{
+  "name_it": "Insalata di patate e tonno",
+  "name_en": "Potato and Tuna Salad",
+  "slug": "insalata-di-patate-e-tonno",
+  "description_it": "Insalata estiva con patate lessate, filetti di tonno, pomodorini, olive taggiasche e olio aromatizzato alle erbe.",
+  "description_en": "Summer salad with boiled potatoes, tuna fillets, cherry tomatoes, taggiasca olives and herb-infused oil.",
+  "category": "main_course",
+  "preferred_meal": "lunch",
+  "servings": 4,
+  "prep_time_min": 15,
+  "cook_time_min": 40,
+  "difficulty": "easy",
+  "kcal_per_100g": 138,
+  "protein_per_100g": 9.5,
+  "carbs_per_100g": 12.8,
+  "fat_per_100g": 5.8,
+  "fiber_per_100g": 1.8,
+  "kcal_per_serving": 295,
+  "serving_weight_g": 215,
+  "total_raw_weight_g": 720,
+  "total_cooked_weight_g": 860,
+  "cooking_factor": 1.19,
+  "allergens": [
+    "fish"
+  ],
+  "dietary_flags": {
+    "vegetarian": false,
+    "vegan": false,
+    "gluten_free": true,
+    "dairy_free": true,
+    "nut_free": true
+  },
+  "ingredients": [
+    {
+      "name_it": "patate",
+      "name_en": "potatoes",
+      "quantity": 400,
+      "unit": "g",
+      "cooking_factor": 0.90,
+      "is_optional": false,
+      "notes_it": "lessate e tagliate a cubetti",
+      "notes_en": "boiled and cubed"
+    },
+    {
+      "name_it": "filetti di tonno",
+      "name_en": "tuna fillets",
+      "quantity": 160,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "sott'olio, sgocciolati",
+      "notes_en": "in oil, drained"
+    },
+    {
+      "name_it": "pomodorini ciliegino",
+      "name_en": "cherry tomatoes",
+      "quantity": 120,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "tagliati a metà",
+      "notes_en": "halved"
+    },
+    {
+      "name_it": "olive taggiasche",
+      "name_en": "taggiasca olives",
+      "quantity": 40,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "olio extravergine d'oliva",
+      "name_en": "extra virgin olive oil",
+      "quantity": 50,
+      "unit": "ml",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "per olio aromatico",
+      "notes_en": "for aromatic oil"
+    },
+    {
+      "name_it": "basilico",
+      "name_en": "basil",
+      "quantity": 10,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "fresco",
+      "notes_en": "fresh"
+    },
+    {
+      "name_it": "timo",
+      "name_en": "thyme",
+      "quantity": 3,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "fresco",
+      "notes_en": "fresh"
+    },
+    {
+      "name_it": "origano",
+      "name_en": "oregano",
+      "quantity": 2,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "sale fino",
+      "name_en": "fine salt",
+      "quantity": 4,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "q.b.",
+      "notes_en": "to taste"
+    },
+    {
+      "name_it": "pepe nero",
+      "name_en": "black pepper",
+      "quantity": 1,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "q.b.",
+      "notes_en": "to taste"
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "instruction_it": "Mettere le patate in pentola, coprire con acqua e cuocere per 40 minuti fino a renderle morbide. Far intiepidire, sbucciare e tagliare a cubetti di 1.5-2 cm.",
+      "instruction_en": "Place potatoes in a pot, cover with water and cook for 40 minutes until tender. Let cool, peel and cut into 1.5-2 cm cubes."
+    },
+    {
+      "step_number": 2,
+      "instruction_it": "Preparare l'olio aromatico: versare l'olio in una ciotolina, aggiungere basilico spezzato, timo e origano. Regolare di sale e pepe, lasciare in infusione.",
+      "instruction_en": "Prepare aromatic oil: pour oil into a small bowl, add torn basil, thyme and oregano. Season with salt and pepper, let infuse."
+    },
+    {
+      "step_number": 3,
+      "instruction_it": "Tagliare i pomodorini a metà.",
+      "instruction_en": "Halve the cherry tomatoes."
+    },
+    {
+      "step_number": 4,
+      "instruction_it": "Mettere le patate in una ciotola, aggiungere l'olio aromatizzato, il tonno e i pomodorini.",
+      "instruction_en": "Place potatoes in a bowl, add aromatic oil, tuna and cherry tomatoes."
+    },
+    {
+      "step_number": 5,
+      "instruction_it": "Aggiungere le olive taggiasche e mescolare accuratamente. Far riposare in frigo per almeno 30 minuti.",
+      "instruction_en": "Add taggiasca olives and mix thoroughly. Refrigerate for at least 30 minutes."
+    },
+    {
+      "step_number": 6,
+      "instruction_it": "Impiattare e completare con foglie di basilico fresco.",
+      "instruction_en": "Plate and finish with fresh basil leaves."
+    }
+  ],
+  "tags": [
+    "salad",
+    "potatoes",
+    "tuna",
+    "fish",
+    "mediterranean",
+    "summer",
+    "healthy"
+  ]
+}

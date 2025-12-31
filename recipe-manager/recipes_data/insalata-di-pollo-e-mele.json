@@ -1,0 +1,177 @@
+{
+  "name_it": "Insalata di pollo e mele",
+  "name_en": "Chicken and Apple Salad",
+  "slug": "insalata-di-pollo-e-mele",
+  "description_it": "Insalata leggera con petto di pollo grigliato, mele Fuji, rucola, spinacini e melagrana, condita con vinaigrette alla senape.",
+  "description_en": "Light salad with grilled chicken breast, Fuji apples, arugula, baby spinach and pomegranate, dressed with mustard vinaigrette.",
+  "category": "main_course",
+  "preferred_meal": "lunch",
+  "servings": 4,
+  "prep_time_min": 20,
+  "cook_time_min": 10,
+  "difficulty": "easy",
+  "kcal_per_100g": 105,
+  "protein_per_100g": 12.8,
+  "carbs_per_100g": 7.5,
+  "fat_per_100g": 3.2,
+  "fiber_per_100g": 1.5,
+  "kcal_per_serving": 235,
+  "serving_weight_g": 225,
+  "total_raw_weight_g": 720,
+  "total_cooked_weight_g": 900,
+  "cooking_factor": 1.25,
+  "allergens": [
+    "mustard"
+  ],
+  "dietary_flags": {
+    "vegetarian": false,
+    "vegan": false,
+    "gluten_free": true,
+    "dairy_free": true,
+    "nut_free": true
+  },
+  "ingredients": [
+    {
+      "name_it": "mele Fuji",
+      "name_en": "Fuji apples",
+      "quantity": 150,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "affettate sottilmente con buccia",
+      "notes_en": "thinly sliced with skin"
+    },
+    {
+      "name_it": "petto di pollo",
+      "name_en": "chicken breast",
+      "quantity": 400,
+      "unit": "g",
+      "cooking_factor": 0.80,
+      "is_optional": false,
+      "notes_it": "tagliato a fette da 1 cm",
+      "notes_en": "sliced 1 cm thick"
+    },
+    {
+      "name_it": "rucola",
+      "name_en": "arugula",
+      "quantity": 50,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "lavata e asciugata",
+      "notes_en": "washed and dried"
+    },
+    {
+      "name_it": "spinacini",
+      "name_en": "baby spinach",
+      "quantity": 50,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "lavati e asciugati",
+      "notes_en": "washed and dried"
+    },
+    {
+      "name_it": "melagrana",
+      "name_en": "pomegranate",
+      "quantity": 150,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "sgranata (circa 150g di chicchi)",
+      "notes_en": "seeds (about 150g of seeds)"
+    },
+    {
+      "name_it": "senape",
+      "name_en": "mustard",
+      "quantity": 15,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "aceto di mele",
+      "name_en": "apple cider vinegar",
+      "quantity": 20,
+      "unit": "ml",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "olio extravergine d'oliva",
+      "name_en": "extra virgin olive oil",
+      "quantity": 50,
+      "unit": "ml",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "sale fino",
+      "name_en": "fine salt",
+      "quantity": 4,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "q.b.",
+      "notes_en": "to taste"
+    },
+    {
+      "name_it": "pepe nero",
+      "name_en": "black pepper",
+      "quantity": 1,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "q.b.",
+      "notes_en": "to taste"
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "instruction_it": "Dividere a metà il petto di pollo, eliminare le parti di grasso e tagliarlo a fette spesse 1 cm. Condire con olio, sale e pepe e lasciar marinare.",
+      "instruction_en": "Halve the chicken breast, remove fat and slice 1 cm thick. Season with oil, salt and pepper and marinate."
+    },
+    {
+      "step_number": 2,
+      "instruction_it": "Lavare rucola e spinacini, asciugarli nella centrifuga e tenerli da parte. Sgranare la melagrana raccogliendo circa 150g di chicchi.",
+      "instruction_en": "Wash arugula and baby spinach, spin dry and set aside. Remove pomegranate seeds to get about 150g."
+    },
+    {
+      "step_number": 3,
+      "instruction_it": "Scaldare bene una piastra e grigliare il pollo per 4-5 minuti per lato fino a cottura completa. Tenerlo da parte.",
+      "instruction_en": "Heat a grill pan well and cook chicken 4-5 minutes per side until fully cooked. Set aside."
+    },
+    {
+      "step_number": 4,
+      "instruction_it": "Preparare la salsa: unire senape, aceto di mele, olio, sale e pepe. Mescolare per emulsionare.",
+      "instruction_en": "Prepare the dressing: combine mustard, apple cider vinegar, oil, salt and pepper. Whisk to emulsify."
+    },
+    {
+      "step_number": 5,
+      "instruction_it": "Lavare e asciugare le mele, tagliarle a fettine sottili senza togliere la buccia. Tagliare il pollo a striscioline diagonali.",
+      "instruction_en": "Wash and dry apples, slice thinly without peeling. Cut chicken into diagonal strips."
+    },
+    {
+      "step_number": 6,
+      "instruction_it": "Comporre l'insalata: unire rucola, spinacini, mele, pollo e chicchi di melagrana. Condire con la salsa alla senape, mescolare e servire subito.",
+      "instruction_en": "Assemble salad: combine arugula, spinach, apples, chicken and pomegranate seeds. Dress with mustard sauce, toss and serve immediately."
+    }
+  ],
+  "tags": [
+    "salad",
+    "chicken",
+    "apples",
+    "pomegranate",
+    "protein",
+    "healthy",
+    "low-fat",
+    "quick"
+  ]
+}

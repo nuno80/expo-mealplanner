@@ -1,0 +1,199 @@
+{
+  "name_it": "Insalata di broccoli, cavolfiori e indivia belga",
+  "name_en": "Broccoli, Cauliflower and Belgian Endive Salad",
+  "slug": "insalata-di-broccoli-cavolfiori-e-indivia-belga",
+  "description_it": "Insalata croccante di verdure invernali con pinoli tostati, uvetta e un dressing cremoso alla senape.",
+  "description_en": "Crunchy winter vegetable salad with toasted pine nuts, raisins and a creamy mustard dressing.",
+  "category": "main_course",
+  "preferred_meal": "lunch",
+  "servings": 4,
+  "prep_time_min": 20,
+  "cook_time_min": 15,
+  "difficulty": "medium",
+  "kcal_per_100g": 85,
+  "protein_per_100g": 3.8,
+  "carbs_per_100g": 6.2,
+  "fat_per_100g": 5.4,
+  "fiber_per_100g": 3.2,
+  "kcal_per_serving": 175,
+  "serving_weight_g": 205,
+  "total_raw_weight_g": 650,
+  "total_cooked_weight_g": 820,
+  "cooking_factor": 1.26,
+  "allergens": [
+    "mustard",
+    "nuts",
+    "sulphites"
+  ],
+  "dietary_flags": {
+    "vegetarian": true,
+    "vegan": true,
+    "gluten_free": true,
+    "dairy_free": true,
+    "nut_free": false
+  },
+  "ingredients": [
+    {
+      "name_it": "cavolfiore",
+      "name_en": "cauliflower",
+      "quantity": 200,
+      "unit": "g",
+      "cooking_factor": 0.90,
+      "is_optional": false,
+      "notes_it": "a cimette",
+      "notes_en": "florets"
+    },
+    {
+      "name_it": "broccoli",
+      "name_en": "broccoli",
+      "quantity": 200,
+      "unit": "g",
+      "cooking_factor": 0.90,
+      "is_optional": false,
+      "notes_it": "a cimette",
+      "notes_en": "florets"
+    },
+    {
+      "name_it": "indivia belga",
+      "name_en": "Belgian endive",
+      "quantity": 100,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "tagliata a striscioline",
+      "notes_en": "cut into strips"
+    },
+    {
+      "name_it": "pinoli",
+      "name_en": "pine nuts",
+      "quantity": 30,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "tostati",
+      "notes_en": "toasted"
+    },
+    {
+      "name_it": "uvetta",
+      "name_en": "raisins",
+      "quantity": 20,
+      "unit": "g",
+      "cooking_factor": 1.5,
+      "is_optional": false,
+      "notes_it": "ammollata nel succo di limone",
+      "notes_en": "soaked in lemon juice"
+    },
+    {
+      "name_it": "olio extravergine d'oliva",
+      "name_en": "extra virgin olive oil",
+      "quantity": 40,
+      "unit": "ml",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "senape",
+      "name_en": "mustard",
+      "quantity": 15,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "noce moscata",
+      "name_en": "nutmeg",
+      "quantity": 1,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "grattugiata",
+      "notes_en": "grated"
+    },
+    {
+      "name_it": "sale fino",
+      "name_en": "fine salt",
+      "quantity": 4,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "q.b.",
+      "notes_en": "to taste"
+    },
+    {
+      "name_it": "pepe nero",
+      "name_en": "black pepper",
+      "quantity": 1,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "q.b.",
+      "notes_en": "to taste"
+    },
+    {
+      "name_it": "prezzemolo",
+      "name_en": "parsley",
+      "quantity": 10,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "gambi per la crema",
+      "notes_en": "stems for the cream"
+    },
+    {
+      "name_it": "succo di limone",
+      "name_en": "lemon juice",
+      "quantity": 30,
+      "unit": "ml",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "instruction_it": "Tagliare broccoli e cavolfiore a piccole cimette. Lessare separatamente in acqua salata fino a renderli teneri ma croccanti.",
+      "instruction_en": "Cut broccoli and cauliflower into small florets. Boil separately in salted water until tender but still crispy."
+    },
+    {
+      "step_number": 2,
+      "instruction_it": "Raffreddare i broccoli in acqua e ghiaccio per mantenere il colore verde brillante. Mettere l'uvetta in ammollo nel succo di limone.",
+      "instruction_en": "Cool the broccoli in ice water to maintain bright green color. Soak raisins in lemon juice."
+    },
+    {
+      "step_number": 3,
+      "instruction_it": "Lessare i gambi di cavolfiore e prezzemolo, poi frullarli con un po' della loro acqua di cottura per ottenere una crema.",
+      "instruction_en": "Boil cauliflower and parsley stems, then blend with some cooking water to make a cream."
+    },
+    {
+      "step_number": 4,
+      "instruction_it": "Preparare il dressing frullando olio, succo di limone, crema di cavolfiore, senape e noce moscata. Aggiustare di sale e pepe.",
+      "instruction_en": "Prepare dressing by blending oil, lemon juice, cauliflower cream, mustard and nutmeg. Adjust salt and pepper."
+    },
+    {
+      "step_number": 5,
+      "instruction_it": "Tostare i pinoli in padella fino a doratura. Tagliare l'indivia a striscioline sottili.",
+      "instruction_en": "Toast pine nuts in a pan until golden. Cut endive into thin strips."
+    },
+    {
+      "step_number": 6,
+      "instruction_it": "Comporre l'insalata: disporre l'indivia sul fondo, aggiungere cavolfiore e broccoli, condire e guarnire con pinoli e uvetta.",
+      "instruction_en": "Assemble salad: place endive on bottom, add cauliflower and broccoli, dress and garnish with pine nuts and raisins."
+    }
+  ],
+  "tags": [
+    "salad",
+    "broccoli",
+    "cauliflower",
+    "endive",
+    "vegan",
+    "vegetarian",
+    "healthy",
+    "fiber"
+  ]
+}

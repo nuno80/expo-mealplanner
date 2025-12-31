@@ -1,0 +1,163 @@
+{
+  "name_it": "Insalata di ceci e tonno",
+  "name_en": "Chickpea and Tuna Salad",
+  "slug": "insalata-di-ceci-e-tonno",
+  "description_it": "Insalata proteica e veloce con ceci, tonno al naturale, pomodorini e una citronette alla senape.",
+  "description_en": "Protein-rich quick salad with chickpeas, natural tuna, cherry tomatoes and a mustard citronette.",
+  "category": "main_course",
+  "preferred_meal": "lunch",
+  "servings": 4,
+  "prep_time_min": 15,
+  "cook_time_min": 0,
+  "difficulty": "easy",
+  "kcal_per_100g": 125,
+  "protein_per_100g": 10.5,
+  "carbs_per_100g": 9.8,
+  "fat_per_100g": 5.2,
+  "fiber_per_100g": 3.5,
+  "kcal_per_serving": 245,
+  "serving_weight_g": 195,
+  "total_raw_weight_g": 780,
+  "total_cooked_weight_g": 780,
+  "cooking_factor": 1.0,
+  "allergens": [
+    "fish",
+    "mustard"
+  ],
+  "dietary_flags": {
+    "vegetarian": false,
+    "vegan": false,
+    "gluten_free": true,
+    "dairy_free": true,
+    "nut_free": true
+  },
+  "ingredients": [
+    {
+      "name_it": "pomodorini ciliegino",
+      "name_en": "cherry tomatoes",
+      "quantity": 200,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "tagliati in quarti",
+      "notes_en": "quartered"
+    },
+    {
+      "name_it": "ceci precotti",
+      "name_en": "canned chickpeas",
+      "quantity": 400,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "sciacquati e sgocciolati",
+      "notes_en": "rinsed and drained"
+    },
+    {
+      "name_it": "tonno al naturale",
+      "name_en": "tuna in water",
+      "quantity": 120,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "sgocciolato",
+      "notes_en": "drained"
+    },
+    {
+      "name_it": "basilico",
+      "name_en": "basil",
+      "quantity": 10,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "fresco, a pezzi",
+      "notes_en": "fresh, torn"
+    },
+    {
+      "name_it": "scorza di limone",
+      "name_en": "lemon zest",
+      "quantity": 5,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "grattugiata",
+      "notes_en": "grated"
+    },
+    {
+      "name_it": "succo di limone",
+      "name_en": "lemon juice",
+      "quantity": 30,
+      "unit": "ml",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "senape all'antica",
+      "name_en": "whole grain mustard",
+      "quantity": 15,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "olio extravergine d'oliva",
+      "name_en": "extra virgin olive oil",
+      "quantity": 40,
+      "unit": "ml",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "sale fino",
+      "name_en": "fine salt",
+      "quantity": 3,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "q.b.",
+      "notes_en": "to taste"
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "instruction_it": "Lavare i pomodorini, tagliarli in quarti e trasferirli in una ciotola. Aggiungere i ceci sciacquati e sgocciolati.",
+      "instruction_en": "Wash the cherry tomatoes, quarter them and transfer to a bowl. Add the rinsed and drained chickpeas."
+    },
+    {
+      "step_number": 2,
+      "instruction_it": "Aggiungere il basilico a pezzi. Spezzettare il tonno con le mani o una forchetta e unirlo. Regolare di sale.",
+      "instruction_en": "Add the torn basil. Break up the tuna with hands or a fork and add it. Season with salt."
+    },
+    {
+      "step_number": 3,
+      "instruction_it": "Preparare la citronette: grattugiare la scorza di limone, aggiungere il succo e il sale.",
+      "instruction_en": "Prepare the citronette: grate the lemon zest, add the juice and salt."
+    },
+    {
+      "step_number": 4,
+      "instruction_it": "Versare l'olio a filo mescolando con una frusta per emulsionare. Aggiungere la senape e mescolare.",
+      "instruction_en": "Drizzle in the oil while whisking to emulsify. Add the mustard and mix."
+    },
+    {
+      "step_number": 5,
+      "instruction_it": "Condire l'insalata con la citronette, mescolare e servire.",
+      "instruction_en": "Dress the salad with the citronette, mix and serve."
+    }
+  ],
+  "tags": [
+    "salad",
+    "chickpeas",
+    "tuna",
+    "fish",
+    "protein",
+    "quick",
+    "healthy",
+    "mediterranean"
+  ]
+}

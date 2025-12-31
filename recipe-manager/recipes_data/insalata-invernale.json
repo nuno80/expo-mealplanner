@@ -1,0 +1,153 @@
+{
+  "name_it": "Insalata invernale",
+  "name_en": "Winter Salad",
+  "slug": "insalata-invernale",
+  "description_it": "Insalata invernale con spinacini, barbabietole, pere, gorgonzola e noci, condita con olio e aceto balsamico.",
+  "description_en": "Winter salad with baby spinach, beets, pears, gorgonzola and walnuts, dressed with oil and balsamic vinegar.",
+  "category": "main_course",
+  "preferred_meal": "lunch",
+  "servings": 4,
+  "prep_time_min": 15,
+  "cook_time_min": 0,
+  "difficulty": "easy",
+  "kcal_per_100g": 118,
+  "protein_per_100g": 4.2,
+  "carbs_per_100g": 10.5,
+  "fat_per_100g": 7.2,
+  "fiber_per_100g": 2.5,
+  "kcal_per_serving": 195,
+  "serving_weight_g": 165,
+  "total_raw_weight_g": 660,
+  "total_cooked_weight_g": 660,
+  "cooking_factor": 1.0,
+  "allergens": [
+    "dairy",
+    "nuts"
+  ],
+  "dietary_flags": {
+    "vegetarian": true,
+    "vegan": false,
+    "gluten_free": true,
+    "dairy_free": false,
+    "nut_free": false
+  },
+  "ingredients": [
+    {
+      "name_it": "spinacini",
+      "name_en": "baby spinach",
+      "quantity": 100,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "barbabietole precotte",
+      "name_en": "precooked beets",
+      "quantity": 150,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "tagliate a tocchetti",
+      "notes_en": "cubed"
+    },
+    {
+      "name_it": "pere kaiser",
+      "name_en": "Kaiser pears",
+      "quantity": 150,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "sbucciate e tagliate a tocchetti",
+      "notes_en": "peeled and cubed"
+    },
+    {
+      "name_it": "gorgonzola",
+      "name_en": "gorgonzola cheese",
+      "quantity": 80,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "sbriciolato",
+      "notes_en": "crumbled"
+    },
+    {
+      "name_it": "gherigli di noci",
+      "name_en": "walnut halves",
+      "quantity": 40,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "spezzettati a mano",
+      "notes_en": "hand-broken"
+    },
+    {
+      "name_it": "olio extravergine d'oliva",
+      "name_en": "extra virgin olive oil",
+      "quantity": 40,
+      "unit": "ml",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "sale fino",
+      "name_en": "fine salt",
+      "quantity": 3,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "q.b.",
+      "notes_en": "to taste"
+    },
+    {
+      "name_it": "aceto balsamico",
+      "name_en": "balsamic vinegar",
+      "quantity": 20,
+      "unit": "ml",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "instruction_it": "Lavare le pere, tagliarle in spicchi, eliminare il torsolo e la buccia. Tagliare a tocchetti di 2-3 cm.",
+      "instruction_en": "Wash pears, cut into wedges, remove core and peel. Cut into 2-3 cm cubes."
+    },
+    {
+      "step_number": 2,
+      "instruction_it": "Tagliare le barbabietole precotte a metà, poi a fette spesse 2 cm e infine a tocchetti.",
+      "instruction_en": "Cut precooked beets in half, then into 2 cm thick slices and finally into cubes."
+    },
+    {
+      "step_number": 3,
+      "instruction_it": "Versare gli spinacini in una ciotola, aggiungere pere, barbabietole e noci spezzettate a mano.",
+      "instruction_en": "Pour baby spinach into a bowl, add pears, beets and hand-broken walnuts."
+    },
+    {
+      "step_number": 4,
+      "instruction_it": "Aggiungere il gorgonzola sbriciolandolo con un cucchiaio.",
+      "instruction_en": "Add gorgonzola by crumbling it with a spoon."
+    },
+    {
+      "step_number": 5,
+      "instruction_it": "Regolare di sale, condire con olio e aceto balsamico. Mescolare e servire.",
+      "instruction_en": "Season with salt, dress with oil and balsamic vinegar. Toss and serve."
+    }
+  ],
+  "tags": [
+    "salad",
+    "winter",
+    "beets",
+    "pear",
+    "gorgonzola",
+    "walnuts",
+    "vegetarian",
+    "colorful"
+  ]
+}

@@ -1,0 +1,197 @@
+{
+  "name_it": "Insalata di ceci estiva",
+  "name_en": "Summer Chickpea Salad",
+  "slug": "insalata-di-ceci-estiva",
+  "description_it": "Colorata insalata estiva con ceci, verdure fresche di stagione, feta e un dressing alla menta.",
+  "description_en": "Colorful summer salad with chickpeas, fresh seasonal vegetables, feta cheese and a mint dressing.",
+  "category": "main_course",
+  "preferred_meal": "lunch",
+  "servings": 4,
+  "prep_time_min": 20,
+  "cook_time_min": 0,
+  "difficulty": "easy",
+  "kcal_per_100g": 95,
+  "protein_per_100g": 4.8,
+  "carbs_per_100g": 10.2,
+  "fat_per_100g": 4.5,
+  "fiber_per_100g": 3.8,
+  "kcal_per_serving": 215,
+  "serving_weight_g": 225,
+  "total_raw_weight_g": 900,
+  "total_cooked_weight_g": 900,
+  "cooking_factor": 1.0,
+  "allergens": [
+    "dairy"
+  ],
+  "dietary_flags": {
+    "vegetarian": true,
+    "vegan": false,
+    "gluten_free": true,
+    "dairy_free": false,
+    "nut_free": true
+  },
+  "ingredients": [
+    {
+      "name_it": "ceci precotti",
+      "name_en": "canned chickpeas",
+      "quantity": 400,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "sciacquati e sgocciolati",
+      "notes_en": "rinsed and drained"
+    },
+    {
+      "name_it": "peperoni gialli",
+      "name_en": "yellow bell peppers",
+      "quantity": 120,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "tagliati a listarelle",
+      "notes_en": "cut into strips"
+    },
+    {
+      "name_it": "zucchine tonde",
+      "name_en": "round zucchini",
+      "quantity": 100,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "a rondelle e bastoncini",
+      "notes_en": "sliced into rounds and sticks"
+    },
+    {
+      "name_it": "pomodorini datterini",
+      "name_en": "datterini tomatoes",
+      "quantity": 100,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "tagliati a metà",
+      "notes_en": "halved"
+    },
+    {
+      "name_it": "cipolle rosse",
+      "name_en": "red onions",
+      "quantity": 50,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "affettate sottili",
+      "notes_en": "thinly sliced"
+    },
+    {
+      "name_it": "cetrioli",
+      "name_en": "cucumbers",
+      "quantity": 80,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "a fette oblique",
+      "notes_en": "sliced diagonally"
+    },
+    {
+      "name_it": "feta",
+      "name_en": "feta cheese",
+      "quantity": 80,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "sbriciolata",
+      "notes_en": "crumbled"
+    },
+    {
+      "name_it": "menta fresca",
+      "name_en": "fresh mint",
+      "quantity": 15,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "per il dressing",
+      "notes_en": "for the dressing"
+    },
+    {
+      "name_it": "limoni",
+      "name_en": "lemons",
+      "quantity": 60,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "succo e scorza",
+      "notes_en": "juice and zest"
+    },
+    {
+      "name_it": "olio extravergine d'oliva",
+      "name_en": "extra virgin olive oil",
+      "quantity": 50,
+      "unit": "ml",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "sale fino",
+      "name_en": "fine salt",
+      "quantity": 4,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "q.b.",
+      "notes_en": "to taste"
+    },
+    {
+      "name_it": "pepe nero",
+      "name_en": "black pepper",
+      "quantity": 1,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "q.b.",
+      "notes_en": "to taste"
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "instruction_it": "Lavare e asciugare le verdure. Tagliare il peperone a listarelle sottili, i pomodorini a metà.",
+      "instruction_en": "Wash and dry the vegetables. Cut the pepper into thin strips, halve the tomatoes."
+    },
+    {
+      "step_number": 2,
+      "instruction_it": "Tagliare le zucchine a rondelle e poi a bastoncini. Affettare i cetrioli obliquamente e le cipolle sottili.",
+      "instruction_en": "Cut zucchini into rounds then sticks. Slice cucumbers diagonally and onions thinly."
+    },
+    {
+      "step_number": 3,
+      "instruction_it": "Preparare il dressing: frullare le foglie di menta con l'olio, aggiungere il succo di limone e mescolare.",
+      "instruction_en": "Prepare the dressing: blend mint leaves with oil, add lemon juice and mix."
+    },
+    {
+      "step_number": 4,
+      "instruction_it": "Scolare i ceci e versarli in una ciotola capiente. Aggiungere tutte le verdure tagliate.",
+      "instruction_en": "Drain the chickpeas and pour into a large bowl. Add all the cut vegetables."
+    },
+    {
+      "step_number": 5,
+      "instruction_it": "Grattugiare la scorza di limone, condire con l'olio alla menta, sale e pepe.",
+      "instruction_en": "Grate the lemon zest, dress with mint oil, salt and pepper."
+    },
+    {
+      "step_number": 6,
+      "instruction_it": "Mescolare e aggiungere la feta sbriciolata. Mescolare di nuovo e servire.",
+      "instruction_en": "Mix and add crumbled feta. Toss again and serve."
+    }
+  ],
+  "tags": [
+    "salad",
+    "chickpeas",
+    "summer",
+    "feta",
+    "mediterranean",
+    "vegetarian",
+    "colorful",
+    "healthy"
+  ]
+}

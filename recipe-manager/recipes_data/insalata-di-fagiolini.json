@@ -1,0 +1,208 @@
+{
+  "name_it": "Insalata di fagiolini",
+  "name_en": "Green Bean Salad",
+  "slug": "insalata-di-fagiolini",
+  "description_it": "Insalata colorata con fagiolini croccanti, pomodorini, feta e mandorle tostate, con salsa alla senape e scalogni caramellati.",
+  "description_en": "Colorful salad with crispy green beans, cherry tomatoes, feta and toasted almonds, with mustard sauce and caramelized shallots.",
+  "category": "main_course",
+  "preferred_meal": "lunch",
+  "servings": 4,
+  "prep_time_min": 20,
+  "cook_time_min": 20,
+  "difficulty": "medium",
+  "kcal_per_100g": 112,
+  "protein_per_100g": 4.5,
+  "carbs_per_100g": 7.8,
+  "fat_per_100g": 7.2,
+  "fiber_per_100g": 3.2,
+  "kcal_per_serving": 225,
+  "serving_weight_g": 200,
+  "total_raw_weight_g": 680,
+  "total_cooked_weight_g": 800,
+  "cooking_factor": 1.18,
+  "allergens": [
+    "dairy",
+    "nuts",
+    "mustard"
+  ],
+  "dietary_flags": {
+    "vegetarian": true,
+    "vegan": false,
+    "gluten_free": true,
+    "dairy_free": false,
+    "nut_free": false
+  },
+  "ingredients": [
+    {
+      "name_it": "fagiolini",
+      "name_en": "green beans",
+      "quantity": 300,
+      "unit": "g",
+      "cooking_factor": 0.90,
+      "is_optional": false,
+      "notes_it": "spuntati e tagliati",
+      "notes_en": "trimmed and cut"
+    },
+    {
+      "name_it": "pomodorini",
+      "name_en": "cherry tomatoes",
+      "quantity": 150,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "tagliati a metà",
+      "notes_en": "halved"
+    },
+    {
+      "name_it": "scalogno",
+      "name_en": "shallots",
+      "quantity": 60,
+      "unit": "g",
+      "cooking_factor": 0.85,
+      "is_optional": false,
+      "notes_it": "divisi in quarti",
+      "notes_en": "quartered"
+    },
+    {
+      "name_it": "olio di semi",
+      "name_en": "vegetable oil",
+      "quantity": 20,
+      "unit": "ml",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "per gli scalogni",
+      "notes_en": "for the shallots"
+    },
+    {
+      "name_it": "zucchero integrale di canna",
+      "name_en": "brown sugar",
+      "quantity": 10,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "per caramellare",
+      "notes_en": "for caramelizing"
+    },
+    {
+      "name_it": "acqua",
+      "name_en": "water",
+      "quantity": 30,
+      "unit": "ml",
+      "cooking_factor": 0,
+      "is_optional": false,
+      "notes_it": "per sfumare",
+      "notes_en": "for deglazing"
+    },
+    {
+      "name_it": "mandorle in scaglie",
+      "name_en": "sliced almonds",
+      "quantity": 30,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "tostate",
+      "notes_en": "toasted"
+    },
+    {
+      "name_it": "feta",
+      "name_en": "feta cheese",
+      "quantity": 80,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "sbriciolata",
+      "notes_en": "crumbled"
+    },
+    {
+      "name_it": "senape",
+      "name_en": "mustard",
+      "quantity": 15,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "succo di limone",
+      "name_en": "lemon juice",
+      "quantity": 25,
+      "unit": "ml",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "olio di semi",
+      "name_en": "vegetable oil",
+      "quantity": 40,
+      "unit": "ml",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "per la salsa",
+      "notes_en": "for the sauce"
+    },
+    {
+      "name_it": "sale fino",
+      "name_en": "fine salt",
+      "quantity": 4,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "q.b.",
+      "notes_en": "to taste"
+    },
+    {
+      "name_it": "pepe nero",
+      "name_en": "black pepper",
+      "quantity": 1,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "q.b.",
+      "notes_en": "to taste"
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "instruction_it": "Spuntare i fagiolini, sciacquarli e tagliarli a pezzi. Sbollentarli per 10 minuti, poi raffreddarli in acqua e ghiaccio.",
+      "instruction_en": "Trim the green beans, rinse and cut into pieces. Blanch for 10 minutes, then cool in ice water."
+    },
+    {
+      "step_number": 2,
+      "instruction_it": "Tostare le mandorle in padella per 3 minuti a fuoco medio, mescolando spesso.",
+      "instruction_en": "Toast almonds in a pan for 3 minutes over medium heat, stirring often."
+    },
+    {
+      "step_number": 3,
+      "instruction_it": "Pulire e dividere gli scalogni in quarti. Saltarli in padella con olio e zucchero, sfumare con acqua e cuocere 5 minuti.",
+      "instruction_en": "Clean and quarter the shallots. Sauté in a pan with oil and sugar, deglaze with water and cook 5 minutes."
+    },
+    {
+      "step_number": 4,
+      "instruction_it": "Preparare la salsa frullando senape, succo di limone, sale, pepe e olio fino a emulsionare.",
+      "instruction_en": "Prepare the sauce by blending mustard, lemon juice, salt, pepper and oil until emulsified."
+    },
+    {
+      "step_number": 5,
+      "instruction_it": "Tagliare i pomodorini a metà. Unire ai fagiolini in un'insalatiera e condire con la salsa.",
+      "instruction_en": "Halve the cherry tomatoes. Combine with green beans in a salad bowl and dress with the sauce."
+    },
+    {
+      "step_number": 6,
+      "instruction_it": "Aggiungere feta sbriciolata, mandorle tostate e guarnire con gli scalogni caramellati. Servire.",
+      "instruction_en": "Add crumbled feta, toasted almonds and garnish with caramelized shallots. Serve."
+    }
+  ],
+  "tags": [
+    "salad",
+    "green-beans",
+    "feta",
+    "almonds",
+    "vegetarian",
+    "colorful",
+    "healthy"
+  ]
+}

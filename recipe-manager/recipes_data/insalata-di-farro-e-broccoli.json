@@ -1,0 +1,149 @@
+{
+  "name_it": "Insalata di farro e broccoli",
+  "name_en": "Spelt and Broccoli Salad",
+  "slug": "insalata-di-farro-e-broccoli",
+  "description_it": "Insalata rustica con farro, broccoli, pomodori secchi, olive nere, noci e cubetti di gorgonzola.",
+  "description_en": "Rustic salad with spelt, broccoli, sun-dried tomatoes, black olives, walnuts and gorgonzola cubes.",
+  "category": "main_course",
+  "preferred_meal": "lunch",
+  "servings": 4,
+  "prep_time_min": 15,
+  "cook_time_min": 25,
+  "difficulty": "easy",
+  "kcal_per_100g": 165,
+  "protein_per_100g": 6.8,
+  "carbs_per_100g": 20.5,
+  "fat_per_100g": 6.5,
+  "fiber_per_100g": 4.2,
+  "kcal_per_serving": 345,
+  "serving_weight_g": 210,
+  "total_raw_weight_g": 520,
+  "total_cooked_weight_g": 840,
+  "cooking_factor": 1.62,
+  "allergens": [
+    "gluten",
+    "dairy",
+    "nuts"
+  ],
+  "dietary_flags": {
+    "vegetarian": true,
+    "vegan": false,
+    "gluten_free": false,
+    "dairy_free": false,
+    "nut_free": false
+  },
+  "ingredients": [
+    {
+      "name_it": "farro",
+      "name_en": "spelt",
+      "quantity": 200,
+      "unit": "g",
+      "cooking_factor": 2.20,
+      "is_optional": false,
+      "notes_it": "secco",
+      "notes_en": "dry"
+    },
+    {
+      "name_it": "broccoli",
+      "name_en": "broccoli",
+      "quantity": 200,
+      "unit": "g",
+      "cooking_factor": 0.90,
+      "is_optional": false,
+      "notes_it": "a cimette",
+      "notes_en": "florets"
+    },
+    {
+      "name_it": "gherigli di noci",
+      "name_en": "walnut halves",
+      "quantity": 40,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "tritati grossolanamente",
+      "notes_en": "roughly chopped"
+    },
+    {
+      "name_it": "pomodori secchi",
+      "name_en": "sun-dried tomatoes",
+      "quantity": 40,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "scolati e tagliati a pezzetti",
+      "notes_en": "drained and chopped"
+    },
+    {
+      "name_it": "olive nere",
+      "name_en": "black olives",
+      "quantity": 40,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "denocciolate e affettate",
+      "notes_en": "pitted and sliced"
+    },
+    {
+      "name_it": "gorgonzola",
+      "name_en": "gorgonzola cheese",
+      "quantity": 60,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "a cubetti",
+      "notes_en": "cubed"
+    },
+    {
+      "name_it": "olio extravergine d'oliva",
+      "name_en": "extra virgin olive oil",
+      "quantity": 40,
+      "unit": "ml",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "instruction_it": "Portare a bollore abbondante acqua salata e cuocere il farro per circa 15 minuti o secondo le indicazioni sulla confezione.",
+      "instruction_en": "Bring plenty of salted water to boil and cook spelt for about 15 minutes or according to package directions."
+    },
+    {
+      "step_number": 2,
+      "instruction_it": "Staccare i broccoli in cimette e lessarli in acqua salata per 10 minuti. Scolare e tagliare a pezzetti.",
+      "instruction_en": "Break broccoli into florets and boil in salted water for 10 minutes. Drain and cut into pieces."
+    },
+    {
+      "step_number": 3,
+      "instruction_it": "Scolare i pomodori secchi dall'olio e tagliarli a pezzetti. Affettare le olive a rondelle. Tagliare il gorgonzola a cubetti.",
+      "instruction_en": "Drain sun-dried tomatoes from oil and chop. Slice olives into rounds. Cube the gorgonzola."
+    },
+    {
+      "step_number": 4,
+      "instruction_it": "Tritare grossolanamente le noci.",
+      "instruction_en": "Roughly chop the walnuts."
+    },
+    {
+      "step_number": 5,
+      "instruction_it": "Scolare bene il farro e trasferirlo in una ciotola capiente. Condire con olio, poi aggiungere pomodori secchi, noci e olive.",
+      "instruction_en": "Drain the spelt well and transfer to a large bowl. Dress with oil, then add sun-dried tomatoes, walnuts and olives."
+    },
+    {
+      "step_number": 6,
+      "instruction_it": "Incorporare i broccoli e il gorgonzola a dadini. Mescolare e servire.",
+      "instruction_en": "Add broccoli and gorgonzola cubes. Toss and serve."
+    }
+  ],
+  "tags": [
+    "salad",
+    "spelt",
+    "grains",
+    "broccoli",
+    "gorgonzola",
+    "walnuts",
+    "vegetarian",
+    "fiber"
+  ]
+}

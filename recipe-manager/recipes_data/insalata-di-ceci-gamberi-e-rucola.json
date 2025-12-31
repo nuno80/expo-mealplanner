@@ -1,0 +1,188 @@
+{
+  "name_it": "Insalata di ceci, gamberi e rucola",
+  "name_en": "Chickpea, Shrimp and Arugula Salad",
+  "slug": "insalata-di-ceci-gamberi-e-rucola",
+  "description_it": "Insalata proteica con gamberi saltati, ceci, rucola e pinoli tostati, condita con un'emulsione al limone e balsamico.",
+  "description_en": "Protein-rich salad with sautéed shrimp, chickpeas, arugula and toasted pine nuts, dressed with lemon and balsamic emulsion.",
+  "category": "main_course",
+  "preferred_meal": "both",
+  "servings": 4,
+  "prep_time_min": 25,
+  "cook_time_min": 15,
+  "difficulty": "medium",
+  "kcal_per_100g": 138,
+  "protein_per_100g": 12.5,
+  "carbs_per_100g": 8.2,
+  "fat_per_100g": 6.8,
+  "fiber_per_100g": 2.5,
+  "kcal_per_serving": 295,
+  "serving_weight_g": 215,
+  "total_raw_weight_g": 730,
+  "total_cooked_weight_g": 860,
+  "cooking_factor": 1.18,
+  "allergens": [
+    "shellfish",
+    "nuts"
+  ],
+  "dietary_flags": {
+    "vegetarian": false,
+    "vegan": false,
+    "gluten_free": true,
+    "dairy_free": true,
+    "nut_free": false
+  },
+  "ingredients": [
+    {
+      "name_it": "gamberi",
+      "name_en": "shrimp",
+      "quantity": 300,
+      "unit": "g",
+      "cooking_factor": 0.80,
+      "is_optional": false,
+      "notes_it": "puliti e sgusciati",
+      "notes_en": "cleaned and peeled"
+    },
+    {
+      "name_it": "ceci precotti",
+      "name_en": "canned chickpeas",
+      "quantity": 300,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "sciacquati e sgocciolati",
+      "notes_en": "rinsed and drained"
+    },
+    {
+      "name_it": "rucola",
+      "name_en": "arugula",
+      "quantity": 80,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "lavata e asciugata",
+      "notes_en": "washed and dried"
+    },
+    {
+      "name_it": "pinoli",
+      "name_en": "pine nuts",
+      "quantity": 30,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "tostati",
+      "notes_en": "toasted"
+    },
+    {
+      "name_it": "aglio",
+      "name_en": "garlic",
+      "quantity": 5,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "1 spicchio",
+      "notes_en": "1 clove"
+    },
+    {
+      "name_it": "paprika",
+      "name_en": "paprika",
+      "quantity": 3,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "succo di limone",
+      "name_en": "lemon juice",
+      "quantity": 25,
+      "unit": "ml",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "aceto balsamico",
+      "name_en": "balsamic vinegar",
+      "quantity": 10,
+      "unit": "ml",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "olio extravergine d'oliva",
+      "name_en": "extra virgin olive oil",
+      "quantity": 50,
+      "unit": "ml",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "pepe nero",
+      "name_en": "black pepper",
+      "quantity": 1,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "q.b.",
+      "notes_en": "to taste"
+    },
+    {
+      "name_it": "sale fino",
+      "name_en": "fine salt",
+      "quantity": 4,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "q.b.",
+      "notes_en": "to taste"
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "instruction_it": "Pulire i gamberi eliminando testa, carapace e intestino. Tostare i pinoli in forno a 150°C per 10 minuti.",
+      "instruction_en": "Clean shrimp by removing head, shell and intestine. Toast pine nuts in oven at 150°C for 10 minutes."
+    },
+    {
+      "step_number": 2,
+      "instruction_it": "Scaldare olio e aglio in padella. Aggiungere i gamberi, salare, pepare e condire con paprika. Cuocere 5-6 minuti a fuoco vivace.",
+      "instruction_en": "Heat oil and garlic in a pan. Add shrimp, season with salt, pepper and paprika. Cook 5-6 minutes over high heat."
+    },
+    {
+      "step_number": 3,
+      "instruction_it": "Nella stessa padella scaldare i ceci per fargli assorbire il sapore dei gamberi.",
+      "instruction_en": "In the same pan, warm the chickpeas to absorb the shrimp flavor."
+    },
+    {
+      "step_number": 4,
+      "instruction_it": "Preparare l'emulsione: unire olio, sale, pepe, succo di limone e aceto balsamico.",
+      "instruction_en": "Prepare the emulsion: combine oil, salt, pepper, lemon juice and balsamic vinegar."
+    },
+    {
+      "step_number": 5,
+      "instruction_it": "Comporre l'insalata: in una ciotola unire rucola, ceci, gamberi e pinoli. Mescolare.",
+      "instruction_en": "Assemble the salad: combine arugula, chickpeas, shrimp and pine nuts in a bowl. Toss."
+    },
+    {
+      "step_number": 6,
+      "instruction_it": "Condire con l'emulsione preparata e servire.",
+      "instruction_en": "Dress with the prepared emulsion and serve."
+    }
+  ],
+  "tags": [
+    "salad",
+    "shrimp",
+    "chickpeas",
+    "arugula",
+    "protein",
+    "seafood",
+    "healthy",
+    "mediterranean"
+  ]
+}

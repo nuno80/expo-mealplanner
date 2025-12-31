@@ -1,0 +1,188 @@
+{
+  "name_it": "Insalata di aringa affumicata",
+  "name_en": "Smoked Herring Salad",
+  "slug": "insalata-di-aringa-affumicata",
+  "description_it": "Insalata nordica con filetti di aringa affumicata, patate, mele e una salsa cremosa allo yogurt ed erba cipollina.",
+  "description_en": "Nordic-style salad with smoked herring fillets, potatoes, apples, and a creamy chive yogurt sauce.",
+  "category": "main_course",
+  "preferred_meal": "lunch",
+  "servings": 4,
+  "prep_time_min": 30,
+  "cook_time_min": 25,
+  "difficulty": "medium",
+  "kcal_per_100g": 142,
+  "protein_per_100g": 9.8,
+  "carbs_per_100g": 10.5,
+  "fat_per_100g": 7.2,
+  "fiber_per_100g": 1.2,
+  "kcal_per_serving": 320,
+  "serving_weight_g": 225,
+  "total_raw_weight_g": 720,
+  "total_cooked_weight_g": 900,
+  "cooking_factor": 1.25,
+  "allergens": [
+    "fish",
+    "dairy"
+  ],
+  "dietary_flags": {
+    "vegetarian": false,
+    "vegan": false,
+    "gluten_free": true,
+    "dairy_free": false,
+    "nut_free": true
+  },
+  "ingredients": [
+    {
+      "name_it": "aringa affumicata",
+      "name_en": "smoked herring",
+      "quantity": 200,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "filetti, messi in ammollo nel latte",
+      "notes_en": "fillets, soaked in milk"
+    },
+    {
+      "name_it": "patate",
+      "name_en": "potatoes",
+      "quantity": 300,
+      "unit": "g",
+      "cooking_factor": 0.90,
+      "is_optional": false,
+      "notes_it": "lessate e tagliate a cubetti",
+      "notes_en": "boiled and cubed"
+    },
+    {
+      "name_it": "mele Granny Smith",
+      "name_en": "Granny Smith apples",
+      "quantity": 100,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "sbucciate e tagliate a cubetti",
+      "notes_en": "peeled and cubed"
+    },
+    {
+      "name_it": "cipolle rosse",
+      "name_en": "red onions",
+      "quantity": 60,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "affettate finemente, in ammollo",
+      "notes_en": "thinly sliced, soaked"
+    },
+    {
+      "name_it": "latte intero",
+      "name_en": "whole milk",
+      "quantity": 200,
+      "unit": "ml",
+      "cooking_factor": 0,
+      "is_optional": false,
+      "notes_it": "per ammorbidire l'aringa",
+      "notes_en": "for soaking the herring"
+    },
+    {
+      "name_it": "yogurt greco",
+      "name_en": "Greek yogurt",
+      "quantity": 80,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "erba cipollina",
+      "name_en": "chives",
+      "quantity": 10,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "tritata",
+      "notes_en": "chopped"
+    },
+    {
+      "name_it": "succo di limone",
+      "name_en": "lemon juice",
+      "quantity": 20,
+      "unit": "ml",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "olio extravergine d'oliva",
+      "name_en": "extra virgin olive oil",
+      "quantity": 30,
+      "unit": "ml",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "sale fino",
+      "name_en": "fine salt",
+      "quantity": 3,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "q.b.",
+      "notes_en": "to taste"
+    },
+    {
+      "name_it": "pepe nero",
+      "name_en": "black pepper",
+      "quantity": 1,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "q.b.",
+      "notes_en": "to taste"
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "instruction_it": "Preparare in anticipo le aringhe: tagliare i filetti a striscioline e metterli in ammollo nel latte per diverse ore o tutta la notte.",
+      "instruction_en": "Prepare the herring in advance: cut fillets into strips and soak in milk for several hours or overnight."
+    },
+    {
+      "step_number": 2,
+      "instruction_it": "Affettare finemente la cipolla e metterla in ammollo in acqua e aceto per diverse ore, cambiando l'acqua un paio di volte.",
+      "instruction_en": "Thinly slice the onion and soak in water and vinegar for several hours, changing the water a couple of times."
+    },
+    {
+      "step_number": 3,
+      "instruction_it": "Lessare le patate fino a renderle morbide ma non sfatte. Pelarle e tagliarle a cubetti.",
+      "instruction_en": "Boil the potatoes until tender but not mushy. Peel and cut into cubes."
+    },
+    {
+      "step_number": 4,
+      "instruction_it": "Sbucciare le mele e ridurle a cubetti piccoli. Scolare i filetti di aringa e asciugarli.",
+      "instruction_en": "Peel the apples and cut into small cubes. Drain the herring fillets and pat dry."
+    },
+    {
+      "step_number": 5,
+      "instruction_it": "Preparare la salsa: unire yogurt greco, erba cipollina tritata, succo di limone e olio. Emulsionare.",
+      "instruction_en": "Prepare the sauce: combine Greek yogurt, chopped chives, lemon juice and oil. Emulsify."
+    },
+    {
+      "step_number": 6,
+      "instruction_it": "Comporre l'insalata: unire patate, aringa, cipolle e mele. Condire con la crema, sale e pepe. Servire.",
+      "instruction_en": "Assemble the salad: combine potatoes, herring, onions and apples. Dress with the cream, salt and pepper. Serve."
+    }
+  ],
+  "tags": [
+    "fish",
+    "herring",
+    "smoked",
+    "salad",
+    "nordic",
+    "potatoes",
+    "omega-3",
+    "protein"
+  ]
+}

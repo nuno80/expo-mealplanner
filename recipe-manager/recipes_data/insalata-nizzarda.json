@@ -1,0 +1,178 @@
+{
+  "name_it": "Insalata nizzarda",
+  "name_en": "Niçoise Salad",
+  "slug": "insalata-nizzarda",
+  "description_it": "Classica insalata francese con lattuga, tonno, uova sode, olive nere, pomodorini, acciughe e cipollotto.",
+  "description_en": "Classic French salad with lettuce, tuna, hard-boiled eggs, black olives, cherry tomatoes, anchovies and spring onion.",
+  "category": "main_course",
+  "preferred_meal": "lunch",
+  "servings": 4,
+  "prep_time_min": 20,
+  "cook_time_min": 10,
+  "difficulty": "easy",
+  "kcal_per_100g": 125,
+  "protein_per_100g": 11.5,
+  "carbs_per_100g": 3.8,
+  "fat_per_100g": 7.5,
+  "fiber_per_100g": 1.2,
+  "kcal_per_serving": 255,
+  "serving_weight_g": 205,
+  "total_raw_weight_g": 680,
+  "total_cooked_weight_g": 820,
+  "cooking_factor": 1.21,
+  "allergens": [
+    "fish",
+    "eggs"
+  ],
+  "dietary_flags": {
+    "vegetarian": false,
+    "vegan": false,
+    "gluten_free": true,
+    "dairy_free": true,
+    "nut_free": true
+  },
+  "ingredients": [
+    {
+      "name_it": "uova",
+      "name_en": "eggs",
+      "quantity": 160,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "4 uova sode",
+      "notes_en": "4 hard-boiled eggs"
+    },
+    {
+      "name_it": "lattuga",
+      "name_en": "lettuce",
+      "quantity": 150,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "spezzettata a mano",
+      "notes_en": "hand-torn"
+    },
+    {
+      "name_it": "pomodorini ciliegino",
+      "name_en": "cherry tomatoes",
+      "quantity": 120,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "tagliati in quarti",
+      "notes_en": "quartered"
+    },
+    {
+      "name_it": "tonno sott'olio",
+      "name_en": "tuna in oil",
+      "quantity": 160,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "sgocciolato",
+      "notes_en": "drained"
+    },
+    {
+      "name_it": "olive nere",
+      "name_en": "black olives",
+      "quantity": 40,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "denocciolate",
+      "notes_en": "pitted"
+    },
+    {
+      "name_it": "cipollotto fresco",
+      "name_en": "spring onion",
+      "quantity": 30,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "a rondelle sottili",
+      "notes_en": "thinly sliced"
+    },
+    {
+      "name_it": "acciughe sott'olio",
+      "name_en": "anchovy fillets in oil",
+      "quantity": 20,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "circa 4 filetti, a pezzetti",
+      "notes_en": "about 4 fillets, chopped"
+    },
+    {
+      "name_it": "olio extravergine d'oliva",
+      "name_en": "extra virgin olive oil",
+      "quantity": 40,
+      "unit": "ml",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "sale fino",
+      "name_en": "fine salt",
+      "quantity": 3,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "q.b.",
+      "notes_en": "to taste"
+    },
+    {
+      "name_it": "pepe nero",
+      "name_en": "black pepper",
+      "quantity": 1,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "q.b.",
+      "notes_en": "to taste"
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "instruction_it": "Preparare le uova sode: metterle in un pentolino, coprire con acqua fredda e portare a bollore. Dopo 7 minuti dal bollore, scolare e raffreddare.",
+      "instruction_en": "Make hard-boiled eggs: place in a pot, cover with cold water and bring to boil. After 7 minutes from boiling, drain and cool."
+    },
+    {
+      "step_number": 2,
+      "instruction_it": "Eliminare la parte verde del cipollotto e tagliarlo a rondelle sottili. Lavare e tagliare i pomodorini in quarti.",
+      "instruction_en": "Remove green part of spring onion and slice thinly. Wash and quarter cherry tomatoes."
+    },
+    {
+      "step_number": 3,
+      "instruction_it": "Scolare i filetti di acciughe e tagliarli a pezzetti. Sgusciare le uova e dividerle in 4 parti.",
+      "instruction_en": "Drain anchovy fillets and chop. Peel eggs and cut into quarters."
+    },
+    {
+      "step_number": 4,
+      "instruction_it": "Lavare la lattuga e spezzettarla a mano in una ciotola capiente. Aggiungere olive e pomodorini.",
+      "instruction_en": "Wash lettuce and tear by hand into a large bowl. Add olives and tomatoes."
+    },
+    {
+      "step_number": 5,
+      "instruction_it": "Aggiungere cipollotto, tonno sgocciolato e acciughe. Condire con olio, sale e pepe.",
+      "instruction_en": "Add spring onion, drained tuna and anchovies. Dress with oil, salt and pepper."
+    },
+    {
+      "step_number": 6,
+      "instruction_it": "Mescolare bene, completare con gli spicchi di uovo sodo e servire.",
+      "instruction_en": "Toss well, top with egg quarters and serve."
+    }
+  ],
+  "tags": [
+    "salad",
+    "nicoise",
+    "french",
+    "tuna",
+    "eggs",
+    "classic",
+    "protein",
+    "mediterranean"
+  ]
+}
