@@ -54,3 +54,4 @@ htmlcov/
 !.env.example
 recipe-manager/.env
 !recipe-manager/.env.example
+api/.dev.vars
