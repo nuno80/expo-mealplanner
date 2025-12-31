@@ -1,0 +1,124 @@
+{
+  "name_it": "Pasta integrale al pesto di basilico",
+  "name_en": "Whole Wheat Pasta with Basil Pesto",
+  "slug": "pasta-integrale-pesto-basilico",
+  "description_it": "Fusilli integrali con pesto genovese fresco. Comfort food italiano veloce.",
+  "description_en": "Whole wheat fusilli with fresh Genovese pesto. Quick Italian comfort food.",
+  "category": "main_course",
+  "preferred_meal": "dinner",
+  "servings": 2,
+  "prep_time_min": 10,
+  "cook_time_min": 12,
+  "difficulty": "easy",
+  "kcal_per_100g": 185,
+  "protein_per_100g": 7.2,
+  "carbs_per_100g": 24.5,
+  "fat_per_100g": 7.8,
+  "fiber_per_100g": 3.2,
+  "kcal_per_serving": 555,
+  "serving_weight_g": 300,
+  "total_raw_weight_g": 300,
+  "total_cooked_weight_g": 600,
+  "cooking_factor": 2.0,
+  "allergens": [
+    "gluten",
+    "dairy",
+    "nuts"
+  ],
+  "dietary_flags": {
+    "vegetarian": true,
+    "vegan": false,
+    "gluten_free": false,
+    "dairy_free": false,
+    "nut_free": false
+  },
+  "ingredients": [
+    {
+      "name_it": "fusilli integrali",
+      "name_en": "whole wheat fusilli",
+      "quantity": 180,
+      "unit": "g",
+      "cooking_factor": 2.1,
+      "is_optional": false,
+      "notes_it": "secchi",
+      "notes_en": "dry"
+    },
+    {
+      "name_it": "basilico fresco",
+      "name_en": "fresh basil",
+      "quantity": 40,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "un mazzetto",
+      "notes_en": "one bunch"
+    },
+    {
+      "name_it": "pinoli",
+      "name_en": "pine nuts",
+      "quantity": 25,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "parmigiano reggiano",
+      "name_en": "Parmesan cheese",
+      "quantity": 30,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "grattugiato",
+      "notes_en": "grated"
+    },
+    {
+      "name_it": "olio extravergine",
+      "name_en": "extra virgin olive oil",
+      "quantity": 40,
+      "unit": "ml",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "aglio",
+      "name_en": "garlic",
+      "quantity": 5,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": true,
+      "notes_it": "1 spicchio piccolo",
+      "notes_en": "1 small clove"
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "instruction_it": "Cuocere la pasta in abbondante acqua salata secondo le istruzioni della confezione.",
+      "instruction_en": "Cook pasta in plenty of salted water according to package instructions."
+    },
+    {
+      "step_number": 2,
+      "instruction_it": "Nel frattempo, frullare basilico, pinoli, aglio, parmigiano e olio fino a ottenere una crema.",
+      "instruction_en": "Meanwhile, blend basil, pine nuts, garlic, Parmesan, and oil until creamy."
+    },
+    {
+      "step_number": 3,
+      "instruction_it": "Scolare la pasta conservando un po' di acqua di cottura. Condire con il pesto, amalgamando con l'acqua se necessario.",
+      "instruction_en": "Drain pasta reserving some cooking water. Toss with pesto, adding water if needed."
+    }
+  ],
+  "tags": [
+    "pasta",
+    "pesto",
+    "italian",
+    "vegetarian",
+    "quick",
+    "basil",
+    "comfort-food"
+  ],
+  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767190111/nutriplanit/recipes/nutriplanit/recipes/pasta_integrale_pesto.jpg"
+}

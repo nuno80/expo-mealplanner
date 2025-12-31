@@ -1,0 +1,102 @@
+{
+  "name_it": "Porridge di avena con mirtilli",
+  "name_en": "Oatmeal Porridge with Blueberries",
+  "slug": "porridge-avena-mirtilli",
+  "description_it": "Una colazione calda e nutriente con fiocchi d'avena, latte e mirtilli freschi. Perfetta per iniziare la giornata.",
+  "description_en": "A warm and nutritious breakfast with oat flakes, milk, and fresh blueberries. Perfect to start the day.",
+  "category": "breakfast",
+  "preferred_meal": "both",
+  "servings": 2,
+  "prep_time_min": 5,
+  "cook_time_min": 10,
+  "difficulty": "easy",
+  "kcal_per_100g": 89,
+  "protein_per_100g": 3.2,
+  "carbs_per_100g": 14.5,
+  "fat_per_100g": 2.1,
+  "fiber_per_100g": 1.8,
+  "kcal_per_serving": 267,
+  "serving_weight_g": 300,
+  "total_raw_weight_g": 370,
+  "total_cooked_weight_g": 600,
+  "cooking_factor": 1.62,
+  "allergens": [
+    "gluten",
+    "dairy"
+  ],
+  "dietary_flags": {
+    "vegetarian": true,
+    "vegan": false,
+    "gluten_free": false,
+    "dairy_free": false,
+    "nut_free": true
+  },
+  "ingredients": [
+    {
+      "name_it": "fiocchi d'avena",
+      "name_en": "rolled oats",
+      "quantity": 80,
+      "unit": "g",
+      "cooking_factor": 2.5,
+      "is_optional": false,
+      "notes_it": "integrali",
+      "notes_en": "whole grain"
+    },
+    {
+      "name_it": "latte intero",
+      "name_en": "whole milk",
+      "quantity": 250,
+      "unit": "ml",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "mirtilli freschi",
+      "name_en": "fresh blueberries",
+      "quantity": 80,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "miele",
+      "name_en": "honey",
+      "quantity": 20,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": true,
+      "notes_it": "o sciroppo d'acero",
+      "notes_en": "or maple syrup"
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "instruction_it": "Versare il latte in un pentolino e portare a leggero bollore.",
+      "instruction_en": "Pour the milk into a small saucepan and bring to a gentle boil."
+    },
+    {
+      "step_number": 2,
+      "instruction_it": "Aggiungere i fiocchi d'avena, abbassare la fiamma e cuocere per 5-7 minuti mescolando.",
+      "instruction_en": "Add the oats, lower the heat, and cook for 5-7 minutes while stirring."
+    },
+    {
+      "step_number": 3,
+      "instruction_it": "Dividere in due ciotole, aggiungere i mirtilli e il miele. Servire caldo.",
+      "instruction_en": "Divide into two bowls, top with blueberries and honey. Serve warm."
+    }
+  ],
+  "tags": [
+    "breakfast",
+    "oatmeal",
+    "healthy",
+    "quick",
+    "vegetarian",
+    "high-fiber"
+  ],
+  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767190101/nutriplanit/recipes/nutriplanit/recipes/porridge_avena_mirtilli.jpg"
+}

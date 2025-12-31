@@ -1,0 +1,122 @@
+{
+  "name_it": "Wrap di pollo e verdure",
+  "name_en": "Chicken and Vegetable Wrap",
+  "slug": "wrap-pollo-verdure",
+  "description_it": "Pranzo veloce con petto di pollo grigliato, verdure croccanti e salsa yogurt in una tortilla integrale.",
+  "description_en": "Quick lunch with grilled chicken breast, crunchy vegetables, and yogurt sauce in a whole wheat tortilla.",
+  "category": "main_course",
+  "preferred_meal": "lunch",
+  "servings": 2,
+  "prep_time_min": 15,
+  "cook_time_min": 10,
+  "difficulty": "easy",
+  "kcal_per_100g": 152,
+  "protein_per_100g": 12.5,
+  "carbs_per_100g": 14.2,
+  "fat_per_100g": 5.8,
+  "fiber_per_100g": 2.1,
+  "kcal_per_serving": 380,
+  "serving_weight_g": 250,
+  "total_raw_weight_g": 450,
+  "total_cooked_weight_g": 500,
+  "cooking_factor": 1.11,
+  "allergens": [
+    "gluten",
+    "dairy"
+  ],
+  "dietary_flags": {
+    "vegetarian": false,
+    "vegan": false,
+    "gluten_free": false,
+    "dairy_free": false,
+    "nut_free": true
+  },
+  "ingredients": [
+    {
+      "name_it": "petto di pollo",
+      "name_en": "chicken breast",
+      "quantity": 200,
+      "unit": "g",
+      "cooking_factor": 0.8,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "tortilla integrale",
+      "name_en": "whole wheat tortilla",
+      "quantity": 120,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "2 pezzi",
+      "notes_en": "2 pieces"
+    },
+    {
+      "name_it": "lattuga",
+      "name_en": "lettuce",
+      "quantity": 50,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "iceberg o romana",
+      "notes_en": "iceberg or romaine"
+    },
+    {
+      "name_it": "pomodoro",
+      "name_en": "tomato",
+      "quantity": 60,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "a fette",
+      "notes_en": "sliced"
+    },
+    {
+      "name_it": "yogurt greco",
+      "name_en": "Greek yogurt",
+      "quantity": 50,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "0% grassi",
+      "notes_en": "0% fat"
+    },
+    {
+      "name_it": "succo di limone",
+      "name_en": "lemon juice",
+      "quantity": 10,
+      "unit": "ml",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "instruction_it": "Grigliare il petto di pollo per 5-6 minuti per lato. Tagliare a strisce.",
+      "instruction_en": "Grill the chicken breast for 5-6 minutes per side. Cut into strips."
+    },
+    {
+      "step_number": 2,
+      "instruction_it": "Mescolare lo yogurt con il succo di limone, sale e pepe per creare la salsa.",
+      "instruction_en": "Mix yogurt with lemon juice, salt, and pepper to create the sauce."
+    },
+    {
+      "step_number": 3,
+      "instruction_it": "Scaldare le tortilla, farcire con pollo, lattuga, pomodoro e salsa. Arrotolare e servire.",
+      "instruction_en": "Warm the tortillas, fill with chicken, lettuce, tomato, and sauce. Roll up and serve."
+    }
+  ],
+  "tags": [
+    "wrap",
+    "chicken",
+    "lunch",
+    "quick",
+    "protein",
+    "healthy"
+  ],
+  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767190106/nutriplanit/recipes/nutriplanit/recipes/wrap_pollo_verdure.jpg"
+}

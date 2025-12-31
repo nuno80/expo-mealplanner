@@ -1,0 +1,98 @@
+{
+  "name_it": "Hummus con bastoncini di verdure",
+  "name_en": "Hummus with Vegetable Sticks",
+  "slug": "hummus-bastoncini-verdure",
+  "description_it": "Snack vegano con hummus cremoso e verdure croccanti da intingere.",
+  "description_en": "Vegan snack with creamy hummus and crunchy vegetable sticks for dipping.",
+  "category": "snack",
+  "preferred_meal": "both",
+  "servings": 2,
+  "prep_time_min": 10,
+  "cook_time_min": 0,
+  "difficulty": "easy",
+  "kcal_per_100g": 92,
+  "protein_per_100g": 3.8,
+  "carbs_per_100g": 8.5,
+  "fat_per_100g": 5.2,
+  "fiber_per_100g": 2.8,
+  "kcal_per_serving": 184,
+  "serving_weight_g": 200,
+  "total_raw_weight_g": 400,
+  "total_cooked_weight_g": 400,
+  "cooking_factor": 1.0,
+  "allergens": [
+    "sesame"
+  ],
+  "dietary_flags": {
+    "vegetarian": true,
+    "vegan": true,
+    "gluten_free": true,
+    "dairy_free": true,
+    "nut_free": true
+  },
+  "ingredients": [
+    {
+      "name_it": "hummus",
+      "name_en": "hummus",
+      "quantity": 150,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "fatto in casa o acquistato",
+      "notes_en": "homemade or store-bought"
+    },
+    {
+      "name_it": "carote",
+      "name_en": "carrots",
+      "quantity": 100,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "a bastoncini",
+      "notes_en": "cut into sticks"
+    },
+    {
+      "name_it": "cetriolo",
+      "name_en": "cucumber",
+      "quantity": 100,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "a bastoncini",
+      "notes_en": "cut into sticks"
+    },
+    {
+      "name_it": "sedano",
+      "name_en": "celery",
+      "quantity": 50,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": true,
+      "notes_it": "coste tagliate",
+      "notes_en": "stalks cut"
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "instruction_it": "Lavare e tagliare le verdure a bastoncini. Disporre l'hummus in una ciotola al centro.",
+      "instruction_en": "Wash and cut vegetables into sticks. Place hummus in a bowl in the center."
+    },
+    {
+      "step_number": 2,
+      "instruction_it": "Servire le verdure intorno all'hummus per intingere.",
+      "instruction_en": "Serve vegetables around the hummus for dipping."
+    }
+  ],
+  "tags": [
+    "snack",
+    "hummus",
+    "vegan",
+    "vegetarian",
+    "gluten-free",
+    "raw",
+    "healthy",
+    "dip"
+  ],
+  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767190114/nutriplanit/recipes/nutriplanit/recipes/hummus_bastoncini_verdure.jpg"
+}

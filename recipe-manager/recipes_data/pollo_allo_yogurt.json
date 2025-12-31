@@ -36,7 +36,7 @@
       "name_en": "flageolet beans",
       "quantity": 540,
       "unit": "g",
-      "cooking_factor": 1.00,
+      "cooking_factor": 1.0,
       "is_optional": false,
       "notes_it": "in scatola, scolati (circa 3 tazze)",
       "notes_en": "canned, drained (approx 3 cups)"
@@ -46,7 +46,7 @@
       "name_en": "bell peppers",
       "quantity": 400,
       "unit": "g",
-      "cooking_factor": 0.90,
+      "cooking_factor": 0.9,
       "is_optional": false,
       "notes_it": "gialli o rossi, tagliati a listarelle",
       "notes_en": "yellow or red, cut into strips"
@@ -56,7 +56,7 @@
       "name_en": "olive oil",
       "quantity": 65,
       "unit": "ml",
-      "cooking_factor": 1.00,
+      "cooking_factor": 1.0,
       "is_optional": false,
       "notes_it": null,
       "notes_en": null
@@ -66,7 +66,7 @@
       "name_en": "garlic",
       "quantity": 30,
       "unit": "g",
-      "cooking_factor": 0.90,
+      "cooking_factor": 0.9,
       "is_optional": false,
       "notes_it": "spicchi schiacciati (circa 6)",
       "notes_en": "cloves, crushed (approx 6)"
@@ -76,7 +76,7 @@
       "name_en": "wine vinegar",
       "quantity": 30,
       "unit": "ml",
-      "cooking_factor": 0.80,
+      "cooking_factor": 0.8,
       "is_optional": false,
       "notes_it": null,
       "notes_en": null
@@ -86,7 +86,7 @@
       "name_en": "fresh parsley",
       "quantity": 10,
       "unit": "g",
-      "cooking_factor": 1.00,
+      "cooking_factor": 1.0,
       "is_optional": false,
       "notes_it": "tritato",
       "notes_en": "chopped"
@@ -96,7 +96,7 @@
       "name_en": "Espelette pepper",
       "quantity": 0.4,
       "unit": "g",
-      "cooking_factor": 1.00,
+      "cooking_factor": 1.0,
       "is_optional": true,
       "notes_it": "in polvere (o pepe di Cayenna)",
       "notes_en": "powder (or Cayenne pepper)"
@@ -138,5 +138,6 @@
     "gluten-free",
     "healthy",
     "high-fiber"
-  ]
+  ],
+  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767190117/nutriplanit/recipes/nutriplanit/recipes/pollo_allo_yogurt.jpg"
 }

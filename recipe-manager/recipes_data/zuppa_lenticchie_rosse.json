@@ -1,0 +1,140 @@
+{
+  "name_it": "Zuppa di lenticchie rosse",
+  "name_en": "Red Lentil Soup",
+  "slug": "zuppa-lenticchie-rosse",
+  "description_it": "Zuppa cremosa di lenticchie rosse con carote, cumino e limone. Comfort food vegano.",
+  "description_en": "Creamy red lentil soup with carrots, cumin, and lemon. Vegan comfort food.",
+  "category": "main_course",
+  "preferred_meal": "both",
+  "servings": 4,
+  "prep_time_min": 10,
+  "cook_time_min": 25,
+  "difficulty": "easy",
+  "kcal_per_100g": 68,
+  "protein_per_100g": 4.1,
+  "carbs_per_100g": 10.5,
+  "fat_per_100g": 1.2,
+  "fiber_per_100g": 3.8,
+  "kcal_per_serving": 238,
+  "serving_weight_g": 350,
+  "total_raw_weight_g": 1100,
+  "total_cooked_weight_g": 1400,
+  "cooking_factor": 1.27,
+  "allergens": [],
+  "dietary_flags": {
+    "vegetarian": true,
+    "vegan": true,
+    "gluten_free": true,
+    "dairy_free": true,
+    "nut_free": true
+  },
+  "ingredients": [
+    {
+      "name_it": "lenticchie rosse",
+      "name_en": "red lentils",
+      "quantity": 250,
+      "unit": "g",
+      "cooking_factor": 2.2,
+      "is_optional": false,
+      "notes_it": "secche",
+      "notes_en": "dry"
+    },
+    {
+      "name_it": "carote",
+      "name_en": "carrots",
+      "quantity": 150,
+      "unit": "g",
+      "cooking_factor": 0.9,
+      "is_optional": false,
+      "notes_it": "a rondelle",
+      "notes_en": "sliced"
+    },
+    {
+      "name_it": "cipolla",
+      "name_en": "onion",
+      "quantity": 100,
+      "unit": "g",
+      "cooking_factor": 0.85,
+      "is_optional": false,
+      "notes_it": "tritata",
+      "notes_en": "chopped"
+    },
+    {
+      "name_it": "aglio",
+      "name_en": "garlic",
+      "quantity": 10,
+      "unit": "g",
+      "cooking_factor": 0.9,
+      "is_optional": false,
+      "notes_it": "2 spicchi",
+      "notes_en": "2 cloves"
+    },
+    {
+      "name_it": "brodo vegetale",
+      "name_en": "vegetable broth",
+      "quantity": 800,
+      "unit": "ml",
+      "cooking_factor": 0.85,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "cumino in polvere",
+      "name_en": "ground cumin",
+      "quantity": 5,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "1 cucchiaino",
+      "notes_en": "1 tsp"
+    },
+    {
+      "name_it": "succo di limone",
+      "name_en": "lemon juice",
+      "quantity": 20,
+      "unit": "ml",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "fresco",
+      "notes_en": "fresh"
+    },
+    {
+      "name_it": "olio d'oliva",
+      "name_en": "olive oil",
+      "quantity": 20,
+      "unit": "ml",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "instruction_it": "Soffriggere cipolla e aglio in olio per 3 minuti. Aggiungere carote e cumino, cuocere 2 minuti.",
+      "instruction_en": "Sauté onion and garlic in oil for 3 minutes. Add carrots and cumin, cook 2 minutes."
+    },
+    {
+      "step_number": 2,
+      "instruction_it": "Aggiungere lenticchie e brodo. Portare a bollore, poi cuocere a fuoco medio per 20 minuti.",
+      "instruction_en": "Add lentils and broth. Bring to boil, then cook over medium heat for 20 minutes."
+    },
+    {
+      "step_number": 3,
+      "instruction_it": "Frullare parzialmente per una consistenza cremosa. Aggiungere succo di limone e servire.",
+      "instruction_en": "Partially blend for creamy texture. Add lemon juice and serve."
+    }
+  ],
+  "tags": [
+    "soup",
+    "lentils",
+    "vegan",
+    "vegetarian",
+    "gluten-free",
+    "comfort-food",
+    "high-fiber"
+  ],
+  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767190107/nutriplanit/recipes/nutriplanit/recipes/zuppa_lenticchie_rosse.jpg"
+}

@@ -1,0 +1,73 @@
+{
+  "name_it": "Banana con burro di mandorle",
+  "name_en": "Banana with Almond Butter",
+  "slug": "banana-burro-mandorle",
+  "description_it": "Snack energetico e veloce con banana fresca e burro di mandorle ricco di proteine.",
+  "description_en": "Quick energy snack with fresh banana and protein-rich almond butter.",
+  "category": "snack",
+  "preferred_meal": "both",
+  "servings": 1,
+  "prep_time_min": 2,
+  "cook_time_min": 0,
+  "difficulty": "easy",
+  "kcal_per_100g": 142,
+  "protein_per_100g": 3.5,
+  "carbs_per_100g": 21.2,
+  "fat_per_100g": 5.8,
+  "fiber_per_100g": 2.5,
+  "kcal_per_serving": 213,
+  "serving_weight_g": 150,
+  "total_raw_weight_g": 150,
+  "total_cooked_weight_g": 150,
+  "cooking_factor": 1.0,
+  "allergens": [
+    "nuts"
+  ],
+  "dietary_flags": {
+    "vegetarian": true,
+    "vegan": true,
+    "gluten_free": true,
+    "dairy_free": true,
+    "nut_free": false
+  },
+  "ingredients": [
+    {
+      "name_it": "banana",
+      "name_en": "banana",
+      "quantity": 120,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "1 media",
+      "notes_en": "1 medium"
+    },
+    {
+      "name_it": "burro di mandorle",
+      "name_en": "almond butter",
+      "quantity": 30,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "2 cucchiai",
+      "notes_en": "2 tablespoons"
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "instruction_it": "Sbucciare la banana e tagliarla a rondelle. Servire con il burro di mandorle come accompagnamento.",
+      "instruction_en": "Peel the banana and slice into rounds. Serve with almond butter on the side for dipping."
+    }
+  ],
+  "tags": [
+    "snack",
+    "banana",
+    "almond-butter",
+    "vegan",
+    "vegetarian",
+    "gluten-free",
+    "quick",
+    "energy"
+  ],
+  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767190115/nutriplanit/recipes/nutriplanit/recipes/banana_burro_mandorle.jpg"
+}

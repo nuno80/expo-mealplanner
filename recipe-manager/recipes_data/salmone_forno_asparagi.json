@@ -1,0 +1,113 @@
+{
+  "name_it": "Salmone al forno con asparagi",
+  "name_en": "Baked Salmon with Asparagus",
+  "slug": "salmone-forno-asparagi",
+  "description_it": "Filetti di salmone al forno con asparagi croccanti. Ricco di omega-3 e proteine.",
+  "description_en": "Oven-baked salmon fillets with crispy asparagus. Rich in omega-3 and protein.",
+  "category": "main_course",
+  "preferred_meal": "dinner",
+  "servings": 2,
+  "prep_time_min": 10,
+  "cook_time_min": 20,
+  "difficulty": "easy",
+  "kcal_per_100g": 152,
+  "protein_per_100g": 18.5,
+  "carbs_per_100g": 2.1,
+  "fat_per_100g": 8.2,
+  "fiber_per_100g": 1.5,
+  "kcal_per_serving": 380,
+  "serving_weight_g": 250,
+  "total_raw_weight_g": 570,
+  "total_cooked_weight_g": 500,
+  "cooking_factor": 0.88,
+  "allergens": [
+    "fish"
+  ],
+  "dietary_flags": {
+    "vegetarian": false,
+    "vegan": false,
+    "gluten_free": true,
+    "dairy_free": true,
+    "nut_free": true
+  },
+  "ingredients": [
+    {
+      "name_it": "filetti di salmone",
+      "name_en": "salmon fillets",
+      "quantity": 300,
+      "unit": "g",
+      "cooking_factor": 0.8,
+      "is_optional": false,
+      "notes_it": "2 pezzi da 150g",
+      "notes_en": "2 pieces of 150g each"
+    },
+    {
+      "name_it": "asparagi",
+      "name_en": "asparagus",
+      "quantity": 250,
+      "unit": "g",
+      "cooking_factor": 0.9,
+      "is_optional": false,
+      "notes_it": "mazzetto",
+      "notes_en": "bunch"
+    },
+    {
+      "name_it": "olio d'oliva",
+      "name_en": "olive oil",
+      "quantity": 25,
+      "unit": "ml",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "limone",
+      "name_en": "lemon",
+      "quantity": 50,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "succo e scorza",
+      "notes_en": "juice and zest"
+    },
+    {
+      "name_it": "aglio in polvere",
+      "name_en": "garlic powder",
+      "quantity": 3,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "instruction_it": "Preriscaldare il forno a 200°C. Disporre salmone e asparagi in una teglia.",
+      "instruction_en": "Preheat oven to 200°C. Arrange salmon and asparagus on a baking sheet."
+    },
+    {
+      "step_number": 2,
+      "instruction_it": "Condire con olio, succo di limone, aglio in polvere, sale e pepe.",
+      "instruction_en": "Season with oil, lemon juice, garlic powder, salt, and pepper."
+    },
+    {
+      "step_number": 3,
+      "instruction_it": "Cuocere per 18-20 minuti. Il salmone deve essere sfogliabile. Servire con scorza di limone.",
+      "instruction_en": "Bake for 18-20 minutes. Salmon should flake easily. Serve with lemon zest."
+    }
+  ],
+  "tags": [
+    "salmon",
+    "fish",
+    "baked",
+    "asparagus",
+    "omega-3",
+    "protein",
+    "gluten-free",
+    "healthy"
+  ],
+  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767190109/nutriplanit/recipes/nutriplanit/recipes/salmone_forno_asparagi.jpg"
+}

@@ -1,0 +1,132 @@
+{
+  "name_it": "Insalata greca",
+  "name_en": "Greek Salad",
+  "slug": "insalata-greca",
+  "description_it": "Classica insalata mediterranea con pomodori, cetrioli, olive e feta. Fresca e leggera.",
+  "description_en": "Classic Mediterranean salad with tomatoes, cucumbers, olives, and feta. Fresh and light.",
+  "category": "main_course",
+  "preferred_meal": "lunch",
+  "servings": 2,
+  "prep_time_min": 15,
+  "cook_time_min": 0,
+  "difficulty": "easy",
+  "kcal_per_100g": 95,
+  "protein_per_100g": 4.1,
+  "carbs_per_100g": 4.8,
+  "fat_per_100g": 7.2,
+  "fiber_per_100g": 1.5,
+  "kcal_per_serving": 285,
+  "serving_weight_g": 300,
+  "total_raw_weight_g": 600,
+  "total_cooked_weight_g": 600,
+  "cooking_factor": 1.0,
+  "allergens": [
+    "dairy"
+  ],
+  "dietary_flags": {
+    "vegetarian": true,
+    "vegan": false,
+    "gluten_free": true,
+    "dairy_free": false,
+    "nut_free": true
+  },
+  "ingredients": [
+    {
+      "name_it": "pomodori",
+      "name_en": "tomatoes",
+      "quantity": 250,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "maturi, a cubetti",
+      "notes_en": "ripe, cubed"
+    },
+    {
+      "name_it": "cetriolo",
+      "name_en": "cucumber",
+      "quantity": 150,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "a fette",
+      "notes_en": "sliced"
+    },
+    {
+      "name_it": "feta",
+      "name_en": "feta cheese",
+      "quantity": 100,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "a cubetti",
+      "notes_en": "cubed"
+    },
+    {
+      "name_it": "olive nere",
+      "name_en": "black olives",
+      "quantity": 50,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "denocciolate",
+      "notes_en": "pitted"
+    },
+    {
+      "name_it": "cipolla rossa",
+      "name_en": "red onion",
+      "quantity": 30,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "a fettine sottili",
+      "notes_en": "thinly sliced"
+    },
+    {
+      "name_it": "olio extravergine",
+      "name_en": "extra virgin olive oil",
+      "quantity": 30,
+      "unit": "ml",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "origano secco",
+      "name_en": "dried oregano",
+      "quantity": 2,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "instruction_it": "Tagliare i pomodori a cubetti, il cetriolo a fette e la cipolla sottile.",
+      "instruction_en": "Cut tomatoes into cubes, cucumber into slices, and onion into thin slices."
+    },
+    {
+      "step_number": 2,
+      "instruction_it": "Disporre le verdure in un'insalatiera, aggiungere le olive e la feta a cubetti.",
+      "instruction_en": "Arrange vegetables in a salad bowl, add olives and cubed feta."
+    },
+    {
+      "step_number": 3,
+      "instruction_it": "Condire con olio, origano, sale e pepe. Mescolare delicatamente e servire.",
+      "instruction_en": "Dress with oil, oregano, salt, and pepper. Toss gently and serve."
+    }
+  ],
+  "tags": [
+    "salad",
+    "greek",
+    "mediterranean",
+    "vegetarian",
+    "gluten-free",
+    "raw",
+    "healthy"
+  ],
+  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767190105/nutriplanit/recipes/nutriplanit/recipes/insalata_greca.jpg"
+}

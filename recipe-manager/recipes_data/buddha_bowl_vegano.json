@@ -1,0 +1,133 @@
+{
+  "name_it": "Buddha bowl vegano",
+  "name_en": "Vegan Buddha Bowl",
+  "slug": "buddha-bowl-vegano",
+  "description_it": "Ciotola colorata con quinoa, ceci, verdure arrosto e hummus. Pasto completo e vegano.",
+  "description_en": "Colorful bowl with quinoa, chickpeas, roasted vegetables, and hummus. Complete vegan meal.",
+  "category": "main_course",
+  "preferred_meal": "lunch",
+  "servings": 2,
+  "prep_time_min": 15,
+  "cook_time_min": 25,
+  "difficulty": "easy",
+  "kcal_per_100g": 128,
+  "protein_per_100g": 5.2,
+  "carbs_per_100g": 16.8,
+  "fat_per_100g": 4.5,
+  "fiber_per_100g": 4.2,
+  "kcal_per_serving": 448,
+  "serving_weight_g": 350,
+  "total_raw_weight_g": 620,
+  "total_cooked_weight_g": 700,
+  "cooking_factor": 1.13,
+  "allergens": [
+    "sesame"
+  ],
+  "dietary_flags": {
+    "vegetarian": true,
+    "vegan": true,
+    "gluten_free": true,
+    "dairy_free": true,
+    "nut_free": true
+  },
+  "ingredients": [
+    {
+      "name_it": "quinoa",
+      "name_en": "quinoa",
+      "quantity": 120,
+      "unit": "g",
+      "cooking_factor": 2.5,
+      "is_optional": false,
+      "notes_it": "secca",
+      "notes_en": "dry"
+    },
+    {
+      "name_it": "ceci in scatola",
+      "name_en": "canned chickpeas",
+      "quantity": 200,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "scolati",
+      "notes_en": "drained"
+    },
+    {
+      "name_it": "zucchine",
+      "name_en": "zucchini",
+      "quantity": 150,
+      "unit": "g",
+      "cooking_factor": 0.85,
+      "is_optional": false,
+      "notes_it": "a cubetti",
+      "notes_en": "cubed"
+    },
+    {
+      "name_it": "peperone rosso",
+      "name_en": "red bell pepper",
+      "quantity": 100,
+      "unit": "g",
+      "cooking_factor": 0.9,
+      "is_optional": false,
+      "notes_it": "a strisce",
+      "notes_en": "sliced"
+    },
+    {
+      "name_it": "hummus",
+      "name_en": "hummus",
+      "quantity": 60,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "olio d'oliva",
+      "name_en": "olive oil",
+      "quantity": 20,
+      "unit": "ml",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "semi misti",
+      "name_en": "mixed seeds",
+      "quantity": 15,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": true,
+      "notes_it": "sesamo, zucca",
+      "notes_en": "sesame, pumpkin"
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "instruction_it": "Cuocere la quinoa in acqua salata per circa 15 minuti. Scolare e lasciar raffreddare.",
+      "instruction_en": "Cook quinoa in salted water for about 15 minutes. Drain and let cool."
+    },
+    {
+      "step_number": 2,
+      "instruction_it": "Arrostire zucchine e peperoni in forno a 200°C per 20 minuti con un filo d'olio.",
+      "instruction_en": "Roast zucchini and peppers in oven at 200°C for 20 minutes with a drizzle of oil."
+    },
+    {
+      "step_number": 3,
+      "instruction_it": "Comporre le bowl: quinoa alla base, verdure arrosto, ceci, hummus al centro. Cospargere con semi.",
+      "instruction_en": "Assemble the bowls: quinoa as base, roasted vegetables, chickpeas, hummus in center. Top with seeds."
+    }
+  ],
+  "tags": [
+    "bowl",
+    "vegan",
+    "vegetarian",
+    "quinoa",
+    "chickpeas",
+    "healthy",
+    "gluten-free",
+    "meal-prep"
+  ],
+  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767190106/nutriplanit/recipes/nutriplanit/recipes/buddha_bowl_vegano.jpg"
+}

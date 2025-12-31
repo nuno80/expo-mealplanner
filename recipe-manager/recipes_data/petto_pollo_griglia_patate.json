@@ -1,0 +1,110 @@
+{
+  "name_it": "Petto di pollo alla griglia con patate",
+  "name_en": "Grilled Chicken Breast with Potatoes",
+  "slug": "petto-pollo-griglia-patate",
+  "description_it": "Petto di pollo marinato e grigliato con patate al forno. Classico piatto proteico.",
+  "description_en": "Marinated grilled chicken breast with roasted potatoes. Classic protein-rich dish.",
+  "category": "main_course",
+  "preferred_meal": "dinner",
+  "servings": 2,
+  "prep_time_min": 15,
+  "cook_time_min": 35,
+  "difficulty": "easy",
+  "kcal_per_100g": 135,
+  "protein_per_100g": 15.8,
+  "carbs_per_100g": 12.5,
+  "fat_per_100g": 3.2,
+  "fiber_per_100g": 1.8,
+  "kcal_per_serving": 432,
+  "serving_weight_g": 320,
+  "total_raw_weight_g": 700,
+  "total_cooked_weight_g": 640,
+  "cooking_factor": 0.91,
+  "allergens": [],
+  "dietary_flags": {
+    "vegetarian": false,
+    "vegan": false,
+    "gluten_free": true,
+    "dairy_free": true,
+    "nut_free": true
+  },
+  "ingredients": [
+    {
+      "name_it": "petto di pollo",
+      "name_en": "chicken breast",
+      "quantity": 350,
+      "unit": "g",
+      "cooking_factor": 0.8,
+      "is_optional": false,
+      "notes_it": "2 pezzi",
+      "notes_en": "2 pieces"
+    },
+    {
+      "name_it": "patate",
+      "name_en": "potatoes",
+      "quantity": 300,
+      "unit": "g",
+      "cooking_factor": 0.9,
+      "is_optional": false,
+      "notes_it": "a spicchi",
+      "notes_en": "cut into wedges"
+    },
+    {
+      "name_it": "rosmarino fresco",
+      "name_en": "fresh rosemary",
+      "quantity": 5,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "olio d'oliva",
+      "name_en": "olive oil",
+      "quantity": 25,
+      "unit": "ml",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "aglio",
+      "name_en": "garlic",
+      "quantity": 10,
+      "unit": "g",
+      "cooking_factor": 0.9,
+      "is_optional": false,
+      "notes_it": "2 spicchi",
+      "notes_en": "2 cloves"
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "instruction_it": "Marinare il pollo con olio, rosmarino, aglio tritato, sale e pepe per almeno 15 minuti.",
+      "instruction_en": "Marinate chicken with oil, rosemary, minced garlic, salt, and pepper for at least 15 minutes."
+    },
+    {
+      "step_number": 2,
+      "instruction_it": "Preriscaldare forno a 200°C. Disporre le patate a spicchi in teglia, condire e cuocere per 25 minuti.",
+      "instruction_en": "Preheat oven to 200°C. Arrange potato wedges on baking sheet, season, and cook for 25 minutes."
+    },
+    {
+      "step_number": 3,
+      "instruction_it": "Grigliare il pollo per 6-7 minuti per lato. Servire con le patate.",
+      "instruction_en": "Grill chicken for 6-7 minutes per side. Serve with potatoes."
+    }
+  ],
+  "tags": [
+    "chicken",
+    "grilled",
+    "potatoes",
+    "protein",
+    "dinner",
+    "gluten-free",
+    "classic"
+  ],
+  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767190109/nutriplanit/recipes/nutriplanit/recipes/petto_pollo_griglia_patate.jpg"
+}

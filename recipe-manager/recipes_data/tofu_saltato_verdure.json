@@ -1,0 +1,133 @@
+{
+  "name_it": "Tofu saltato con verdure",
+  "name_en": "Stir-Fried Tofu with Vegetables",
+  "slug": "tofu-saltato-verdure",
+  "description_it": "Tofu croccante saltato in padella con verdure miste e salsa di soia. Piatto vegano proteico.",
+  "description_en": "Crispy stir-fried tofu with mixed vegetables and soy sauce. Protein-rich vegan dish.",
+  "category": "main_course",
+  "preferred_meal": "dinner",
+  "servings": 2,
+  "prep_time_min": 15,
+  "cook_time_min": 15,
+  "difficulty": "medium",
+  "kcal_per_100g": 98,
+  "protein_per_100g": 8.5,
+  "carbs_per_100g": 6.2,
+  "fat_per_100g": 5.1,
+  "fiber_per_100g": 2.4,
+  "kcal_per_serving": 294,
+  "serving_weight_g": 300,
+  "total_raw_weight_g": 680,
+  "total_cooked_weight_g": 600,
+  "cooking_factor": 0.88,
+  "allergens": [
+    "soy"
+  ],
+  "dietary_flags": {
+    "vegetarian": true,
+    "vegan": true,
+    "gluten_free": true,
+    "dairy_free": true,
+    "nut_free": true
+  },
+  "ingredients": [
+    {
+      "name_it": "tofu al naturale",
+      "name_en": "firm tofu",
+      "quantity": 300,
+      "unit": "g",
+      "cooking_factor": 0.85,
+      "is_optional": false,
+      "notes_it": "ben scolato, a cubetti",
+      "notes_en": "well drained, cubed"
+    },
+    {
+      "name_it": "broccoli",
+      "name_en": "broccoli",
+      "quantity": 150,
+      "unit": "g",
+      "cooking_factor": 0.85,
+      "is_optional": false,
+      "notes_it": "cimette",
+      "notes_en": "florets"
+    },
+    {
+      "name_it": "peperone rosso",
+      "name_en": "red bell pepper",
+      "quantity": 100,
+      "unit": "g",
+      "cooking_factor": 0.9,
+      "is_optional": false,
+      "notes_it": "a strisce",
+      "notes_en": "sliced"
+    },
+    {
+      "name_it": "zucchine",
+      "name_en": "zucchini",
+      "quantity": 100,
+      "unit": "g",
+      "cooking_factor": 0.85,
+      "is_optional": false,
+      "notes_it": "a mezzaluna",
+      "notes_en": "half-moon slices"
+    },
+    {
+      "name_it": "salsa di soia",
+      "name_en": "soy sauce",
+      "quantity": 30,
+      "unit": "ml",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "tamari per gluten-free",
+      "notes_en": "tamari for gluten-free"
+    },
+    {
+      "name_it": "olio di sesamo",
+      "name_en": "sesame oil",
+      "quantity": 15,
+      "unit": "ml",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "zenzero fresco",
+      "name_en": "fresh ginger",
+      "quantity": 10,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "grattugiato",
+      "notes_en": "grated"
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "instruction_it": "Scaldare l'olio di sesamo in un wok. Rosolare i cubetti di tofu fino a doratura, circa 5 minuti. Togliere e mettere da parte.",
+      "instruction_en": "Heat sesame oil in a wok. Brown tofu cubes until golden, about 5 minutes. Remove and set aside."
+    },
+    {
+      "step_number": 2,
+      "instruction_it": "Nello stesso wok, saltare broccoli, peperoni e zucchine per 5-6 minuti. Aggiungere zenzero.",
+      "instruction_en": "In the same wok, stir-fry broccoli, peppers, and zucchini for 5-6 minutes. Add ginger."
+    },
+    {
+      "step_number": 3,
+      "instruction_it": "Aggiungere il tofu e la salsa di soia. Mescolare bene e servire caldo.",
+      "instruction_en": "Add tofu and soy sauce. Toss well and serve hot."
+    }
+  ],
+  "tags": [
+    "tofu",
+    "stir-fry",
+    "vegan",
+    "vegetarian",
+    "asian",
+    "gluten-free",
+    "protein",
+    "healthy"
+  ],
+  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767190111/nutriplanit/recipes/nutriplanit/recipes/tofu_saltato_verdure.jpg"
+}

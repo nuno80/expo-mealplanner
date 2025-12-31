@@ -1,0 +1,112 @@
+{
+  "name_it": "Pancake proteici alla banana",
+  "name_en": "Banana Protein Pancakes",
+  "slug": "pancake-proteici-banana",
+  "description_it": "Pancake soffici e proteici preparati con avena, banana e uova. Senza farina aggiunta.",
+  "description_en": "Fluffy protein pancakes made with oats, banana, and eggs. No added flour.",
+  "category": "breakfast",
+  "preferred_meal": "both",
+  "servings": 2,
+  "prep_time_min": 10,
+  "cook_time_min": 10,
+  "difficulty": "easy",
+  "kcal_per_100g": 145,
+  "protein_per_100g": 7.2,
+  "carbs_per_100g": 18.5,
+  "fat_per_100g": 5.1,
+  "fiber_per_100g": 2.4,
+  "kcal_per_serving": 290,
+  "serving_weight_g": 200,
+  "total_raw_weight_g": 340,
+  "total_cooked_weight_g": 400,
+  "cooking_factor": 1.18,
+  "allergens": [
+    "eggs",
+    "gluten"
+  ],
+  "dietary_flags": {
+    "vegetarian": true,
+    "vegan": false,
+    "gluten_free": false,
+    "dairy_free": true,
+    "nut_free": true
+  },
+  "ingredients": [
+    {
+      "name_it": "banana matura",
+      "name_en": "ripe banana",
+      "quantity": 150,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "circa 1 grande",
+      "notes_en": "about 1 large"
+    },
+    {
+      "name_it": "fiocchi d'avena",
+      "name_en": "rolled oats",
+      "quantity": 80,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "frullati fini",
+      "notes_en": "blended fine"
+    },
+    {
+      "name_it": "uova",
+      "name_en": "eggs",
+      "quantity": 2,
+      "unit": "pz",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "circa 100g",
+      "notes_en": "approx 100g"
+    },
+    {
+      "name_it": "lievito per dolci",
+      "name_en": "baking powder",
+      "quantity": 5,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "1 cucchiaino",
+      "notes_en": "1 tsp"
+    },
+    {
+      "name_it": "cannella",
+      "name_en": "cinnamon",
+      "quantity": 2,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": true,
+      "notes_it": "mezzo cucchiaino",
+      "notes_en": "half tsp"
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "instruction_it": "Frullare i fiocchi d'avena fino a ottenere una farina. Aggiungere banana, uova, lievito e cannella. Frullare fino a ottenere una pastella liscia.",
+      "instruction_en": "Blend the oats until flour-like. Add banana, eggs, baking powder, and cinnamon. Blend until smooth."
+    },
+    {
+      "step_number": 2,
+      "instruction_it": "Scaldare una padella antiaderente a fuoco medio. Versare piccole quantità di pastella formando dischi.",
+      "instruction_en": "Heat a non-stick pan over medium heat. Pour small amounts of batter to form discs."
+    },
+    {
+      "step_number": 3,
+      "instruction_it": "Cuocere 2-3 minuti per lato fino a doratura. Servire con frutta fresca o miele.",
+      "instruction_en": "Cook 2-3 minutes per side until golden. Serve with fresh fruit or honey."
+    }
+  ],
+  "tags": [
+    "breakfast",
+    "pancakes",
+    "protein",
+    "banana",
+    "healthy",
+    "vegetarian"
+  ],
+  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767190104/nutriplanit/recipes/nutriplanit/recipes/pancake_proteici_banana.jpg"
+}

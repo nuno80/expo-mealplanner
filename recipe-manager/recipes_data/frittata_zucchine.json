@@ -1,0 +1,124 @@
+{
+  "name_it": "Frittata di zucchine",
+  "name_en": "Zucchini Frittata",
+  "slug": "frittata-zucchine",
+  "description_it": "Frittata soffice con zucchine e parmigiano. Perfetta per una cena leggera.",
+  "description_en": "Fluffy frittata with zucchini and Parmesan. Perfect for a light dinner.",
+  "category": "main_course",
+  "preferred_meal": "dinner",
+  "servings": 2,
+  "prep_time_min": 10,
+  "cook_time_min": 15,
+  "difficulty": "easy",
+  "kcal_per_100g": 128,
+  "protein_per_100g": 9.5,
+  "carbs_per_100g": 2.1,
+  "fat_per_100g": 9.2,
+  "fiber_per_100g": 0.8,
+  "kcal_per_serving": 320,
+  "serving_weight_g": 250,
+  "total_raw_weight_g": 550,
+  "total_cooked_weight_g": 500,
+  "cooking_factor": 0.91,
+  "allergens": [
+    "eggs",
+    "dairy"
+  ],
+  "dietary_flags": {
+    "vegetarian": true,
+    "vegan": false,
+    "gluten_free": true,
+    "dairy_free": false,
+    "nut_free": true
+  },
+  "ingredients": [
+    {
+      "name_it": "uova",
+      "name_en": "eggs",
+      "quantity": 6,
+      "unit": "pz",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "circa 300g",
+      "notes_en": "approx 300g"
+    },
+    {
+      "name_it": "zucchine",
+      "name_en": "zucchini",
+      "quantity": 200,
+      "unit": "g",
+      "cooking_factor": 0.85,
+      "is_optional": false,
+      "notes_it": "grattugiate o a rondelle",
+      "notes_en": "grated or sliced"
+    },
+    {
+      "name_it": "parmigiano reggiano",
+      "name_en": "Parmesan cheese",
+      "quantity": 40,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "grattugiato",
+      "notes_en": "grated"
+    },
+    {
+      "name_it": "cipolla",
+      "name_en": "onion",
+      "quantity": 50,
+      "unit": "g",
+      "cooking_factor": 0.85,
+      "is_optional": false,
+      "notes_it": "tritata fine",
+      "notes_en": "finely chopped"
+    },
+    {
+      "name_it": "olio d'oliva",
+      "name_en": "olive oil",
+      "quantity": 20,
+      "unit": "ml",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "prezzemolo",
+      "name_en": "parsley",
+      "quantity": 5,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": true,
+      "notes_it": "tritato",
+      "notes_en": "chopped"
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "instruction_it": "Soffriggere cipolla e zucchine in olio per 5-6 minuti fino a morbidezza.",
+      "instruction_en": "Sauté onion and zucchini in oil for 5-6 minutes until soft."
+    },
+    {
+      "step_number": 2,
+      "instruction_it": "Sbattere le uova con parmigiano, sale, pepe e prezzemolo. Versare nella padella.",
+      "instruction_en": "Beat eggs with Parmesan, salt, pepper, and parsley. Pour into the pan."
+    },
+    {
+      "step_number": 3,
+      "instruction_it": "Cuocere a fuoco basso per 8-10 minuti, poi girare o gratinare sotto il grill per 2 minuti.",
+      "instruction_en": "Cook on low heat for 8-10 minutes, then flip or finish under the broiler for 2 minutes."
+    }
+  ],
+  "tags": [
+    "frittata",
+    "eggs",
+    "zucchini",
+    "vegetarian",
+    "gluten-free",
+    "italian",
+    "dinner",
+    "light"
+  ],
+  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767190112/nutriplanit/recipes/nutriplanit/recipes/frittata_zucchine.jpg"
+}

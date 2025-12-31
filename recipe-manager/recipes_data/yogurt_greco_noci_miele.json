@@ -1,0 +1,83 @@
+{
+  "name_it": "Yogurt greco con noci e miele",
+  "name_en": "Greek Yogurt with Walnuts and Honey",
+  "slug": "yogurt-greco-noci-miele",
+  "description_it": "Snack proteico e goloso con yogurt greco, noci croccanti e un filo di miele.",
+  "description_en": "Protein-rich, indulgent snack with Greek yogurt, crunchy walnuts, and a drizzle of honey.",
+  "category": "snack",
+  "preferred_meal": "both",
+  "servings": 1,
+  "prep_time_min": 3,
+  "cook_time_min": 0,
+  "difficulty": "easy",
+  "kcal_per_100g": 145,
+  "protein_per_100g": 8.2,
+  "carbs_per_100g": 12.5,
+  "fat_per_100g": 7.8,
+  "fiber_per_100g": 0.5,
+  "kcal_per_serving": 218,
+  "serving_weight_g": 150,
+  "total_raw_weight_g": 150,
+  "total_cooked_weight_g": 150,
+  "cooking_factor": 1.0,
+  "allergens": [
+    "dairy",
+    "nuts"
+  ],
+  "dietary_flags": {
+    "vegetarian": true,
+    "vegan": false,
+    "gluten_free": true,
+    "dairy_free": false,
+    "nut_free": false
+  },
+  "ingredients": [
+    {
+      "name_it": "yogurt greco",
+      "name_en": "Greek yogurt",
+      "quantity": 150,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "0% o 2% grassi",
+      "notes_en": "0% or 2% fat"
+    },
+    {
+      "name_it": "noci",
+      "name_en": "walnuts",
+      "quantity": 20,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": false,
+      "notes_it": "sgusciate, spezzettate",
+      "notes_en": "shelled, chopped"
+    },
+    {
+      "name_it": "miele",
+      "name_en": "honey",
+      "quantity": 15,
+      "unit": "g",
+      "cooking_factor": 1.0,
+      "is_optional": true,
+      "notes_it": "o sciroppo d'acero",
+      "notes_en": "or maple syrup"
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "instruction_it": "Versare lo yogurt in una ciotola. Cospargere con le noci e aggiungere il miele a filo.",
+      "instruction_en": "Pour yogurt into a bowl. Top with walnuts and drizzle with honey."
+    }
+  ],
+  "tags": [
+    "snack",
+    "yogurt",
+    "nuts",
+    "protein",
+    "quick",
+    "vegetarian",
+    "gluten-free"
+  ],
+  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767190113/nutriplanit/recipes/nutriplanit/recipes/yogurt_greco_noci_miele.jpg"
+}
