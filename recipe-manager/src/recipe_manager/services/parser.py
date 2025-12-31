@@ -14,29 +14,60 @@ from pydantic import BaseModel, Field
 class ParsedIngredient(BaseModel):
     """Ingredient extracted from recipe text."""
     name: str
+    name_it: str = ""
+    name_en: str = ""
     quantity: float = 0
     unit: str = "g"
+    cooking_factor: float = 1.0  # Weight change during cooking (e.g., pasta 2.1, meat 0.8)
+    is_optional: bool = False
+    notes_it: Optional[str] = None
+    notes_en: Optional[str] = None
     grams: Optional[float] = None  # Weight in grams if known
     original_text: str = ""  # Original line for debugging
 
 
 class ParsedNutrition(BaseModel):
-    """Nutritional info per serving."""
+    """Nutritional info per 100g and per serving, with weight calculations."""
+    # Per 100g (for scaling)
+    kcal_per_100g: int = 0
+    protein_per_100g: float = 0
+    carbs_per_100g: float = 0
+    fat_per_100g: float = 0
+    fiber_per_100g: float = 0
+
+    # Per serving (for display)
     kcal: int = 0
     protein: float = 0
     carbs: float = 0
     fat: float = 0
     fiber: Optional[float] = None
+
+    # Weight data (critical for portion scaling)
     serving_weight_g: Optional[int] = None
+    total_raw_weight_g: Optional[int] = None
+    total_cooked_weight_g: Optional[int] = None
+    cooking_factor: float = 1.0  # total_cooked / total_raw
+
+
+class DietaryFlags(BaseModel):
+    """Dietary restriction flags."""
+    vegetarian: bool = False
+    vegan: bool = False
+    gluten_free: bool = False
+    dairy_free: bool = False
+    nut_free: bool = True  # Default true, set false if nuts present
 
 
 class ParsedRecipe(BaseModel):
-    """Complete parsed recipe."""
+    """Complete parsed recipe with all data for meal planning."""
     name_it: str
     name_en: Optional[str] = None
     slug: Optional[str] = None
+    description_it: Optional[str] = None
+    description_en: Optional[str] = None
     source_url: Optional[str] = None
     category: str = "main_course"  # breakfast/main_course/snack
+    preferred_meal: str = "both"  # lunch/dinner/both (for main_course)
     servings: int = 4
     prep_time_min: int = 0
     cook_time_min: int = 0
@@ -45,6 +76,8 @@ class ParsedRecipe(BaseModel):
     steps: list[str] = Field(default_factory=list)
     nutrition: ParsedNutrition = Field(default_factory=ParsedNutrition)
     tags: list[str] = Field(default_factory=list)
+    allergens: list[str] = Field(default_factory=list)  # gluten, dairy, eggs, nuts, etc.
+    dietary_flags: DietaryFlags = Field(default_factory=DietaryFlags)
 
 
 # ============ Unit Conversions ============

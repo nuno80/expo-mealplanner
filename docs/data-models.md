@@ -1,7 +1,7 @@
 # NutriPlanIT - Data Models
 
-> **Version:** 1.0
-> **Last Updated:** 2025-12-28
+> **Version:** 1.1 (Portion Scaling Support)
+> **Last Updated:** 2025-12-31
 
 ---
 
@@ -98,6 +98,8 @@ const target_kcal = tdee + calorie_adjustment;
 
 ## 3. Recipe
 
+> Ricette con tutti i dati necessari per portion scaling e meal planning.
+
 | Campo | Tipo | Note |
 |-------|------|------|
 | `id` | UUID (PK) | |
@@ -106,20 +108,46 @@ const target_kcal = tdee + calorie_adjustment;
 | `slug` | string | URL-friendly, unique |
 | `description_it` | text | Descrizione IT |
 | `description_en` | text | Descrizione EN |
-| `category` | enum | `breakfast` \| `lunch` \| `dinner` \| `snack` |
-| `image_url` | string | Cloudinary URL |
+| `category` | enum | `breakfast` \| `main_course` \| `snack` |
+| `preferred_meal` | enum | `lunch` \| `dinner` \| `both` (per main_course) |
+| `image_url` | string? | Cloudinary URL |
 | `prep_time_min` | integer | Tempo preparazione |
 | `cook_time_min` | integer | Tempo cottura |
 | `total_time_min` | integer | prep + cook |
 | `servings` | integer | Numero porzioni base |
 | `difficulty` | enum | `easy` \| `medium` \| `hard` |
+
+### Nutrition (per 100g - per scaling)
+| Campo | Tipo | Note |
+|-------|------|------|
 | `kcal_per_100g` | integer | Calorie per 100g |
-| `kcal_per_serving` | integer | Calorie per porzione |
 | `protein_per_100g` | decimal(5,2) | Proteine g |
 | `carbs_per_100g` | decimal(5,2) | Carboidrati g |
 | `fat_per_100g` | decimal(5,2) | Grassi g |
-| `fiber_per_100g` | decimal(5,2)? | Fibre g (opzionale) |
-| `serving_weight_g` | integer | Peso in grammi di 1 porzione |
+| `fiber_per_100g` | decimal(5,2) | Fibre g |
+
+### Weight Data (critical for portion scaling)
+| Campo | Tipo | Note |
+|-------|------|------|
+| `kcal_per_serving` | integer | Calorie per porzione |
+| `serving_weight_g` | integer | Peso COTTO di 1 porzione |
+| `total_raw_weight_g` | integer | Somma ingredienti crudi |
+| `total_cooked_weight_g` | integer | Peso totale cotto |
+| `cooking_factor` | decimal(3,2) | cooked/raw (es: 0.96) |
+
+### Dietary Info
+| Campo | Tipo | Note |
+|-------|------|------|
+| `allergens` | text[] | `["gluten", "dairy", "eggs", "nuts", ...]` |
+| `is_vegetarian` | boolean | Flag vegetariano |
+| `is_vegan` | boolean | Flag vegano |
+| `is_gluten_free` | boolean | Flag senza glutine |
+| `is_dairy_free` | boolean | Flag senza latticini |
+| `is_nut_free` | boolean | Flag senza frutta secca |
+
+### Metadata
+| Campo | Tipo | Note |
+|-------|------|------|
 | `is_published` | boolean | Visibile agli utenti |
 | `created_at` | timestamp | |
 | `updated_at` | timestamp | |
@@ -130,6 +158,20 @@ const target_kcal = tdee + calorie_adjustment;
 | `cost_level` | enum? | `low` \| `medium` \| `high` |
 | `video_url` | string? | YouTube/Vimeo |
 | `audio_url` | string? | Podcast |
+
+### Allergens Reference
+Valori possibili per `allergens[]`:
+- `gluten` - Grano, orzo, segale, avena, pangrattato, farina
+- `dairy` - Latte, burro, formaggio, yogurt, panna
+- `eggs` - Uova, maionese
+- `nuts` - Mandorle, noci, nocciole, arachidi
+- `soy` - Salsa di soia, tofu, edamame
+- `fish` - Pesce, acciughe
+- `shellfish` - Gamberetti, granchio, cozze
+- `celery` - Sedano, sedano rapa
+- `mustard` - Senape
+- `sesame` - Semi di sesamo, tahina
+- `sulphites` - Vino, frutta secca
 
 ---
 
@@ -189,19 +231,33 @@ const target_kcal = tdee + calorie_adjustment;
 
 ## 7. RecipeIngredient
 
-> Ingredienti di una ricetta con quantità.
+> Ingredienti di una ricetta con quantità e cooking factor.
 
 | Campo | Tipo | Note |
 |-------|------|------|
 | `id` | UUID (PK) | |
 | `recipe_id` | UUID (FK → Recipe) | |
-| `ingredient_id` | UUID (FK → Ingredient) | |
-| `quantity` | decimal(7,2) | Quantità |
+| `ingredient_id` | UUID (FK → Ingredient)? | Opzionale, per lookup USDA |
+| `name_it` | string | Nome ingrediente IT |
+| `name_en` | string | Nome ingrediente EN |
+| `quantity` | decimal(7,2) | Quantità CRUDA |
 | `unit` | string | "g", "ml", "pz", "cucchiaio" |
+| `cooking_factor` | decimal(3,2) | Fattore cottura (es: 2.1 pasta, 0.8 carne) |
 | `is_optional` | boolean | Per guarnizioni |
 | `notes_it` | string? | "peso sgocciolato" |
 | `notes_en` | string? | "drained weight" |
 | `order` | integer | Ordine visualizzazione |
+
+### Cooking Factor Reference
+| Tipo ingrediente | cooking_factor | Note |
+|------------------|----------------|------|
+| Pasta secca | 2.10 | 100g cruda → 210g cotta |
+| Riso | 2.50 | 100g crudo → 250g cotto |
+| Carne | 0.75-0.85 | Perde acqua in cottura |
+| Verdure | 0.85-0.95 | Leggera perdita liquidi |
+| Legumi secchi | 2.00-2.50 | Assorbono acqua |
+| Legumi in scatola | 1.00 | Già cotti |
+| Uova, formaggi, oli | 1.00 | Nessun cambiamento |
 
 ---
 

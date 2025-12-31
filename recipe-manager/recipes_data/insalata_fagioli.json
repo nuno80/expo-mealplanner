@@ -2,8 +2,8 @@
   "name_it": "Insalata tiepida di fagioli flageolet e peperoni",
   "name_en": "Warm Flageolet Bean and Pepper Salad",
   "slug": "insalata-tiepida-fagioli-flageolet-peperoni",
-  "description_it": "Un'insalata tiepida nutriente con fagioli flageolet, peperoni dolci e un condimento aromatico all'aglio.",
-  "description_en": "A nutritious warm salad featuring flageolet beans, sweet peppers, and an aromatic garlic dressing.",
+  "description_it": "Un'insalata nutriente e gustosa con fagioli flageolet, peperoni dolci e un condimento all'aglio e aceto di vino.",
+  "description_en": "A nutritious and tasty warm salad featuring flageolet beans, sweet peppers, and a garlic wine vinegar dressing.",
   "category": "main_course",
   "preferred_meal": "lunch",
   "servings": 4,
@@ -48,8 +48,8 @@
       "unit": "g",
       "cooking_factor": 0.90,
       "is_optional": false,
-      "notes_it": "gialli o rossi, tagliati a listarelle",
-      "notes_en": "yellow or red, cut into strips"
+      "notes_it": "gialli o rossi, a listarelle",
+      "notes_en": "yellow or red, sliced"
     },
     {
       "name_it": "olio d'oliva",
@@ -69,14 +69,14 @@
       "cooking_factor": 0.90,
       "is_optional": false,
       "notes_it": "spicchi schiacciati (circa 6)",
-      "notes_en": "cloves, crushed (approx 6)"
+      "notes_en": "cloves crushed (approx 6)"
     },
     {
       "name_it": "aceto di vino",
       "name_en": "wine vinegar",
       "quantity": 30,
       "unit": "ml",
-      "cooking_factor": 0.80,
+      "cooking_factor": 0.90,
       "is_optional": false,
       "notes_it": null,
       "notes_en": null
@@ -98,35 +98,35 @@
       "unit": "g",
       "cooking_factor": 1.00,
       "is_optional": true,
-      "notes_it": "in polvere (o pepe di Cayenna)",
-      "notes_en": "powder (or Cayenne pepper)"
+      "notes_it": "in polvere (o Caienna)",
+      "notes_en": "powder (or Cayenne)"
     }
   ],
   "steps": [
     {
       "step_number": 1,
-      "instruction_it": "Preparare le verdure: schiacciare gli spicchi d'aglio e tagliare i peperoni a listarelle di circa 1 cm. Sciacquare e scolare i fagioli.",
-      "instruction_en": "Prepare the vegetables: crush the garlic cloves and cut the peppers into 1 cm strips. Rinse and drain the beans."
+      "instruction_it": "Preparare le verdure: schiacciare l'aglio, tagliare i peperoni a listarelle di 1 cm e sciacquare bene i fagioli.",
+      "instruction_en": "Prep the vegetables: crush the garlic, slice peppers into 1cm strips, and rinse the beans well."
     },
     {
       "step_number": 2,
       "instruction_it": "Scaldare l'olio in una padella capiente a fuoco medio. Aggiungere l'aglio e cuocere per 2-3 minuti fino a leggera doratura.",
-      "instruction_en": "Heat the oil in a large skillet over medium heat. Add the garlic and cook for 2-3 minutes until lightly golden."
+      "instruction_en": "Heat oil in a large skillet over medium heat. Add garlic and cook for 2-3 minutes until lightly golden."
     },
     {
       "step_number": 3,
-      "instruction_it": "Aggiungere i peperoni e cuocere per 8-10 minuti, finché non si ammorbidiscono leggermente.",
-      "instruction_en": "Add the peppers and cook for 8-10 minutes, until slightly softened."
+      "instruction_it": "Unire i peperoni e cuocere per 8-10 minuti finché non si ammorbidiscono leggermente.",
+      "instruction_en": "Add the peppers and cook for 8-10 minutes until slightly softened."
     },
     {
       "step_number": 4,
-      "instruction_it": "Unire l'aceto e i fagioli. Condire con sale, pepe e peperoncino. Riscaldare per circa 2 minuti mescolando.",
-      "instruction_en": "Add the vinegar and beans. Season with salt, pepper, and chili powder. Heat for about 2 minutes while stirring."
+      "instruction_it": "Aggiungere l'aceto, i fagioli scolati, il sale, il pepe e il peperoncino. Riscaldare per circa 2 minuti mescolando.",
+      "instruction_en": "Add vinegar, drained beans, salt, pepper, and chili powder. Heat through for about 2 minutes, stirring occasionally."
     },
     {
       "step_number": 5,
-      "instruction_it": "Cospargere con prezzemolo fresco tritato e servire.",
-      "instruction_en": "Sprinkle with fresh chopped parsley and serve."
+      "instruction_it": "Cospargere con il prezzemolo fresco tritato e servire tiepido.",
+      "instruction_en": "Sprinkle with fresh chopped parsley and serve warm."
     }
   ],
   "tags": [
@@ -135,6 +135,7 @@
     "vegan",
     "vegetarian",
     "beans",
+    "legumes",
     "gluten-free",
     "healthy",
     "high-fiber"
