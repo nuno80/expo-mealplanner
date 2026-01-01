@@ -37,7 +37,7 @@
       "name_en": "celeriac",
       "quantity": 200,
       "unit": "g",
-      "cooking_factor": 0.90,
+      "cooking_factor": 0.9,
       "is_optional": false,
       "notes_it": "tagliato a julienne",
       "notes_en": "cut into julienne"
@@ -159,5 +159,6 @@
     "vegetarian",
     "healthy",
     "classic"
-  ]
+  ],
+  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767273277/nutriplanit/recipes/insalata-waldorf.jpg"
 }

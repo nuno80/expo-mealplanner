@@ -38,7 +38,7 @@
       "name_en": "green beans",
       "quantity": 300,
       "unit": "g",
-      "cooking_factor": 0.90,
+      "cooking_factor": 0.9,
       "is_optional": false,
       "notes_it": "spuntati e tagliati",
       "notes_en": "trimmed and cut"
@@ -204,5 +204,6 @@
     "vegetarian",
     "colorful",
     "healthy"
-  ]
+  ],
+  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767273400/nutriplanit/recipes/insalata-di-fagiolini.jpg"
 }

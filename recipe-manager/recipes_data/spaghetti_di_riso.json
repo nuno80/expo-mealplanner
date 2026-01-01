@@ -1,0 +1,173 @@
+{
+  "name_it": "Spaghetti di riso con carne e verdure",
+  "name_en": "Rice Noodles with Meat and Vegetables",
+  "slug": "spaghetti-di-riso-con-carne-e-verdure",
+  "description_it": "Un classico della cucina orientale proposto da Chef Mulan: spaghetti di riso saltati nel wok con lonza di maiale, zucchine, carote e uova.",
+  "description_en": "An Oriental cuisine classic by Chef Mulan: rice noodles stir-fried in a wok with pork loin, zucchini, carrots, and eggs.",
+  "category": "main_course",
+  "preferred_meal": "both",
+  "servings": 4,
+  "prep_time_min": 30,
+  "cook_time_min": 8,
+  "difficulty": "easy",
+  "kcal_per_100g": 186,
+  "protein_per_100g": 6.0,
+  "carbs_per_100g": 16.9,
+  "fat_per_100g": 10.2,
+  "fiber_per_100g": 1.3,
+  "kcal_per_serving": 485,
+  "serving_weight_g": 260,
+  "total_raw_weight_g": 799,
+  "total_cooked_weight_g": 1042,
+  "cooking_factor": 1.30,
+  "allergens": [
+    "eggs",
+    "soy",
+    "gluten"
+  ],
+  "dietary_flags": {
+    "vegetarian": false,
+    "vegan": false,
+    "gluten_free": false,
+    "dairy_free": true,
+    "nut_free": true
+  },
+  "ingredients": [
+    {
+      "name_it": "spaghetti di riso",
+      "name_en": "rice noodles",
+      "quantity": 200,
+      "unit": "g",
+      "cooking_factor": 2.50,
+      "is_optional": false,
+      "notes_it": "vermicelli",
+      "notes_en": "vermicelli"
+    },
+    {
+      "name_it": "lonza di maiale",
+      "name_en": "pork loin",
+      "quantity": 100,
+      "unit": "g",
+      "cooking_factor": 0.75,
+      "is_optional": false,
+      "notes_it": "tagliata a listarelle",
+      "notes_en": "cut into strips"
+    },
+    {
+      "name_it": "uova",
+      "name_en": "eggs",
+      "quantity": 110,
+      "unit": "g",
+      "cooking_factor": 1.00,
+      "is_optional": false,
+      "notes_it": "2 uova medie",
+      "notes_en": "2 medium eggs"
+    },
+    {
+      "name_it": "zucchine",
+      "name_en": "zucchini",
+      "quantity": 100,
+      "unit": "g",
+      "cooking_factor": 0.90,
+      "is_optional": false,
+      "notes_it": "tagliate a listarelle",
+      "notes_en": "cut into strips"
+    },
+    {
+      "name_it": "carote",
+      "name_en": "carrots",
+      "quantity": 100,
+      "unit": "g",
+      "cooking_factor": 0.90,
+      "is_optional": false,
+      "notes_it": "tagliate a listarelle",
+      "notes_en": "cut into strips"
+    },
+    {
+      "name_it": "cipolle",
+      "name_en": "onions",
+      "quantity": 60,
+      "unit": "g",
+      "cooking_factor": 0.90,
+      "is_optional": false,
+      "notes_it": "affettata",
+      "notes_en": "sliced"
+    },
+    {
+      "name_it": "olio di semi di girasole",
+      "name_en": "sunflower oil",
+      "quantity": 84,
+      "unit": "g",
+      "cooking_factor": 1.00,
+      "is_optional": false,
+      "notes_it": "6 cucchiai",
+      "notes_en": "6 tbsp"
+    },
+    {
+      "name_it": "vino di riso",
+      "name_en": "rice wine",
+      "quantity": 30,
+      "unit": "ml",
+      "cooking_factor": 0.80,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "salsa di soia",
+      "name_en": "soy sauce",
+      "quantity": 15,
+      "unit": "ml",
+      "cooking_factor": 1.00,
+      "is_optional": true,
+      "notes_it": "q.b.",
+      "notes_en": "to taste"
+    },
+    {
+      "name_it": "sale e pepe bianco",
+      "name_en": "salt and white pepper",
+      "quantity": 1,
+      "unit": "g",
+      "cooking_factor": 1.00,
+      "is_optional": false,
+      "notes_it": "q.b.",
+      "notes_en": "to taste"
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "instruction_it": "Preparare gli ingredienti: tagliare la carne di maiale, le zucchine e le carote a listarelle sottili. Affettare la cipolla.",
+      "instruction_en": "Prep ingredients: cut pork, zucchini, and carrots into thin strips. Slice the onion."
+    },
+    {
+      "step_number": 2,
+      "instruction_it": "Cuocere o reidratare gli spaghetti di riso secondo le istruzioni della confezione, scolarli e tenerli da parte.",
+      "instruction_en": "Cook or soak rice noodles according to package instructions, drain and set aside."
+    },
+    {
+      "step_number": 3,
+      "instruction_it": "Scaldare una parte dell'olio in un wok. Strapazzare le uova velocemente e metterle da parte.",
+      "instruction_en": "Heat some oil in a wok. Scramble the eggs quickly and set aside."
+    },
+    {
+      "step_number": 4,
+      "instruction_it": "Nel wok ben caldo con il restante olio, saltare la carne e le verdure a fiamma molto vivace per qualche minuto.",
+      "instruction_en": "In the hot wok with remaining oil, stir-fry the meat and vegetables over very high heat for a few minutes."
+    },
+    {
+      "step_number": 5,
+      "instruction_it": "Unire gli spaghetti, le uova, il vino di riso e la salsa di soia. Saltare tutto insieme per amalgamare i sapori e servire caldo.",
+      "instruction_en": "Add noodles, eggs, rice wine, and soy sauce. Toss everything together to combine flavors and serve hot."
+    }
+  ],
+  "tags": [
+    "chinese",
+    "asian",
+    "wok",
+    "noodles",
+    "pork",
+    "dairy-free",
+    "stir-fry"
+  ]
+}

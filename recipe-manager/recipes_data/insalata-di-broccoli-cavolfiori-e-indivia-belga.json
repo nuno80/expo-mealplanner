@@ -38,7 +38,7 @@
       "name_en": "cauliflower",
       "quantity": 200,
       "unit": "g",
-      "cooking_factor": 0.90,
+      "cooking_factor": 0.9,
       "is_optional": false,
       "notes_it": "a cimette",
       "notes_en": "florets"
@@ -48,7 +48,7 @@
       "name_en": "broccoli",
       "quantity": 200,
       "unit": "g",
-      "cooking_factor": 0.90,
+      "cooking_factor": 0.9,
       "is_optional": false,
       "notes_it": "a cimette",
       "notes_en": "florets"
@@ -195,5 +195,6 @@
     "vegetarian",
     "healthy",
     "fiber"
-  ]
+  ],
+  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767273280/nutriplanit/recipes/insalata-di-broccoli-cavolfiori-e-indivia-belga.jpg"
 }

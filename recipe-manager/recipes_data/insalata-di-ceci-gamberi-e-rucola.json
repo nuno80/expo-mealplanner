@@ -37,7 +37,7 @@
       "name_en": "shrimp",
       "quantity": 300,
       "unit": "g",
-      "cooking_factor": 0.80,
+      "cooking_factor": 0.8,
       "is_optional": false,
       "notes_it": "puliti e sgusciati",
       "notes_en": "cleaned and peeled"
@@ -184,5 +184,6 @@
     "seafood",
     "healthy",
     "mediterranean"
-  ]
+  ],
+  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767273335/nutriplanit/recipes/insalata-di-ceci-gamberi-e-rucola.jpg"
 }

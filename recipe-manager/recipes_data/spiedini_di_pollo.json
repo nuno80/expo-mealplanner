@@ -1,0 +1,162 @@
+{
+  "name_it": "Spiedini di pollo Shish Taouk",
+  "name_en": "Chicken Shish Taouk Skewers",
+  "slug": "spiedini-di-pollo-shish-taouk",
+  "description_it": "Spiedini di pollo marinato in stile mediorientale con peperoni, cipolle e funghi, cotti alla griglia.",
+  "description_en": "Middle Eastern marinated grilled chicken skewers with bell peppers, onions, and mushrooms.",
+  "category": "main_course",
+  "preferred_meal": "dinner",
+  "servings": 3,
+  "prep_time_min": 15,
+  "cook_time_min": 10,
+  "difficulty": "medium",
+
+  "kcal_per_100g": 90,
+  "protein_per_100g": 9.0,
+  "carbs_per_100g": 5.5,
+  "fat_per_100g": 3.8,
+  "fiber_per_100g": 1.0,
+
+  "kcal_per_serving": 260,
+  "serving_weight_g": 290,
+  "total_raw_weight_g": 1318,
+  "total_cooked_weight_g": 870,
+  "cooking_factor": 0.66,
+
+  "allergens": [],
+  "dietary_flags": {
+    "vegetarian": false,
+    "vegan": false,
+    "gluten_free": true,
+    "dairy_free": true,
+    "nut_free": true
+  },
+
+  "ingredients": [
+    {
+      "name_it": "petto di pollo",
+      "name_en": "chicken breast",
+      "quantity": 300,
+      "unit": "g",
+      "cooking_factor": 0.75,
+      "is_optional": false,
+      "notes_it": "disossato, a cubetti",
+      "notes_en": "boneless, cubed"
+    },
+    {
+      "name_it": "peperoni",
+      "name_en": "bell peppers",
+      "quantity": 300,
+      "unit": "g",
+      "cooking_factor": 0.65,
+      "is_optional": false,
+      "notes_it": "gialli o rossi, a quadrati",
+      "notes_en": "yellow or red, squared"
+    },
+    {
+      "name_it": "funghi champignon",
+      "name_en": "button mushrooms",
+      "quantity": 260,
+      "unit": "g",
+      "cooking_factor": 0.50,
+      "is_optional": false,
+      "notes_it": "interi o a metà",
+      "notes_en": "whole or halved"
+    },
+    {
+      "name_it": "cipolla",
+      "name_en": "onion",
+      "quantity": 200,
+      "unit": "g",
+      "cooking_factor": 0.70,
+      "is_optional": false,
+      "notes_it": "a spicchi",
+      "notes_en": "wedges"
+    },
+    {
+      "name_it": "pomodori ciliegini",
+      "name_en": "cherry tomatoes",
+      "quantity": 150,
+      "unit": "g",
+      "cooking_factor": 0.85,
+      "is_optional": false,
+      "notes_it": "circa 1 tazza",
+      "notes_en": "approx 1 cup"
+    },
+    {
+      "name_it": "scalogno",
+      "name_en": "shallot",
+      "quantity": 40,
+      "unit": "g",
+      "cooking_factor": 1.00,
+      "is_optional": false,
+      "notes_it": "tritato",
+      "notes_en": "minced"
+    },
+    {
+      "name_it": "olio d'oliva",
+      "name_en": "olive oil",
+      "quantity": 38,
+      "unit": "ml",
+      "cooking_factor": 1.00,
+      "is_optional": false,
+      "notes_it": "30ml per marinata, 8ml per griglia",
+      "notes_en": "30ml for marinade, 8ml for grill"
+    },
+    {
+      "name_it": "succo di limone",
+      "name_en": "lemon juice",
+      "quantity": 30,
+      "unit": "ml",
+      "cooking_factor": 0.50,
+      "is_optional": false,
+      "notes_it": "fresco",
+      "notes_en": "fresh"
+    },
+    {
+      "name_it": "aglio",
+      "name_en": "garlic",
+      "quantity": 6,
+      "unit": "g",
+      "cooking_factor": 1.00,
+      "is_optional": false,
+      "notes_it": "schiacciato",
+      "notes_en": "crushed"
+    },
+    {
+      "name_it": "origano secco",
+      "name_en": "dried oregano",
+      "quantity": 2,
+      "unit": "g",
+      "cooking_factor": 1.00,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    }
+  ],
+
+  "steps": [
+    {
+      "step_number": 1,
+      "instruction_it": "In un piatto fondo mescolare aglio, scalogno, 30ml di olio, succo di limone, origano, sale e pepe. Aggiungere il pollo a cubetti, coprire e marinare in frigo (idealmente 4 ore).",
+      "instruction_en": "In a deep dish mix garlic, shallot, 30ml oil, lemon juice, oregano, salt, and pepper. Add chicken cubes, cover, and marinate in fridge (ideally 4 hours)."
+    },
+    {
+      "step_number": 2,
+      "instruction_it": "Preparare le verdure: tagliare peperoni a quadrati di 2cm e cipolle a spicchi. Lasciare i funghi interi o tagliarli a metà.",
+      "instruction_en": "Prep vegetables: cut peppers into 2cm squares and onions into wedges. Leave mushrooms whole or halve them."
+    },
+    {
+      "step_number": 3,
+      "instruction_it": "Infilzare il pollo sugli spiedini alternandolo con peperoni, cipolla e funghi. Infilzare i pomodorini su spiedini separati.",
+      "instruction_en": "Thread chicken onto skewers alternating with peppers, onion, and mushrooms. Thread cherry tomatoes onto separate skewers."
+    },
+    {
+      "step_number": 4,
+      "instruction_it": "Grigliare su barbecue o griglia calda (o sotto il grill del forno). Cuocere i pomodori per 5 min e il pollo per 10 min, girando spesso e spennellando con il restante olio.",
+      "instruction_en": "Grill on BBQ or hot griddle (or oven broiler). Cook tomatoes for 5 min and chicken for 10 min, turning often and brushing with remaining oil."
+    }
+  ],
+
+  "tags": ["chicken", "grilled", "middle-eastern", "kebab", "dairy-free", "low-carb", "high-protein", "gluten-free"]
+}

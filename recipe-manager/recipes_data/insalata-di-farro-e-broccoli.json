@@ -38,7 +38,7 @@
       "name_en": "spelt",
       "quantity": 200,
       "unit": "g",
-      "cooking_factor": 2.20,
+      "cooking_factor": 2.2,
       "is_optional": false,
       "notes_it": "secco",
       "notes_en": "dry"
@@ -48,7 +48,7 @@
       "name_en": "broccoli",
       "quantity": 200,
       "unit": "g",
-      "cooking_factor": 0.90,
+      "cooking_factor": 0.9,
       "is_optional": false,
       "notes_it": "a cimette",
       "notes_en": "florets"
@@ -145,5 +145,6 @@
     "walnuts",
     "vegetarian",
     "fiber"
-  ]
+  ],
+  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767273400/nutriplanit/recipes/insalata-di-farro-e-broccoli.jpg"
 }

@@ -47,7 +47,7 @@
       "name_en": "potatoes",
       "quantity": 300,
       "unit": "g",
-      "cooking_factor": 0.90,
+      "cooking_factor": 0.9,
       "is_optional": false,
       "notes_it": "lessate e tagliate a cubetti",
       "notes_en": "boiled and cubed"
@@ -184,5 +184,6 @@
     "potatoes",
     "omega-3",
     "protein"
-  ]
+  ],
+  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767273278/nutriplanit/recipes/insalata-di-aringa-affumicata.jpg"
 }

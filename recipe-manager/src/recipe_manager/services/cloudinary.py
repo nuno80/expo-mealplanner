@@ -38,7 +38,7 @@ class CloudinaryClient:
     def upload_image(
         self,
         file_path: str,
-        folder: str = "nutriplanit/recipes",
+        folder: str = "nutriplanit/recipes",  # Images stored as {folder}/{public_id}
         public_id: Optional[str] = None,
     ) -> str:
         """
