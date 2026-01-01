@@ -133,6 +133,7 @@ class TursoClient:
         fat_per_100g: float,
         fiber_per_100g: Optional[float],
         serving_weight_g: int,
+        protein_source: str,  # For meal plan rotation
         is_published: bool,
     ) -> None:
         """Insert a new recipe into the database."""
@@ -142,15 +143,15 @@ class TursoClient:
                 category, image_url, prep_time_min, cook_time_min, total_time_min,
                 servings, difficulty, kcal_per_100g, kcal_per_serving,
                 protein_per_100g, carbs_per_100g, fat_per_100g, fiber_per_100g,
-                serving_weight_g, is_published, created_at, updated_at
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, strftime('%s', 'now') * 1000, strftime('%s', 'now') * 1000)
+                serving_weight_g, protein_source, is_published, created_at, updated_at
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, strftime('%s', 'now') * 1000, strftime('%s', 'now') * 1000)
         """
         await self.execute(sql, [
             str(id), name_it, name_en, slug, description_it, description_en,
             category, image_url, prep_time_min, cook_time_min, total_time_min,
             servings, difficulty, kcal_per_100g, kcal_per_serving,
             protein_per_100g, carbs_per_100g, fat_per_100g, fiber_per_100g,
-            serving_weight_g, 1 if is_published else 0
+            serving_weight_g, protein_source, 1 if is_published else 0
         ])
 
     async def get_recipes(self, category: Optional[str] = None) -> list[dict]:

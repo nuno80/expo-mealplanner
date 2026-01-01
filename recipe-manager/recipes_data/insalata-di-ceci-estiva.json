@@ -194,5 +194,6 @@
     "colorful",
     "healthy"
   ],
-  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767273282/nutriplanit/recipes/insalata-di-ceci-estiva.jpg"
+  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767273282/nutriplanit/recipes/insalata-di-ceci-estiva.jpg",
+  "protein_source": "legumes"
 }

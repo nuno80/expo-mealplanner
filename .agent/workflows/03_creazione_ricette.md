@@ -56,6 +56,7 @@ Per ogni file grezzo, Claude deve generare un JSON completo seguendo le regole i
 ### Nutrizione (stimata basandosi sulla conoscenza degli ingredienti):
 - `kcal_per_100g`, `protein_per_100g`, `carbs_per_100g`, `fat_per_100g`, `fiber_per_100g`
 - `kcal_per_serving`, `serving_weight_g`
+- `protein_source`: una tra `legumes`, `fish`, `white_meat`, `eggs`, `dairy`, `red_meat`, `plant_based`, `mixed`, `none`
 - `total_raw_weight_g`, `total_cooked_weight_g`, `cooking_factor`
 
 ### Ingredienti con quantità stimate:

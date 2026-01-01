@@ -17,7 +17,7 @@ recipes.get("/", async (c) => {
         category, image_url, prep_time_min, cook_time_min, total_time_min,
         servings, difficulty, kcal_per_100g, protein_per_100g, carbs_per_100g,
         fat_per_100g, fiber_per_100g, kcal_per_serving, serving_weight_g,
-        is_published, created_at, updated_at
+        protein_source, is_published, created_at, updated_at
       FROM recipes
       WHERE is_published = 1
       ORDER BY name_it

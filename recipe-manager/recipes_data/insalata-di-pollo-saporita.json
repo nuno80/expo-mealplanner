@@ -205,5 +205,6 @@
     "meal-prep",
     "savory"
   ],
-  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767291890/nutriplanit/recipes/insalata-di-pollo-saporita.jpg"
+  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767291890/nutriplanit/recipes/insalata-di-pollo-saporita.jpg",
+  "protein_source": "white_meat"
 }

@@ -174,5 +174,6 @@
     "low-fat",
     "quick"
   ],
-  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767291888/nutriplanit/recipes/insalata-di-pollo-e-mele.jpg"
+  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767291888/nutriplanit/recipes/insalata-di-pollo-e-mele.jpg",
+  "protein_source": "white_meat"
 }

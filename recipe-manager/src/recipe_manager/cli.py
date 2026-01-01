@@ -486,6 +486,7 @@ def sync_data(
                         fat_per_100g=to_float(data.get("fat_per_100g")),
                         fiber_per_100g=to_float(data.get("fiber_per_100g", 0)),
                         serving_weight_g=data.get("serving_weight_g", 0),
+                        protein_source=data.get("protein_source", "mixed"),  # Mediterranean Diet rotation
                         is_published=True, # Published by default from sync
                     )
                 )

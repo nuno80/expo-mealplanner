@@ -108,5 +108,6 @@
     "healthy",
     "vegetarian"
   ],
-  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767190104/nutriplanit/recipes/nutriplanit/recipes/pancake_proteici_banana.jpg"
+  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767190104/nutriplanit/recipes/nutriplanit/recipes/pancake_proteici_banana.jpg",
+  "protein_source": "eggs"
 }

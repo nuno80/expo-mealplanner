@@ -79,5 +79,6 @@
     "vegetarian",
     "gluten-free"
   ],
-  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767190113/nutriplanit/recipes/nutriplanit/recipes/yogurt_greco_noci_miele.jpg"
+  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767190113/nutriplanit/recipes/nutriplanit/recipes/yogurt_greco_noci_miele.jpg",
+  "protein_source": "dairy"
 }

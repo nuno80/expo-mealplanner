@@ -170,5 +170,6 @@
     "dairy-free",
     "stir-fry"
   ],
-  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767291935/nutriplanit/recipes/spaghetti-di-riso.jpg"
+  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767291935/nutriplanit/recipes/spaghetti-di-riso.jpg",
+  "protein_source": "mixed"
 }

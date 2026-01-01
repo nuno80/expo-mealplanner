@@ -109,5 +109,6 @@
     "gluten-free",
     "healthy"
   ],
-  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767190109/nutriplanit/recipes/nutriplanit/recipes/salmone_forno_asparagi.jpg"
+  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767190109/nutriplanit/recipes/nutriplanit/recipes/salmone_forno_asparagi.jpg",
+  "protein_source": "fish"
 }

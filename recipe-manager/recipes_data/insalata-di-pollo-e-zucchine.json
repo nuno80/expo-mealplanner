@@ -182,5 +182,6 @@
     "protein",
     "healthy"
   ],
-  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767291885/nutriplanit/recipes/insalata-di-pollo-e-zucchine.jpg"
+  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767291885/nutriplanit/recipes/insalata-di-pollo-e-zucchine.jpg",
+  "protein_source": "white_meat"
 }

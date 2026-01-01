@@ -150,5 +150,6 @@
     "vegetarian",
     "colorful"
   ],
-  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767291886/nutriplanit/recipes/insalata-invernale.jpg"
+  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767291886/nutriplanit/recipes/insalata-invernale.jpg",
+  "protein_source": "mixed"
 }

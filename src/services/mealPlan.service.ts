@@ -10,8 +10,42 @@ import type {
 	PlannedMealWithRecipe,
 	SwapMealInput,
 } from "@/schemas/mealPlan";
-import type { RecipeCategory } from "@/schemas/recipe";
+import type { ProteinSource, RecipeCategory } from "@/schemas/recipe";
 import { getRecipesForPlanning } from "./recipe.service";
+
+// ============================================================================
+// CONFIGURATION
+// ============================================================================
+
+/**
+ * Mediterranean Diet weekly protein source targets (for 14 main meals)
+ */
+const WEEKLY_PROTEIN_TARGETS: Record<
+	ProteinSource,
+	{ min: number; max: number; current: number }
+> = {
+	legumes: { min: 3, max: 5, current: 0 },
+	fish: { min: 3, max: 4, current: 0 },
+	white_meat: { min: 2, max: 3, current: 0 },
+	eggs: { min: 2, max: 4, current: 0 },
+	dairy: { min: 2, max: 3, current: 0 },
+	red_meat: { min: 0, max: 1, current: 0 },
+	plant_based: { min: 0, max: 3, current: 0 },
+	mixed: { min: 0, max: 3, current: 0 },
+	none: { min: 0, max: 1, current: 0 },
+};
+
+const DAILY_MEAL_TYPES: MealType[] = ["breakfast", "lunch", "dinner"];
+
+const SNACK_MEAL_TYPES: MealType[] = ["snack_am", "snack_pm"];
+
+const MEAL_TYPE_TO_CATEGORY = {
+	breakfast: "breakfast",
+	lunch: "main_course",
+	dinner: "main_course",
+	snack_am: "snack",
+	snack_pm: "snack",
+} as const;
 
 // ============================================================================
 // MEAL PLAN QUERIES
@@ -87,28 +121,17 @@ export async function getUserMealPlans(userId: string): Promise<MealPlan[]> {
 // MEAL PLAN GENERATION
 // ============================================================================
 
-/** Map meal type to recipe category */
-const MEAL_TYPE_TO_CATEGORY = {
-	breakfast: "breakfast",
-	lunch: "main_course",
-	dinner: "main_course",
-	snack_am: "snack",
-	snack_pm: "snack",
-} as const;
-
-/** Meal types in order for a day */
-const DAILY_MEAL_TYPES: MealType[] = ["breakfast", "lunch", "dinner"];
-
-const SNACK_MEAL_TYPES: MealType[] = ["snack_am", "snack_pm"];
-
 /**
  * Generate a new meal plan for a family member.
  *
- * Algorithm (MVP):
- * 1. Get family member's target kcal
- * 2. For each day, select recipes for breakfast/lunch/dinner (+ snacks if enabled)
- * 3. Avoid repeating same recipe within last 3 days
- * 4. Calculate portions to hit weekly target ±5%
+ * Algorithm (Mediterranean Diet):
+ * 1. Initialize weekly protein quotas
+ * 2. Iterate days
+ * 3. For main meals (lunch/dinner):
+ *    - Prioritize protein sources that haven't met MIN quota
+ *    - Exclude sources that met MAX quota
+ *    - Try to select different source from Lunch for Dinner
+ * 4. Apply standard caloric and variety constraints
  */
 export async function generateMealPlan(
 	input: GenerateMealPlanInput,
@@ -153,6 +176,15 @@ export async function generateMealPlan(
 		snack: snackRecipes,
 	};
 
+	// Initialize Protein Tracker
+	// Clone targets to track current usage for this generation run
+	const proteinTracker = Object.fromEntries(
+		Object.entries(WEEKLY_PROTEIN_TARGETS).map(([key, val]) => [
+			key,
+			{ ...val, current: 0 },
+		]),
+	) as Record<ProteinSource, { min: number; max: number; current: number }>;
+
 	// Track recently used recipes (avoid repeats within 3 days)
 	const recentlyUsed: Map<RecipeCategory, string[]> = new Map([
 		["breakfast", []],
@@ -196,24 +228,95 @@ export async function generateMealPlan(
 					snack_pm: 0,
 				};
 
+		// Track protein source used at lunch to avoid repeat at dinner
+		let lunchProteinSource: ProteinSource | null = null;
+
 		for (const mealType of mealTypes) {
 			const category = MEAL_TYPE_TO_CATEGORY[mealType];
-			const available = recipesByCategory[category];
+			let pool = [...recipesByCategory[category]];
 			const recent = recentlyUsed.get(category) ?? [];
 
+			// --- PROTEIN ROTATION LOGIC (Lunch & Dinner) ---
+			if (category === "main_course") {
+				// 1. Filter out sources that hit MAX quota
+				const validSources = Object.keys(proteinTracker).filter(
+					(s) =>
+						proteinTracker[s as ProteinSource].current <
+						proteinTracker[s as ProteinSource].max,
+				);
+
+				let rotationPool = pool.filter((r) =>
+					validSources.includes(r.proteinSource),
+				);
+
+				// 2. Identify priority sources (min quota not met)
+				const prioritySources = Object.keys(proteinTracker).filter(
+					(s) =>
+						proteinTracker[s as ProteinSource].current <
+						proteinTracker[s as ProteinSource].min,
+				);
+
+				// If we have priority sources, try to stick to them
+				// But only if we have recipes for them available in the rotation pool
+				const priorityPool = rotationPool.filter((r) =>
+					prioritySources.includes(r.proteinSource),
+				);
+
+				if (priorityPool.length > 0) {
+					rotationPool = priorityPool;
+				}
+
+				// 3. Dinner differentiation: try to avoid same source as lunch
+				if (mealType === "dinner" && lunchProteinSource) {
+					const diffPool = rotationPool.filter(
+						(r) => r.proteinSource !== lunchProteinSource,
+					);
+					if (diffPool.length > 0) {
+						rotationPool = diffPool;
+					}
+				}
+
+				// If we successfully filtered, use the rotation pool
+				// Fallback: if rotation filters emptied the pool (too restrictive), revert to original pool
+				if (rotationPool.length > 0) {
+					pool = rotationPool;
+				}
+			}
+
+			// --- STANDARD VARIETY LOGIC ---
 			// Filter out recently used recipes
-			const candidates = available.filter((r) => !recent.includes(r.id));
+			const candidates = pool.filter((r) => !recent.includes(r.id));
 
-			// If no candidates, use all recipes
-			const pool = candidates.length > 0 ? candidates : available;
+			// If no candidates after variety filter, use the pool (ignore recent used)
+			const finalPool = candidates.length > 0 ? candidates : pool;
 
-			if (pool.length === 0) {
+			if (finalPool.length === 0) {
 				console.warn(`No recipes available for category: ${category}`);
-				continue;
+				// Emergency fallback: use ALL recipes of category ignoring everything
+				pool = recipesByCategory[category];
+				if (pool.length === 0) continue;
+				// Reset finalPool to full category pool
+				finalPool.push(...pool);
 			}
 
 			// Random selection
-			const recipe = pool[Math.floor(Math.random() * pool.length)];
+			const recipe = finalPool[Math.floor(Math.random() * finalPool.length)];
+
+			// --- UPDATE TRACKERS ---
+			if (category === "main_course") {
+				const source = recipe.proteinSource as ProteinSource;
+				if (proteinTracker[source]) {
+					proteinTracker[source].current++;
+				}
+				if (mealType === "lunch") {
+					lunchProteinSource = source;
+				}
+			}
+
+			// Update recently used (keep last 3)
+			recent.push(recipe.id);
+			if (recent.length > 3) recent.shift();
+			recentlyUsed.set(category, recent);
 
 			// Calculate portion to hit target kcal
 			const targetKcal = mealKcalTargets[mealType];
@@ -235,11 +338,6 @@ export async function generateMealPlan(
 			});
 
 			totalKcal += actualKcal;
-
-			// Update recently used (keep last 3)
-			recent.push(recipe.id);
-			if (recent.length > 3) recent.shift();
-			recentlyUsed.set(category, recent);
 		}
 	}
 

@@ -120,5 +120,6 @@
     "dinner",
     "light"
   ],
-  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767190112/nutriplanit/recipes/nutriplanit/recipes/frittata_zucchine.jpg"
+  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767190112/nutriplanit/recipes/nutriplanit/recipes/frittata_zucchine.jpg",
+  "protein_source": "eggs"
 }

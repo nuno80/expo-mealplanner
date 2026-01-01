@@ -160,5 +160,6 @@
     "healthy",
     "mediterranean"
   ],
-  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767273281/nutriplanit/recipes/insalata-di-ceci-e-tonno.jpg"
+  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767273281/nutriplanit/recipes/insalata-di-ceci-e-tonno.jpg",
+  "protein_source": "fish"
 }

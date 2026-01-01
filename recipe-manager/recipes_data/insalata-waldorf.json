@@ -160,5 +160,6 @@
     "healthy",
     "classic"
   ],
-  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767273277/nutriplanit/recipes/insalata-waldorf.jpg"
+  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767273277/nutriplanit/recipes/insalata-waldorf.jpg",
+  "protein_source": "dairy"
 }

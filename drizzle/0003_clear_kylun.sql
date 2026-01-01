@@ -1,0 +1,1 @@
+ALTER TABLE `recipes` ADD `protein_source` text DEFAULT 'mixed' NOT NULL;

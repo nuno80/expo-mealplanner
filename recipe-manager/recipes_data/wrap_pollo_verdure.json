@@ -118,5 +118,6 @@
     "protein",
     "healthy"
   ],
-  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767190106/nutriplanit/recipes/nutriplanit/recipes/wrap_pollo_verdure.jpg"
+  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767190106/nutriplanit/recipes/nutriplanit/recipes/wrap_pollo_verdure.jpg",
+  "protein_source": "white_meat"
 }

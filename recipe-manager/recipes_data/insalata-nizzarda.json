@@ -175,5 +175,6 @@
     "protein",
     "mediterranean"
   ],
-  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767291887/nutriplanit/recipes/insalata-nizzarda.jpg"
+  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767291887/nutriplanit/recipes/insalata-nizzarda.jpg",
+  "protein_source": "fish"
 }

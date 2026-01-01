@@ -162,5 +162,6 @@
     "high-protein",
     "gluten-free"
   ],
-  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767291889/nutriplanit/recipes/spiedini-di-pollo.jpg"
+  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767291889/nutriplanit/recipes/spiedini-di-pollo.jpg",
+  "protein_source": "white_meat"
 }

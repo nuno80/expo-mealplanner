@@ -126,8 +126,8 @@
     },
     {
       "step_number": 5,
-      "instruction_it": "Disporre su una teglia con carta forno, aggiungere un filo d'olio e cuocere in forno a 180\u00b0C per 30 minuti, girando a met\u00e0 cottura.",
-      "instruction_en": "Arrange on a baking sheet with parchment paper, drizzle with oil, and bake at 180\u00b0C (350\u00b0F) for 30 minutes, turning halfway through."
+      "instruction_it": "Disporre su una teglia con carta forno, aggiungere un filo d'olio e cuocere in forno a 180°C per 30 minuti, girando a metà cottura.",
+      "instruction_en": "Arrange on a baking sheet with parchment paper, drizzle with oil, and bake at 180°C (350°F) for 30 minutes, turning halfway through."
     }
   ],
   "tags": [
@@ -138,5 +138,6 @@
     "meal-prep",
     "family-friendly"
   ],
-  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767190860/nutriplanit/recipes/nutriplanit/recipes/pollo_allo_yogurt.jpg"
+  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767190860/nutriplanit/recipes/nutriplanit/recipes/pollo_allo_yogurt.jpg",
+  "protein_source": "white_meat"
 }
