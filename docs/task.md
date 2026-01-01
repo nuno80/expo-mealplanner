@@ -1,6 +1,6 @@
 # NutriPlanIT - Task Tracker
 
-> **Last Updated:** 2025-12-31
+> **Last Updated:** 2026-01-01
 
 ...
 
@@ -117,10 +117,19 @@ Prima di lavorare su qualsiasi task, consulta i documenti pertinenti:
     - [x] Logic: Portion Calculator (Raw/Cooked)
     - [x] UI: CookingModeModal (Selector + Views)
     - [x] Integration: RecipeScreen & PlanScreen
-- [ ] Password Reset & Auth Improvements
-    - [ ] Feature: Mostra/Nascondi password (Login/Signup)
-    - [ ] Feature: Password Reset Flow (Forgot/Update screens)
-    - [ ] Configurazione Deep Linking
+- [x] Family Member Management
+    - [x] F1: Modify `goal.tsx` to handle `mode=add-member`
+    - [x] F2: Modify `tdee.tsx` for add-member completion
+    - [x] F3: Create `member-detail.tsx` modal
+    - [x] F4: Add `updateFamilyMember` service
+    - [x] F5: Update `profile.tsx` tab (navigate to wizard + detail modal)
+    - [x] V1: Test add-member wizard flow
+    - [x] V2: Test view/edit member flow
+- [x] Password Reset & Auth Improvements
+    - [x] F1: Feature: Mostra/Nascondi password (Login/Signup)
+    - [x] F2: Feature: Forgot Password Screen (`forgot-password.tsx`)
+    - [x] F3: Feature: Reset Password Screen (`reset-password.tsx`)
+    - [x] F4: Configurazione Deep Linking & Auth Recovery logic in `_layout.tsx`
 - [ ] E2E Testing (Maestro/Puppeteer)
 - [ ] Ottimizzazione performance
 - [ ] EAS Build (iOS + Android)

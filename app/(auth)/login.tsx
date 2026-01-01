@@ -5,6 +5,7 @@ import { Controller, useForm } from "react-hook-form";
 import { Alert, Pressable, Text, TextInput, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { z } from "zod";
+import { PasswordInput } from "@/components/ui/PasswordInput";
 import { supabase } from "@/lib/supabase";
 
 const loginSchema = z.object({
@@ -74,10 +75,8 @@ export default function LoginScreen() {
 				control={control}
 				name="password"
 				render={({ field: { onChange, onBlur, value } }) => (
-					<TextInput
-						className="w-full border border-gray-300 rounded-xl px-4 py-3 mb-1 text-gray-900 bg-white"
+					<PasswordInput
 						placeholder="••••••••"
-						secureTextEntry
 						onBlur={onBlur}
 						onChangeText={onChange}
 						value={value}
@@ -89,6 +88,16 @@ export default function LoginScreen() {
 					{errors.password.message}
 				</Text>
 			)}
+
+			<View className="flex-row justify-end mb-4">
+				<Link href="/(auth)/forgot-password" asChild>
+					<Pressable>
+						<Text className="text-primary-600 text-sm font-medium">
+							Password dimenticata?
+						</Text>
+					</Pressable>
+				</Link>
+			</View>
 
 			<Pressable
 				className={`w-full bg-primary-500 py-4 rounded-xl mb-4 mt-4 ${

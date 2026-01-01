@@ -19,6 +19,19 @@ Questo workflow trasforma i file JSON grezzi (con solo titolo, ingredienti e ste
   "steps_raw_list": ["Step 1...", "Step 2..."]
 }
 ```
+## Step 0: Verifica Duplicati nel Database
+
+Prima di procedere, è **obbligatorio** verificare quali ricette sono già presenti nel database per evitare doppioni.
+
+1. Esegui il comando per elencare le ricette esistenti:
+```bash
+cd recipe-manager
+uv run python -m recipe_manager list
+```
+2. Confronta i titoli (o slug) delle ricette presenti nel DB con i file in `ricette_grezze/`.
+3. Se trovi ricette con nomi identici o molto simili:
+   - **Chiedi esplicitamente all'utente** se desidera procedere ugualmente per quelle specifiche ricette.
+   - Procedi solo dopo conferma positiva.
 
 ## Step 1: Leggi tutti i file grezzi
 
@@ -85,8 +98,18 @@ uv run python -m recipe_manager sync
 
 ## Prompt completo per Claude
 
-```
-Leggi i file JSON in recipe-manager/recipes_data/ricette_grezze/ e per ognuno:
+```bash
+# Sostituisci [ELENCO_TITOLI_DB] con l'output del comando 'list'
+# Sostituisci [TITOLI_GREZZI] con i nomi dei file o titoli trovati in ricette_grezze
+
+Verifica se tra le nuove ricette:
+[TITOLI_GREZZI]
+e quelle già presenti nel database:
+[ELENCO_TITOLI_DB]
+ci sono dei potenziali duplicati.
+
+In caso di duplicati, chiedimi se voglio procedere comunque.
+Per quelle non duplicate, procedi come segue per ognuna:
 1. Analizza titolo, ingredienti e step
 2. Stima quantità realistiche per gli ingredienti
 3. Calcola valori nutrizionali basandoti sulla tua conoscenza

@@ -10,19 +10,16 @@
   "prep_time_min": 15,
   "cook_time_min": 10,
   "difficulty": "medium",
-
   "kcal_per_100g": 90,
   "protein_per_100g": 9.0,
   "carbs_per_100g": 5.5,
   "fat_per_100g": 3.8,
   "fiber_per_100g": 1.0,
-
   "kcal_per_serving": 260,
   "serving_weight_g": 290,
   "total_raw_weight_g": 1318,
   "total_cooked_weight_g": 870,
   "cooking_factor": 0.66,
-
   "allergens": [],
   "dietary_flags": {
     "vegetarian": false,
@@ -31,7 +28,6 @@
     "dairy_free": true,
     "nut_free": true
   },
-
   "ingredients": [
     {
       "name_it": "petto di pollo",
@@ -58,7 +54,7 @@
       "name_en": "button mushrooms",
       "quantity": 260,
       "unit": "g",
-      "cooking_factor": 0.50,
+      "cooking_factor": 0.5,
       "is_optional": false,
       "notes_it": "interi o a metà",
       "notes_en": "whole or halved"
@@ -68,7 +64,7 @@
       "name_en": "onion",
       "quantity": 200,
       "unit": "g",
-      "cooking_factor": 0.70,
+      "cooking_factor": 0.7,
       "is_optional": false,
       "notes_it": "a spicchi",
       "notes_en": "wedges"
@@ -88,7 +84,7 @@
       "name_en": "shallot",
       "quantity": 40,
       "unit": "g",
-      "cooking_factor": 1.00,
+      "cooking_factor": 1.0,
       "is_optional": false,
       "notes_it": "tritato",
       "notes_en": "minced"
@@ -98,7 +94,7 @@
       "name_en": "olive oil",
       "quantity": 38,
       "unit": "ml",
-      "cooking_factor": 1.00,
+      "cooking_factor": 1.0,
       "is_optional": false,
       "notes_it": "30ml per marinata, 8ml per griglia",
       "notes_en": "30ml for marinade, 8ml for grill"
@@ -108,7 +104,7 @@
       "name_en": "lemon juice",
       "quantity": 30,
       "unit": "ml",
-      "cooking_factor": 0.50,
+      "cooking_factor": 0.5,
       "is_optional": false,
       "notes_it": "fresco",
       "notes_en": "fresh"
@@ -118,7 +114,7 @@
       "name_en": "garlic",
       "quantity": 6,
       "unit": "g",
-      "cooking_factor": 1.00,
+      "cooking_factor": 1.0,
       "is_optional": false,
       "notes_it": "schiacciato",
       "notes_en": "crushed"
@@ -128,13 +124,12 @@
       "name_en": "dried oregano",
       "quantity": 2,
       "unit": "g",
-      "cooking_factor": 1.00,
+      "cooking_factor": 1.0,
       "is_optional": false,
       "notes_it": null,
       "notes_en": null
     }
   ],
-
   "steps": [
     {
       "step_number": 1,
@@ -157,6 +152,15 @@
       "instruction_en": "Grill on BBQ or hot griddle (or oven broiler). Cook tomatoes for 5 min and chicken for 10 min, turning often and brushing with remaining oil."
     }
   ],
-
-  "tags": ["chicken", "grilled", "middle-eastern", "kebab", "dairy-free", "low-carb", "high-protein", "gluten-free"]
+  "tags": [
+    "chicken",
+    "grilled",
+    "middle-eastern",
+    "kebab",
+    "dairy-free",
+    "low-carb",
+    "high-protein",
+    "gluten-free"
+  ],
+  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767291889/nutriplanit/recipes/spiedini-di-pollo.jpg"
 }

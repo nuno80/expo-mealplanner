@@ -36,7 +36,7 @@
       "name_en": "potatoes",
       "quantity": 400,
       "unit": "g",
-      "cooking_factor": 0.90,
+      "cooking_factor": 0.9,
       "is_optional": false,
       "notes_it": "lessate e tagliate a cubetti",
       "notes_en": "boiled and cubed"
@@ -172,5 +172,6 @@
     "mediterranean",
     "summer",
     "healthy"
-  ]
+  ],
+  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767291885/nutriplanit/recipes/insalata-di-patate-e-tonno.jpg"
 }

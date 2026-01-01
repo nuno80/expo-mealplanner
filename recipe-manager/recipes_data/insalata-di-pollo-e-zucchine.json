@@ -34,7 +34,7 @@
       "name_en": "chicken breast",
       "quantity": 400,
       "unit": "g",
-      "cooking_factor": 0.80,
+      "cooking_factor": 0.8,
       "is_optional": false,
       "notes_it": "a fette da 1 cm",
       "notes_en": "sliced 1 cm thick"
@@ -181,5 +181,6 @@
     "summer",
     "protein",
     "healthy"
-  ]
+  ],
+  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767291885/nutriplanit/recipes/insalata-di-pollo-e-zucchine.jpg"
 }

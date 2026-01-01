@@ -19,7 +19,7 @@
   "serving_weight_g": 260,
   "total_raw_weight_g": 799,
   "total_cooked_weight_g": 1042,
-  "cooking_factor": 1.30,
+  "cooking_factor": 1.3,
   "allergens": [
     "eggs",
     "soy",
@@ -38,7 +38,7 @@
       "name_en": "rice noodles",
       "quantity": 200,
       "unit": "g",
-      "cooking_factor": 2.50,
+      "cooking_factor": 2.5,
       "is_optional": false,
       "notes_it": "vermicelli",
       "notes_en": "vermicelli"
@@ -58,7 +58,7 @@
       "name_en": "eggs",
       "quantity": 110,
       "unit": "g",
-      "cooking_factor": 1.00,
+      "cooking_factor": 1.0,
       "is_optional": false,
       "notes_it": "2 uova medie",
       "notes_en": "2 medium eggs"
@@ -68,7 +68,7 @@
       "name_en": "zucchini",
       "quantity": 100,
       "unit": "g",
-      "cooking_factor": 0.90,
+      "cooking_factor": 0.9,
       "is_optional": false,
       "notes_it": "tagliate a listarelle",
       "notes_en": "cut into strips"
@@ -78,7 +78,7 @@
       "name_en": "carrots",
       "quantity": 100,
       "unit": "g",
-      "cooking_factor": 0.90,
+      "cooking_factor": 0.9,
       "is_optional": false,
       "notes_it": "tagliate a listarelle",
       "notes_en": "cut into strips"
@@ -88,7 +88,7 @@
       "name_en": "onions",
       "quantity": 60,
       "unit": "g",
-      "cooking_factor": 0.90,
+      "cooking_factor": 0.9,
       "is_optional": false,
       "notes_it": "affettata",
       "notes_en": "sliced"
@@ -98,7 +98,7 @@
       "name_en": "sunflower oil",
       "quantity": 84,
       "unit": "g",
-      "cooking_factor": 1.00,
+      "cooking_factor": 1.0,
       "is_optional": false,
       "notes_it": "6 cucchiai",
       "notes_en": "6 tbsp"
@@ -108,7 +108,7 @@
       "name_en": "rice wine",
       "quantity": 30,
       "unit": "ml",
-      "cooking_factor": 0.80,
+      "cooking_factor": 0.8,
       "is_optional": false,
       "notes_it": null,
       "notes_en": null
@@ -118,7 +118,7 @@
       "name_en": "soy sauce",
       "quantity": 15,
       "unit": "ml",
-      "cooking_factor": 1.00,
+      "cooking_factor": 1.0,
       "is_optional": true,
       "notes_it": "q.b.",
       "notes_en": "to taste"
@@ -128,7 +128,7 @@
       "name_en": "salt and white pepper",
       "quantity": 1,
       "unit": "g",
-      "cooking_factor": 1.00,
+      "cooking_factor": 1.0,
       "is_optional": false,
       "notes_it": "q.b.",
       "notes_en": "to taste"
@@ -169,5 +169,6 @@
     "pork",
     "dairy-free",
     "stir-fry"
-  ]
+  ],
+  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767291935/nutriplanit/recipes/spaghetti-di-riso.jpg"
 }

@@ -28,6 +28,7 @@
     "expo-secure-store": "^15.0.8",
     "expo-sqlite": "^16.0.10",
     "expo-status-bar": "~3.0.9",
+    "lucide-react-native": "^0.562.0",
     "nativewind": "^4.2.1",
     "react": "19.1.0",
     "react-hook-form": "^7.69.0",

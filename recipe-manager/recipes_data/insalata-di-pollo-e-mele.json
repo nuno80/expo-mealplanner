@@ -46,7 +46,7 @@
       "name_en": "chicken breast",
       "quantity": 400,
       "unit": "g",
-      "cooking_factor": 0.80,
+      "cooking_factor": 0.8,
       "is_optional": false,
       "notes_it": "tagliato a fette da 1 cm",
       "notes_en": "sliced 1 cm thick"
@@ -173,5 +173,6 @@
     "healthy",
     "low-fat",
     "quick"
-  ]
+  ],
+  "image_url": "https://res.cloudinary.com/dicgdstzz/image/upload/v1767291888/nutriplanit/recipes/insalata-di-pollo-e-mele.jpg"
 }
