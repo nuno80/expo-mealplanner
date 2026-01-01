@@ -131,8 +131,15 @@ Prima di lavorare su qualsiasi task, consulta i documenti pertinenti:
     - [x] F3: Feature: Reset Password Screen (`reset-password.tsx`)
     - [x] F4: Configurazione Deep Linking & Auth Recovery logic in `_layout.tsx`
 - [ ] E2E Testing (Maestro/Puppeteer)
-- [ ] Ottimizzazione performance
+- [x] Ottimizzazione performance
+    - [x] F1: Hook `useDebouncedValue` per ricerca
+    - [x] F2: FlatList → FlashList in `recipes.tsx`
+    - [x] F3: `React.memo` su `RecipeCard`
+    - [x] F4: `React.memo` + `cachePolicy` su `MealCard`
+    - [x] F5: `useMemo`/`useCallback` in `plan.tsx`
+- [x] Fix: User name display on Home Screen (! issue)
 - [ ] EAS Build (iOS + Android)
+    - [x] Supabase: Configurare Redirect URL (`nutriplanit://auth/callback`)
 - [ ] App Store submission
 
 ---

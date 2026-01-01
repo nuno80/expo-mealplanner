@@ -3,7 +3,6 @@
  * Implements offline-first pattern with cloud sync.
  */
 
-import { sql } from "drizzle-orm";
 import { db } from "@/db/client";
 import {
 	ingredients,
@@ -12,6 +11,7 @@ import {
 	recipes,
 } from "@/db/schema";
 import { API_BASE_URL } from "@/lib/api";
+import { sql } from "drizzle-orm";
 
 export interface SyncResult {
 	success: boolean;
@@ -128,8 +128,26 @@ export async function syncRecipes(): Promise<SyncResult> {
 
 /**
  * Upsert a full recipe including ingredients and steps.
+ * Handles slug conflicts by deleting local recipes with matching slugs but different IDs.
  */
 async function upsertFullRecipe(apiRecipe: ApiRecipe): Promise<void> {
+	// 0. Handle slug conflicts: if a local recipe exists with the same slug but different ID, delete it first
+	// This ensures Turso IDs are always the source of truth
+	const existingBySlug = await db
+		.select({ id: recipes.id })
+		.from(recipes)
+		.where(sql`slug = ${apiRecipe.slug} AND id != ${apiRecipe.id}`)
+		.limit(1);
+
+	if (existingBySlug.length > 0) {
+		const oldId = existingBySlug[0].id;
+		console.log(
+			`[Sync] Replacing recipe with slug '${apiRecipe.slug}' (old ID: ${oldId} → new ID: ${apiRecipe.id})`,
+		);
+		// Delete old recipe (cascade will clean up ingredients/steps)
+		await db.delete(recipes).where(sql`id = ${oldId}`);
+	}
+
 	// 1. Upsert Recipe
 	const localRecipe = {
 		id: apiRecipe.id,

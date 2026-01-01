@@ -31,6 +31,7 @@ pnpm install
 
 # Start development server
 pnpm start
+pnpm exec expo start --tunnel -c
 
 # Run on iOS/Android
 pnpm ios
