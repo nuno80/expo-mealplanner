@@ -45,7 +45,9 @@ export function useMealPlan(
         ? getMealPlan(familyMemberId, weekStart)
         : Promise.resolve(null),
     enabled: !!familyMemberId && !!weekStart,
-    staleTime: 1000 * 60 * 2, // 2 minutes
+    staleTime: 1000 * 30, // 30 seconds - fresher data
+    refetchOnMount: true, // Always refetch when component mounts
+    refetchOnWindowFocus: true, // Refetch when app comes to foreground
   });
 }
 
@@ -58,13 +60,16 @@ export function useGenerateMealPlan() {
   return useMutation({
     mutationFn: (input: GenerateMealPlanInput) => generateMealPlan(input),
     onSuccess: (data, variables) => {
-      // Update the cache with the new plan
-      queryClient.setQueryData(
-        mealPlanKeys.detail(variables.familyMemberId, variables.weekStart),
-        data,
-      );
-      // Invalidate related queries
-      queryClient.invalidateQueries({ queryKey: mealPlanKeys.all });
+      // Defer cache updates to avoid "navigation context" error during render
+      queueMicrotask(() => {
+        // Update the cache with the new plan
+        queryClient.setQueryData(
+          mealPlanKeys.detail(variables.familyMemberId, variables.weekStart),
+          data,
+        );
+        // Invalidate related queries
+        queryClient.invalidateQueries({ queryKey: mealPlanKeys.all });
+      });
     },
   });
 }

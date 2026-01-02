@@ -34,6 +34,7 @@ export async function getShoppingListFromMealPlan(
     .select({
       recipeId: plannedMeals.recipeId,
       portionGrams: plannedMeals.portionGrams,
+      sideRecipeId: plannedMeals.sideRecipeId,
     })
     .from(plannedMeals)
     .where(whereCondition);
@@ -42,8 +43,13 @@ export async function getShoppingListFromMealPlan(
     return [];
   }
 
-  // 2. Get recipe IDs
-  const recipeIds: string[] = [...new Set(meals.map((m) => m.recipeId))];
+  // 2. Get recipe IDs (Main + Side)
+  const recipeIds: string[] = [
+    ...new Set([
+      ...meals.map((m) => m.recipeId),
+      ...meals.map((m) => m.sideRecipeId).filter((id): id is string => !!id),
+    ]),
+  ];
 
   // 3. Get ingredients for all recipes
   const recipeIngredientsData = await db
@@ -104,9 +110,14 @@ export async function getShoppingListFromMealPlan(
       };
     }
 
-    // Count how many times this recipe appears in meals
-    const recipeCount = meals.filter((m) => m.recipeId === ri.recipeId).length;
-    aggregated[key].quantity += ri.quantity * recipeCount;
+    // Count how many times this recipe appears in meals (Main or Side)
+    const mainCount = meals.filter((m) => m.recipeId === ri.recipeId).length;
+    const sideCount = meals.filter((m) => m.sideRecipeId === ri.recipeId).length;
+
+    // Note: This logic assumes 1 serving of ingredient per occurrence.
+    // Ideally we should scale by portionGrams/servingGrams, but this requires recipe serving metadata.
+    // For now, this ensures simple aggregation.
+    aggregated[key].quantity += ri.quantity * (mainCount + sideCount);
   }
 
   // 6. Sort by category and name

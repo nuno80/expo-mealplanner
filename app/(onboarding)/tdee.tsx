@@ -1,11 +1,10 @@
-```
+import { useAddFamilyMember } from "@/hooks/useFamilyMembers";
 import {
   calculateMacroTargets,
   calculateTargetKcal,
   calculateTDEE,
-  	type MacroTargets,
+  type MacroTargets,
 } from "@/lib/tdee";
-import { useAddFamilyMember } from "@/hooks/useFamilyMembers";
 import { useAuthStore } from "@/stores/authStore";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useEffect, useState } from "react";
@@ -70,7 +69,6 @@ export default function OnboardingTdeeScreen() {
           goal: goal.goal,
           calorieAdjustment: goal.calorieAdjustment,
           snacksEnabled,
-          // Pass calculated macros if API supports it, otherwise DB defaults or logic override
           macroProteinPct: macroTargets.proteinPct,
           macroCarbPct: macroTargets.carbPct,
           macroFatPct: macroTargets.fatPct,
@@ -114,7 +112,7 @@ export default function OnboardingTdeeScreen() {
 
   const adjustmentText =
     goal?.calorieAdjustment && goal.calorieAdjustment !== 0
-      ? `(${ goal.calorieAdjustment > 0 ? "+" : "" }${ goal.calorieAdjustment } kcal)`
+      ? `(${goal.calorieAdjustment > 0 ? "+" : ""}${goal.calorieAdjustment} kcal)`
       : "";
 
   return (
@@ -181,11 +179,10 @@ export default function OnboardingTdeeScreen() {
 
       {/* Snacks Toggle */}
       <Pressable
-        className={`flex - row items - center justify - between p - 4 rounded - xl border ${
-  snacksEnabled
-    ? "bg-primary-50 border-primary-400"
-    : "bg-gray-50 border-gray-200"
-} `}
+        className={`flex-row items-center justify-between p-4 rounded-xl border ${snacksEnabled
+            ? "bg-primary-50 border-primary-400"
+            : "bg-gray-50 border-gray-200"
+          }`}
         onPress={() => setSnacksEnabled(!snacksEnabled)}
       >
         <View>
@@ -195,14 +192,12 @@ export default function OnboardingTdeeScreen() {
           </Text>
         </View>
         <View
-          className={`w - 12 h - 7 rounded - full p - 1 ${
-  snacksEnabled ? "bg-primary-500" : "bg-gray-300"
-} `}
+          className={`w-12 h-7 rounded-full p-1 ${snacksEnabled ? "bg-primary-500" : "bg-gray-300"
+            }`}
         >
           <View
-            className={`w - 5 h - 5 rounded - full bg - white ${
-  snacksEnabled ? "ml-auto" : ""
-} `}
+            className={`w-5 h-5 rounded-full bg-white ${snacksEnabled ? "ml-auto" : ""
+              }`}
           />
         </View>
       </Pressable>
@@ -210,7 +205,7 @@ export default function OnboardingTdeeScreen() {
       <View className="flex-1" />
 
       <Pressable
-        className={`w - full bg - primary - 500 py - 4 rounded - xl ${ isSaving ? "opacity-70" : "" } `}
+        className={`w-full bg-primary-500 py-4 rounded-xl ${isSaving ? "opacity-70" : ""}`}
         onPress={handleContinue}
         disabled={isSaving}
       >

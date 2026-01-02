@@ -83,6 +83,17 @@ export const MealCard = React.memo(function MealCard({
             {meal.portionGrams}g
           </Text>
         </View>
+
+        {/* Side Dish Info */}
+        {meal.sideRecipe && (
+          <View className="mt-1.5 pt-1 border-t border-ui-100 flex-row items-center">
+            <Text className="text-[10px] text-ui-400 mr-1">+</Text>
+            <Text className="text-xs text-ui-600" numberOfLines={1}>
+              <Text className="font-bold">{meal.sidePortionGrams}g</Text>{" "}
+              {locale === "it" ? meal.sideRecipe.nameIt : meal.sideRecipe.nameEn}
+            </Text>
+          </View>
+        )}
       </View>
 
       {/* Actions Pillar */}

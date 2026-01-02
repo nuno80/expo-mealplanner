@@ -6,6 +6,7 @@ import { supabase } from "@/lib/supabase";
 import { isSyncNeeded, syncRecipes } from "@/services/sync.service";
 import { getPrimaryMember } from "@/services/user.service";
 import { useAuthStore } from "@/stores/authStore";
+import { useFamilyStore } from "@/stores/familyStore";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import * as Linking from "expo-linking";
 import { Stack, useRouter } from "expo-router";
@@ -103,14 +104,24 @@ function RootLayoutContent() {
     runSync();
   }, [migrationsReady, syncComplete]);
 
-  // Check onboarding status when user logs in
+  // Check onboarding status when user logs in AND initialize selectedMemberId
+  const { selectedMemberId, setSelectedMemberId } = useFamilyStore();
+
   useEffect(() => {
     const checkOnboarding = async () => {
-      if (session?.user && !hasCompletedOnboarding && migrationsReady) {
+      if (session?.user && migrationsReady) {
         try {
           const primaryMember = await getPrimaryMember(session.user.id);
           if (primaryMember) {
-            completeOnboarding();
+            // Mark onboarding as complete
+            if (!hasCompletedOnboarding) {
+              completeOnboarding();
+            }
+            // Initialize selectedMemberId if not already set
+            if (!selectedMemberId) {
+              console.log("[App] Initializing selectedMemberId to primary member:", primaryMember.id.slice(0, 8));
+              setSelectedMemberId(primaryMember.id);
+            }
           }
         } catch (error) {
           console.error("Error checking onboarding:", error);
@@ -118,7 +129,7 @@ function RootLayoutContent() {
       }
     };
     checkOnboarding();
-  }, [session, hasCompletedOnboarding, completeOnboarding, migrationsReady]);
+  }, [session, hasCompletedOnboarding, completeOnboarding, migrationsReady, selectedMemberId, setSelectedMemberId]);
 
   return (
     <Stack screenOptions={{ headerShown: false }}>

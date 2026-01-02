@@ -175,10 +175,19 @@ async function upsertFullRecipe(apiRecipe: ApiRecipe): Promise<void> {
     isPublished: true,
   };
 
-  await db.insert(recipes).values(localRecipe).onConflictDoUpdate({
-    target: recipes.id,
-    set: localRecipe,
-  });
+  try {
+    await db.insert(recipes).values(localRecipe).onConflictDoUpdate({
+      target: recipes.id,
+      set: localRecipe,
+    });
+    // Log side_dish specifically to debug
+    if (apiRecipe.category === "side_dish") {
+      console.log(`[Sync] ✅ Inserted side_dish: ${apiRecipe.name_it}`);
+    }
+  } catch (err) {
+    console.error(`[Sync] ❌ Failed to insert ${apiRecipe.slug}:`, err);
+    return; // Skip remaining steps for this recipe
+  }
 
   // 2. Upsert Ingredients (the "master" ingredient entry)
   for (const apiIng of apiRecipe.ingredients) {

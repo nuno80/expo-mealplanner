@@ -1,5 +1,7 @@
 import type { ActivityLevel, Sex } from "@/schemas/auth";
 
+export type Goal = "cut" | "maintain" | "bulk";
+
 /**
  * Activity multipliers for TDEE calculation (Mifflin-St Jeor).
  * Source: GEMINI.md domain rules.
@@ -85,7 +87,7 @@ export interface MacroTargets {
 
 export function calculateMacroTargets(
   weightKg: number,
-  goal: "cut" | "maintain" | "bulk",
+  goal: Goal,
   targetKcal: number,
 ): MacroTargets {
   // 1. Calculate Protein (g/kg)

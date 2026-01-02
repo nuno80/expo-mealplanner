@@ -1,6 +1,6 @@
 # 🧠 Guida Algoritmo Meal Plan (Dieta Mediterranea)
 
-**Versione:** 1.0 (Gennaio 2026)
+**Versione:** 2.1 (2 Gennaio 2026)
 **Stato:** ✅ IMPLEMENTATO
 
 ## Panoramica
@@ -119,7 +119,72 @@ L'algoritmo costruisce il pasto in due step per garantire bilanciamento e saziet
 
 ---
 
-## 5. Manutenzione
+## 5. NutriPlanIT 2.1: Gap Fill Migliorato (2 Gennaio 2026)
+
+### Problema Risolto
+La v2.0 causava porzioni irrealistiche:
+- Insalata greca (95 kcal/100g) → **589g** 😱
+- Zuppa di lenticchie (68 kcal/100g) → **576g** 😱
+- Spiedini di pollo con verdure → **1110g ingredienti crudi** 😱
+
+### Nuove Regole Gap Fill
+
+#### A. Trigger Condizionali
+Il sistema aggiunge un Side Dish se il piatto principale soddisfa **almeno una** di queste condizioni:
+
+| Trigger | Condizione | Esempio |
+|---------|------------|---------|
+| **High Protein + Low Carb** | P > 15g AND C < 10g | Petto di pollo, Salmone |
+| **Low Density** | < 120 kcal/100g | Insalate, Tofu, Zuppe |
+
+#### B. Cap Porzione 300g (Opzione A)
+Se la porzione calcolata del main supera **300g**, viene applicato un cap assoluto:
+
+```
+IF mainGrams > 300g THEN
+   mainGrams = 300g
+   mainKcal = (300 / 100) × kcalPer100g
+   side kcal = target - mainKcal
+```
+
+#### C. Filtro Side Dish Alta Densità
+Per evitare contorni con porzioni assurde (es. 1305g Insalata), i side dishes vengono filtrati:
+
+| Contorno | Densità | Selezionabile? |
+|----------|---------|----------------|
+| Riso Basmati | 350 kcal/100g | ✅ |
+| Pane Integrale | 250 kcal/100g | ✅ |
+| Patate al Forno | 90 kcal/100g | ❌ |
+| Insalata Mista | 20 kcal/100g | ❌ |
+| Verdure Grigliate | 40 kcal/100g | ❌ |
+
+**Soglia:** Solo contorni con ≥ 150 kcal/100g vengono selezionati.
+
+### Esempio Pratico: Zuppa di Lenticchie Rosse
+
+| Metrica | Prima (v2.0) | Dopo (v2.1) |
+|---------|--------------|-------------|
+| Target pasto | 653 kcal | 653 kcal |
+| Densità ricetta | 68 kcal/100g | 68 kcal/100g |
+| Porzione zuppa | **576g** 😱 | **300g** ✅ (capped) |
+| Kcal zuppa | 392 kcal | 204 kcal |
+| Contorno | 75g Pane | **180g Pane** |
+| Kcal contorno | 188 kcal | 449 kcal |
+
+---
+
+## 6. Manutenzione
 
 *   **Data Entry**: Le ricette Main Course devono essere "pure" (es. "Salmone", non "Salmone con patate"). I contorni vanno inseriti come ricette atomiche nella categoria `side`.
 *   **Nuove Ricette**: Assegnare correttamente `protein_source` e `category`.
+*   **Side Dishes**: Assicurarsi che i contorni ad alta densità (Pane, Riso) abbiano ≥ 150 kcal/100g.
+
+---
+
+## Changelog
+
+| Versione | Data | Modifiche |
+|----------|------|-----------|
+| 1.0 | Gen 2026 | Implementazione base con rotazione proteica |
+| 2.0 | Gen 2026 | Aggiunto Gap Fill con Side Dishes |
+| 2.1 | 2 Gen 2026 | + Trigger Low Density (<120 kcal/100g)<br>+ Cap 300g porzioni<br>+ Filtro side dishes alta densità (≥150 kcal/100g) |

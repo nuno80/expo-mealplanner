@@ -6,10 +6,11 @@ import {
   useGenerateMealPlan,
   useMealPlan,
   useMealPlanStatus,
+  useToggleSnackForDay,
 } from "@/hooks/useMealPlan";
 import type { MealType, PlannedMealWithRecipe } from "@/schemas/mealPlan";
 import { useFamilyStore } from "@/stores/familyStore";
-import { router } from "expo-router";
+import { useRouter } from "expo-router";
 import { useCallback, useMemo, useState } from "react";
 import { Alert, Pressable, ScrollView, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -39,7 +40,7 @@ function formatWeekRange(weekStart: Date): string {
 }
 
 export default function PlanScreen() {
-  // router is imported directly from expo-router (not useRouter hook)
+  const router = useRouter();
   const insets = useSafeAreaInsets();
   const [weekOffset, setWeekOffset] = useState(0);
   const weekStart = getWeekStart(weekOffset);
@@ -53,6 +54,30 @@ export default function PlanScreen() {
     selectedMemberId ?? undefined,
     weekStart,
   );
+
+  const toggleSnack = useToggleSnackForDay();
+
+  const handleDayOptions = useCallback((day: number, hasSnacks: boolean) => {
+    if (!mealPlan?.id) return;
+
+    Alert.alert(
+      "Opzioni Giorno",
+      "Gestisci i pasti per questo giorno",
+      [
+        {
+          text: hasSnacks ? "Rimuovi Spuntini" : "Ripristina Spuntini",
+          onPress: () => toggleSnack.mutate({
+            mealPlanId: mealPlan.id,
+            day,
+            enabled: !hasSnacks
+          }),
+          style: hasSnacks ? "destructive" : "default"
+        },
+        { text: "Annulla", style: "cancel" }
+      ]
+    );
+  }, [mealPlan?.id, toggleSnack]);
+
   const generatePlan = useGenerateMealPlan();
   const deletePlan = useDeleteMealPlanForWeek();
 
@@ -173,12 +198,42 @@ export default function PlanScreen() {
             </Text>
             <Pressable
               onPress={() => {
-                console.log(`[PlanScreen] Generate pressed. selectedMemberId: ${selectedMemberId}`);
-                if (selectedMemberId)
-                  generatePlan.mutate({
-                    familyMemberId: selectedMemberId,
-                    weekStart,
-                  });
+                if (!selectedMemberId) return;
+
+                Alert.alert(
+                  "Configura il tuo Piano",
+                  "Quanti spuntini vuoi includere ogni giorno?",
+                  [
+                    {
+                      text: "Solo pasti principali (3)",
+                      onPress: () => generatePlan.mutate({
+                        familyMemberId: selectedMemberId,
+                        weekStart,
+                        snackPreference: "none"
+                      })
+                    },
+                    {
+                      text: "1 Spuntino (Pomeriggio)",
+                      onPress: () => generatePlan.mutate({
+                        familyMemberId: selectedMemberId,
+                        weekStart,
+                        snackPreference: "one"
+                      })
+                    },
+                    {
+                      text: "2 Spuntini (Mattina & Pom.)",
+                      onPress: () => generatePlan.mutate({
+                        familyMemberId: selectedMemberId,
+                        weekStart,
+                        snackPreference: "two"
+                      })
+                    },
+                    {
+                      text: "Annulla",
+                      style: "cancel"
+                    }
+                  ]
+                );
               }}
               disabled={generatePlan.isPending || !selectedMemberId}
               className="bg-brand-500 w-full py-4 rounded-xl shadow-lg shadow-brand-500/30 active:bg-brand-600"
@@ -227,9 +282,21 @@ export default function PlanScreen() {
                           target={dailyTarget}
                           height={4}
                           showLabel={false}
+                          color={isOver ? "#EF4444" : "#10B981"}
                         />
                       </View>
                     </View>
+
+                    {/* Day Options Menu */}
+                    <Pressable
+                      className="p-2 -mr-2"
+                      onPress={() => {
+                        const hasSnacks = meals.some(m => (m.mealType === 'snack_am' || m.mealType === 'snack_pm') && !m.isSkipped);
+                        handleDayOptions(day, hasSnacks);
+                      }}
+                    >
+                      <Text className="text-ui-400 text-lg font-bold tracking-widest pl-2">•••</Text>
+                    </Pressable>
                   </View>
 
                   {/* Meals List */}
@@ -267,9 +334,9 @@ export default function PlanScreen() {
                 </View>
               );
             })}
-          </View>
+          </View >
         )}
-      </ScrollView>
+      </ScrollView >
 
       {/* Floating Action Bar */}
       {

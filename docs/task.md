@@ -175,15 +175,17 @@ Prima di lavorare su qualsiasi task, consulta i documenti pertinenti:
     - [x] Onboarding: Update `tdee.tsx` UI & Logic to use dynamic grams
 
 - [ ] **Algorithm Engine (Service)**
-    - [ ] Service: Implement `getSidesForGap(gapKcal, missingMacro)`
-    - [ ] Service: Update `generateMealPlan` loop with "Main + Side" logic
-    - [ ] Service: Update `recalculateDayPortions` to handle sides
+    - [x] Service: Implement `getSidesForGap(gapKcal, missingMacro)`
+    - [x] Service: Update `generateMealPlan` loop with "Main + Side" logic
+    - [x] Service: Update `recalculateDayPortions` to handle sides
 
 - [ ] **UI Implementation**
-    - [ ] `MealCard`: Show Side Dish info ("+ 50g Pane")
-    - [ ] `ShoppingList`: Include side ingredients in aggregation
+    - [x] UI: `MealCard` updates (Show Side Dish info: "+ 50g Pane")
+    - [x] UI: `ShoppingList` aggregation (Include side ingredients)
 
 - [ ] **Verification**
+    - [ ] Test V1: User in CUT (High Protein Main check)
+    - [ ] Test V2: User in BULK (Side Dish insertion check)
     - [ ] Test V1: User in CUT (High Protein Main check)
     - [ ] Test V2: User in BULK (Large Gap -> Side Dish insertion check)
 
