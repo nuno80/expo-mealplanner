@@ -171,8 +171,8 @@ Prima di lavorare su qualsiasi task, consulta i documenti pertinenti:
     - [x] Seed: Inserire contorni base (Pane, Patate, Riso, Insalata)
 
 - [ ] **Logic Layer (Libs)**
-    - [ ] TDEE: Implement `calculateMacroTargets` (2.1g/kg Cut, 1.7g/kg Bulk)
-    - [ ] Onboarding: Update `tdee.tsx` UI & Logic to use dynamic grams
+    - [x] TDEE: Implement `calculateMacroTargets` (2.1g/kg Cut, 1.7g/kg Bulk)
+    - [x] Onboarding: Update `tdee.tsx` UI & Logic to use dynamic grams
 
 - [ ] **Algorithm Engine (Service)**
     - [ ] Service: Implement `getSidesForGap(gapKcal, missingMacro)`
