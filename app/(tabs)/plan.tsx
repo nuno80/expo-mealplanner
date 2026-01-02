@@ -2,6 +2,7 @@ import { MealCard } from "@/components/MealCard";
 import { ProgressBar } from "@/components/ProgressRing";
 import {
   getWeekStart,
+  useCompleteMeal,
   useDeleteMealPlanForWeek,
   useGenerateMealPlan,
   useMealPlan,
@@ -56,6 +57,7 @@ export default function PlanScreen() {
   );
 
   const toggleSnack = useToggleSnackForDay();
+  const completeMeal = useCompleteMeal();
 
   const handleDayOptions = useCallback((day: number, hasSnacks: boolean) => {
     if (!mealPlan?.id) return;
@@ -321,6 +323,7 @@ export default function PlanScreen() {
                             },
                           })
                         }
+                        onComplete={() => completeMeal.mutate(meal.id)}
                       />
                     ))}
                     {meals.length === 0 && (

@@ -187,9 +187,31 @@ Prima di lavorare su qualsiasi task, consulta i documenti pertinenti:
     - [ ] Test V1: User in CUT (High Protein Main check)
     - [ ] Test V2: User in BULK (Side Dish insertion check)
     - [ ] Test V1: User in CUT (High Protein Main check)
-    - [ ] Test V2: User in BULK (Large Gap -> Side Dish insertion check)
-
 ---
+
+## Phase 9: Meal Completion Tracking ⏳
+
+> 🎯 **Obiettivo:** Tracciare i pasti consumati e visualizzare progressi settimanali con grafici calorie/macro.
+
+- [x] **1. Checkbox Interattiva su MealCard**
+    - [x] F1: Aggiungere prop `onComplete` a `MealCard`
+    - [x] F2: Rendere icona cliccabile (cerchio → checkmark)
+    - [x] F3: Chiamare `useCompleteMeal` mutation on tap
+    - [ ] F4: Aggiungere animazione di transizione
+    - [ ] V1: Test toggle completamento pasto
+
+- [ ] **2. Calcolo Settimanale Macro (Service)**
+    - [ ] F1: `getWeeklyProgress(memberId, weekStart)` in `mealPlan.service.ts`
+    - [ ] F2: Aggregare kcal/proteine/carbs/grassi dai pasti completati
+    - [ ] F3: Ritornare dati giornalieri + totali settimanali
+    - [ ] V1: Test calcolo con dati mock
+
+- [ ] **3. Grafici Progressi (UI)**
+    - [ ] F1: Installare libreria grafici (`victory-native` o `react-native-chart-kit`)
+    - [ ] F2: Grafico barre impilate (P/C/F per giorno)
+    - [ ] F3: Progress ring calorie settimanali
+    - [ ] F4: Integrare nel tab Progressi
+    - [ ] V1: Test rendering grafici
 
 ## 🔄 Protocollo Aggiornamento
 

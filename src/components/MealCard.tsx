@@ -8,6 +8,7 @@ interface MealCardProps {
   locale?: "it" | "en";
   onPress?: () => void;
   onSwap?: () => void;
+  onComplete?: () => void;
 }
 
 const MEAL_CONFIG: Record<MealType, { icon: string; labelIt: string }> = {
@@ -23,6 +24,7 @@ export const MealCard = React.memo(function MealCard({
   locale = "it",
   onPress,
   onSwap,
+  onComplete,
 }: MealCardProps) {
   const config = MEAL_CONFIG[meal.mealType];
   const recipeName = locale === "it" ? meal.recipe.nameIt : meal.recipe.nameEn;
@@ -96,24 +98,37 @@ export const MealCard = React.memo(function MealCard({
         )}
       </View>
 
-      {/* Actions Pillar */}
-      <View className="items-end justify-between h-full pl-2">
-        {meal.isCompleted ? (
-          <View className="w-8 h-8 rounded-full bg-success-100 items-center justify-center border border-success-200">
+      {/* Actions Column */}
+      <View className="items-end pl-2">
+        {/* Completion Toggle - Always visible */}
+        <Pressable
+          onPress={(e) => {
+            e.stopPropagation();
+            onComplete?.();
+          }}
+          className={`w-8 h-8 rounded-full items-center justify-center border ${meal.isCompleted
+            ? "bg-success-100 border-success-200"
+            : "bg-ui-50 border-ui-200"
+            }`}
+        >
+          {meal.isCompleted ? (
             <Text className="text-success-600 font-bold">✓</Text>
-          </View>
-        ) : (
-          onSwap && (
-            <Pressable
-              onPress={(e) => {
-                e.stopPropagation();
-                onSwap();
-              }}
-              className="w-8 h-8 rounded-full bg-ui-50 items-center justify-center active:bg-ui-100"
-            >
-              <Text className="text-xs">🔄</Text>
-            </Pressable>
-          )
+          ) : (
+            <View className="w-4 h-4 rounded-full border-2 border-ui-300" />
+          )}
+        </Pressable>
+
+        {/* Swap Button - Only if not completed */}
+        {!meal.isCompleted && onSwap && (
+          <Pressable
+            onPress={(e) => {
+              e.stopPropagation();
+              onSwap();
+            }}
+            className="w-8 h-8 rounded-full bg-ui-50 items-center justify-center mt-1"
+          >
+            <Text className="text-xs">🔄</Text>
+          </Pressable>
         )}
       </View>
     </Pressable>
