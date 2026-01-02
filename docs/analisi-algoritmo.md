@@ -91,10 +91,35 @@ Ogni ricetta è classificata con uno dei seguenti tag nel campo `protein_source`
 
 ---
 
-## 4. Manutenzione e Futuro
+## 4. NutriPlanIT 2.0: Smart Density & Side Dishes (Gennaio 2026)
 
-*   **Aggiunta Ricette**: Ogni nuova ricetta DEVE avere il campo `protein_source` valorizzato correttamente affinché l'algoritmo funzioni (vedi workflow `03_creazione_ricette`).
-*   **Miglioramenti Futuri**:
-    *   Validazione esatta della composizione del piatto (Verdure 50%, Carboidrati 25%, Proteine 25%).
-    *   Stagionalità degli ingredienti.
-    *   Preferenze utente (es. vegetariano, no pesce).
+Per risolvere i limiti della v1.0 ("Paradosso del Cut" e "Bistecca Gigante"), l'algoritmo è stato evoluto con due nuove logiche fondamentali:
+
+### A. Target Proteici Dinamici (Command-by-Cut)
+Invece di percentuali fisse (30%), il fabbisogno proteico è calcolato su base **g/kg** per garantire la preservazione muscolare anche in deficit:
+*   **Cut (Dimagrimento)**: Target **2.1 g/kg** (Alta densità richiesta)
+*   **Maintain/Bulk**: Target **1.7 g/kg**
+
+### B. Architettura "Main + Gap Fill" (Side Dishes)
+L'algoritmo costruisce il pasto in due step per garantire bilanciamento e sazietà:
+
+1.  **Step 1 (The Main Event)**:
+    *   Seleziona il piatto principale (es. Salmone, Bistecca, Pasta) basandosi sulla priorità delle fonti proteiche.
+    *   Scala la porzione per soddisfare il fabbisogno proteico.
+    *   Calcola il "Gap Calorico" rimanente per raggiungere il target del pasto.
+
+2.  **Step 2 (The Filler)**:
+    *   Se **Gap < 150 kcal** (Piatto completo/calorico) → Nessun contorno.
+    *   Se **Gap > 150 kcal** (Piatto proteico/magro) → **Seleziona Side Dish**.
+    *   Pesca dalla categoria `side` (Pane, Patate, Riso, Verdure) e scala la porzione per riempire esattamente il gap.
+
+### Struttura Dati Aggiornata
+*   **Tabella `planned_meals`**: Nuovi campi `side_recipe_id`, `side_portion_grams`.
+*   **Tabella `recipes`**: Nuova categoria `side` per contorni e accompagnamenti.
+
+---
+
+## 5. Manutenzione
+
+*   **Data Entry**: Le ricette Main Course devono essere "pure" (es. "Salmone", non "Salmone con patate"). I contorni vanno inseriti come ricette atomiche nella categoria `side`.
+*   **Nuove Ricette**: Assegnare correttamente `protein_source` e `category`.

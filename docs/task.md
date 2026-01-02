@@ -150,13 +150,42 @@ Prima di lavorare su qualsiasi task, consulta i documenti pertinenti:
     - [x] F1: Nuovi hooks in `useMealPlan.ts`
     - [x] F2: Redesign `meal-swap.tsx` con 2 modalità
     - [x] F3: Bottone "Nuovo Piano" con conferma in `plan.tsx`
-    - [ ] F4: Toggle snack globale in header `plan.tsx`
-    - [ ] F5: Toggle snack per giorno (context menu)
+    - [x] F4: Toggle snack globale (ActionSheet) in `plan.tsx`
+    - [x] F5: Toggle snack per giorno (context menu)
     - [x] F6: Passa params corretti da `MealCard` a modal
     - [x] V1: Test manuale rigenerazione piano
     - [x] V2: Test manuale swap casuale/manuale
-    - [ ] V3: Test manuale toggle snack
-    - [ ] CLEANUP: Rimuovere console.log di debug da `mealPlan.service.ts` e `plan.tsx`
+    - [ ] V3: Test manuale toggle snack (ActionSheet + Day Option)
+    - [x] CLEANUP: (Annullato/Ripristinato log su richiesta utente)
+
+---
+
+## Phase 8: NutriPlanIT 2.0 (Smart Density & Sides) ⏳
+
+> 🧠 **Docs:** `docs/analisi-algoritmo.md` (v2.0 Logic)
+> 🎯 **Obiettivo:** Risolvere "Cut Paradox" (proteine insufficienti) e "Giant Steak Paradox" (mancanza carboidrati).
+
+- [ ] **Schema & Data**
+    - [ ] DB: Migration `planned_meals` (`side_recipe_id`, `side_portion_grams`)
+    - [ ] DB: Update `recipes` check constraint for category `side`
+    - [ ] Seed: Inserire contorni base (Pane, Patate, Riso, Insalata)
+
+- [ ] **Logic Layer (Libs)**
+    - [ ] TDEE: Implement `calculateMacroTargets` (2.1g/kg Cut, 1.7g/kg Bulk)
+    - [ ] Onboarding: Update `tdee.tsx` UI & Logic to use dynamic grams
+
+- [ ] **Algorithm Engine (Service)**
+    - [ ] Service: Implement `getSidesForGap(gapKcal, missingMacro)`
+    - [ ] Service: Update `generateMealPlan` loop with "Main + Side" logic
+    - [ ] Service: Update `recalculateDayPortions` to handle sides
+
+- [ ] **UI Implementation**
+    - [ ] `MealCard`: Show Side Dish info ("+ 50g Pane")
+    - [ ] `ShoppingList`: Include side ingredients in aggregation
+
+- [ ] **Verification**
+    - [ ] Test V1: User in CUT (High Protein Main check)
+    - [ ] Test V2: User in BULK (Large Gap -> Side Dish insertion check)
 
 ---
 
