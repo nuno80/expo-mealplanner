@@ -29,6 +29,13 @@
       "when": 1767300229749,
       "tag": "0003_clear_kylun",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1767362676381,
+      "tag": "0004_deep_invaders",
+      "breakpoints": true
     }
   ]
 }

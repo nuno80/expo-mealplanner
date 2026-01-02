@@ -158,7 +158,8 @@ export default function PlanScreen() {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: insets.bottom + 100 }}
       >
-        {!mealPlan && !isLoading ? (
+        {/* Show generate button if no plan OR if plan has no meals (broken refs) */}
+        {(!mealPlan || mealPlan.meals.length === 0) && !isLoading ? (
           <View className="items-center py-10 bg-white rounded-3xl p-6 shadow-sm border border-ui-100 mt-4">
             <View className="w-20 h-20 bg-brand-50 rounded-full items-center justify-center mb-4">
               <Text className="text-3xl">📅</Text>
@@ -172,6 +173,7 @@ export default function PlanScreen() {
             </Text>
             <Pressable
               onPress={() => {
+                console.log(`[PlanScreen] Generate pressed. selectedMemberId: ${selectedMemberId}`);
                 if (selectedMemberId)
                   generatePlan.mutate({
                     familyMemberId: selectedMemberId,
@@ -270,23 +272,25 @@ export default function PlanScreen() {
       </ScrollView>
 
       {/* Floating Action Bar */}
-      {mealPlan && (
-        <View className="absolute bottom-8 self-center flex-row gap-4 shadow-xl shadow-brand-900/10">
-          <Pressable
-            onPress={() => router.push("/(modals)/shopping-list")}
-            className="bg-brand-500 px-6 py-3.5 rounded-full flex-row items-center gap-2"
-          >
-            <Text className="text-white font-bold">🛒 Lista Spesa</Text>
-          </Pressable>
-          <Pressable
-            className="bg-white px-4 py-3.5 rounded-full border border-ui-200"
-            onPress={handleRegenerate}
-            disabled={generatePlan.isPending || deletePlan.isPending}
-          >
-            <Text className="text-xl">🔄</Text>
-          </Pressable>
-        </View>
-      )}
-    </View>
+      {
+        mealPlan && (
+          <View className="absolute bottom-8 self-center flex-row gap-4 shadow-xl shadow-brand-900/10">
+            <Pressable
+              onPress={() => router.push("/(modals)/shopping-list")}
+              className="bg-brand-500 px-6 py-3.5 rounded-full flex-row items-center gap-2"
+            >
+              <Text className="text-white font-bold">🛒 Lista Spesa</Text>
+            </Pressable>
+            <Pressable
+              className="bg-white px-4 py-3.5 rounded-full border border-ui-200"
+              onPress={handleRegenerate}
+              disabled={generatePlan.isPending || deletePlan.isPending}
+            >
+              <Text className="text-xl">🔄</Text>
+            </Pressable>
+          </View>
+        )
+      }
+    </View >
   );
 }

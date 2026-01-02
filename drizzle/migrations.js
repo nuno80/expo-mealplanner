@@ -5,6 +5,7 @@ import m0000 from './0000_overjoyed_mandroid.sql';
 import m0001 from './0001_large_vulture.sql';
 import m0002 from './0002_aberrant_kate_bishop.sql';
 import m0003 from './0003_clear_kylun.sql';
+import m0004 from './0004_deep_invaders.sql';
 
   export default {
     journal,
@@ -12,7 +13,8 @@ import m0003 from './0003_clear_kylun.sql';
       m0000,
 m0001,
 m0002,
-m0003
+m0003,
+m0004
     }
   }
   

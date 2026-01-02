@@ -98,6 +98,21 @@ export async function getMealPlan(
     .innerJoin(recipes, eq(plannedMeals.recipeId, recipes.id))
     .where(eq(plannedMeals.mealPlanId, plan.id));
 
+  // Debug: check raw planned_meals count (without join)
+  const rawMeals = await db
+    .select({ id: plannedMeals.id, recipeId: plannedMeals.recipeId })
+    .from(plannedMeals)
+    .where(eq(plannedMeals.mealPlanId, plan.id));
+
+  if (rawMeals.length > 0 && mealsResult.length === 0) {
+    console.log(`[MealPlan] DEBUG: ${rawMeals.length} planned_meals exist but JOIN returned 0. Sample recipeId: ${rawMeals[0].recipeId}`);
+    // Check if sample recipe exists
+    const sampleRecipe = await db.select({ id: recipes.id }).from(recipes).where(eq(recipes.id, rawMeals[0].recipeId));
+    console.log(`[MealPlan] DEBUG: Recipe ${rawMeals[0].recipeId} exists: ${sampleRecipe.length > 0}`);
+  }
+
+  console.log(`[MealPlan] getMealPlan found ${mealsResult.length} meals for plan ${plan.id}`);
+
   return {
     ...plan,
     meals: mealsResult as PlannedMealWithRecipe[],
@@ -151,6 +166,25 @@ export async function generateMealPlan(
   const targetKcalWeekly = input.targetKcalWeekly ?? member.targetKcal * 7;
   const dailyTarget = Math.round(targetKcalWeekly / 7);
 
+  // Delete ALL existing meal plans for this week/member
+  // This ensures we don't have duplicate plans with stale recipeIds
+  const existingPlans = await db
+    .select({ id: mealPlans.id })
+    .from(mealPlans)
+    .where(
+      and(
+        eq(mealPlans.familyMemberId, input.familyMemberId),
+        eq(mealPlans.weekStart, input.weekStart),
+      ),
+    );
+
+  if (existingPlans.length > 0) {
+    console.log(`[MealPlan] Deleting ${existingPlans.length} existing plan(s) before regenerating`);
+    for (const plan of existingPlans) {
+      await db.delete(mealPlans).where(eq(mealPlans.id, plan.id));
+    }
+  }
+
   // Create the meal plan
   const planId = randomUUID();
   await db.insert(mealPlans).values({
@@ -169,6 +203,9 @@ export async function generateMealPlan(
   const snackRecipes = includeSnacks
     ? await getRecipesForPlanning("snack")
     : [];
+
+  // Debug: log recipe counts
+  console.log(`[MealPlan] Recipes loaded - breakfast: ${breakfastRecipes.length}, main_course: ${mainCourseRecipes.length}, snack: ${snackRecipes.length}`);
 
   const recipesByCategory = {
     breakfast: breakfastRecipes,
@@ -342,8 +379,15 @@ export async function generateMealPlan(
   }
 
   // Insert all planned meals
+  console.log(`[MealPlan] Generated ${plannedMealsToInsert.length} planned meals, inserting...`);
   if (plannedMealsToInsert.length > 0) {
-    await db.insert(plannedMeals).values(plannedMealsToInsert);
+    try {
+      await db.insert(plannedMeals).values(plannedMealsToInsert);
+      console.log(`[MealPlan] Insert successful!`);
+    } catch (error) {
+      console.error(`[MealPlan] Insert FAILED:`, error);
+      throw error;
+    }
   }
 
   // Update actual kcal
@@ -351,6 +395,8 @@ export async function generateMealPlan(
     .update(mealPlans)
     .set({ actualKcalWeekly: totalKcal, status: "active" })
     .where(eq(mealPlans.id, planId));
+
+  console.log(`[MealPlan] Plan created with ID ${planId}, fetching full plan...`);
 
   // Return the full plan
   return (await getMealPlan(input.familyMemberId, input.weekStart))!;

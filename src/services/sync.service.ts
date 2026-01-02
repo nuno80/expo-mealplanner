@@ -129,24 +129,24 @@ export async function syncRecipes(): Promise<SyncResult> {
 
 /**
  * Upsert a full recipe including ingredients and steps.
- * Handles slug conflicts by deleting local recipes with matching slugs but different IDs.
+ * IMPORTANT: If a recipe with the same slug already exists locally,
+ * we SKIP the sync for that recipe to preserve recipeId compatibility
+ * with existing planned_meals.
  */
 async function upsertFullRecipe(apiRecipe: ApiRecipe): Promise<void> {
-  // 0. Handle slug conflicts: if a local recipe exists with the same slug but different ID, delete it first
-  // This ensures Turso IDs are always the source of truth
+  // Check if recipe with this slug already exists locally
+  // If it does, skip update to preserve local IDs for planned_meals compatibility
   const existingBySlug = await db
     .select({ id: recipes.id })
     .from(recipes)
-    .where(sql`slug = ${apiRecipe.slug} AND id != ${apiRecipe.id}`)
+    .where(sql`slug = ${apiRecipe.slug}`)
     .limit(1);
 
-  if (existingBySlug.length > 0) {
-    const oldId = existingBySlug[0].id;
-    console.log(
-      `[Sync] Replacing recipe with slug '${apiRecipe.slug}' (old ID: ${oldId} → new ID: ${apiRecipe.id})`,
-    );
-    // Delete old recipe (cascade will clean up ingredients/steps)
-    await db.delete(recipes).where(sql`id = ${oldId}`);
+  if (existingBySlug.length > 0 && existingBySlug[0].id !== apiRecipe.id) {
+    // Recipe exists locally with different ID - SKIP to preserve planned_meals references
+    // The local ID is already in use by meal plans, so don't replace it
+    console.log(`[Sync] Skipping '${apiRecipe.slug}' - already exists locally with ID ${existingBySlug[0].id}`);
+    return;
   }
 
   // 1. Upsert Recipe

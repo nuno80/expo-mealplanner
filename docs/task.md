@@ -153,9 +153,10 @@ Prima di lavorare su qualsiasi task, consulta i documenti pertinenti:
     - [ ] F4: Toggle snack globale in header `plan.tsx`
     - [ ] F5: Toggle snack per giorno (context menu)
     - [x] F6: Passa params corretti da `MealCard` a modal
-    - [ ] V1: Test manuale rigenerazione piano
-    - [ ] V2: Test manuale swap casuale/manuale
+    - [x] V1: Test manuale rigenerazione piano
+    - [x] V2: Test manuale swap casuale/manuale
     - [ ] V3: Test manuale toggle snack
+    - [ ] CLEANUP: Rimuovere console.log di debug da `mealPlan.service.ts` e `plan.tsx`
 
 ---
 
