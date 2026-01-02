@@ -166,9 +166,9 @@ Prima di lavorare su qualsiasi task, consulta i documenti pertinenti:
 > 🎯 **Obiettivo:** Risolvere "Cut Paradox" (proteine insufficienti) e "Giant Steak Paradox" (mancanza carboidrati).
 
 - [ ] **Schema & Data**
-    - [ ] DB: Migration `planned_meals` (`side_recipe_id`, `side_portion_grams`)
-    - [ ] DB: Update `recipes` check constraint for category `side`
-    - [ ] Seed: Inserire contorni base (Pane, Patate, Riso, Insalata)
+    - [x] DB: Migration `planned_meals` (`side_recipe_id`, `side_portion_grams`)
+    - [x] DB: Update `recipes` check constraint for category `side`
+    - [x] Seed: Inserire contorni base (Pane, Patate, Riso, Insalata)
 
 - [ ] **Logic Layer (Libs)**
     - [ ] TDEE: Implement `calculateMacroTargets` (2.1g/kg Cut, 1.7g/kg Bulk)

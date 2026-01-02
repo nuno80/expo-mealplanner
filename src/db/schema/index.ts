@@ -246,6 +246,15 @@ export const plannedMeals = sqliteTable("planned_meals", {
   isSkipped: integer("is_skipped", { mode: "boolean" })
     .notNull()
     .default(false),
+
+  // v2.0 Side Dish Support (NutriPlanIT 2.0)
+  // Optional side dish to fill caloric/macro gaps (e.g., Bread with Salad)
+  sideRecipeId: text("side_recipe_id").references(() => recipes.id, {
+    onDelete: "set null",
+  }),
+  sidePortionGrams: integer("side_portion_grams"),
+  sidePortionKcal: integer("side_portion_kcal"),
+
   createdAt: integer("created_at", { mode: "timestamp" })
     .notNull()
     .$defaultFn(() => new Date()),

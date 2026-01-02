@@ -8,6 +8,7 @@ export const RecipeCategorySchema = z.enum([
   "breakfast",
   "main_course",
   "snack",
+  "side_dish", // Contorni (pane, patate, verdure, insalata)
   "lunch", // Deprecated, kept for backward compat if needed (but types will force update)
   "dinner", // Deprecated
 ]);
