@@ -141,6 +141,21 @@ Prima di lavorare su qualsiasi task, consulta i documenti pertinenti:
 - [ ] EAS Build (iOS + Android)
     - [x] Supabase: Configurare Redirect URL (`nutriplanit://auth/callback`)
 - [ ] App Store submission
+- [/] **Meal Plan Enhancements** (Jan 2026)
+    - [x] B1: Schema migration `isSkipped` + `deleteMealPlanForWeek`
+    - [x] B2: `getSwapAlternatives` con filtro categoria/kcal
+    - [x] B3: `swapMealRandom` per swap casuale
+    - [x] B4: `toggleSnackForDay` + ricalcolo porzioni
+    - [x] B5: `recalculateDayPortions` helper
+    - [x] F1: Nuovi hooks in `useMealPlan.ts`
+    - [x] F2: Redesign `meal-swap.tsx` con 2 modalità
+    - [x] F3: Bottone "Nuovo Piano" con conferma in `plan.tsx`
+    - [ ] F4: Toggle snack globale in header `plan.tsx`
+    - [ ] F5: Toggle snack per giorno (context menu)
+    - [x] F6: Passa params corretti da `MealCard` a modal
+    - [ ] V1: Test manuale rigenerazione piano
+    - [ ] V2: Test manuale swap casuale/manuale
+    - [ ] V3: Test manuale toggle snack
 
 ---
 

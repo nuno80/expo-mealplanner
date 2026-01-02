@@ -242,6 +242,10 @@ export const plannedMeals = sqliteTable("planned_meals", {
   isCompleted: integer("is_completed", { mode: "boolean" })
     .notNull()
     .default(false),
+  // Soft delete for snack toggle - when true, meal is skipped and others are recalculated
+  isSkipped: integer("is_skipped", { mode: "boolean" })
+    .notNull()
+    .default(false),
   createdAt: integer("created_at", { mode: "timestamp" })
     .notNull()
     .$defaultFn(() => new Date()),
