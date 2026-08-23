@@ -1,7 +1,21 @@
 import { Hono } from "hono";
-import { createTursoClient, type Env, type Recipe, type RecipeIngredient, type RecipeStep } from "../db";
+import {
+  createTursoClient,
+  type Env,
+  type Recipe,
+  type RecipeIngredient,
+  type RecipeStep,
+} from "../db";
 
 const recipes = new Hono<{ Bindings: Env }>();
+
+const PUBLIC_RECIPE_COLUMNS = `
+  id, name_it, name_en, slug, description_it, description_en,
+  category, image_url, prep_time_min, cook_time_min, total_time_min,
+  servings, difficulty, kcal_per_100g, protein_per_100g, carbs_per_100g,
+  fat_per_100g, fiber_per_100g, kcal_per_serving, serving_weight_g,
+  protein_source, is_published, created_at, updated_at
+`;
 
 /**
  * GET /recipes - List all published recipes WITH ingredients and steps
@@ -12,12 +26,7 @@ recipes.get("/", async (c) => {
   try {
     // 1. Fetch all published recipes
     const recipesResult = await db.execute(`
-      SELECT
-        id, name_it, name_en, slug, description_it, description_en,
-        category, image_url, prep_time_min, cook_time_min, total_time_min,
-        servings, difficulty, kcal_per_100g, protein_per_100g, carbs_per_100g,
-        fat_per_100g, fiber_per_100g, kcal_per_serving, serving_weight_g,
-        protein_source, is_published, created_at, updated_at
+      SELECT ${PUBLIC_RECIPE_COLUMNS}
       FROM recipes
       WHERE is_published = 1
       ORDER BY name_it
@@ -95,16 +104,20 @@ recipes.get("/", async (c) => {
 });
 
 /**
- * GET /recipes/:id - Get single recipe with ingredients and steps
+ * GET /recipes/:id - Get a single published recipe with ingredients and steps
  */
 recipes.get("/:id", async (c) => {
   const db = createTursoClient(c.env);
   const id = c.req.param("id");
 
   try {
-    // Get recipe
+    // Return only the explicitly approved public fields and never expose drafts.
     const recipeResult = await db.execute({
-      sql: `SELECT * FROM recipes WHERE id = ?`,
+      sql: `
+        SELECT ${PUBLIC_RECIPE_COLUMNS}
+        FROM recipes
+        WHERE id = ? AND is_published = 1
+      `,
       args: [id],
     });
 
