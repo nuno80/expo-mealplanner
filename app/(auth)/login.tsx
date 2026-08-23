@@ -8,6 +8,7 @@ import { z } from "zod";
 import { PasswordInput } from "@/components/ui/PasswordInput";
 import { supabase } from "@/lib/supabase";
 import { getPrimaryMember } from "@/services/user.service";
+import { useAuthStore } from "@/stores/authStore";
 
 const loginSchema = z.object({
 	email: z.string().trim().email("Email non valida"),
@@ -19,20 +20,16 @@ type LoginFormData = z.infer<typeof loginSchema>;
 export default function LoginScreen() {
 	const insets = useSafeAreaInsets();
 	const router = useRouter();
+	const setSession = useAuthStore((state) => state.setSession);
 	const [loading, setLoading] = useState(false);
 
-	const { control, handleSubmit, formState: { errors } } = useForm<LoginFormData>({
-		resolver: zodResolver(loginSchema),
-	});
+	const { control, handleSubmit, formState: { errors } } = useForm<LoginFormData>({ resolver: zodResolver(loginSchema) });
 
 	const onSubmit = async (data: LoginFormData) => {
 		setLoading(true);
 		let result;
 		for (let attempt = 1; attempt <= 2; attempt++) {
-			result = await supabase.auth.signInWithPassword({
-				email: data.email.trim(),
-				password: data.password,
-			});
+			result = await supabase.auth.signInWithPassword({ email: data.email.trim(), password: data.password });
 			if (!result.error || attempt === 2) break;
 			const isNetwork = result.error.status === undefined || result.error.status >= 500;
 			if (!isNetwork) break;
@@ -45,21 +42,21 @@ export default function LoginScreen() {
 			return;
 		}
 
-		const userId = result?.data.user?.id;
-		if (!userId) {
+		const session = result?.data.session;
+		const userId = session?.user?.id;
+		if (!session || !userId) {
 			setLoading(false);
 			Alert.alert("Errore", "Login completato ma sessione non disponibile. Riprova.");
 			return;
 		}
 
-		// Supabase has accepted the credentials. Navigate now instead of waiting
-		// for the local SQLite profile query, which can be slow while migrations
-		// or recipe sync are running. The root auth listener continues updating
-		// Zustand in the background.
+		// Publish the exact session returned by Supabase before changing routes.
+		// The global auth listener is asynchronous; updating the store here avoids
+		// a route guard seeing the old null session during the transition.
+		setSession(session);
 		setLoading(false);
 		router.replace("/(tabs)");
 
-		// Keep onboarding detection best-effort and non-blocking for existing users.
 		getPrimaryMember(userId)
 			.then((member) => {
 				if (!member) router.replace("/(onboarding)/goal");
@@ -76,14 +73,10 @@ export default function LoginScreen() {
 			)} />
 			{errors.email && <Text className="text-red-500 text-sm mb-3">{errors.email.message}</Text>}
 			<Text className="text-gray-700 mb-2 mt-2">Password</Text>
-			<Controller control={control} name="password" render={({ field: { onChange, onBlur, value } }) => (
-				<PasswordInput placeholder="••••••••" onBlur={onBlur} onChangeText={onChange} value={value} />
-			)} />
+			<Controller control={control} name="password" render={({ field: { onChange, onBlur, value } }) => <PasswordInput placeholder="••••••••" onBlur={onBlur} onChangeText={onChange} value={value} />} />
 			{errors.password && <Text className="text-red-500 text-sm mb-4">{errors.password.message}</Text>}
 			<View className="flex-row justify-end mb-4"><Link href="/(auth)/forgot-password" asChild><Pressable><Text className="text-primary-600 text-sm font-medium">Password dimenticata?</Text></Pressable></Link></View>
-			<Pressable className={`w-full bg-primary-500 py-4 rounded-xl mb-4 mt-4 ${loading ? "opacity-70" : ""}`} onPress={handleSubmit(onSubmit)} disabled={loading}>
-				<Text className="text-white text-center text-lg font-semibold">{loading ? "Accesso in corso..." : "Accedi"}</Text>
-			</Pressable>
+			<Pressable className={`w-full bg-primary-500 py-4 rounded-xl mb-4 mt-4 ${loading ? "opacity-70" : ""}`} onPress={handleSubmit(onSubmit)} disabled={loading}><Text className="text-white text-center text-lg font-semibold">{loading ? "Accesso in corso..." : "Accedi"}</Text></Pressable>
 			<Link href="/(auth)/signup" asChild><Pressable><Text className="text-primary-600 text-center">Non hai un account? Registrati</Text></Pressable></Link>
 		</View>
 	);
