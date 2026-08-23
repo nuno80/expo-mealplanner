@@ -9,6 +9,7 @@ export const RecipeCategorySchema = z.enum([
   "main_course",
   "snack",
   "side_dish", // Contorni (pane, patate, verdure, insalata)
+  "vegetable_side", // v2.6: Vegetable sides for Harvard Plate
   "lunch", // Deprecated, kept for backward compat if needed (but types will force update)
   "dinner", // Deprecated
 ]);
@@ -119,6 +120,8 @@ export const RecipeSchema = z.object({
   kcalPerServing: z.number().int().nonnegative().nullish(),
   servingWeightG: z.number().int().positive().nullish(),
   proteinSource: ProteinSourceSchema.default("mixed"), // For meal plan rotation
+  // v2.6: Nutritional tags for Harvard Plate (vegetable_heavy, whole_grain, legume_based, starchy)
+  tags: z.array(z.string()).nullish(),
   isPublished: z.boolean().default(false),
   createdAt: z.date(),
   updatedAt: z.date(),

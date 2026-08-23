@@ -1,0 +1,142 @@
+{
+  "name_it": "Riso cremoso con zucca e ceci al cherry",
+  "name_en": "Creamy Rice with Pumpkin and Cherry Tomato Chickpeas",
+  "slug": "riso-cremoso-zucca-ceci-philadelphia",
+  "description_it": "Un piatto unico autunnale: riso bianco accompagnato da cubetti di zucca dolce e una crema rosa di ceci, pomodorini e formaggio spalmabile.",
+  "description_en": "A balanced autumn bowl: white rice served with sweet pumpkin cubes and a pink creamy sauce made of chickpeas, cherry tomatoes, and cream cheese.",
+  "category": "main_course",
+  "preferred_meal": "lunch",
+  "servings": 4,
+  "prep_time_min": 15,
+  "cook_time_min": 25,
+  "difficulty": "easy",
+  "kcal_per_100g": 120,
+  "protein_per_100g": 3.1,
+  "carbs_per_100g": 17.2,
+  "fat_per_100g": 3.6,
+  "fiber_per_100g": 1.9,
+  "kcal_per_serving": 540,
+  "serving_weight_g": 450,
+  "total_raw_weight_g": 1415,
+  "total_cooked_weight_g": 1800,
+  "cooking_factor": 1.27,
+  "protein_source": "legumes",
+  "allergens": [
+    "dairy"
+  ],
+  "dietary_flags": {
+    "vegetarian": true,
+    "vegan": false,
+    "gluten_free": true,
+    "dairy_free": false,
+    "nut_free": true
+  },
+  "ingredients": [
+    {
+      "name_it": "riso basmati",
+      "name_en": "basmati rice",
+      "quantity": 320,
+      "unit": "g",
+      "cooking_factor": 2.50,
+      "is_optional": false,
+      "notes_it": "o riso bianco classico",
+      "notes_en": "or classic white rice"
+    },
+    {
+      "name_it": "zucca",
+      "name_en": "pumpkin",
+      "quantity": 500,
+      "unit": "g",
+      "cooking_factor": 0.85,
+      "is_optional": false,
+      "notes_it": "pulita, a cubetti piccoli",
+      "notes_en": "cleaned, small cubes"
+    },
+    {
+      "name_it": "ceci in scatola",
+      "name_en": "canned chickpeas",
+      "quantity": 240,
+      "unit": "g",
+      "cooking_factor": 1.00,
+      "is_optional": false,
+      "notes_it": "sgocciolati",
+      "notes_en": "drained"
+    },
+    {
+      "name_it": "pomodorini ciliegino",
+      "name_en": "cherry tomatoes",
+      "quantity": 200,
+      "unit": "g",
+      "cooking_factor": 0.90,
+      "is_optional": false,
+      "notes_it": "tagliati a metà",
+      "notes_en": "halved"
+    },
+    {
+      "name_it": "formaggio spalmabile",
+      "name_en": "cream cheese",
+      "quantity": 120,
+      "unit": "g",
+      "cooking_factor": 1.00,
+      "is_optional": false,
+      "notes_it": "tipo Philadelphia",
+      "notes_en": "Philadelphia style"
+    },
+    {
+      "name_it": "olio d'oliva",
+      "name_en": "olive oil",
+      "quantity": 20,
+      "unit": "ml",
+      "cooking_factor": 1.00,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "cipolla bianca",
+      "name_en": "white onion",
+      "quantity": 15,
+      "unit": "g",
+      "cooking_factor": 0.90,
+      "is_optional": false,
+      "notes_it": "tritata finemente",
+      "notes_en": "finely chopped"
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "instruction_it": "Cuocere il riso in acqua bollente salata secondo i tempi della confezione, scolare e tenere da parte.",
+      "instruction_en": "Cook the rice in boiling salted water according to package instructions, drain and set aside."
+    },
+    {
+      "step_number": 2,
+      "instruction_it": "In una padella capiente con un filo d'olio, rosolare la zucca a cubetti con un pizzico di sale e rosmarino (opzionale) per circa 10-12 minuti finché tenera.",
+      "instruction_en": "In a large pan with a little oil, sauté the pumpkin cubes with a pinch of salt and rosemary (optional) for about 10-12 minutes until tender."
+    },
+    {
+      "step_number": 3,
+      "instruction_it": "In un'altra padella, soffriggere la cipolla, aggiungere i pomodorini e cuocere per 5 minuti finché appassiscono. Unire i ceci scolati.",
+      "instruction_en": "In another pan, sauté the onion, add cherry tomatoes, and cook for 5 minutes until soft. Add the drained chickpeas."
+    },
+    {
+      "step_number": 4,
+      "instruction_it": "Abbassare la fiamma, aggiungere il formaggio spalmabile e un mestolo di acqua di cottura del riso ai ceci. Mescolare fino a creare una crema rosa.",
+      "instruction_en": "Lower the heat, add the cream cheese and a ladle of rice cooking water to the chickpeas. Stir until a pink cream forms."
+    },
+    {
+      "step_number": 5,
+      "instruction_it": "Comporre il piatto: base di riso, zucca rosolata da un lato e i ceci cremosi dall'altro. Servire caldo.",
+      "instruction_en": "Assemble the bowl: rice base, roasted pumpkin on one side, and creamy chickpeas on the other. Serve warm."
+    }
+  ],
+  "tags": [
+    "rice-bowl",
+    "pumpkin",
+    "chickpeas",
+    "vegetarian",
+    "gluten-free",
+    "creamy",
+    "lunch"
+  ]
+}

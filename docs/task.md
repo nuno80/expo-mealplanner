@@ -195,23 +195,87 @@ Prima di lavorare su qualsiasi task, consulta i documenti pertinenti:
 
 - [x] **1. Checkbox Interattiva su MealCard**
     - [x] F1: Aggiungere prop `onComplete` a `MealCard`
-    - [x] F2: Rendere icona cliccabile (cerchio → checkmark)
-    - [x] F3: Chiamare `useCompleteMeal` mutation on tap
+    - [x] F2: Rendere icona cliccabile (cerchio → checkmark) con toggle
+    - [x] F3: Chiamare `useToggleMealComplete` mutation on tap
     - [ ] F4: Aggiungere animazione di transizione
-    - [ ] V1: Test toggle completamento pasto
+    - [x] V1: Test toggle completamento pasto
 
-- [ ] **2. Calcolo Settimanale Macro (Service)**
-    - [ ] F1: `getWeeklyProgress(memberId, weekStart)` in `mealPlan.service.ts`
-    - [ ] F2: Aggregare kcal/proteine/carbs/grassi dai pasti completati
-    - [ ] F3: Ritornare dati giornalieri + totali settimanali
-    - [ ] V1: Test calcolo con dati mock
+- [x] **2. Calcolo Settimanale Macro (Service)**
+    - [x] F1: `getWeeklyProgress(memberId, weekStart)` in `mealPlan.service.ts`
+    - [x] F2: Aggregare kcal/proteine/carbs/grassi dai pasti completati
+    - [x] F3: Ritornare dati giornalieri + totali settimanali
+    - [x] F4: Hook `useWeeklyProgress` in `useMealPlan.ts`
+    - [x] V1: Test calcolo con dati reali
 
-- [ ] **3. Grafici Progressi (UI)**
-    - [ ] F1: Installare libreria grafici (`victory-native` o `react-native-chart-kit`)
-    - [ ] F2: Grafico barre impilate (P/C/F per giorno)
-    - [ ] F3: Progress ring calorie settimanali
-    - [ ] F4: Integrare nel tab Progressi
-    - [ ] V1: Test rendering grafici
+- [x] **3. Grafici Progressi (UI)**
+    - [x] F1: Componente `MacroProgressChart` (barre impilate P/C/F)
+    - [x] F2: Componente `WeeklyKcalRing` (ring calorie settimanali)
+    - [x] F3: Card riassunto macro totali
+    - [x] F4: Integrato in tab Progressi (`progress.tsx`)
+    - [/] V1: Test rendering grafici
+
+## Phase 10: Algorithm v2.6 Migration 🔄
+
+> 🧠 **Docs:** `docs/analisi-algoritmo.md` (v2.6), `apps/algorithm-playground/`
+> 🎯 **Obiettivo:** Migrare algoritmo testato dal playground all'app principale (Mediterranean Diet + Harvard Plate).
+
+- [x] **Database Schema**
+    - [x] B1: Add `tags` field to `recipes` (JSON nullable)
+    - [x] B2: Add `vegetable_side` category to check constraint
+    - [x] B3: Add veg side fields to `planned_meals` (vegSideRecipeId, vegSidePortionGrams, vegSidePortionKcal)
+    - [x] B4: Generate and run Drizzle migration (drizzle-kit push to Turso)
+
+- [x] **TypeScript Types**
+    - [x] B5: Update `recipeCategorySchema` with `vegetable_side`
+    - [x] B6: Add `tags` to Recipe schema
+    - [x] B7: Add veg side fields to PlannedMeal schema
+    - [x] B8: Create `INITIAL_PROTEIN_TRACKER` constant
+
+- [x] **Logic Layer (Pure Functions)**
+    - [x] B9: Replace `mealPlan.logic.ts` with playground version
+    - [x] B10: Adapt imports for Expo compatibility
+    - [x] B11: Add `dailyTargetKcal` parameter to `calculateMealComposition`
+
+- [x] **Service Layer - Generation Algorithm**
+    - [x] B12: Add protein tracker initialization with quotas
+    - [x] B13: Add Mandatory Minimum Meals logic (Mod 7)
+    - [x] B14: Load vegetable side recipes
+    - [x] B15: Add breakfast quota enforcement (Mod 19)
+    - [x] B16: Add expanded snack pool for bulk (Mod 8)
+    - [x] B17: Port priority sources + weekly quota filtering
+    - [x] B18: Add daily protein limits (Mod 13)
+    - [x] B19: Add bulk priority selection (Mod 6)
+    - [x] B20: Update `calculateMealComposition` call signature
+    - [x] B21: Add Harvard Plate logic (Mod 18) - veg side selection
+    - [x] B22: Update PlannedMeal object with veg side fields
+    - [x] B23: Add breakfast dairy tracking (Mod 14)
+    - [x] B24: Add veg side 2-day rotation
+
+- [x] **Service Layer - Queries & Mutations**
+    - [x] B25: Update `getMealPlan` to fetch veg side recipes
+    - [x] B26: Update `recalculateDayPortions` for veg sides
+
+- [x] **Recipe Service**
+    - [x] B27: Allow `vegetable_side` in `getRecipesForPlanning`
+    - [x] B28: Parse `tags` field from JSON
+
+- [x] **UI Components**
+    - [x] F1: Update `MealCard` to display veg side info
+    - [x] F2: Update `ShoppingListModal` to aggregate veg side ingredients
+
+- [x] **Data Seeding**
+    - [x] D1: Tag 20+ existing recipes with `vegetable_heavy` (90 tagged)
+    - [x] D2: Create 10-15 vegetable side recipes (22 total in DB)
+    - [x] D3: Verify bread items have correct kcal/CHO for side2 logic
+
+- [x] **Verification**
+    - [x] V1: Algorithm parity check (E2E script)
+    - [x] V2: Test Cut profile (1800 kcal) — 3.4% deviation, Harvard PASS
+    - [x] V3: Test Bulk profile (3200 kcal, bulk_two) — 0.5% deviation, Harvard PASS
+    - [x] V4: Test Maintain profile (2200 kcal, one snack) — 0.4% deviation, Harvard PASS
+    - [ ] V5: UI verification (MealCard + ShoppingList) — requires device/emulator
+
+---
 
 ## 🔄 Protocollo Aggiornamento
 

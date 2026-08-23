@@ -1,0 +1,40 @@
+{
+  "id": "broccoli-vapore-limone",
+  "slug": "broccoli-vapore-limone",
+  "name_it": "Broccoli al Vapore con Limone",
+  "name_en": "Steamed Broccoli with Lemon",
+  "description_it": "Broccoli cotti al vapore e conditi con succo di limone e olio EVO.",
+  "description_en": "Steamed broccoli dressed with lemon juice and EVO oil.",
+  "category": "vegetable_side",
+  "protein_source": "none",
+  "difficulty": "easy",
+  "prep_time_min": 5,
+  "cook_time_min": 10,
+  "total_time_min": 15,
+  "servings": 2,
+  "kcal_per_100g": 40,
+  "protein_per_100g": 2.8,
+  "carbs_per_100g": 4.0,
+  "fat_per_100g": 2.0,
+  "fiber_per_100g": 2.6,
+  "serving_weight_g": 150,
+  "cooked_weight_factor": 0.85,
+  "is_published": true,
+  "tags": [
+    "vegetable_heavy"
+  ],
+  "ingredients": [],
+  "steps_it": [
+    "Lavare e dividere i broccoli in cimette.",
+    "Cuocere a vapore per 8-10 minuti.",
+    "Condire con olio, limone e sale."
+  ],
+  "steps_en": [
+    "Wash and divide broccoli into florets.",
+    "Steam for 8-10 minutes.",
+    "Dress with oil, lemon and salt."
+  ],
+  "tags_json": [
+    "vegetable_heavy"
+  ]
+}

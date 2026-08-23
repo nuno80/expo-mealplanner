@@ -92,7 +92,35 @@ export const MealCard = React.memo(function MealCard({
             <Text className="text-[10px] text-ui-400 mr-1">+</Text>
             <Text className="text-xs text-ui-600" numberOfLines={1}>
               <Text className="font-bold">{meal.sidePortionGrams}g</Text>{" "}
-              {locale === "it" ? meal.sideRecipe.nameIt : meal.sideRecipe.nameEn}
+              {locale === "it"
+                ? meal.sideRecipe.nameIt
+                : meal.sideRecipe.nameEn}
+            </Text>
+          </View>
+        )}
+
+        {/* Side2 Dish Info */}
+        {meal.side2Recipe && (
+          <View className="mt-1 flex-row items-center">
+            <Text className="text-[10px] text-ui-400 mr-1">+</Text>
+            <Text className="text-xs text-ui-600" numberOfLines={1}>
+              <Text className="font-bold">{meal.side2PortionGrams}g</Text>{" "}
+              {locale === "it"
+                ? meal.side2Recipe.nameIt
+                : meal.side2Recipe.nameEn}
+            </Text>
+          </View>
+        )}
+
+        {/* Vegetable Side (Harvard Plate) */}
+        {meal.vegSideRecipe && (
+          <View className="mt-1 flex-row items-center">
+            <Text className="text-[10px] mr-1">🥦</Text>
+            <Text className="text-xs text-green-600" numberOfLines={1}>
+              <Text className="font-bold">{meal.vegSidePortionGrams}g</Text>{" "}
+              {locale === "it"
+                ? meal.vegSideRecipe.nameIt
+                : meal.vegSideRecipe.nameEn}
             </Text>
           </View>
         )}
@@ -107,8 +135,8 @@ export const MealCard = React.memo(function MealCard({
             onComplete?.();
           }}
           className={`w-8 h-8 rounded-full items-center justify-center border ${meal.isCompleted
-            ? "bg-success-100 border-success-200"
-            : "bg-ui-50 border-ui-200"
+              ? "bg-success-100 border-success-200"
+              : "bg-ui-50 border-ui-200"
             }`}
         >
           {meal.isCompleted ? (

@@ -1,0 +1,40 @@
+{
+  "id": "insalata-mista-mediterranea",
+  "slug": "insalata-mista-mediterranea",
+  "name_it": "Insalata Mista Mediterranea",
+  "name_en": "Mediterranean Mixed Salad",
+  "description_it": "Insalata fresca con lattuga, pomodori, cetrioli, olive e olio EVO.",
+  "description_en": "Fresh salad with lettuce, tomatoes, cucumbers, olives and EVO oil.",
+  "category": "vegetable_side",
+  "protein_source": "none",
+  "difficulty": "easy",
+  "prep_time_min": 10,
+  "cook_time_min": 0,
+  "total_time_min": 10,
+  "servings": 2,
+  "kcal_per_100g": 45,
+  "protein_per_100g": 1.2,
+  "carbs_per_100g": 4.5,
+  "fat_per_100g": 2.8,
+  "fiber_per_100g": 1.5,
+  "serving_weight_g": 150,
+  "cooked_weight_factor": 1.0,
+  "is_published": true,
+  "tags": [
+    "vegetable_heavy"
+  ],
+  "ingredients": [],
+  "steps_it": [
+    "Lavare e tagliare la lattuga.",
+    "Aggiungere pomodori a cubetti, cetrioli a rondelle e olive.",
+    "Condire con olio EVO, sale e origano."
+  ],
+  "steps_en": [
+    "Wash and cut the lettuce.",
+    "Add diced tomatoes, sliced cucumbers and olives.",
+    "Dress with EVO oil, salt and oregano."
+  ],
+  "tags_json": [
+    "vegetable_heavy"
+  ]
+}

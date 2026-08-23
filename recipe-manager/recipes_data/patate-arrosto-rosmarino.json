@@ -1,0 +1,39 @@
+{
+  "id": "patate-arrosto-rosmarino",
+  "slug": "patate-arrosto-rosmarino",
+  "name_it": "Patate Arrosto al Rosmarino",
+  "name_en": "Roasted Rosemary Potatoes",
+  "description_it": "Patate croccanti fuori e morbide dentro, aromatizzate al rosmarino fresco.",
+  "description_en": "Crispy on the outside, soft on the inside potatoes flavored with fresh rosemary.",
+  "category": "side_dish",
+  "protein_source": "none",
+  "difficulty": "easy",
+  "prep_time_min": 10,
+  "cook_time_min": 35,
+  "total_time_min": 45,
+  "servings": 2,
+  "kcal_per_100g": 95,
+  "protein_per_100g": 2.0,
+  "carbs_per_100g": 18.0,
+  "fat_per_100g": 1.5,
+  "fiber_per_100g": 2.0,
+  "serving_weight_g": 200,
+  "cooked_weight_factor": 0.75,
+  "is_published": true,
+  "ingredients": [],
+  "steps_it": [
+    "Lavare e tagliare le patate a spicchi.",
+    "Condire con olio, sale e rosmarino.",
+    "Cuocere in forno a 200°C per 35 minuti."
+  ],
+  "steps_en": [
+    "Wash and cut potatoes into wedges.",
+    "Season with oil, salt and rosemary.",
+    "Bake at 200°C for 35 minutes."
+  ],
+  "tags": [
+    "vegetarian",
+    "vegan",
+    "gluten-free"
+  ]
+}

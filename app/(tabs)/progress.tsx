@@ -2,8 +2,11 @@ import { Link } from "expo-router";
 import { Pressable, ScrollView, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { FamilyMemberSelector } from "@/components/FamilyMemberSelector";
+import { MacroProgressChart } from "@/components/MacroProgressChart";
+import { WeeklyKcalRing } from "@/components/WeeklyKcalRing";
 import { WeightChart } from "@/components/WeightChart";
 import { useFamilyMember } from "@/hooks/useFamilyMembers";
+import { getWeekStart, useWeeklyProgress } from "@/hooks/useMealPlan";
 import { useWeightChange, useWeightHistory } from "@/hooks/useWeightLogs";
 import { useFamilyStore } from "@/stores/familyStore";
 
@@ -13,6 +16,13 @@ export default function ProgressScreen() {
 	const { data: member } = useFamilyMember(selectedMemberId ?? "");
 	const { data: history = [] } = useWeightHistory(selectedMemberId);
 	const { data: weightChange } = useWeightChange(selectedMemberId);
+
+	// Weekly progress data
+	const weekStart = getWeekStart(0);
+	const { data: weeklyProgress } = useWeeklyProgress(
+		selectedMemberId ?? undefined,
+		weekStart,
+	);
 
 	const chartData = history.map((h) => ({
 		date: new Date(h.date),
@@ -35,8 +45,58 @@ export default function ProgressScreen() {
 				className="flex-1"
 				contentContainerStyle={{ paddingBottom: 100 }}
 			>
-				{/* Summary Card */}
-				<View className="m-6 bg-white rounded-2xl p-6 shadow-sm">
+				{/* Weekly Macro Progress Section */}
+				{weeklyProgress && (
+					<View className="m-6 gap-4">
+						<Text className="text-lg font-bold text-gray-900 mb-1">
+							Questa Settimana
+						</Text>
+
+						{/* Weekly Kcal Ring */}
+						<WeeklyKcalRing
+							current={weeklyProgress.totals.kcal}
+							target={weeklyProgress.targets.kcalWeekly}
+							completedMeals={weeklyProgress.totals.completedMeals}
+							totalMeals={weeklyProgress.totals.totalMeals}
+						/>
+
+						{/* Daily Macro Chart */}
+						<MacroProgressChart
+							daily={weeklyProgress.daily}
+							targetKcalDaily={weeklyProgress.targets.kcalDaily}
+						/>
+
+						{/* Macro Summary */}
+						<View className="bg-white rounded-2xl p-4 shadow-sm border border-ui-100">
+							<Text className="text-base font-bold text-ui-900 mb-3">
+								Macro Totali (completati)
+							</Text>
+							<View className="flex-row justify-between">
+								<View className="items-center">
+									<Text className="text-2xl font-bold text-green-500">
+										{weeklyProgress.totals.protein}g
+									</Text>
+									<Text className="text-xs text-ui-500">Proteine</Text>
+								</View>
+								<View className="items-center">
+									<Text className="text-2xl font-bold text-amber-500">
+										{weeklyProgress.totals.carbs}g
+									</Text>
+									<Text className="text-xs text-ui-500">Carboidrati</Text>
+								</View>
+								<View className="items-center">
+									<Text className="text-2xl font-bold text-red-500">
+										{weeklyProgress.totals.fat}g
+									</Text>
+									<Text className="text-xs text-ui-500">Grassi</Text>
+								</View>
+							</View>
+						</View>
+					</View>
+				)}
+
+				{/* Weight Summary Card */}
+				<View className="mx-6 mb-6 bg-white rounded-2xl p-6 shadow-sm">
 					<Text className="text-gray-500 font-medium mb-1">Peso attuale</Text>
 					<View className="flex-row items-end space-x-3 mb-4">
 						<Text className="text-4xl font-bold text-gray-900">

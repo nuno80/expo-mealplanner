@@ -1,0 +1,42 @@
+{
+  "name_it": "Misto Foglia Verde (Base)",
+  "name_en": "Mixed Leafy Greens (Base)",
+  "slug": "misto-foglia-verde-base",
+  "description_it": "Base di verdure a foglia verde (spinaci, bietole, cicoria, rucola). Ideale saltata in padella (sauté) con aglio o cruda in insalata.",
+  "description_en": "Base of green leafy vegetables (spinach, chard, chicory, arugula). Ideal sautéed with garlic or raw in salad.",
+  "category": "vegetable_side",
+  "prep_time_min": 5,
+  "cook_time_min": 5,
+  "servings": 2,
+  "difficulty": "easy",
+  "kcal_per_100g": 25,
+  "protein_per_100g": 2.5,
+  "carbs_per_100g": 3.0,
+  "fat_per_100g": 0.5,
+  "fiber_per_100g": 2.8,
+  "serving_weight_g": 200,
+  "protein_source": "none",
+  "tags": [
+    "vegetable_heavy"
+  ],
+  "ingredients": [
+    {
+      "name_it": "Verdure a foglia verde miste",
+      "name_en": "Mixed leafy greens",
+      "quantity": 400,
+      "unit": "g",
+      "cooking_factor": 0.8,
+      "notes_it": "Spinaci, bietole, cicoria"
+    },
+    {
+      "name_it": "Olio EVO",
+      "name_en": "Extra virgin olive oil",
+      "quantity": 10,
+      "unit": "g"
+    }
+  ],
+  "steps": [
+    "Lavare bene le verdure.",
+    "Scegliere il metodo di cottura: crudo (insalata), saltato (padella con olio e aglio) o vapore (breve cottura)."
+  ]
+}

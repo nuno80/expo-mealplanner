@@ -135,23 +135,26 @@ class TursoClient:
         serving_weight_g: int,
         protein_source: str,  # For meal plan rotation
         is_published: bool,
+        tags: Optional[list[str]] = None,  # Mod 18: Harvard Plate
     ) -> None:
         """Insert a new recipe into the database."""
+        import json
+        tags_json = json.dumps(tags) if tags else "[]"
         sql = """
             INSERT INTO recipes (
                 id, name_it, name_en, slug, description_it, description_en,
                 category, image_url, prep_time_min, cook_time_min, total_time_min,
                 servings, difficulty, kcal_per_100g, kcal_per_serving,
                 protein_per_100g, carbs_per_100g, fat_per_100g, fiber_per_100g,
-                serving_weight_g, protein_source, is_published, created_at, updated_at
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, strftime('%s', 'now') * 1000, strftime('%s', 'now') * 1000)
+                serving_weight_g, protein_source, is_published, tags, created_at, updated_at
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, strftime('%s', 'now') * 1000, strftime('%s', 'now') * 1000)
         """
         await self.execute(sql, [
             str(id), name_it, name_en, slug, description_it, description_en,
             category, image_url, prep_time_min, cook_time_min, total_time_min,
             servings, difficulty, kcal_per_100g, kcal_per_serving,
             protein_per_100g, carbs_per_100g, fat_per_100g, fiber_per_100g,
-            serving_weight_g, protein_source, 1 if is_published else 0
+            serving_weight_g, protein_source, 1 if is_published else 0, tags_json
         ])
 
     async def get_recipes(self, category: Optional[str] = None) -> list[dict]:
@@ -194,6 +197,45 @@ class TursoClient:
             [str(id)]
         )
         return True
+
+    # ============ Mod 18: Tags Migration & Update ============
+
+    async def run_migration_add_tags_column(self) -> bool:
+        """Add tags column to recipes table if not exists (Mod 18)."""
+        try:
+            # SQLite doesn't support ADD COLUMN IF NOT EXISTS,
+            # so we check if column exists first
+            result = await self.execute("PRAGMA table_info(recipes)")
+            columns = [row[1] for row in result.rows]
+
+            if "tags" not in columns:
+                await self.execute(
+                    "ALTER TABLE recipes ADD COLUMN tags TEXT DEFAULT '[]'"
+                )
+                return True
+            return False  # Column already exists
+        except Exception as e:
+            raise RuntimeError(f"Migration failed: {e}") from e
+
+    async def update_recipe_tags(self, recipe_id: UUID, tags: list[str]) -> None:
+        """Update tags for an existing recipe."""
+        import json
+        tags_json = json.dumps(tags)
+        await self.execute(
+            "UPDATE recipes SET tags = ?, updated_at = strftime('%s', 'now') * 1000 WHERE id = ?",
+            [tags_json, str(recipe_id)]
+        )
+
+    async def get_all_recipe_names(self) -> list[dict]:
+        """Get all recipe IDs and names for tagging (Mod 18)."""
+        sql = """
+            SELECT id, name_it, category, protein_source,
+                   protein_per_100g, carbs_per_100g, tags
+            FROM recipes
+            ORDER BY category, name_it
+        """
+        result = await self.execute(sql)
+        return self._rows_to_dicts(result)
 
     # ============ RecipeIngredient ============
 

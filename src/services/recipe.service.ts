@@ -191,11 +191,18 @@ export async function getRecipesForPlanning(
 
   // Debug: Log query results for side_dish category
   if (category === "side_dish") {
-    console.log(`[Debug] getRecipesForPlanning("side_dish") returned ${result.length} recipes`);
+    console.log(
+      `[Debug] getRecipesForPlanning("side_dish") returned ${result.length} recipes`,
+    );
     if (result.length === 0) {
       // Check without isPublished filter to see if they exist at all
-      const allSides = await db.select().from(recipes).where(eq(recipes.category, "side_dish"));
-      console.log(`[Debug] Total side_dish in DB (ignoring isPublished): ${allSides.length}`);
+      const allSides = await db
+        .select()
+        .from(recipes)
+        .where(eq(recipes.category, "side_dish"));
+      console.log(
+        `[Debug] Total side_dish in DB (ignoring isPublished): ${allSides.length}`,
+      );
     }
   }
 
@@ -205,5 +212,7 @@ export async function getRecipesForPlanning(
       ? result.filter((r) => !excludeIds.includes(r.id))
       : result;
 
+  // B28: Parse tags from many-to-many join or return null for now
+  // (Actual tag fetching would require a join with recipeTags and tags)
   return filtered as Recipe[];
 }

@@ -1,0 +1,35 @@
+{
+  "name_it": "Ortaggi Colorati Estivi (Base)",
+  "name_en": "Colorful Summer Vegetables (Base)",
+  "slug": "ortaggi-estivi-colorati",
+  "description_it": "Peperoni, melanzane, zucchine e pomodori. Colori vari per massimizzare antiossidanti. Ideali al forno, grigliati o in padella.",
+  "description_en": "Peppers, eggplant, zucchini and tomatoes. Varied colors to maximize antioxidants. Ideal baked, grilled or sautéed.",
+  "category": "vegetable_side",
+  "prep_time_min": 10,
+  "cook_time_min": 20,
+  "servings": 2,
+  "difficulty": "easy",
+  "kcal_per_100g": 30,
+  "protein_per_100g": 1.5,
+  "carbs_per_100g": 6.0,
+  "fat_per_100g": 0.2,
+  "fiber_per_100g": 2.5,
+  "serving_weight_g": 200,
+  "protein_source": "none",
+  "tags": [
+    "vegetable_heavy"
+  ],
+  "ingredients": [
+    {
+      "name_it": "Peperoni, Melanzane, Zucchine",
+      "name_en": "Peppers, Eggplant, Zucchini",
+      "quantity": 450,
+      "unit": "g",
+      "cooking_factor": 0.85
+    }
+  ],
+  "steps": [
+    "Lavare e tagliare a cubetti o strisce.",
+    "Cuocere in padella con poco olio (sauté), grigliare o cuocere al forno a 180°C."
+  ]
+}

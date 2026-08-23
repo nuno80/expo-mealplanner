@@ -1,0 +1,40 @@
+{
+  "id": "zucchine-trifolate",
+  "slug": "zucchine-trifolate",
+  "name_it": "Zucchine Trifolate",
+  "name_en": "Sautéed Zucchini",
+  "description_it": "Zucchine tagliate a rondelle e saltate con aglio e prezzemolo.",
+  "description_en": "Sliced zucchini sautéed with garlic and parsley.",
+  "category": "vegetable_side",
+  "protein_source": "none",
+  "difficulty": "easy",
+  "prep_time_min": 5,
+  "cook_time_min": 10,
+  "total_time_min": 15,
+  "servings": 2,
+  "kcal_per_100g": 42,
+  "protein_per_100g": 1.2,
+  "carbs_per_100g": 3.5,
+  "fat_per_100g": 2.8,
+  "fiber_per_100g": 1.0,
+  "serving_weight_g": 150,
+  "cooked_weight_factor": 0.75,
+  "is_published": true,
+  "tags": [
+    "vegetable_heavy"
+  ],
+  "ingredients": [],
+  "steps_it": [
+    "Tagliare le zucchine a rondelle sottili.",
+    "Saltare in padella con olio e aglio per 8-10 minuti.",
+    "Aggiungere prezzemolo tritato e servire."
+  ],
+  "steps_en": [
+    "Slice zucchini into thin rounds.",
+    "Sauté in pan with oil and garlic for 8-10 minutes.",
+    "Add chopped parsley and serve."
+  ],
+  "tags_json": [
+    "vegetable_heavy"
+  ]
+}

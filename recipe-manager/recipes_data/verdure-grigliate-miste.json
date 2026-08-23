@@ -1,0 +1,40 @@
+{
+  "id": "verdure-grigliate-miste",
+  "slug": "verdure-grigliate-miste",
+  "name_it": "Verdure Grigliate Miste",
+  "name_en": "Mixed Grilled Vegetables",
+  "description_it": "Zucchine, peperoni e melanzane grigliate con olio e erbe aromatiche.",
+  "description_en": "Grilled zucchini, peppers and eggplant with oil and herbs.",
+  "category": "vegetable_side",
+  "protein_source": "none",
+  "difficulty": "easy",
+  "prep_time_min": 15,
+  "cook_time_min": 15,
+  "total_time_min": 30,
+  "servings": 2,
+  "kcal_per_100g": 55,
+  "protein_per_100g": 1.5,
+  "carbs_per_100g": 6.0,
+  "fat_per_100g": 3.0,
+  "fiber_per_100g": 2.5,
+  "serving_weight_g": 150,
+  "cooked_weight_factor": 0.7,
+  "is_published": true,
+  "tags": [
+    "vegetable_heavy"
+  ],
+  "ingredients": [],
+  "steps_it": [
+    "Tagliare le verdure a fette di circa 1cm.",
+    "Grigliare su piastra calda per 5-7 minuti per lato.",
+    "Condire con olio, sale e origano."
+  ],
+  "steps_en": [
+    "Cut vegetables into 1cm thick slices.",
+    "Grill on hot plate for 5-7 minutes per side.",
+    "Season with oil, salt and oregano."
+  ],
+  "tags_json": [
+    "vegetable_heavy"
+  ]
+}

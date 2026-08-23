@@ -6,9 +6,13 @@ description: Workflow di sviluppo per Recipe Manager (Python/UV/CLI)
 
 Utilizza questo workflow per pianificare e implementare feature nel tool Python.
 
+> [!IMPORTANT]
+> Tutte le operazioni Python devono essere eseguite nella directory `recipe-manager/`.
+> In WSL, l'eseguibile `uv` si trova solitamente in `/home/nuno/.local/bin/uv`.
+
 ## Stack di Riferimento
 
-- **Pkg Manager**: UV (uv init, uv add, uv run)
+- **Pkg Manager**: UV (`uv run`, `uv add`)
 - **Lang**: Python 3.11+
 - **CLI**: Typer + Rich
 - **Data**: Pydantic v2
@@ -24,51 +28,40 @@ Utilizza questo workflow per pianificare e implementare feature nel tool Python.
 |-----------|-----------|
 | `docs/task-recipe-manager.md` | **Tracker** - Aggiorna sempre qui |
 | `docs/PRD-recipe-manager.md` | **Master Guide** - Comandi e specifiche |
-| `docs/data-models.md` | **Schema DB** - Fonte di verità (NON deviare) | src/db/schema/index.ts per le tabelle dell'app android. i tuoi output devono sempre essere compatibili per loro.
+| `docs/data-models.md` | **Schema DB** - Fonte di verità |
 
 ---
 
-## Struttura Task List
+## Struttura Progetto
 
-Dividi il lavoro in:
+Il codice si trova in `recipe-manager/`:
 
-### Core Tasks (C1, C2...)
-- Services (`src/recipe_manager/services/`)
-- Models (`src/recipe_manager/models.py`)
-- Utilities
+### Core Logic
+- Services: `recipe-manager/src/recipe_manager/services/`
+- Models: `recipe-manager/src/recipe_manager/models.py`
 
-### CLI Tasks (T1, T2...)
-- Comandi Typer (`src/recipe_manager/cli.py`)
-- Interfaccia Rich (tables, prompters)
-- Wizard entry logic
-
----
-
-## Per ogni Task specificare:
-
-1. **Descrizione** - Cosa implementare
-2. **Dipendenze** - Es: CLI `add` dipende da Service `create`
-3. **Docs** - Riferimento a PRD/Schema
-4. **Complessità** - Low/Med/High
-5. **File** - Path esatti
+### CLI & UI
+- Entry Point: `recipe-manager/src/recipe_manager/__main__.py`
+- Comandi Typer: `recipe-manager/src/recipe_manager/cli.py`
+- Interfaccia Rich: `recipe-manager/src/recipe_manager/cli.py`
 
 ---
 
 ## Implementazione Protocol
 
-1. **Lock First**: Se aggiungi dipendenze, esegui `uv lock` (automatico con `uv add`)
-2. **Type Safety**: Usa Type Hints per tutto (mypy ready)
-3. **Schema First**: I Pydantic models DEVONO specchiare `docs/data-models.md`
-4. **Remote DB**: Ricorda che `libsql-client` scrive su Turso Cloud
+1. **Working Dir**: `cd recipe-manager`
+2. **Lock First**: Se aggiungi dipendenze, `uv add package_name` (genera/aggiorna `uv.lock`)
+3. **Type Safety**: Usa Type Hints per tutto.
+4. **Schema First**: I Pydantic models DEVONO rispecchiare `docs/data-models.md`.
 
 ---
 
-## Checklist Commit
+## Checklist Esecuzione (da Workspace Root)
 
-- [ ] `uv run python -m recipe_manager ...` funziona?
+- [ ] Sync: `wsl -d Debian -e bash -c "cd recipe-manager && /home/nuno/.local/bin/uv run python -m recipe_manager sync"`
+- [ ] List: `wsl -d Debian -e bash -c "cd recipe-manager && /home/nuno/.local/bin/uv run python -m recipe_manager list"`
 - [ ] Pydantic valida correttamente i dati?
-- [ ] Schema DB rispettato (UUID, tipi, constraints)?
-- [ ] Nessun segreto hardcodato (usa `.env`)?
+- [ ] Nessun segreto hardcodato (usa `recipe-manager/.env`)?
 - [ ] Task aggiornato in `docs/task-recipe-manager.md`?
 
 ---

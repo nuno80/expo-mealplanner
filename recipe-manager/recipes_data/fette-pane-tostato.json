@@ -1,0 +1,34 @@
+{
+  "id": "fette-pane-tostato",
+  "slug": "fette-pane-tostato",
+  "name_it": "Fette di Pane Tostato",
+  "name_en": "Toasted Bread Slices",
+  "description_it": "Fette di pane tostato croccante, perfetto accompagnamento per zuppe, insalate e piatti di uova.",
+  "description_en": "Crispy toasted bread slices, perfect accompaniment for soups, salads and egg dishes.",
+  "category": "side_dish",
+  "protein_source": "none",
+  "difficulty": "easy",
+  "prep_time_min": 2,
+  "cook_time_min": 5,
+  "total_time_min": 7,
+  "servings": 1,
+  "kcal_per_100g": 290,
+  "protein_per_100g": 9.0,
+  "carbs_per_100g": 52.0,
+  "fat_per_100g": 3.5,
+  "fiber_per_100g": 4.0,
+  "serving_weight_g": 60,
+  "cooked_weight_factor": 0.9,
+  "is_published": true,
+  "ingredients": [],
+  "steps_it": [
+    "Tostare le fette di pane fino a doratura."
+  ],
+  "steps_en": [
+    "Toast bread slices until golden."
+  ],
+  "tags": [
+    "vegetarian",
+    "vegan"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "name_it": "Crucifere Miste di Stagione (Base)",
+  "name_en": "Mixed Seasonal Cruciferous (Base)",
+  "slug": "crucifere-miste-stagione",
+  "description_it": "Mix di cavoli, broccoli, cavolfiori o verza. Ottimi cotti al vapore per preservare sulforafano o arrostiti al forno.",
+  "description_en": "Mix of cabbage, broccoli, cauliflower or kale. Excellent steamed to preserve sulforaphane or roasted.",
+  "category": "vegetable_side",
+  "prep_time_min": 10,
+  "cook_time_min": 15,
+  "servings": 2,
+  "difficulty": "easy",
+  "kcal_per_100g": 35,
+  "protein_per_100g": 3.0,
+  "carbs_per_100g": 5.0,
+  "fat_per_100g": 0.5,
+  "fiber_per_100g": 3.5,
+  "serving_weight_g": 200,
+  "protein_source": "none",
+  "tags": [
+    "vegetable_heavy"
+  ],
+  "ingredients": [
+    {
+      "name_it": "Crucifere miste",
+      "name_en": "Mixed cruciferous veg",
+      "quantity": 400,
+      "unit": "g",
+      "cooking_factor": 0.95,
+      "notes_it": "Broccoli, cavolfiore, cavolini di Bruxelles"
+    },
+    {
+      "name_it": "Limone (succo)",
+      "name_en": "Lemon juice",
+      "quantity": 1,
+      "unit": "pz",
+      "is_optional": true
+    }
+  ],
+  "steps": [
+    "Lavare e tagliare le cimette.",
+    "Cuocere preferibilmente al vapore per 7-8 minuti (consistenza croccante) o al forno a 200°C per 20 minuti."
+  ]
+}

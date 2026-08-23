@@ -1,0 +1,36 @@
+{
+  "id": "crostini-pane-integrale",
+  "slug": "crostini-pane-integrale",
+  "name_it": "Crostini di Pane Integrale",
+  "name_en": "Whole Wheat Croutons",
+  "description_it": "Crostini croccanti di pane integrale tostato, ideali come accompagnamento per zuppe e insalate.",
+  "description_en": "Crispy whole wheat toasted croutons, ideal as a side for soups and salads.",
+  "category": "side_dish",
+  "protein_source": "none",
+  "difficulty": "easy",
+  "prep_time_min": 5,
+  "cook_time_min": 10,
+  "total_time_min": 15,
+  "servings": 1,
+  "kcal_per_100g": 380,
+  "protein_per_100g": 12.0,
+  "carbs_per_100g": 65.0,
+  "fat_per_100g": 6.5,
+  "fiber_per_100g": 8.0,
+  "serving_weight_g": 40,
+  "cooked_weight_factor": 0.85,
+  "is_published": true,
+  "ingredients": [],
+  "steps_it": [
+    "Tagliare il pane integrale a cubetti.",
+    "Tostare in forno a 180°C per 10 minuti fino a doratura."
+  ],
+  "steps_en": [
+    "Cut whole wheat bread into cubes.",
+    "Toast in oven at 180°C for 10 minutes until golden."
+  ],
+  "tags": [
+    "vegetarian",
+    "vegan"
+  ]
+}

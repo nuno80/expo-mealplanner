@@ -1,0 +1,41 @@
+{
+  "name_it": "Asparagi e Cipollotti (Gambi e Bulbi)",
+  "name_en": "Asparagus and Spring Onions",
+  "slug": "asparagi-cipollotti-saltati",
+  "description_it": "Focus su gambi e bulbi (asparagi, cipollotti, porri). Ricchi di fibre prebiotiche. Ottimi al vapore o saltati velocemente.",
+  "description_en": "Focus on stems and bulbs (asparagus, scallions, leeks). Rich in prebiotic fibers. Excellent steamed or quickly sautéed.",
+  "category": "vegetable_side",
+  "prep_time_min": 5,
+  "cook_time_min": 8,
+  "servings": 2,
+  "difficulty": "easy",
+  "kcal_per_100g": 38,
+  "protein_per_100g": 2.8,
+  "carbs_per_100g": 4.5,
+  "fat_per_100g": 1.5,
+  "fiber_per_100g": 2.5,
+  "serving_weight_g": 180,
+  "protein_source": "none",
+  "tags": [
+    "vegetable_heavy"
+  ],
+  "ingredients": [
+    {
+      "name_it": "Asparagi e Cipollotti",
+      "name_en": "Asparagus and Spring Onions",
+      "quantity": 350,
+      "unit": "g",
+      "cooking_factor": 0.9
+    },
+    {
+      "name_it": "Olio EVO",
+      "name_en": "Extra virgin olive oil",
+      "quantity": 10,
+      "unit": "g"
+    }
+  ],
+  "steps": [
+    "Pulire gli asparagi eliminando la parte dura.",
+    "Cuocere al vapore per 5-6 minuti o saltare in padella con i cipollotti finché teneri."
+  ]
+}

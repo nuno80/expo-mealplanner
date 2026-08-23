@@ -1,0 +1,41 @@
+{
+  "id": "uova-alla-fiorentina",
+  "slug": "uova-alla-fiorentina",
+  "name_it": "Uova alla Fiorentina",
+  "name_en": "Florentine Eggs",
+  "description_it": "Uova in camicia adagiate su un letto di spinaci saltati, con una leggera gratinatura di parmigiano.",
+  "description_en": "Poached eggs on a bed of sautéed spinach, with a light Parmesan gratin.",
+  "category": "main_course",
+  "protein_source": "eggs",
+  "difficulty": "medium",
+  "prep_time_min": 10,
+  "cook_time_min": 15,
+  "total_time_min": 25,
+  "servings": 1,
+  "kcal_per_100g": 115,
+  "protein_per_100g": 9.0,
+  "carbs_per_100g": 3.5,
+  "fat_per_100g": 7.5,
+  "fiber_per_100g": 2.0,
+  "serving_weight_g": 250,
+  "cooked_weight_factor": 0.7,
+  "is_published": true,
+  "ingredients": [],
+  "steps_it": [
+    "Saltare gli spinaci in padella con aglio.",
+    "Preparare le uova in camicia.",
+    "Adagiare le uova sugli spinaci.",
+    "Spolverare con parmigiano e gratinare brevemente."
+  ],
+  "steps_en": [
+    "Sauté spinach in a pan with garlic.",
+    "Prepare poached eggs.",
+    "Place eggs on spinach.",
+    "Sprinkle with Parmesan and briefly broil."
+  ],
+  "tags": [
+    "vegetarian",
+    "gluten-free",
+    "high-protein"
+  ]
+}

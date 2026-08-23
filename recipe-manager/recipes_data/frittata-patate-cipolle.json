@@ -1,0 +1,40 @@
+{
+  "id": "frittata-patate-cipolle",
+  "slug": "frittata-patate-cipolle",
+  "name_it": "Frittata di Patate e Cipolle",
+  "name_en": "Potato and Onion Frittata",
+  "description_it": "Frittata sostanziosa con patate e cipolle caramellate, perfetta per pranzo o cena.",
+  "description_en": "Hearty frittata with potatoes and caramelized onions, perfect for lunch or dinner.",
+  "category": "main_course",
+  "protein_source": "eggs",
+  "difficulty": "easy",
+  "prep_time_min": 15,
+  "cook_time_min": 25,
+  "total_time_min": 40,
+  "servings": 2,
+  "kcal_per_100g": 145,
+  "protein_per_100g": 7.0,
+  "carbs_per_100g": 12.0,
+  "fat_per_100g": 8.0,
+  "fiber_per_100g": 1.5,
+  "serving_weight_g": 200,
+  "cooked_weight_factor": 0.9,
+  "is_published": true,
+  "ingredients": [],
+  "steps_it": [
+    "Cuocere le patate a fette sottili in padella.",
+    "Aggiungere le cipolle e caramellare.",
+    "Versare le uova sbattute e cuocere a fuoco lento.",
+    "Girare e completare la cottura."
+  ],
+  "steps_en": [
+    "Cook thinly sliced potatoes in a pan.",
+    "Add onions and caramelize.",
+    "Pour beaten eggs and cook on low heat.",
+    "Flip and finish cooking."
+  ],
+  "tags": [
+    "vegetarian",
+    "gluten-free"
+  ]
+}

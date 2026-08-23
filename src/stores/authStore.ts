@@ -89,20 +89,37 @@ export const useAuthStore = create<AuthState>((set, get) => ({
 	 * Call this in the root layout and store the unsubscribe function.
 	 */
 	initialize: () => {
-		// Get initial session
-		supabase.auth.getSession().then(({ data: { session } }) => {
-			get().setSession(session);
-			set({ isInitialized: true });
-		});
+		console.log("[Auth] initialize() starting...");
+		try {
+			// Get initial session
+			supabase.auth.getSession()
+				.then(({ data: { session } }) => {
+					console.log("[Auth] getSession success:", !!session);
+					get().setSession(session);
+					set({ isInitialized: true });
+				})
+				.catch((err) => {
+					console.error("[Auth] getSession failed:", err.message || err);
+					set({ isLoading: false, isInitialized: true });
+				});
 
-		// Listen for auth changes
-		const {
-			data: { subscription },
-		} = supabase.auth.onAuthStateChange((_event, session) => {
-			get().setSession(session);
-		});
+			// Listen for auth changes
+			const {
+				data: { subscription },
+			} = supabase.auth.onAuthStateChange((_event, session) => {
+				console.log("[Auth] onAuthStateChange event:", _event, !!session);
+				get().setSession(session);
+			});
 
-		return () => subscription.unsubscribe();
+			return () => {
+				console.log("[Auth] unsubscribe called");
+				subscription.unsubscribe();
+			};
+		} catch (error: any) {
+			console.error("[Auth] initialization fatal error:", error.message || error);
+			set({ isLoading: false, isInitialized: true });
+			return () => {};
+		}
 	},
 
 	// Onboarding actions

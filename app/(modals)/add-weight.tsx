@@ -28,6 +28,7 @@ export default function AddWeightModal() {
 		handleSubmit,
 		formState: { errors },
 	} = useForm<AddWeightInput>({
+		// biome-ignore lint/suspicious/noExplicitAny: library type mismatch
 		resolver: zodResolver(AddWeightSchema) as any,
 		defaultValues: {
 			familyMemberId: selectedMemberId ?? "",
@@ -49,7 +50,7 @@ export default function AddWeightModal() {
 			router.back();
 		},
 		onError: (error) => {
-			Alert.alert("Errore", "Impossibile salvare il peso: " + error.message);
+			Alert.alert("Errore", `Impossibile salvare il peso: ${error.message}`);
 		},
 	});
 
@@ -122,7 +123,7 @@ export default function AddWeightModal() {
 
 				<Pressable
 					className="bg-primary-600 py-4 rounded-2xl shadow-sm mt-4 active:bg-primary-700"
-					onPress={handleSubmit(onSubmit as any)}
+					onPress={handleSubmit(onSubmit)}
 					disabled={mutation.isPending}
 				>
 					{mutation.isPending ? (

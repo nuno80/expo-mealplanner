@@ -1,0 +1,41 @@
+{
+  "id": "uova-in-purgatorio",
+  "slug": "uova-in-purgatorio",
+  "name_it": "Uova in Purgatorio",
+  "name_en": "Eggs in Purgatory",
+  "description_it": "Uova cotte in un sugo piccante di pomodoro con peperoncino. Piatto tradizionale napoletano.",
+  "description_en": "Eggs cooked in a spicy tomato sauce with chili. Traditional Neapolitan dish.",
+  "category": "main_course",
+  "protein_source": "eggs",
+  "difficulty": "easy",
+  "prep_time_min": 5,
+  "cook_time_min": 15,
+  "total_time_min": 20,
+  "servings": 1,
+  "kcal_per_100g": 105,
+  "protein_per_100g": 7.0,
+  "carbs_per_100g": 6.0,
+  "fat_per_100g": 6.5,
+  "fiber_per_100g": 1.2,
+  "serving_weight_g": 280,
+  "cooked_weight_factor": 0.9,
+  "is_published": true,
+  "ingredients": [],
+  "steps_it": [
+    "Preparare un sugo di pomodoro con aglio e peperoncino.",
+    "Rompere le uova nel sugo caldo.",
+    "Coprire e cuocere fino a rappresa.",
+    "Servire con pane tostato."
+  ],
+  "steps_en": [
+    "Prepare a tomato sauce with garlic and chili.",
+    "Crack eggs into the hot sauce.",
+    "Cover and cook until set.",
+    "Serve with toasted bread."
+  ],
+  "tags": [
+    "vegetarian",
+    "gluten-free",
+    "quick"
+  ]
+}

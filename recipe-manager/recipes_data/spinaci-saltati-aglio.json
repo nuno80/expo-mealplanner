@@ -1,0 +1,40 @@
+{
+  "id": "spinaci-saltati-aglio",
+  "slug": "spinaci-saltati-aglio",
+  "name_it": "Spinaci Saltati all'Aglio",
+  "name_en": "Sautéed Spinach with Garlic",
+  "description_it": "Spinaci freschi saltati in padella con aglio e olio EVO.",
+  "description_en": "Fresh spinach sautéed with garlic and EVO oil.",
+  "category": "vegetable_side",
+  "protein_source": "none",
+  "difficulty": "easy",
+  "prep_time_min": 5,
+  "cook_time_min": 5,
+  "total_time_min": 10,
+  "servings": 2,
+  "kcal_per_100g": 50,
+  "protein_per_100g": 2.9,
+  "carbs_per_100g": 1.5,
+  "fat_per_100g": 3.5,
+  "fiber_per_100g": 2.0,
+  "serving_weight_g": 100,
+  "cooked_weight_factor": 0.3,
+  "is_published": true,
+  "tags": [
+    "vegetable_heavy"
+  ],
+  "ingredients": [],
+  "steps_it": [
+    "Scaldare l'olio in padella con l'aglio.",
+    "Aggiungere gli spinaci e saltare per 3-4 minuti.",
+    "Salare e servire."
+  ],
+  "steps_en": [
+    "Heat oil in pan with garlic.",
+    "Add spinach and sauté for 3-4 minutes.",
+    "Season with salt and serve."
+  ],
+  "tags_json": [
+    "vegetable_heavy"
+  ]
+}

@@ -21,7 +21,7 @@ export function ProgressRing({
 }: ProgressRingProps) {
 	const percentage = Math.min(Math.round((current / target) * 100), 100);
 	const isOver = current > target;
-	const colorClass = isOver ? "bg-red-500" : "bg-brand-500";
+	// const colorClass = isOver ? "bg-red-500" : "bg-brand-500";
 	const bgClass = isOver ? "bg-red-100" : "bg-brand-100";
 	const textClass = isOver ? "text-red-600" : "text-brand-600";
 

@@ -1,0 +1,132 @@
+{
+  "name_it": "Curry cremoso di ceci",
+  "name_en": "Creamy Chickpea Curry",
+  "slug": "curry-ceci-cremoso",
+  "description_it": "Un curry veloce e cremoso: ceci saltati con curry aromatico e formaggio spalmabile per una consistenza vellutata.",
+  "description_en": "A quick and creamy curry: chickpeas sautéed with aromatic curry powder and cream cheese for a velvety texture.",
+  "category": "main_course",
+  "preferred_meal": "dinner",
+  "servings": 2,
+  "prep_time_min": 5,
+  "cook_time_min": 10,
+  "difficulty": "easy",
+  "kcal_per_100g": 145,
+  "protein_per_100g": 5.8,
+  "carbs_per_100g": 11.5,
+  "fat_per_100g": 8.2,
+  "fiber_per_100g": 3.2,
+  "kcal_per_serving": 290,
+  "serving_weight_g": 200,
+  "total_raw_weight_g": 390,
+  "total_cooked_weight_g": 400,
+  "cooking_factor": 1.03,
+  "protein_source": "legumes",
+  "allergens": [
+    "dairy"
+  ],
+  "dietary_flags": {
+    "vegetarian": true,
+    "vegan": false,
+    "gluten_free": true,
+    "dairy_free": false,
+    "nut_free": true
+  },
+  "ingredients": [
+    {
+      "name_it": "ceci in scatola",
+      "name_en": "canned chickpeas",
+      "quantity": 240,
+      "unit": "g",
+      "cooking_factor": 1.00,
+      "is_optional": false,
+      "notes_it": "sgocciolati",
+      "notes_en": "drained"
+    },
+    {
+      "name_it": "formaggio spalmabile",
+      "name_en": "cream cheese",
+      "quantity": 80,
+      "unit": "g",
+      "cooking_factor": 1.00,
+      "is_optional": false,
+      "notes_it": "tipo Philadelphia",
+      "notes_en": "Philadelphia style"
+    },
+    {
+      "name_it": "curry in polvere",
+      "name_en": "curry powder",
+      "quantity": 10,
+      "unit": "g",
+      "cooking_factor": 1.00,
+      "is_optional": false,
+      "notes_it": "circa 2 cucchiaini",
+      "notes_en": "about 2 teaspoons"
+    },
+    {
+      "name_it": "olio d'oliva",
+      "name_en": "olive oil",
+      "quantity": 15,
+      "unit": "ml",
+      "cooking_factor": 1.00,
+      "is_optional": false,
+      "notes_it": null,
+      "notes_en": null
+    },
+    {
+      "name_it": "acqua",
+      "name_en": "water",
+      "quantity": 100,
+      "unit": "ml",
+      "cooking_factor": 0.50,
+      "is_optional": false,
+      "notes_it": "circa mezzo bicchiere",
+      "notes_en": "about half a glass"
+    },
+    {
+      "name_it": "sale",
+      "name_en": "salt",
+      "quantity": 2,
+      "unit": "g",
+      "cooking_factor": 1.00,
+      "is_optional": false,
+      "notes_it": "q.b.",
+      "notes_en": "to taste"
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "instruction_it": "Scaldare l'olio in una padella a fuoco medio. Aggiungere il curry in polvere e rosolare per 30 secondi mescolando, finché sprigiona il suo aroma.",
+      "instruction_en": "Heat the oil in a pan over medium heat. Add the curry powder and toast for 30 seconds while stirring, until fragrant."
+    },
+    {
+      "step_number": 2,
+      "instruction_it": "Aggiungere i ceci scolati e saltarli in padella per 5 minuti, mescolando spesso per farli insaporire bene.",
+      "instruction_en": "Add the drained chickpeas and sauté for 5 minutes, stirring often to let them absorb the flavor."
+    },
+    {
+      "step_number": 3,
+      "instruction_it": "Versare circa mezzo bicchiere d'acqua (100 ml) e portare a leggero bollore. Abbassare la fiamma.",
+      "instruction_en": "Pour in about half a glass of water (100 ml) and bring to a gentle simmer. Lower the heat."
+    },
+    {
+      "step_number": 4,
+      "instruction_it": "Aggiungere il formaggio spalmabile e mescolare fino a quando si scioglie completamente, creando una salsa cremosa che avvolge i ceci. Aggiustare di sale.",
+      "instruction_en": "Add the cream cheese and stir until it melts completely, creating a creamy sauce that coats the chickpeas. Adjust salt to taste."
+    },
+    {
+      "step_number": 5,
+      "instruction_it": "Servire caldo, accompagnato da riso basmati o pane naan.",
+      "instruction_en": "Serve hot, with basmati rice or naan bread on the side."
+    }
+  ],
+  "tags": [
+    "curry",
+    "chickpeas",
+    "vegetarian",
+    "gluten-free",
+    "creamy",
+    "quick",
+    "dinner"
+  ]
+}

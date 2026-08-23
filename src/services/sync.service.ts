@@ -3,128 +3,135 @@
  * Implements offline-first pattern with cloud sync.
  */
 
+import { eq, sql } from "drizzle-orm";
+import { randomUUID } from "expo-crypto";
 import { db } from "@/db/client";
 import {
-  ingredients,
-  recipeIngredients,
-  recipeSteps,
-  recipes,
+	ingredients,
+	recipeIngredients,
+	recipeSteps,
+	recipeTags,
+	recipes,
+	tags,
 } from "@/db/schema";
 import { API_BASE_URL } from "@/lib/api";
-import { sql } from "drizzle-orm";
 
 export interface SyncResult {
-  success: boolean;
-  count: number;
-  error?: string;
+	success: boolean;
+	count: number;
+	error?: string;
 }
 
 // API response types (extended to include ingredients/steps)
 interface ApiIngredient {
-  id: string;
-  recipe_id: string;
-  ingredient_id: string;
-  quantity: number;
-  unit: string;
-  is_optional: boolean;
-  notes_it: string | null;
-  notes_en: string | null;
-  display_order: number;
-  ingredient_name_it: string;
-  ingredient_name_en: string;
-  kcal_per_100g?: number;
-  cooked_weight_factor?: number;
+	id: string;
+	recipe_id: string;
+	ingredient_id: string;
+	quantity: number;
+	unit: string;
+	is_optional: boolean;
+	notes_it: string | null;
+	notes_en: string | null;
+	display_order: number;
+	ingredient_name_it: string;
+	ingredient_name_en: string;
+	kcal_per_100g?: number;
+	cooked_weight_factor?: number;
 }
 
 interface ApiStep {
-  id: string;
-  recipe_id: string;
-  step_number: number;
-  instruction_it: string;
-  instruction_en: string;
-  image_url: string | null;
+	id: string;
+	recipe_id: string;
+	step_number: number;
+	instruction_it: string;
+	instruction_en: string;
+	image_url: string | null;
 }
 
 interface ApiRecipe {
-  id: string;
-  name_it: string;
-  name_en: string;
-  slug: string;
-  description_it: string | null;
-  description_en: string | null;
-  category: string;
-  image_url: string | null;
-  prep_time_min: number;
-  cook_time_min: number;
-  total_time_min: number;
-  servings: number;
-  difficulty: string;
-  kcal_per_100g: number;
-  protein_per_100g: number;
-  carbs_per_100g: number;
-  fat_per_100g: number;
-  fiber_per_100g: number | null;
-  kcal_per_serving: number;
-  serving_weight_g: number;
-  protein_source: string; // For meal plan rotation
-  is_published: boolean;
-  created_at: string;
-  updated_at: string;
-  // Nested data
-  ingredients: ApiIngredient[];
-  steps: ApiStep[];
+	id: string;
+	name_it: string;
+	name_en: string;
+	slug: string;
+	description_it: string | null;
+	description_en: string | null;
+	category: string;
+	image_url: string | null;
+	prep_time_min: number;
+	cook_time_min: number;
+	total_time_min: number;
+	servings: number;
+	difficulty: string;
+	kcal_per_100g: number;
+	protein_per_100g: number;
+	carbs_per_100g: number;
+	fat_per_100g: number;
+	fiber_per_100g: number | null;
+	kcal_per_serving: number;
+	serving_weight_g: number;
+	protein_source: string; // For meal plan rotation
+	is_published: boolean;
+	created_at: string;
+	updated_at: string;
+	// Nested data
+	ingredients: ApiIngredient[];
+	steps: ApiStep[];
+	tags?: string[]; // v2.6 Nutritional tags
 }
 
 interface ApiRecipesResponse {
-  success: boolean;
-  count: number;
-  data: ApiRecipe[];
+	success: boolean;
+	count: number;
+	data: ApiRecipe[];
 }
 
 /**
  * Fetch recipes from API and upsert into local SQLite (including ingredients/steps).
  */
 export async function syncRecipes(): Promise<SyncResult> {
-  try {
-    console.log("[Sync] Fetching recipes from API...");
+	try {
+		console.log("[Sync] API_BASE_URL:", API_BASE_URL);
+		console.log("[Sync] Fetching recipes from API...");
 
-    const response = await fetch(`${API_BASE_URL}/recipes`, {
-      headers: { "Content-Type": "application/json" },
-    });
+		const response = await fetch(`${API_BASE_URL}/recipes`, {
+			headers: { "Content-Type": "application/json" },
+		});
 
-    if (!response.ok) {
-      throw new Error(`API error: ${response.status}`);
-    }
+		console.log("[Sync] Fetch response status:", response.status);
 
-    const result: ApiRecipesResponse = await response.json();
+		if (!response.ok) {
+			throw new Error(`API error: ${response.status}`);
+		}
 
-    if (!result.success) {
-      throw new Error("API returned unsuccessful response");
-    }
+		const result: ApiRecipesResponse = await response.json();
 
-    console.log(`[Sync] Received ${result.count} recipes, upserting...`);
+		if (!result.success) {
+			throw new Error("API returned unsuccessful response");
+		}
 
-    // Upsert each recipe + ingredients + steps into local DB
-    for (const apiRecipe of result.data) {
-      await upsertFullRecipe(apiRecipe);
-    }
+		console.log(`[Sync] Received ${result.count} recipes, upserting...`);
 
-    console.log(`[Sync] Successfully synced ${result.count} recipes`);
+		// Upsert each recipe + ingredients + steps into local DB
+		for (const apiRecipe of result.data) {
+			await upsertFullRecipe(apiRecipe);
+		}
 
-    return { success: true, count: result.count };
-  } catch (error) {
-    const message = error instanceof Error ? error.message : "Unknown error";
-    console.error("[Sync] Failed:", message);
+		console.log(`[Sync] Successfully synced ${result.count} recipes`);
 
-    // Check if local DB has recipes (offline fallback)
-    const localCount = await getLocalRecipeCount();
-    if (localCount > 0) {
-      console.log(`[Sync] Using ${localCount} cached recipes`);
-      return { success: true, count: localCount, error: message };
-    }
+		return { success: true, count: result.count };
+	} catch (error) {
+		const message = error instanceof Error ? error.message : "Unknown error";
+		console.error("[Sync] Failed:", message);
 
-    return { success: false, count: 0, error: message };
-  }
+		// Check if local DB has recipes (offline fallback)
+		const localCount = await getLocalRecipeCount();
+		if (localCount > 0) {
+			console.log(`[Sync] Using ${localCount} cached recipes`);
+			return { success: true, count: localCount, error: message };
+		}
+
+		return { success: false, count: 0, error: message };
+	}
 }
 
 /**
@@ -134,136 +141,179 @@ export async function syncRecipes(): Promise<SyncResult> {
  * with existing planned_meals.
  */
 async function upsertFullRecipe(apiRecipe: ApiRecipe): Promise<void> {
-  // Check if recipe with this slug already exists locally
-  // If it does, skip update to preserve local IDs for planned_meals compatibility
-  const existingBySlug = await db
-    .select({ id: recipes.id })
-    .from(recipes)
-    .where(sql`slug = ${apiRecipe.slug}`)
-    .limit(1);
+	// Check if recipe with this slug already exists locally
+	// If it does, skip update to preserve local IDs for planned_meals compatibility
+	const existingBySlug = await db
+		.select({ id: recipes.id })
+		.from(recipes)
+		.where(sql`slug = ${apiRecipe.slug}`)
+		.limit(1);
 
-  if (existingBySlug.length > 0 && existingBySlug[0].id !== apiRecipe.id) {
-    // Recipe exists locally with different ID - SKIP to preserve planned_meals references
-    // The local ID is already in use by meal plans, so don't replace it
-    console.log(`[Sync] Skipping '${apiRecipe.slug}' - already exists locally with ID ${existingBySlug[0].id}`);
-    return;
-  }
+	if (existingBySlug.length > 0 && existingBySlug[0].id !== apiRecipe.id) {
+		// Recipe exists locally with different ID - SKIP to preserve planned_meals references
+		// The local ID is already in use by meal plans, so don't replace it
+		console.log(
+			`[Sync] Skipping '${apiRecipe.slug}' - already exists locally with ID ${existingBySlug[0].id}`,
+		);
+		return;
+	}
 
-  // 1. Upsert Recipe
-  const localRecipe = {
-    id: apiRecipe.id,
-    nameIt: apiRecipe.name_it,
-    nameEn: apiRecipe.name_en,
-    slug: apiRecipe.slug,
-    descriptionIt: apiRecipe.description_it,
-    descriptionEn: apiRecipe.description_en,
-    category: apiRecipe.category,
-    imageUrl: apiRecipe.image_url,
-    prepTimeMin: apiRecipe.prep_time_min,
-    cookTimeMin: apiRecipe.cook_time_min,
-    totalTimeMin: apiRecipe.total_time_min,
-    servings: apiRecipe.servings,
-    difficulty: apiRecipe.difficulty,
-    kcalPer100g: apiRecipe.kcal_per_100g,
-    proteinPer100g: apiRecipe.protein_per_100g,
-    carbsPer100g: apiRecipe.carbs_per_100g,
-    fatPer100g: apiRecipe.fat_per_100g,
-    fiberPer100g: apiRecipe.fiber_per_100g,
-    kcalPerServing: apiRecipe.kcal_per_serving,
-    servingWeightG: apiRecipe.serving_weight_g,
-    proteinSource: apiRecipe.protein_source ?? "mixed",
-    isPublished: true,
-  };
+	// 1. Prepare Recipe Data
+	const localRecipe = {
+		id: apiRecipe.id,
+		nameIt: apiRecipe.name_it,
+		nameEn: apiRecipe.name_en,
+		slug: apiRecipe.slug,
+		descriptionIt: apiRecipe.description_it,
+		descriptionEn: apiRecipe.description_en,
+		category: apiRecipe.category,
+		imageUrl: apiRecipe.image_url,
+		prepTimeMin: apiRecipe.prep_time_min,
+		cookTimeMin: apiRecipe.cook_time_min,
+		totalTimeMin: apiRecipe.total_time_min,
+		servings: apiRecipe.servings,
+		difficulty: apiRecipe.difficulty,
+		kcalPer100g: apiRecipe.kcal_per_100g,
+		proteinPer100g: apiRecipe.protein_per_100g,
+		carbsPer100g: apiRecipe.carbs_per_100g,
+		fatPer100g: apiRecipe.fat_per_100g,
+		fiberPer100g: apiRecipe.fiber_per_100g,
+		kcalPerServing: apiRecipe.kcal_per_serving,
+		servingWeightG: apiRecipe.serving_weight_g,
+		proteinSource: apiRecipe.protein_source ?? "mixed",
+		isPublished: true,
+	};
 
-  try {
-    await db.insert(recipes).values(localRecipe).onConflictDoUpdate({
-      target: recipes.id,
-      set: localRecipe,
-    });
-    // Log side_dish specifically to debug
-    if (apiRecipe.category === "side_dish") {
-      console.log(`[Sync] ✅ Inserted side_dish: ${apiRecipe.name_it}`);
-    }
-  } catch (err) {
-    console.error(`[Sync] ❌ Failed to insert ${apiRecipe.slug}:`, err);
-    return; // Skip remaining steps for this recipe
-  }
+	try {
+		await db.transaction(async (tx) => {
+			// 1. Upsert Recipe
+			await tx.insert(recipes).values(localRecipe).onConflictDoUpdate({
+				target: recipes.id,
+				set: localRecipe,
+			});
 
-  // 2. Upsert Ingredients (the "master" ingredient entry)
-  for (const apiIng of apiRecipe.ingredients) {
-    const localIngredient = {
-      id: apiIng.ingredient_id,
-      nameIt: apiIng.ingredient_name_it || "Ingrediente",
-      nameEn: apiIng.ingredient_name_en || "Ingredient",
-      kcalPer100g: apiIng.kcal_per_100g ?? 0,
-      proteinPer100g: 0,
-      carbsPer100g: 0,
-      fatPer100g: 0,
-      cookedWeightFactor: apiIng.cooked_weight_factor ?? 1,
-      defaultUnit: apiIng.unit || "g",
-    };
+			// 2. Upsert Ingredients (the "master" ingredient entry)
+			for (const apiIng of apiRecipe.ingredients) {
+				const localIngredient = {
+					id: apiIng.ingredient_id,
+					nameIt: apiIng.ingredient_name_it || "Ingrediente",
+					nameEn: apiIng.ingredient_name_en || "Ingredient",
+					kcalPer100g: apiIng.kcal_per_100g ?? 0,
+					proteinPer100g: 0,
+					carbsPer100g: 0,
+					fatPer100g: 0,
+					cookedWeightFactor: apiIng.cooked_weight_factor ?? 1,
+					defaultUnit: apiIng.unit || "g",
+				};
 
-    await db.insert(ingredients).values(localIngredient).onConflictDoUpdate({
-      target: ingredients.id,
-      set: localIngredient,
-    });
-  }
+				await tx.insert(ingredients).values(localIngredient).onConflictDoUpdate({
+					target: ingredients.id,
+					set: localIngredient,
+				});
+			}
 
-  // 3. Delete existing recipe_ingredients for this recipe (clean sync)
-  await db.delete(recipeIngredients).where(sql`recipe_id = ${apiRecipe.id}`);
+			// 3. Delete existing recipe_ingredients for this recipe (clean sync)
+			await tx
+				.delete(recipeIngredients)
+				.where(eq(recipeIngredients.recipeId, apiRecipe.id));
 
-  // 4. Insert recipe_ingredients (link table)
-  for (const apiIng of apiRecipe.ingredients) {
-    await db.insert(recipeIngredients).values({
-      id: apiIng.id,
-      recipeId: apiRecipe.id,
-      ingredientId: apiIng.ingredient_id,
-      quantity: apiIng.quantity,
-      unit: apiIng.unit,
-      isOptional: apiIng.is_optional,
-      notesIt: apiIng.notes_it,
-      notesEn: apiIng.notes_en,
-      order: apiIng.display_order,
-    });
-  }
+			// 4. Insert recipe_ingredients (link table)
+			for (const apiIng of apiRecipe.ingredients) {
+				await tx.insert(recipeIngredients).values({
+					id: apiIng.id,
+					recipeId: apiRecipe.id,
+					ingredientId: apiIng.ingredient_id,
+					quantity: apiIng.quantity,
+					unit: apiIng.unit,
+					isOptional: apiIng.is_optional,
+					notesIt: apiIng.notes_it,
+					notesEn: apiIng.notes_en,
+					order: apiIng.display_order,
+				});
+			}
 
-  // 5. Delete existing recipe_steps for this recipe (clean sync)
-  await db.delete(recipeSteps).where(sql`recipe_id = ${apiRecipe.id}`);
+			// 5. Delete existing recipe_steps for this recipe (clean sync)
+			await tx.delete(recipeSteps).where(eq(recipeSteps.recipeId, apiRecipe.id));
 
-  // 6. Insert recipe_steps
-  for (const apiStep of apiRecipe.steps) {
-    await db.insert(recipeSteps).values({
-      id: apiStep.id,
-      recipeId: apiRecipe.id,
-      stepNumber: apiStep.step_number,
-      instructionIt: apiStep.instruction_it,
-      instructionEn: apiStep.instruction_en,
-      imageUrl: apiStep.image_url,
-    });
-  }
+			// 6. Insert recipe_steps
+			for (const apiStep of apiRecipe.steps) {
+				await tx.insert(recipeSteps).values({
+					id: apiStep.id,
+					recipeId: apiRecipe.id,
+					stepNumber: apiStep.step_number,
+					instructionIt: apiStep.instruction_it,
+					instructionEn: apiStep.instruction_en,
+					imageUrl: apiStep.image_url,
+				});
+			}
+
+			// 7. Sync Recipe-Tags relations (v2.6 Harvard Plate)
+			// First, clean existing relations
+			await tx.delete(recipeTags).where(eq(recipeTags.recipeId, apiRecipe.id));
+
+			if (apiRecipe.tags && apiRecipe.tags.length > 0) {
+				for (const tagSlug of apiRecipe.tags) {
+					// Check if tag exists locally by slug
+					const existingTag = await tx
+						.select()
+						.from(tags)
+						.where(eq(tags.slug, tagSlug))
+						.limit(1);
+
+					let tagId: string;
+					if (existingTag.length > 0) {
+						tagId = existingTag[0].id;
+					} else {
+						// Auto-create tag if missing (fallback for missing master tags sync)
+						tagId = randomUUID();
+						await tx.insert(tags).values({
+							id: tagId,
+							slug: tagSlug,
+							nameIt: tagSlug,
+							nameEn: tagSlug,
+						});
+					}
+
+					// Link tag to recipe
+					await tx.insert(recipeTags).values({
+						recipeId: apiRecipe.id,
+						tagId,
+					});
+				}
+			}
+
+			// Log side_dish specifically to debug
+			if (apiRecipe.category === "side_dish") {
+				console.log(`[Sync] ✅ Upserted side_dish: ${apiRecipe.name_it}`);
+			}
+		});
+	} catch (err) {
+		console.error(`[Sync] ❌ Failed to insert ${apiRecipe.slug}:`, err);
+		// If transaction fails, it rolls back automatically
+	}
 }
 
 /**
  * Get count of recipes in local DB.
  */
 async function getLocalRecipeCount(): Promise<number> {
-  const result = await db
-    .select({ count: sql<number>`count(*)` })
-    .from(recipes);
-  return result[0]?.count ?? 0;
+	const result = await db
+		.select({ count: sql<number>`count(*)` })
+		.from(recipes);
+	return result[0]?.count ?? 0;
 }
 
 /**
  * Check if sync is needed (no local recipes or stale data).
  */
 export async function isSyncNeeded(): Promise<boolean> {
-  const count = await getLocalRecipeCount();
-  return count === 0;
+	const count = await getLocalRecipeCount();
+	return count === 0;
 }
 
 /**
  * Clear all local recipes (for testing/reset).
  */
 export async function clearLocalRecipes(): Promise<void> {
-  await db.delete(recipes);
+	await db.delete(recipes);
 }

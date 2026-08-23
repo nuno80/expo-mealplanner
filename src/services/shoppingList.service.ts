@@ -26,15 +26,21 @@ export async function getShoppingListFromMealPlan(
   days: number[] = [],
 ): Promise<AggregatedShoppingItem[]> {
   // 1. Get planned meals for the specified days
-  const whereCondition = days.length > 0
-    ? and(eq(plannedMeals.mealPlanId, mealPlanId), inArray(plannedMeals.day, days))
-    : eq(plannedMeals.mealPlanId, mealPlanId);
+  const whereCondition =
+    days.length > 0
+      ? and(
+        eq(plannedMeals.mealPlanId, mealPlanId),
+        inArray(plannedMeals.day, days),
+      )
+      : eq(plannedMeals.mealPlanId, mealPlanId);
 
   const meals = await db
     .select({
       recipeId: plannedMeals.recipeId,
       portionGrams: plannedMeals.portionGrams,
       sideRecipeId: plannedMeals.sideRecipeId,
+      side2RecipeId: plannedMeals.side2RecipeId,
+      vegSideRecipeId: plannedMeals.vegSideRecipeId,
     })
     .from(plannedMeals)
     .where(whereCondition);
@@ -43,11 +49,13 @@ export async function getShoppingListFromMealPlan(
     return [];
   }
 
-  // 2. Get recipe IDs (Main + Side)
+  // 2. Get recipe IDs (Main + Side1 + Side2 + VegSide)
   const recipeIds: string[] = [
     ...new Set([
       ...meals.map((m) => m.recipeId),
       ...meals.map((m) => m.sideRecipeId).filter((id): id is string => !!id),
+      ...meals.map((m) => m.side2RecipeId).filter((id): id is string => !!id),
+      ...meals.map((m) => m.vegSideRecipeId).filter((id): id is string => !!id),
     ]),
   ];
 
@@ -96,7 +104,10 @@ export async function getShoppingListFromMealPlan(
     if (!detail) continue;
 
     // Normalize name: lowercase, trim, remove extra spaces
-    const normalizedName = detail.name.toLowerCase().trim().replace(/\s+/g, ' ');
+    const normalizedName = detail.name
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, " ");
     // Key by normalized name + unit (e.g., "aglio-g")
     const key = `${normalizedName}-${ri.unit}`;
 
@@ -110,14 +121,22 @@ export async function getShoppingListFromMealPlan(
       };
     }
 
-    // Count how many times this recipe appears in meals (Main or Side)
+    // Count how many times this recipe appears in meals (Main + all sides)
     const mainCount = meals.filter((m) => m.recipeId === ri.recipeId).length;
-    const sideCount = meals.filter((m) => m.sideRecipeId === ri.recipeId).length;
+    const sideCount = meals.filter(
+      (m) => m.sideRecipeId === ri.recipeId,
+    ).length;
+    const side2Count = meals.filter(
+      (m) => m.side2RecipeId === ri.recipeId,
+    ).length;
+    const vegSideCount = meals.filter(
+      (m) => m.vegSideRecipeId === ri.recipeId,
+    ).length;
 
     // Note: This logic assumes 1 serving of ingredient per occurrence.
     // Ideally we should scale by portionGrams/servingGrams, but this requires recipe serving metadata.
     // For now, this ensures simple aggregation.
-    aggregated[key].quantity += ri.quantity * (mainCount + sideCount);
+    aggregated[key].quantity += ri.quantity * (mainCount + sideCount + side2Count + vegSideCount);
   }
 
   // 6. Sort by category and name

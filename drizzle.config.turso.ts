@@ -13,6 +13,7 @@ export default {
 	out: "./drizzle/turso",
 	dialect: "turso",
 	dbCredentials: {
+		// biome-ignore lint/style/noNonNullAssertion: guaranteed by env validation
 		url: process.env.TURSO_DATABASE_URL!,
 		authToken: process.env.TURSO_AUTH_TOKEN,
 	},

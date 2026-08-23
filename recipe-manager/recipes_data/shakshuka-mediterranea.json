@@ -1,0 +1,41 @@
+{
+  "id": "shakshuka-mediterranea",
+  "slug": "shakshuka-mediterranea",
+  "name_it": "Shakshuka Mediterranea",
+  "name_en": "Mediterranean Shakshuka",
+  "description_it": "Uova in camicia cotte in un sugo speziato di pomodoro, peperoni e cipolla. Un classico mediorientale.",
+  "description_en": "Poached eggs cooked in a spiced tomato, pepper and onion sauce. A Middle Eastern classic.",
+  "category": "main_course",
+  "protein_source": "eggs",
+  "difficulty": "easy",
+  "prep_time_min": 10,
+  "cook_time_min": 20,
+  "total_time_min": 30,
+  "servings": 2,
+  "kcal_per_100g": 95,
+  "protein_per_100g": 6.5,
+  "carbs_per_100g": 5.8,
+  "fat_per_100g": 5.2,
+  "fiber_per_100g": 1.5,
+  "serving_weight_g": 300,
+  "cooked_weight_factor": 0.85,
+  "is_published": true,
+  "ingredients": [],
+  "steps_it": [
+    "Soffriggere cipolla e peperoni in padella.",
+    "Aggiungere pomodori pelati, cumino e paprika.",
+    "Creare delle fossette nel sugo e rompere le uova.",
+    "Coprire e cuocere fino a quando le uova sono rapprese."
+  ],
+  "steps_en": [
+    "Sauté onion and peppers in a pan.",
+    "Add crushed tomatoes, cumin and paprika.",
+    "Create wells in the sauce and crack the eggs.",
+    "Cover and cook until eggs are set."
+  ],
+  "tags": [
+    "vegetarian",
+    "gluten-free",
+    "high-protein"
+  ]
+}

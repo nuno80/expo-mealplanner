@@ -1,0 +1,40 @@
+{
+  "id": "fagiolini-aglio-olio",
+  "slug": "fagiolini-aglio-olio",
+  "name_it": "Fagiolini all'Aglio e Olio",
+  "name_en": "Green Beans with Garlic and Oil",
+  "description_it": "Fagiolini lessati e saltati con aglio e olio EVO.",
+  "description_en": "Boiled green beans sautéed with garlic and EVO oil.",
+  "category": "vegetable_side",
+  "protein_source": "none",
+  "difficulty": "easy",
+  "prep_time_min": 5,
+  "cook_time_min": 12,
+  "total_time_min": 17,
+  "servings": 2,
+  "kcal_per_100g": 48,
+  "protein_per_100g": 1.8,
+  "carbs_per_100g": 5.5,
+  "fat_per_100g": 2.2,
+  "fiber_per_100g": 3.0,
+  "serving_weight_g": 150,
+  "cooked_weight_factor": 0.9,
+  "is_published": true,
+  "tags": [
+    "vegetable_heavy"
+  ],
+  "ingredients": [],
+  "steps_it": [
+    "Lessare i fagiolini in acqua salata per 8 minuti.",
+    "Scolare e saltare in padella con aglio e olio.",
+    "Salare e servire."
+  ],
+  "steps_en": [
+    "Boil green beans in salted water for 8 minutes.",
+    "Drain and sauté in pan with garlic and oil.",
+    "Season with salt and serve."
+  ],
+  "tags_json": [
+    "vegetable_heavy"
+  ]
+}

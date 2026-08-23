@@ -1,3 +1,4 @@
+import { relations } from "drizzle-orm";
 import { integer, real, sqliteTable, text } from "drizzle-orm/sqlite-core";
 
 // ============================================================================
@@ -255,6 +256,20 @@ export const plannedMeals = sqliteTable("planned_meals", {
   sidePortionGrams: integer("side_portion_grams"),
   sidePortionKcal: integer("side_portion_kcal"),
 
+  // v2.4 Double Side Dish Support (Bread/Starch fallback)
+  side2RecipeId: text("side2_recipe_id").references(() => recipes.id, {
+    onDelete: "set null",
+  }),
+  side2PortionGrams: integer("side2_portion_grams"),
+  side2PortionKcal: integer("side2_portion_kcal"),
+
+  // v2.6 Harvard Plate - Vegetable side dish (auto-added if main lacks vegetables)
+  vegSideRecipeId: text("veg_side_recipe_id").references(() => recipes.id, {
+    onDelete: "set null",
+  }),
+  vegSidePortionGrams: integer("veg_side_portion_grams"),
+  vegSidePortionKcal: integer("veg_side_portion_kcal"),
+
   createdAt: integer("created_at", { mode: "timestamp" })
     .notNull()
     .$defaultFn(() => new Date()),
@@ -335,3 +350,103 @@ export const shoppingItems = sqliteTable("shopping_items", {
     .default(false),
   order: integer("order").notNull().default(0),
 });
+
+// ============================================================================
+// RELATIONS
+// ============================================================================
+
+export const usersRelations = relations(users, ({ many }) => ({
+  familyMembers: many(familyMembers),
+  mealPlans: many(mealPlans),
+  savedRecipes: many(savedRecipes),
+  weightLogs: many(weightLogs),
+}));
+
+export const familyMembersRelations = relations(
+  familyMembers,
+  ({ one, many }) => ({
+    user: one(users, {
+      fields: [familyMembers.userId],
+      references: [users.id],
+    }),
+    mealPlans: many(mealPlans),
+  }),
+);
+
+export const recipesRelations = relations(recipes, ({ many }) => ({
+  recipeIngredients: many(recipeIngredients),
+  recipeSteps: many(recipeSteps),
+  recipeTags: many(recipeTags),
+  savedRecipes: many(savedRecipes),
+}));
+
+export const ingredientsRelations = relations(ingredients, ({ many }) => ({
+  recipeIngredients: many(recipeIngredients),
+}));
+
+export const recipeIngredientsRelations = relations(
+  recipeIngredients,
+  ({ one }) => ({
+    recipe: one(recipes, {
+      fields: [recipeIngredients.recipeId],
+      references: [recipes.id],
+    }),
+    ingredient: one(ingredients, {
+      fields: [recipeIngredients.ingredientId],
+      references: [ingredients.id],
+    }),
+  }),
+);
+
+export const mealPlansRelations = relations(mealPlans, ({ one, many }) => ({
+  user: one(users, {
+    fields: [mealPlans.userId],
+    references: [users.id],
+  }),
+  familyMember: one(familyMembers, {
+    fields: [mealPlans.familyMemberId],
+    references: [familyMembers.id],
+  }),
+  plannedMeals: many(plannedMeals),
+  shoppingList: one(shoppingLists, {
+    fields: [mealPlans.id],
+    references: [shoppingLists.mealPlanId],
+  }),
+}));
+
+export const plannedMealsRelations = relations(plannedMeals, ({ one }) => ({
+  mealPlan: one(mealPlans, {
+    fields: [plannedMeals.mealPlanId],
+    references: [mealPlans.id],
+  }),
+  recipe: one(recipes, {
+    fields: [plannedMeals.recipeId],
+    references: [recipes.id],
+  }),
+  sideRecipe: one(recipes, {
+    fields: [plannedMeals.sideRecipeId],
+    references: [recipes.id],
+  }),
+}));
+
+export const shoppingListsRelations = relations(
+  shoppingLists,
+  ({ one, many }) => ({
+    mealPlan: one(mealPlans, {
+      fields: [shoppingLists.mealPlanId],
+      references: [mealPlans.id],
+    }),
+    items: many(shoppingItems),
+  }),
+);
+
+export const shoppingItemsRelations = relations(shoppingItems, ({ one }) => ({
+  shoppingList: one(shoppingLists, {
+    fields: [shoppingItems.shoppingListId],
+    references: [shoppingLists.id],
+  }),
+  ingredient: one(ingredients, {
+    fields: [shoppingItems.ingredientId],
+    references: [ingredients.id],
+  }),
+}));

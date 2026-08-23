@@ -52,6 +52,14 @@ export const PlannedMealSchema = z.object({
   sideRecipeId: z.string().uuid().nullish(),
   sidePortionGrams: z.number().int().positive().nullish(),
   sidePortionKcal: z.number().int().nonnegative().nullish(),
+  // v2.4 Second Side Dish
+  side2RecipeId: z.string().uuid().nullish(),
+  side2PortionGrams: z.number().int().positive().nullish(),
+  side2PortionKcal: z.number().int().nonnegative().nullish(),
+  // v2.6 Harvard Plate - Vegetable Side
+  vegSideRecipeId: z.string().uuid().nullish(),
+  vegSidePortionGrams: z.number().int().positive().nullish(),
+  vegSidePortionKcal: z.number().int().nonnegative().nullish(),
   createdAt: z.date(),
 });
 export type PlannedMeal = z.infer<typeof PlannedMealSchema>;
@@ -67,6 +75,16 @@ export const PlannedMealWithRecipeSchema = PlannedMealSchema.extend({
     kcalPer100g: true,
   }),
   sideRecipe: RecipeSchema.pick({
+    id: true,
+    nameIt: true,
+    nameEn: true,
+  }).nullish(),
+  side2Recipe: RecipeSchema.pick({
+    id: true,
+    nameIt: true,
+    nameEn: true,
+  }).nullish(),
+  vegSideRecipe: RecipeSchema.pick({
     id: true,
     nameIt: true,
     nameEn: true,

@@ -17,6 +17,17 @@ class Category(str, Enum):
     BREAKFAST = "breakfast"
     MAIN_COURSE = "main_course"
     SNACK = "snack"
+    SIDE_DISH = "side_dish"  # Mod 18: Harvard Plate
+    VEGETABLE_SIDE = "vegetable_side"  # Mod 18: Harvard Plate
+
+
+class NutritionalTag(str, Enum):
+    """Mod 18: Nutritional tags for Harvard Plate compliance."""
+    VEGETABLE_HEAVY = "vegetable_heavy"  # ≥30% vegetables in dish
+    WHOLE_GRAIN = "whole_grain"  # whole grain based
+    PROTEIN_FOCUSED = "protein_focused"  # ≥20g protein/100g
+    LEGUME_BASED = "legume_based"  # legumes as main ingredient
+    STARCHY = "starchy"  # high starch content
 
 
 class Difficulty(str, Enum):
@@ -97,6 +108,7 @@ class Recipe(RecipeCreate):
     fat_per_100g: Decimal = Field(default=Decimal("0"), decimal_places=2)
     fiber_per_100g: Optional[Decimal] = Field(default=None, decimal_places=2)
     serving_weight_g: int = 0
+    tags: list[NutritionalTag] = Field(default_factory=list)  # Mod 18: Harvard Plate
     is_published: bool = False
     created_at: datetime = Field(default_factory=datetime.now)
     updated_at: datetime = Field(default_factory=datetime.now)

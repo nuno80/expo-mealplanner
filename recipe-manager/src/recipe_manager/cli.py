@@ -487,7 +487,8 @@ def sync_data(
                         fiber_per_100g=to_float(data.get("fiber_per_100g", 0)),
                         serving_weight_g=data.get("serving_weight_g", 0),
                         protein_source=data.get("protein_source", "mixed"),  # Mediterranean Diet rotation
-                        is_published=True, # Published by default from sync
+                        is_published=data.get("is_published", True),  # Published by default from sync
+                        tags=data.get("tags"),  # Mod 18: Harvard Plate tags
                     )
                 )
 
@@ -530,26 +531,46 @@ def sync_data(
                         )
                     )
 
-                # Steps
-                for i, step in enumerate(data.get("steps", []), 1):
-                    # Handle both string steps and object steps
-                    if isinstance(step, dict):
-                        instr_it = step.get("instruction_it")
-                        instr_en = step.get("instruction_en")
-                    else:
-                        instr_it = str(step)
-                        instr_en = None
+                # Steps (Multilingual Support)
+                steps_it = data.get("steps_it")
+                steps_en = data.get("steps_en")
 
-                    run_async(
-                        turso.insert_recipe_step(
-                            id=uuid4(),
-                            recipe_id=recipe_id,
-                            step_number=i,
-                            instruction_it=instr_it,
-                            instruction_en=instr_en,
-                            image_url=None,
+                if steps_it:
+                    # New format: separate arrays
+                    for i, instr_it in enumerate(steps_it):
+                        instr_en = steps_en[i] if steps_en and i < len(steps_en) else None
+                        run_async(
+                            turso.insert_recipe_step(
+                                id=uuid4(),
+                                recipe_id=recipe_id,
+                                step_number=i + 1,
+                                instruction_it=str(instr_it),
+                                instruction_en=str(instr_en) if instr_en else None,
+                                image_url=None,
+                            )
                         )
-                    )
+                else:
+                    # Legacy format: single 'steps' array (strings or dicts)
+                    for i, step in enumerate(data.get("steps", []), 1):
+                        image_url = None
+                        if isinstance(step, dict):
+                            instr_it = step.get("instruction_it")
+                            instr_en = step.get("instruction_en")
+                            image_url = step.get("image_url")
+                        else:
+                            instr_it = str(step)
+                            instr_en = None
+
+                        run_async(
+                            turso.insert_recipe_step(
+                                id=uuid4(),
+                                recipe_id=recipe_id,
+                                step_number=i,
+                                instruction_it=instr_it,
+                                instruction_en=instr_en,
+                                image_url=image_url,
+                            )
+                        )
 
                 success_count += 1
 
@@ -943,6 +964,7 @@ def _save_parsed_recipe(recipe, confirm: bool = True):
                 fat_per_100g=fat_per_100g,
                 fiber_per_100g=nut.fiber,
                 serving_weight_g=nut.serving_weight_g or 200,
+                protein_source=getattr(recipe, 'protein_source', 'mixed'),
                 is_published=False,
             )
         )
@@ -1079,6 +1101,120 @@ def import_json(
     console.print(f"[green]✅ Imported: {success_count}[/green]")
     if error_count > 0:
         console.print(f"[red]❌ Failures: {error_count}[/red]")
+
+# ============ Mod 18: Migration & Tagging Commands ============
+
+
+@app.command("migrate")
+def run_migration():
+    """Run database migrations (adds tags column for Harvard Plate)."""
+    console.print("\n[cyan]🔧 Running migrations...[/cyan]\n")
+
+    turso = TursoClient()
+    try:
+        result = run_async(turso.run_migration_add_tags_column())
+
+        if result:
+            console.print("[green]✅ Added 'tags' column to recipes table[/green]")
+        else:
+            console.print("[yellow]Column 'tags' already exists, nothing to do[/yellow]")
+
+    except Exception as e:
+        console.print(f"[red]❌ Migration failed: {e}[/red]")
+        raise typer.Exit(1)
+    finally:
+        run_async(turso.close())
+
+
+@app.command("tag-list")
+def tag_list():
+    """List all recipes with their current tags for review."""
+    console.print("\n[cyan]🏷️  Recipe Tags[/cyan]\n")
+
+    turso = TursoClient()
+    try:
+        recipes = run_async(turso.get_all_recipe_names())
+
+        if not recipes:
+            console.print("[yellow]No recipes found.[/yellow]")
+            raise typer.Exit(0)
+
+        table = Table()
+        table.add_column("Name", style="white", max_width=35)
+        table.add_column("Category", style="cyan", max_width=12)
+        table.add_column("Protein Src", style="green", max_width=12)
+        table.add_column("P (g/100g)", justify="right")
+        table.add_column("Tags", style="yellow", max_width=30)
+
+        for r in recipes:
+            import json
+            tags_str = r.get("tags") or "[]"
+            try:
+                tags = json.loads(tags_str) if isinstance(tags_str, str) else tags_str
+                tags_display = ", ".join(tags) if tags else "-"
+            except:
+                tags_display = "-"
+
+            table.add_row(
+                r.get("name_it", "?")[:35],
+                r.get("category", "?"),
+                r.get("protein_source", "?"),
+                str(round(r.get("protein_per_100g", 0), 1)),
+                tags_display,
+            )
+
+        console.print(table)
+        console.print(f"\n[dim]Total: {len(recipes)} recipes[/dim]")
+
+    except typer.Exit:
+        raise
+    except Exception as e:
+        console.print(f"[red]❌ Error: {e}[/red]")
+        raise typer.Exit(1)
+    finally:
+        run_async(turso.close())
+
+
+@app.command("tag-export")
+def tag_export():
+    """Export recipe list as JSON for AI-assisted tagging."""
+    import json
+
+    console.print("\n[cyan]📤 Exporting recipes for tagging...[/cyan]\n")
+
+    turso = TursoClient()
+    try:
+        recipes = run_async(turso.get_all_recipe_names())
+
+        if not recipes:
+            console.print("[yellow]No recipes found.[/yellow]")
+            raise typer.Exit(0)
+
+        # Format for AI tagging
+        export_data = []
+        for r in recipes:
+            export_data.append({
+                "id": r.get("id"),
+                "name": r.get("name_it"),
+                "category": r.get("category"),
+                "protein_source": r.get("protein_source"),
+                "protein_g": round(r.get("protein_per_100g", 0), 1),
+                "carbs_g": round(r.get("carbs_per_100g", 0), 1),
+            })
+
+        # Output to console (can be redirected to file)
+        print(json.dumps(export_data, indent=2, ensure_ascii=False))
+
+        console.print(f"\n[green]✅ Exported {len(recipes)} recipes[/green]", err=True)
+        console.print("[dim]Redirect output to file: python -m recipe_manager tag-export > recipes.json[/dim]", err=True)
+
+    except typer.Exit:
+        raise
+    except Exception as e:
+        console.print(f"[red]❌ Error: {e}[/red]", err=True)
+        raise typer.Exit(1)
+    finally:
+        run_async(turso.close())
 
 
 # ============ Main ============
