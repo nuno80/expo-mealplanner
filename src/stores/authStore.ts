@@ -1,6 +1,6 @@
 import type { Session, User } from "@supabase/supabase-js";
 import { create } from "zustand";
-import { supabase } from "@/lib/supabase";
+import { supabase, wipeStoredSession } from "@/lib/supabase";
 import type {
 	OnboardingGoalInput,
 	OnboardingProfileInput,
@@ -73,8 +73,29 @@ export const useAuthStore = create<AuthState>((set, get) => ({
 			isLoading: false,
 		}),
 
+	/**
+	 * Sign out. The local logout must never depend on the network or on the
+	 * storage wipe: both are best-effort, each guarded by its own catch, and
+	 * the store reset always runs. Otherwise a single rejected promise (flaky
+	 * link, SecureStore hiccup) leaves the user signed in with a dead button.
+	 */
 	signOut: async () => {
-		await supabase.auth.signOut();
+		try {
+			await supabase.auth.signOut();
+		} catch (e: any) {
+			console.warn(
+				"[Auth] signOut network error, wiping local session:",
+				e?.message || e,
+			);
+		}
+		try {
+			await wipeStoredSession();
+		} catch (e: any) {
+			console.warn(
+				"[Auth] session wipe failed (will clear on next launch):",
+				e?.message || e,
+			);
+		}
 		set({
 			session: null,
 			user: null,

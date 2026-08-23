@@ -87,21 +87,39 @@ interface ApiRecipesResponse {
 
 /**
  * Fetch recipes from API and upsert into local SQLite (including ingredients/steps).
+ * Retries on transient network failures (first HTTPS handshake on device can drop).
  */
+const SYNC_RETRIES = 2;
+const RETRY_DELAY_MS = 1500;
+
+async function fetchWithRetry(url: string, attempts = SYNC_RETRIES): Promise<Response> {
+	let lastError: unknown;
+	for (let attempt = 1; attempt <= attempts; attempt++) {
+		try {
+			const response = await fetch(url, {
+				headers: { "Content-Type": "application/json" },
+			});
+			if (response.ok) return response;
+			lastError = new Error(`API error: ${response.status}`);
+		} catch (err) {
+			lastError = err;
+			console.warn(`[Sync] Attempt ${attempt}/${attempts} failed:`, err instanceof Error ? err.message : err);
+		}
+		if (attempt < attempts) {
+			await new Promise((r) => setTimeout(r, RETRY_DELAY_MS * attempt));
+		}
+	}
+	throw lastError;
+}
+
 export async function syncRecipes(): Promise<SyncResult> {
 	try {
 		console.log("[Sync] API_BASE_URL:", API_BASE_URL);
 		console.log("[Sync] Fetching recipes from API...");
 
-		const response = await fetch(`${API_BASE_URL}/recipes`, {
-			headers: { "Content-Type": "application/json" },
-		});
+		const response = await fetchWithRetry(`${API_BASE_URL}/recipes`);
 
 		console.log("[Sync] Fetch response status:", response.status);
-
-		if (!response.ok) {
-			throw new Error(`API error: ${response.status}`);
-		}
 
 		const result: ApiRecipesResponse = await response.json();
 

@@ -10,7 +10,8 @@ import { useEffect, useState } from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { useMigrationHelper } from "@/db/migrate";
 import { parsePasswordRecoveryDeepLink } from "@/lib/authDeepLink";
-import { supabase } from "@/lib/supabase";
+import { API_BASE_URL } from "@/lib/api";
+import { AUTH_REDIRECT_URL, wipeStoredSession, supabase } from "@/lib/supabase";
 import { isSyncNeeded, syncRecipes } from "@/services/sync.service";
 import { getPrimaryMember } from "@/services/user.service";
 import { useAuthStore } from "@/stores/authStore";
@@ -30,25 +31,42 @@ function RootLayoutContent() {
 	// Run database migrations on startup
 	const { success: migrationsReady } = useMigrationHelper();
 	const [syncComplete, setSyncComplete] = useState(false);
-	const router = useRouter();
 
 	const { session, hasCompletedOnboarding, initialize, completeOnboarding } =
 		useAuthStore();
+	const { isLoading } = useAuthStore();
+
+	const router = useRouter();
+
+	// Route based on auth status, reactively: index.tsx only redirects on mount
+	// (cold start), so a sign-out while inside (tabs) would leave the user on
+	// the same screen with no navigation. Handle it here, where session lives.
+	useEffect(() => {
+		if (!session && !isLoading) {
+			router.replace("/(auth)/welcome");
+		}
+	}, [session, isLoading, router]);
+
 
 	// Initialize auth listener on mount
 	useEffect(() => {
-		// Connectivity test
-		fetch("https://google.com")
-			.then(() => console.log("[Network] Connectivity test to Google: OK"))
-			.catch((e) =>
-				console.warn("[Network] Connectivity test to Google: FAIL", e.message),
-			);
+		// Connectivity test against the real API (Google is flaky on Android HTTP/3)
+		fetch(API_BASE_URL)
+			.then(() => console.log("[Network] Connectivity test to API: OK"))
+			.catch((e) => console.warn("[Network] Connectivity test to API: FAIL", e.message));
 
 		const unsubscribe = initialize();
 		return () => unsubscribe();
 	}, [initialize]);
 
 	// Handle Deep Linking for Auth (Password Recovery)
+	// One handler for every path the recovery link can arrive from:
+	//   - app already open → Linking "url" event
+	//   - app cold-started by the link → Linking.getInitialURL()
+	//   - in-app email provider opened through the custom scheme
+	// Only the exact custom-scheme endpoint (see parsePasswordRecoveryDeepLink)
+	// is accepted; any other deep link is ignored so a foreign URL cannot
+	// replace the active session.
 	useEffect(() => {
 		const handleDeepLink = async (url: string | null) => {
 			if (!url) return;
@@ -78,11 +96,15 @@ function RootLayoutContent() {
 			handleDeepLink(url);
 		});
 
-		// Listen for Auth State Changes to redirect
+		// Wipe leftover persisted session on sign-out (network hiccup between
+		// revoke and storage removal). Navigation after logout is handled by the
+		// reactive redirect above, so no router call is needed here.
 		const { data: authListener } = supabase.auth.onAuthStateChange(
-			async (event, _session) => {
-				if (event === "PASSWORD_RECOVERY") {
-					router.replace("/(auth)/reset-password");
+			(event, _session) => {
+				if (event === "SIGNED_OUT") {
+					wipeStoredSession().catch((e) =>
+						console.warn("[Auth] SIGNED_OUT wipe failed:", e?.message || e),
+					);
 				}
 			},
 		);

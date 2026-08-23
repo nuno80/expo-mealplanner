@@ -38,11 +38,26 @@ export default function SignupScreen() {
 
 	const onSubmit = async (data: SignupFormData) => {
 		setLoading(true);
-		const { error, data: authData } = await supabase.auth.signUp({
-			email: data.email,
-			password: data.password,
-		});
+		// Retry once on transient network failures (first TLS handshake can drop)
+		let result;
+		let thrownError: Error | null = null;
+		for (let attempt = 1; attempt <= 2; attempt++) {
+			try {
+				result = await supabase.auth.signUp({
+					email: data.email,
+					password: data.password,
+				});
+				thrownError = null;
+			} catch (e) {
+				thrownError = e instanceof Error ? e : new Error(String(e));
+				console.warn("[Signup] Network exception, retry", attempt, ":", thrownError.message);
+			}
+			if (!thrownError && !result?.error) break; // success
+			if (attempt === 2) break;
+		}
 		setLoading(false);
+
+		const { error, data: authData } = result ?? { error: thrownError, data: { session: null } };
 
 		if (error) {
 			Alert.alert("Errore", error.message);

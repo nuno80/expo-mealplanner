@@ -5,7 +5,7 @@ import { Controller, useForm } from "react-hook-form";
 import { Alert, Pressable, Text, TextInput, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { z } from "zod";
-import { supabase } from "@/lib/supabase";
+import { supabase, AUTH_REDIRECT_URL } from "@/lib/supabase";
 
 const forgotPasswordSchema = z.object({
 	email: z.string().email("Email non valida"),
@@ -13,12 +13,27 @@ const forgotPasswordSchema = z.object({
 
 type ForgotPasswordFormData = z.infer<typeof forgotPasswordSchema>;
 
+// Supabase (free plan) rate-limits recovery emails to 4/hour per email
+// address. The API answers 200 even when the quota is exhausted (or 429 on
+// repeat calls), so the UI must throttle manually to make the limit visible
+// instead of silently swallowing requests.
+const RESET_EMAIL_MAX_PER_HOUR = 4;
+const RESET_EMAIL_HOUR_MS = 60 * 60 * 1000;
+
 export default function ForgotPasswordScreen() {
 	const insets = useSafeAreaInsets();
 	const [loading, setLoading] = useState(false);
 	const [successArgs, setSuccessArgs] = useState<{ email: string } | null>(
 		null,
 	);
+	const [sentCount, setSentCount] = useState(0);
+	const [firstSentAt, setFirstSentAt] = useState<number | null>(null);
+
+	// Emails allowed in the current rolling hour, clamped to [0, 4].
+	// When the hour has rolled, the count is reset (fresh quota).
+	const hourRolled = firstSentAt !== null && Date.now() - firstSentAt >= RESET_EMAIL_HOUR_MS;
+	const effectiveCount = hourRolled ? 0 : sentCount;
+	const emailsLeft = Math.max(0, RESET_EMAIL_MAX_PER_HOUR - effectiveCount);
 
 	const {
 		control,
@@ -30,10 +45,11 @@ export default function ForgotPasswordScreen() {
 
 	const onSubmit = async (data: ForgotPasswordFormData) => {
 		setLoading(true);
-		// IMPORTANT: redirect explicitly to deep link for Reset Password screen
-		// Scheme is 'nutriplanit' as defined in app.json for dev build
-		// For local development it might look different but sticking to custom scheme is safer for EAS builds
-		const redirectTo = "nutriplanit://auth/callback?next=/auth/reset-password";
+		// Redirect URL allowlisted in the Supabase dashboard (Auth → URL
+		// Configuration). Explicit redirectTo is required: without it Supabase
+		// falls back to the project's Site URL (http://localhost:3000) and the
+		// link opens the phone browser instead of the app.
+		const redirectTo = AUTH_REDIRECT_URL;
 
 		const { error } = await supabase.auth.resetPasswordForEmail(data.email, {
 			redirectTo,
@@ -43,6 +59,9 @@ export default function ForgotPasswordScreen() {
 		if (error) {
 			Alert.alert("Errore", error.message);
 		} else {
+			// Track sends in a rolling hour so the rate limit is visible in UI.
+			setSentCount((c) => c + 1);
+			setFirstSentAt((t) => t ?? Date.now());
 			setSuccessArgs({ email: data.email });
 		}
 	};
@@ -122,15 +141,24 @@ export default function ForgotPasswordScreen() {
 
 			<Pressable
 				className={`w-full bg-primary-500 py-4 rounded-xl mb-4 mt-6 ${
-					loading ? "opacity-70" : ""
+					loading || emailsLeft <= 0 ? "opacity-70" : ""
 				}`}
 				onPress={handleSubmit(onSubmit)}
-				disabled={loading}
+				disabled={loading || emailsLeft <= 0}
 			>
 				<Text className="text-white text-center text-lg font-semibold">
-					{loading ? "Invio in corso..." : "Invia Link Reset"}
+					{loading
+						? "Invio in corso..."
+						: emailsLeft <= 0
+							? "Limite raggiunto"
+							: "Invia Link Reset"}
 				</Text>
 			</Pressable>
+			<Text className="text-gray-400 text-xs text-center mb-2">
+				{emailsLeft <= 0
+					? "Hai raggiunto il limite di 4 email di reset all'ora. Riprova più tardi."
+					: `Puoi inviare fino a ${RESET_EMAIL_MAX_PER_HOUR} email di reset all'ora. Rimaste: ${emailsLeft}${hourRolled ? " · finestra resettata" : ""}`}
+			</Text>
 		</View>
 	);
 }

@@ -29,11 +29,21 @@ export default function LoginScreen() {
 
 	const onSubmit = async (data: LoginFormData) => {
 		setLoading(true);
-		const { error } = await supabase.auth.signInWithPassword({
-			email: data.email,
-			password: data.password,
-		});
+		// Retry once on transient network failures (first TLS handshake can drop)
+		let result;
+		for (let attempt = 1; attempt <= 2; attempt++) {
+			result = await supabase.auth.signInWithPassword({
+				email: data.email,
+				password: data.password,
+			});
+			if (!result.error || attempt === 2) break;
+			const isNetwork = result.error.status === undefined || result.error.status >= 500;
+			if (!isNetwork) break;
+			console.warn("[Login] Retry", attempt, "after:", result.error.message);
+		}
 		setLoading(false);
+
+		const { error } = result!;
 
 		if (error) {
 			Alert.alert("Errore", error.message);
