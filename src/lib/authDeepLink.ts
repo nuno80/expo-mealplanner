@@ -1,33 +1,32 @@
-const RECOVERY_SCHEME = "nutriplanit:";
-const RECOVERY_HOST = "auth";
-const RECOVERY_PATH = "/callback";
+import * as Linking from "expo-linking";
+
+const NATIVE_CALLBACK_URL = "nutriplanit://auth/callback";
 
 export interface PasswordRecoveryTokens {
 	accessToken: string;
 	refreshToken: string;
 }
 
-/** Accept only the native recovery callback and never trust a redirect target. */
+function normalizeBaseUrl(url: string): string {
+	return url.replace(/\/$/, "");
+}
+
+function isAllowedCallback(url: string): boolean {
+	const baseUrl = normalizeBaseUrl(url.split("#", 1)[0]);
+	const expoGoCallback = normalizeBaseUrl(Linking.createURL("auth/callback"));
+	return baseUrl === NATIVE_CALLBACK_URL || baseUrl === expoGoCallback;
+}
+
+/** Accept only the callback URL generated for this app/runtime. */
 export function parsePasswordRecoveryDeepLink(
 	url: string,
 ): PasswordRecoveryTokens | null {
-	let parsedUrl: URL;
+	if (!isAllowedCallback(url)) return null;
 
-	try {
-		parsedUrl = new URL(url);
-	} catch {
-		return null;
-	}
+	const hash = url.split("#", 2)[1];
+	if (!hash) return null;
 
-	if (
-		parsedUrl.protocol !== RECOVERY_SCHEME ||
-		parsedUrl.hostname !== RECOVERY_HOST ||
-		parsedUrl.pathname !== RECOVERY_PATH
-	) {
-		return null;
-	}
-
-	const fragment = new URLSearchParams(parsedUrl.hash.slice(1));
+	const fragment = new URLSearchParams(hash);
 	if (fragment.get("type") !== "recovery") return null;
 
 	const accessToken = fragment.get("access_token");

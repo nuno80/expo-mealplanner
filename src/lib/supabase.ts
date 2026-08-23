@@ -1,14 +1,15 @@
 import "react-native-url-polyfill/auto";
 import { createClient } from "@supabase/supabase-js";
+import * as Linking from "expo-linking";
 import * as SecureStore from "expo-secure-store";
 
 /**
- * Native callback registered by app.json and allowlisted in Supabase Auth.
- * Keep this URL bare: Supabase appends recovery tokens to the fragment, while
- * a query-string variant is easy to mismatch in the dashboard and can fall
- * back to the project's Site URL (often http://localhost:3000).
+ * Expo Go needs its runtime URL; standalone/dev builds use the native scheme.
+ * Add the URL produced by the build to Supabase Auth Redirect URLs.
  */
-export const AUTH_REDIRECT_URL = "nutriplanit://auth/callback";
+export const AUTH_REDIRECT_URL = __DEV__
+	? Linking.createURL("auth/callback")
+	: "nutriplanit://auth/callback";
 
 const ExpoSecureStoreAdapter = {
 	getItem: (key: string) => SecureStore.getItemAsync(key),
