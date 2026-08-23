@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Link } from "expo-router";
+import { Link, useRouter } from "expo-router";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { Alert, Pressable, Text, TextInput, View } from "react-native";
@@ -9,7 +9,7 @@ import { PasswordInput } from "@/components/ui/PasswordInput";
 import { supabase } from "@/lib/supabase";
 
 const loginSchema = z.object({
-	email: z.string().email("Email non valida"),
+	email: z.string().trim().email("Email non valida"),
 	password: z.string().min(1, "Password richiesta"),
 });
 
@@ -17,6 +17,7 @@ type LoginFormData = z.infer<typeof loginSchema>;
 
 export default function LoginScreen() {
 	const insets = useSafeAreaInsets();
+	const router = useRouter();
 	const [loading, setLoading] = useState(false);
 
 	const {
@@ -29,11 +30,10 @@ export default function LoginScreen() {
 
 	const onSubmit = async (data: LoginFormData) => {
 		setLoading(true);
-		// Retry once on transient network failures (first TLS handshake can drop)
 		let result;
 		for (let attempt = 1; attempt <= 2; attempt++) {
 			result = await supabase.auth.signInWithPassword({
-				email: data.email,
+				email: data.email.trim(),
 				password: data.password,
 			});
 			if (!result.error || attempt === 2) break;
@@ -43,12 +43,15 @@ export default function LoginScreen() {
 		}
 		setLoading(false);
 
-		const { error } = result!;
-
-		if (error) {
-			Alert.alert("Errore", error.message);
+		if (result?.error) {
+			Alert.alert("Errore", result.error.message);
+			return;
 		}
-		// Redirect gestito da root layout listener
+
+		// Do not wait for a remount or the root index redirect. The auth listener
+		// updates Zustand asynchronously, so route explicitly after Supabase has
+		// accepted the credentials.
+		router.replace("/");
 	};
 
 	return (
@@ -57,7 +60,6 @@ export default function LoginScreen() {
 			style={{ paddingTop: insets.top + 20, paddingBottom: insets.bottom }}
 		>
 			<Text className="text-2xl font-bold text-gray-900 mb-8">Accedi</Text>
-
 			<Text className="text-gray-700 mb-2">Email</Text>
 			<Controller
 				control={control}
@@ -74,60 +76,23 @@ export default function LoginScreen() {
 					/>
 				)}
 			/>
-			{errors.email && (
-				<Text className="text-red-500 text-sm mb-3">
-					{errors.email.message}
-				</Text>
-			)}
-
+			{errors.email && <Text className="text-red-500 text-sm mb-3">{errors.email.message}</Text>}
 			<Text className="text-gray-700 mb-2 mt-2">Password</Text>
 			<Controller
 				control={control}
 				name="password"
 				render={({ field: { onChange, onBlur, value } }) => (
-					<PasswordInput
-						placeholder="••••••••"
-						onBlur={onBlur}
-						onChangeText={onChange}
-						value={value}
-					/>
+					<PasswordInput placeholder="••••••••" onBlur={onBlur} onChangeText={onChange} value={value} />
 				)}
 			/>
-			{errors.password && (
-				<Text className="text-red-500 text-sm mb-4">
-					{errors.password.message}
-				</Text>
-			)}
-
+			{errors.password && <Text className="text-red-500 text-sm mb-4">{errors.password.message}</Text>}
 			<View className="flex-row justify-end mb-4">
-				<Link href="/(auth)/forgot-password" asChild>
-					<Pressable>
-						<Text className="text-primary-600 text-sm font-medium">
-							Password dimenticata?
-						</Text>
-					</Pressable>
-				</Link>
+				<Link href="/(auth)/forgot-password" asChild><Pressable><Text className="text-primary-600 text-sm font-medium">Password dimenticata?</Text></Pressable></Link>
 			</View>
-
-			<Pressable
-				className={`w-full bg-primary-500 py-4 rounded-xl mb-4 mt-4 ${
-					loading ? "opacity-70" : ""
-				}`}
-				onPress={handleSubmit(onSubmit)}
-				disabled={loading}
-			>
-				<Text className="text-white text-center text-lg font-semibold">
-					{loading ? "Accesso in corso..." : "Accedi"}
-				</Text>
+			<Pressable className={`w-full bg-primary-500 py-4 rounded-xl mb-4 mt-4 ${loading ? "opacity-70" : ""}`} onPress={handleSubmit(onSubmit)} disabled={loading}>
+				<Text className="text-white text-center text-lg font-semibold">{loading ? "Accesso in corso..." : "Accedi"}</Text>
 			</Pressable>
-
-			<Link href="/(auth)/signup" asChild>
-				<Pressable>
-					<Text className="text-primary-600 text-center">
-						Non hai un account? Registrati
-					</Text>
-				</Pressable>
-			</Link>
+			<Link href="/(auth)/signup" asChild><Pressable><Text className="text-primary-600 text-center">Non hai un account? Registrati</Text></Pressable></Link>
 		</View>
 	);
 }
