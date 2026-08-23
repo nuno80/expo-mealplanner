@@ -9,6 +9,7 @@ import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { useMigrationHelper } from "@/db/migrate";
+import { parsePasswordRecoveryDeepLink } from "@/lib/authDeepLink";
 import { supabase } from "@/lib/supabase";
 import { isSyncNeeded, syncRecipes } from "@/services/sync.service";
 import { getPrimaryMember } from "@/services/user.service";
@@ -39,7 +40,9 @@ function RootLayoutContent() {
 		// Connectivity test
 		fetch("https://google.com")
 			.then(() => console.log("[Network] Connectivity test to Google: OK"))
-			.catch((e) => console.warn("[Network] Connectivity test to Google: FAIL", e.message));
+			.catch((e) =>
+				console.warn("[Network] Connectivity test to Google: FAIL", e.message),
+			);
 
 		const unsubscribe = initialize();
 		return () => unsubscribe();
@@ -50,26 +53,21 @@ function RootLayoutContent() {
 		const handleDeepLink = async (url: string | null) => {
 			if (!url) return;
 
-			// Simple parsing of hash params
-			if (url.includes("access_token") && url.includes("refresh_token")) {
-				const params: Record<string, string> = {};
-				const hash = url.split("#")[1];
-				if (hash) {
-					hash.split("&").forEach((part) => {
-						const [key, value] = part.split("=");
-						if (key && value) {
-							params[key] = decodeURIComponent(value);
-						}
-					});
-				}
+			const recoveryTokens = parsePasswordRecoveryDeepLink(url);
+			if (!recoveryTokens) return;
 
-				if (params.access_token && params.refresh_token) {
-					await supabase.auth.setSession({
-						access_token: params.access_token,
-						refresh_token: params.refresh_token,
-					});
-				}
+			const { error } = await supabase.auth.setSession({
+				access_token: recoveryTokens.accessToken,
+				refresh_token: recoveryTokens.refreshToken,
+			});
+
+			if (error) {
+				console.warn("Password recovery session rejected:", error.message);
+				return;
 			}
+
+			// Do not rely on an untrusted `next` parameter for navigation.
+			router.replace("/(auth)/reset-password");
 		};
 
 		// Check initial URL
@@ -84,7 +82,7 @@ function RootLayoutContent() {
 		const { data: authListener } = supabase.auth.onAuthStateChange(
 			async (event, _session) => {
 				if (event === "PASSWORD_RECOVERY") {
-					router.push("/(auth)/reset-password");
+					router.replace("/(auth)/reset-password");
 				}
 			},
 		);
