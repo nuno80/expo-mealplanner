@@ -49,15 +49,26 @@ export async function getShoppingListFromMealPlan(
     return [];
   }
 
+  // Count every recipe occurrence once. The previous implementation scanned the
+  // complete meal array four times for every ingredient row.
+  const recipeOccurrenceCount = new Map<string, number>();
+  const countRecipe = (recipeId: string | null) => {
+    if (!recipeId) return;
+    recipeOccurrenceCount.set(
+      recipeId,
+      (recipeOccurrenceCount.get(recipeId) ?? 0) + 1,
+    );
+  };
+
+  for (const meal of meals) {
+    countRecipe(meal.recipeId);
+    countRecipe(meal.sideRecipeId);
+    countRecipe(meal.side2RecipeId);
+    countRecipe(meal.vegSideRecipeId);
+  }
+
   // 2. Get recipe IDs (Main + Side1 + Side2 + VegSide)
-  const recipeIds: string[] = [
-    ...new Set([
-      ...meals.map((m) => m.recipeId),
-      ...meals.map((m) => m.sideRecipeId).filter((id): id is string => !!id),
-      ...meals.map((m) => m.side2RecipeId).filter((id): id is string => !!id),
-      ...meals.map((m) => m.vegSideRecipeId).filter((id): id is string => !!id),
-    ]),
-  ];
+  const recipeIds = [...recipeOccurrenceCount.keys()];
 
   // 3. Get ingredients for all recipes
   const recipeIngredientsData = await db
@@ -121,22 +132,10 @@ export async function getShoppingListFromMealPlan(
       };
     }
 
-    // Count how many times this recipe appears in meals (Main + all sides)
-    const mainCount = meals.filter((m) => m.recipeId === ri.recipeId).length;
-    const sideCount = meals.filter(
-      (m) => m.sideRecipeId === ri.recipeId,
-    ).length;
-    const side2Count = meals.filter(
-      (m) => m.side2RecipeId === ri.recipeId,
-    ).length;
-    const vegSideCount = meals.filter(
-      (m) => m.vegSideRecipeId === ri.recipeId,
-    ).length;
-
-    // Note: This logic assumes 1 serving of ingredient per occurrence.
-    // Ideally we should scale by portionGrams/servingGrams, but this requires recipe serving metadata.
-    // For now, this ensures simple aggregation.
-    aggregated[key].quantity += ri.quantity * (mainCount + sideCount + side2Count + vegSideCount);
+    // Preserve the existing behavior: each main or side occurrence contributes
+    // one recipe quantity to the aggregated shopping list.
+    const occurrenceCount = recipeOccurrenceCount.get(ri.recipeId) ?? 0;
+    aggregated[key].quantity += ri.quantity * occurrenceCount;
   }
 
   // 6. Sort by category and name
