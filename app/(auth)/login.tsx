@@ -21,11 +21,7 @@ export default function LoginScreen() {
 	const router = useRouter();
 	const [loading, setLoading] = useState(false);
 
-	const {
-		control,
-		handleSubmit,
-		formState: { errors },
-	} = useForm<LoginFormData>({
+	const { control, handleSubmit, formState: { errors } } = useForm<LoginFormData>({
 		resolver: zodResolver(loginSchema),
 	});
 
@@ -49,19 +45,26 @@ export default function LoginScreen() {
 			return;
 		}
 
-		const userId = result.data.user?.id;
+		const userId = result?.data.user?.id;
 		if (!userId) {
 			setLoading(false);
 			Alert.alert("Errore", "Login completato ma sessione non disponibile. Riprova.");
 			return;
 		}
 
-		// The root index can run before its async onboarding lookup completes.
-		// Resolve the route here, after Supabase has returned the authenticated user,
-		// so existing users never get stranded on the onboarding/auth stack.
-		const primaryMember = await getPrimaryMember(userId);
+		// Supabase has accepted the credentials. Navigate now instead of waiting
+		// for the local SQLite profile query, which can be slow while migrations
+		// or recipe sync are running. The root auth listener continues updating
+		// Zustand in the background.
 		setLoading(false);
-		router.replace(primaryMember ? "/(tabs)" : "/(onboarding)/goal");
+		router.replace("/(tabs)");
+
+		// Keep onboarding detection best-effort and non-blocking for existing users.
+		getPrimaryMember(userId)
+			.then((member) => {
+				if (!member) router.replace("/(onboarding)/goal");
+			})
+			.catch((error) => console.warn("[Login] profile lookup failed:", error));
 	};
 
 	return (
